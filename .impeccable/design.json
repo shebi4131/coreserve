@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T12:00:00+05:00",
+  "title": "Design System: Coreserve Facilities Group",
+  "extensions": {
+    "colorMeta": {
+      "operational-navy": { "role": "primary", "displayName": "Operational Navy", "canonical": "#10243a", "tonalRamp": ["#07111c", "#0b1a2a", "#10243a", "#173650", "#35556e", "#6f899b", "#b8c8d2", "#edf2f5"] },
+      "service-teal": { "role": "secondary", "displayName": "Service Teal", "canonical": "#19b5a5", "tonalRamp": ["#062d2a", "#07534d", "#087f76", "#19b5a5", "#54d8ca", "#8ce8df", "#c4f4ef", "#effcf9"] },
+      "pale-surface": { "role": "neutral", "displayName": "Cool Service Paper", "canonical": "#f2f7f8", "tonalRamp": ["#182126", "#344047", "#5f7080", "#8e9ca5", "#bcc7cd", "#dce6e9", "#f2f7f8", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Decisive Display", "purpose": "Single page-level statements and major propositions." },
+      "body": { "displayName": "Operational Body", "purpose": "Service explanations, process details, and form guidance." },
+      "label": { "displayName": "Functional Label", "purpose": "Fields, controls, and compact metadata." }
+    },
+    "shadows": [
+      { "name": "ambient-lift", "value": "0 18px 52px rgba(16, 36, 58, 0.11)", "purpose": "Quote forms and important floating panels." },
+      { "name": "deep-board", "value": "0 30px 70px rgba(3, 13, 24, 0.28)", "purpose": "Hero operations board on a navy field." },
+      { "name": "micro-lift", "value": "0 9px 28px rgba(16, 36, 58, 0.1)", "purpose": "Small floating orbit labels." }
+    ],
+    "motion": [
+      { "name": "state-transition", "value": "180ms ease", "purpose": "Buttons, links, navigation underlines, and service-row states." },
+      { "name": "coordination-orbit", "value": "30s linear infinite", "purpose": "Slow decorative orbit with counter-rotated readable labels; disabled for reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "980px" },
+      { "name": "mobile", "value": "720px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The default high-confidence conversion action.",
+      "html": "<button class=\"ds-button-primary\">Request a quote</button>",
+      "css": ".ds-button-primary{min-height:50px;padding:12px 20px;border:1px solid transparent;border-radius:10px;background:#19b5a5;color:#062f35;font:800 16px 'DM Sans',sans-serif;cursor:pointer;transition:transform 180ms ease,background 180ms ease}.ds-button-primary:hover{background:#54d8ca;transform:translateY(-2px)}.ds-button-primary:focus-visible{outline:3px solid #19b5a5;outline-offset:4px}.ds-button-primary:active{transform:translateY(1px)}"
+    },
+    {
+      "name": "Dark Button",
+      "kind": "button",
+      "refersTo": "button-dark",
+      "description": "A grounded action for light sections and service detail blocks.",
+      "html": "<button class=\"ds-button-dark\">Talk to our team</button>",
+      "css": ".ds-button-dark{min-height:50px;padding:12px 20px;border:1px solid transparent;border-radius:10px;background:#10243a;color:#fff;font:800 16px 'DM Sans',sans-serif;cursor:pointer;transition:transform 180ms ease,background 180ms ease}.ds-button-dark:hover{background:#173650;transform:translateY(-2px)}.ds-button-dark:focus-visible{outline:3px solid #19b5a5;outline-offset:4px}.ds-button-dark:active{transform:translateY(1px)}"
+    },
+    {
+      "name": "Quote Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "A clear, labelled field for practical property details.",
+      "html": "<label class=\"ds-field\"><span>Property postcode</span><input placeholder=\"For example, Preston PR2\"></label>",
+      "css": ".ds-field{display:grid;gap:7px;color:#10243a;font:800 13px 'DM Sans',sans-serif}.ds-field input{min-height:48px;padding:11px 13px;border:1px solid #d2dfe3;border-radius:9px;background:#fff;color:#182a3b;font:400 16px 'DM Sans',sans-serif;outline:0}.ds-field input::placeholder{color:#596c7a}.ds-field input:focus{border-color:#087f76;box-shadow:0 0 0 3px rgba(25,181,165,.14)}"
+    },
+    {
+      "name": "Service Row",
+      "kind": "custom",
+      "description": "The full-width, keyboard-accessible service navigation pattern.",
+      "html": "<a class=\"ds-service-row\" href=\"#\"><span class=\"ds-number\">01</span><span class=\"ds-mark\">✓</span><span><strong>Professional cleaning</strong><small>Practical cleaning support shaped around the property.</small></span><span class=\"ds-arrow\">↗</span></a>",
+      "css": ".ds-service-row{display:grid;grid-template-columns:48px 52px 1fr 42px;align-items:center;gap:18px;padding:24px 0;border-top:1px solid #ccdbdf;border-bottom:1px solid #ccdbdf;border-radius:8px;color:#182a3b;text-decoration:none;font-family:'DM Sans',sans-serif;transition:background 180ms ease,padding 180ms ease,transform 180ms ease}.ds-number{color:#526879;font-size:12px}.ds-mark{width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:#dff6f2;color:#087f76}.ds-service-row strong{display:block;color:#10243a;font:750 20px Manrope,sans-serif}.ds-service-row small{display:block;margin-top:6px;color:#5f7080}.ds-arrow{width:42px;height:42px;display:grid;place-items:center;border:1px solid #aebfc4;border-radius:50%;transition:background 180ms ease,color 180ms ease}.ds-service-row:hover,.ds-service-row:focus-visible{padding-inline:16px;background:#fff;outline:3px solid #19b5a5;outline-offset:4px}.ds-service-row:hover .ds-arrow,.ds-service-row:focus-visible .ds-arrow{background:#10243a;color:#fff}.ds-service-row:active{transform:translateY(1px)}"
+    },
+    {
+      "name": "Operations Board",
+      "kind": "card",
+      "description": "A compact overview of the four coordinated services.",
+      "html": "<section class=\"ds-board\"><header>Property service plan <span>● Ready to arrange</span></header><div>01 &nbsp; Professional cleaning <b>✓</b></div><div>02 &nbsp; EPC assessment <b>✓</b></div><div>03 &nbsp; Gas safety <b>✓</b></div><div>04 &nbsp; Electrical safety <b>✓</b></div></section>",
+      "css": ".ds-board{overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:16px;background:#142f48;color:#d8e6ed;box-shadow:0 30px 70px rgba(3,13,24,.28);font:600 14px 'DM Sans',sans-serif}.ds-board header{display:flex;justify-content:space-between;padding:18px 20px;color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}.ds-board header span,.ds-board b{color:#54d8ca}.ds-board div{padding:17px 20px;border-bottom:1px solid rgba(255,255,255,.09)}.ds-board div:last-child{border-bottom:0}.ds-board b{float:right}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Calm Operations Desk",
+    "overview": "Coreserve should feel like a well-run property-services desk: composed, direct, and quietly capable. Deep navy creates authority, teal signals progress and availability, and pale technical surfaces keep long service information easy to scan. The system is modern without feeling like a generic technology product.",
+    "keyCharacteristics": [
+      "Decisive navy first viewports with a single teal action colour.",
+      "Editorial service lists instead of interchangeable card grids.",
+      "Clear, high-contrast type and generous vertical rhythm.",
+      "Restrained motion that communicates coordination, never spectacle."
+    ],
+    "rules": [
+      { "name": "The Teal Means Action Rule", "body": "Reserve teal for action, status, and helpful emphasis; it should never become a large decorative wash.", "section": "colors" },
+      { "name": "The One Statement Rule", "body": "Each section earns one strong heading; avoid stacking uppercase eyebrow text above every heading.", "section": "typography" },
+      { "name": "The Structural Shadow Rule", "body": "A shadow must explain layering or interactivity; section separation comes from tone, whitespace, or a fine line.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do preserve the navy, teal, pale blue-grey, and white colour relationship.",
+      "Do keep regulated service language factual and attribute work to appropriately qualified professionals.",
+      "Do use full-row interaction, visible keyboard focus, reduced-motion support, and persistent mobile affordances.",
+      "Do favour linear editorial lists and clear process steps for operational content."
+    ],
+    "donts": [
+      "Don't add unverified accreditations, testimonials, logos, or performance claims.",
+      "Don't repeat uppercase eyebrow labels above every heading.",
+      "Don't use teal as a large decorative background or add unrelated accent colours.",
+      "Don't hide a service-row action on mobile or rotate readable text with decorative motion."
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "coreserve-facilities-group",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "wrangler pages dev out",
+    "check": "tsc --noEmit",
+    "preview:cloudflare": "wrangler pages dev out",
+    "deploy": "npm run build && wrangler pages deploy out --project-name coreserve-facilities-group"
+  },
+  "dependencies": {
+    "lucide-react": "1.60.0",
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@fontsource/manrope": "^5.3.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "playwright-core": "^1.64.1",
+    "typescript": "^5.9.0",
+    "wrangler": "4.151.2"
+  }
+}
