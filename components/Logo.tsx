@@ -3,8 +3,7 @@ import Link from "next/link";
 export function Logo({ inverse = false }: { inverse?: boolean }) {
   return (
     <Link className={`logo${inverse ? " logo--inverse" : ""}`} href="/" aria-label="Coreserve Facilities Group home">
-      <span className="logo__mark" aria-hidden="true"><span>C</span></span>
-      <span className="logo__type">CORESERVE<small>FACILITIES GROUP</small></span>
+      <img className="logo__image" src="/brand/coreserve-logo.png" alt="" width="1056" height="609" />
     </Link>
   );
 }

@@ -10,6 +10,8 @@ export const dynamic = "force-static";
 const manropeExtraBold = readFile(
   join(process.cwd(), "node_modules", "@fontsource", "manrope", "files", "manrope-latin-800-normal.woff"),
 );
+const brandMark = readFile(join(process.cwd(), "public", "brand", "coreserve-mark.png"))
+  .then((file) => `data:image/png;base64,${file.toString("base64")}`);
 
 export default async function OpenGraphImage() {
   return new ImageResponse(
@@ -18,9 +20,8 @@ export default async function OpenGraphImage() {
       <div style={{ position: "absolute", width: 340, height: 340, border: "66px solid rgba(25,181,165,.13)", borderRadius: "50%", right: 75, bottom: -180, display: "flex" }} />
       <div style={{ width: "100%", padding: "74px 82px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div style={{ width: 76, height: 76, display: "flex", position: "relative", alignItems: "center", justifyContent: "center", borderRadius: 18, background: "rgba(255,255,255,.08)", color: "#54d8ca", fontSize: 34, fontWeight: 800 }}>
-            <div style={{ position: "absolute", width: 46, height: 46, display: "flex", border: "3px solid #19b5a5", borderRadius: 7, transform: "rotate(45deg)" }} />
-            <span style={{ position: "relative", display: "flex" }}>C</span>
+          <div style={{ width: 76, height: 76, display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 18, background: "#ffffff" }}>
+            <img src={await brandMark} width={68} height={68} style={{ objectFit: "contain" }} />
           </div>
           <div style={{ display: "flex", flexDirection: "column", fontWeight: 800, fontSize: 26, letterSpacing: "-.02em" }}>CORESERVE<span style={{ marginTop: 5, color: "#54d8ca", fontSize: 13, letterSpacing: ".17em" }}>FACILITIES GROUP</span></div>
         </div>
