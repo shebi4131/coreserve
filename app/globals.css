@@ -303,6 +303,8 @@ p { margin: 0; color: var(--muted); }
 .stage-grid h3 { margin-bottom: 12px; }
 .stage-grid p { font-size: .91rem; }
 .faq-layout { display: grid; grid-template-columns: .68fr 1.32fr; gap: 90px; }
+.faq-layout__intro { align-self: start; }
+.faq-illustration { width: min(100%, 390px); height: auto; display: block; margin-top: 40px; opacity: .96; }
 .faq-list { border-top: 1px solid var(--line); }
 .faq-list details { border-bottom: 1px solid var(--line); }
 .faq-list summary { position: relative; padding: 25px 45px 25px 0; color: var(--navy); cursor: pointer; font-family: var(--font-display); font-size: 1.05rem; font-weight: 800; list-style: none; }
@@ -394,6 +396,10 @@ p { margin: 0; color: var(--muted); }
   .featured-service-grid { grid-template-columns: 1fr 1fr; }
   .featured-service--primary { grid-column: 1 / -1; }
   .service-content-grid, .service-page-hero__grid, .faq-layout { grid-template-columns: 1fr; gap: 48px; }
+  .faq-layout__intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 330px); align-items: end; gap: 32px; }
+  .faq-layout__intro .eyebrow { grid-column: 1; }
+  .faq-layout__intro h2 { grid-column: 1; }
+  .faq-illustration { grid-column: 2; grid-row: 1 / 3; margin-top: 0; }
   .service-page-hero__grid { min-height: 0; }
   .service-brief { max-width: 620px; }
   .preparation-card { position: static; }
@@ -468,6 +474,8 @@ p { margin: 0; color: var(--muted); }
   .quote-form__footer .button { width: 100%; }
   .contact-tips { grid-template-columns: 1fr; }
   .contact-tips article, .contact-tips article:first-child, .contact-tips article:last-child { padding: 25px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .faq-layout__intro { display: block; }
+  .faq-illustration { width: min(100%, 280px); margin: 30px auto 0; }
   .contact-tips article:last-child { border-bottom: 0; }
   .footer { padding-bottom: 92px; }
   .footer__grid { grid-template-columns: 1fr; gap: 30px; }

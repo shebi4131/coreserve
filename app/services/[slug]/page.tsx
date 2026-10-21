@@ -52,6 +52,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
   };
 
   const related = services.filter((item) => item.slug !== service.slug && item.category === service.category).slice(0, 2);
+  const faqIllustration = service.category === "Cleaning"
+    ? { src: "/illustrations/schedule-cleanup.svg", width: 480, height: 272 }
+    : { src: "/illustrations/property-inspection.svg", width: 480, height: 376 };
 
   return (
     <main id="main-content">
@@ -115,7 +118,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
       <section className="section">
         <div className="shell faq-layout">
-          <div><span className="eyebrow">Questions</span><h2>Useful details before you book.</h2></div>
+          <div className="faq-layout__intro"><span className="eyebrow">Questions</span><h2>Useful details before you book.</h2><img className="faq-illustration" src={faqIllustration.src} alt="" width={faqIllustration.width} height={faqIllustration.height} loading="lazy" decoding="async" /></div>
           <div className="faq-list">
             {service.faqs.map((faq) => (
               <details key={faq.question}><summary>{faq.question}</summary><p>{faq.answer}</p></details>

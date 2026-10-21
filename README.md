@@ -73,3 +73,7 @@ The form builds a pre-filled WhatsApp message to `07728 344412`. It stores nothi
 - Fast static-first pages, responsive layouts and local font optimisation
 
 Before launch, connect the domain, verify the website in Google Search Console and create or update the Google Business Profile with matching contact details.
+
+## Illustration assets
+
+The SVG artwork in `public/illustrations/` is sourced from [unDraw](https://undraw.co/illustrations) and recoloured to the Coreserve navy and blue palette. The images are decorative, locally hosted and lazy-loaded.
