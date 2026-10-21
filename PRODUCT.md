@@ -38,7 +38,7 @@ Visitors commonly arrive while arranging an end-of-tenancy clean, deep or move c
 ## Brand Commitments
 
 - Business name: Coreserve Facilities Group.
-- Preserve the established navy, teal, pale blue-grey, and white palette from `index.html`.
+- Use the logo-led deep navy, mid-blue, cool silver, pale blue-grey, and white palette consistently across the website.
 - Voice: professional, practical, straightforward, dependable, and free of inflated claims.
 - Current phone: 07728 344412.
 - Current address: 45 Symonds Road, Fulwood, Preston, PR2 3DH.
