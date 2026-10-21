@@ -48,7 +48,8 @@ p { margin: 0; color: var(--muted); }
 .desktop-nav { display: flex; align-items: center; gap: 21px; color: #425568; font-size: 0.88rem; font-weight: 700; }
 .desktop-nav > a:not(.button) { position: relative; padding: 10px 0; }
 .desktop-nav > a:not(.button)::after { position: absolute; right: 0; bottom: 3px; left: 0; height: 2px; background: var(--teal); content: ""; transform: scaleX(0); transform-origin: right; transition: transform 180ms ease; }
-.desktop-nav > a:hover::after { transform: scaleX(1); transform-origin: left; }
+.desktop-nav > a:hover::after, .desktop-nav > a.is-active::after { transform: scaleX(1); transform-origin: left; }
+.desktop-nav > a.is-active { color: var(--navy); }
 .mobile-menu { display: none; }
 
 .button { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 20px; border: 1px solid transparent; border-radius: 10px; cursor: pointer; font-weight: 800; line-height: 1; transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease; }
@@ -70,10 +71,12 @@ p { margin: 0; color: var(--muted); }
 .hero { position: relative; overflow: hidden; color: var(--white); background: var(--navy); }
 .hero::before { position: absolute; top: -260px; right: -150px; width: 700px; height: 700px; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 50%; box-shadow: 0 0 0 80px rgba(255, 255, 255, 0.025), 0 0 0 160px rgba(255, 255, 255, 0.018); content: ""; }
 .hero__grid { position: relative; z-index: 1; min-height: 665px; display: grid; grid-template-columns: 1.08fr 0.92fr; align-items: center; gap: 78px; padding-block: 82px; }
-.hero h1 { color: var(--white); }
+.hero h1 { color: var(--white); font-size: clamp(3.15rem, 5.2vw, 4.9rem); }
 .hero h1 em { color: var(--teal-bright); font-style: normal; }
 .hero__lead { max-width: 640px; margin-top: 25px; color: #c4d4de; font-size: 1.12rem; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 33px; }
+.hero__copy .hero__actions { width: min(100%, 430px); display: grid; }
+.hero__copy .hero__actions .button { width: 100%; min-height: 58px; padding: 15px 24px; font-size: .98rem; }
 .hero__assurance { max-width: 590px; display: flex; align-items: center; gap: 10px; margin-top: 33px; color: #d9e5ec; font-size: 0.88rem; }
 .hero__assurance svg { flex: none; color: var(--teal-bright); }
 .service-board { position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 16px; background: #142f48; box-shadow: 0 30px 70px rgba(3, 13, 24, 0.28); }
@@ -304,6 +307,7 @@ p { margin: 0; color: var(--muted); }
 .stage-grid p { font-size: .91rem; }
 .faq-layout { display: grid; grid-template-columns: .68fr 1.32fr; gap: 90px; }
 .faq-layout__intro { align-self: start; }
+.service-faq-title { font-size: clamp(2.1rem, 3.4vw, 2.7rem); }
 .faq-illustration { width: min(100%, 390px); height: auto; display: block; margin-top: 40px; opacity: .96; }
 .faq-list { border-top: 1px solid var(--line); }
 .faq-list details { border-bottom: 1px solid var(--line); }
@@ -314,6 +318,7 @@ p { margin: 0; color: var(--muted); }
 .faq-list details p { max-width: 720px; padding: 0 45px 24px 0; }
 .checklist-callout { padding-block: 72px; color: var(--white); background: var(--navy-mid); }
 .checklist-callout__inner { display: flex; align-items: center; justify-content: space-between; gap: 50px; }
+.checklist-callout__inner .button { min-width: 270px; white-space: nowrap; }
 .checklist-callout h2 { color: var(--white); }
 .checklist-callout p { margin-top: 10px; color: #b8cbd6; }
 .section--compact { padding-block: 78px; }
@@ -425,6 +430,7 @@ p { margin: 0; color: var(--muted); }
   .mobile-menu nav { position: fixed; top: 108px; right: 0; left: 0; display: grid; padding: 14px 16px 22px; border-bottom: 1px solid var(--line); background: var(--white); box-shadow: 0 18px 35px rgba(16, 36, 58, 0.12); }
   .mobile-menu nav a { padding: 14px 10px; border-bottom: 1px solid var(--line); color: var(--navy); font-weight: 750; }
   .mobile-menu nav a:last-child { border-bottom: 0; color: var(--teal-dark); }
+  .mobile-menu nav a.is-active { color: var(--navy); box-shadow: inset 3px 0 0 var(--teal); }
   .hero__grid { min-height: 0; gap: 42px; padding-block: 58px 66px; }
   .hero h1 { font-size: clamp(2.75rem, 13vw, 4.1rem); }
   .hero__lead { font-size: 1rem; }

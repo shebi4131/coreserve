@@ -118,7 +118,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
       <section className="section">
         <div className="shell faq-layout">
-          <div className="faq-layout__intro"><span className="eyebrow">Questions</span><h2>Useful details before you book.</h2><img className="faq-illustration" src={faqIllustration.src} alt="" width={faqIllustration.width} height={faqIllustration.height} loading="lazy" decoding="async" /></div>
+          <div className="faq-layout__intro"><span className="eyebrow">Questions</span><h2 className="service-faq-title">Useful details before you book.</h2><img className="faq-illustration" src={faqIllustration.src} alt="" width={faqIllustration.width} height={faqIllustration.height} loading="lazy" decoding="async" /></div>
           <div className="faq-list">
             {service.faqs.map((faq) => (
               <details key={faq.question}><summary>{faq.question}</summary><p>{faq.answer}</p></details>
