@@ -9,13 +9,16 @@ export function Footer() {
         <div className="footer__grid">
           <div>
             <Logo inverse />
-            <p>Professional cleaning and property compliance support, coordinated with care from Preston for clients across England.</p>
+            <p>Checklist-led cleaning and property compliance support, coordinated with care from Preston.</p>
           </div>
           <div>
             <h2>Explore</h2>
             <nav aria-label="Footer navigation">
               <Link href="/">Home</Link>
               <Link href="/services">Services</Link>
+              <Link href="/areas-we-cover">Areas we cover</Link>
+              <Link href="/about">About</Link>
+              <Link href="/faqs">FAQs</Link>
               <Link href="/contact">Request a quote</Link>
             </nav>
           </div>
@@ -30,7 +33,7 @@ export function Footer() {
         </div>
         <div className="footer__bottom">
           <span>© {new Date().getFullYear()} Coreserve Facilities Group. All rights reserved.</span>
-          <span>Professional service. Clear communication.</span>
+          <nav className="footer__legal" aria-label="Legal information"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/complaints">Complaints</Link></nav>
         </div>
       </div>
     </footer>

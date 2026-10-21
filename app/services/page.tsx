@@ -1,104 +1,110 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Check, Info, Phone } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Phone } from "lucide-react";
 import { ServiceMark } from "@/components/ServiceMark";
-import { services } from "@/lib/services";
+import { cleaningServices, complianceServices, services } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cleaning, EPC, Gas & Electrical Safety Services",
-  description:
-    "Explore Coreserve's cleaning, EPC assessment, landlord gas safety and EICR coordination services for properties in Preston and across England.",
+  title: "Cleaning & Property Compliance Services in Preston",
+  description: "Explore end-of-tenancy, deep and regular cleaning plus EPC, gas safety and EICR coordination from Coreserve in Preston.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Property services from Coreserve",
-    description: "Detailed cleaning and property compliance support for homes, landlords and businesses.",
+    title: "Coreserve cleaning and property services",
+    description: "Detailed, clearly scoped services for homes, landlords, agents and businesses.",
     url: "/services",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Coreserve Facilities Group" }],
   },
 };
 
-const serviceSchema = {
+const itemListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Coreserve Facilities Group services",
   itemListElement: services.map((service, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    item: { "@type": "Service", name: service.title, description: service.summary, provider: { "@type": "LocalBusiness", name: siteConfig.name } },
+    url: `${siteConfig.siteUrl}/services/${service.slug}`,
+    name: service.title,
   })),
 };
+
+function ServiceRows({ items }: { items: typeof services }) {
+  return (
+    <div className="service-list">
+      {items.map((service, index) => (
+        <Link className="service-list__item" href={`/services/${service.slug}`} key={service.slug}>
+          <span className="service-list__number">{String(index + 1).padStart(2, "0")}</span>
+          <ServiceMark icon={service.icon} />
+          <div>
+            <span className="eyebrow eyebrow--compact">{service.category}</span>
+            <h3>{service.title}</h3>
+            <p>{service.summary}</p>
+          </div>
+          <span className="service-list__arrow" aria-hidden="true"><ArrowUpRight /></span>
+        </Link>
+      ))}
+    </div>
+  );
+}
 
 export default function ServicesPage() {
   return (
     <main id="main-content">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema).replace(/</g, "\\u003c") }} />
       <section className="page-hero">
         <div className="shell page-hero__grid">
           <div>
-            <h1>Services built around<br />the way properties work.</h1>
+            <span className="eyebrow eyebrow--light">Services</span>
+            <h1>Clear scope before<br />the work begins.</h1>
           </div>
           <div>
-            <p>Clear scope, sensible scheduling and the right professional for the work. Explore what each service covers and what we need to arrange it.</p>
-            <Link className="button button--primary" href="/contact">Discuss your property <ArrowUpRight size={18} /></Link>
+            <p>From a detailed changeover clean to an essential property inspection, every enquiry starts with the property, the deadline and the outcome you need.</p>
+            <Link className="button button--primary" href="/contact">Request an itemised quote <ArrowUpRight size={18} /></Link>
           </div>
         </div>
       </section>
 
-      <nav className="service-jump" aria-label="Jump to a service">
-        <div className="shell service-jump__inner">
-          <span>Jump to</span>
-          {services.map((service) => <a key={service.slug} href={`#${service.slug}`}>{service.shortTitle}</a>)}
-        </div>
-      </nav>
-
-      <section className="service-details">
+      <section className="section section--pale">
         <div className="shell">
-          {services.map((service, index) => (
-            <article className="service-detail" id={service.slug} key={service.slug}>
-              <div className="service-detail__summary">
-                <span className="service-detail__number">0{index + 1}</span>
-                <ServiceMark icon={service.icon} />
-                <h2>{service.title}</h2>
-                <p className="service-detail__audience">For {service.audience.toLowerCase()}</p>
-                <p>{service.intro}</p>
-                <Link className="button button--dark" href="/contact">Request this service <ArrowUpRight size={18} /></Link>
-              </div>
-              <div className="service-detail__body">
-                <div>
-                  <h3>What the service can include</h3>
-                  <ul className="detail-list">{service.includes.map((item) => <li key={item}><Check size={17} /> {item}</li>)}</ul>
-                </div>
-                <div className="arrangement-note">
-                  <h3>What we need from you</h3>
-                  <p>{service.process}</p>
-                </div>
-                {"source" in service && service.source ? (
-                  <a className="official-source" href={service.source.href} target="_blank" rel="noreferrer"><Info size={17} /> {service.source.label} <ArrowUpRight size={15} /></a>
-                ) : null}
-              </div>
-            </article>
-          ))}
+          <div className="section-heading split-heading">
+            <div><span className="eyebrow">Cleaning</span><h2>Cleaning shaped around the handover, space and schedule.</h2></div>
+            <p>We agree the task list, access and selected extras before the visit. That keeps the quotation and expected result understandable.</p>
+          </div>
+          <ServiceRows items={cleaningServices} />
         </div>
       </section>
 
-      <section className="expect-section">
-        <div className="shell expect-section__grid">
-          <div><h2>No vague handovers.</h2></div>
-          <div className="expect-list">
-            <div><span>Scope</span><h3>A clear understanding of the job</h3><p>We confirm the property, service and priorities before arranging the work.</p></div>
-            <div><span>Access</span><h3>Appointments planned around people</h3><p>Landlord, agent, tenant or site-contact details are agreed in advance.</p></div>
-            <div><span>Follow-up</span><h3>Practical next steps after the visit</h3><p>Where a report identifies further work, we help make the required action understandable.</p></div>
+      <section className="section">
+        <div className="shell">
+          <div className="section-heading split-heading">
+            <div><span className="eyebrow">Property compliance</span><h2>Qualified specialists, coordinated through one clear contact.</h2></div>
+            <p>Regulated assessments and inspections are arranged with appropriately qualified professionals. Coreserve coordinates the details and follow-up.</p>
           </div>
+          <ServiceRows items={complianceServices} />
+        </div>
+      </section>
+
+      <section className="process-section section">
+        <div className="shell">
+          <div className="section-heading section-heading--light">
+            <span className="eyebrow eyebrow--light">What to expect</span>
+            <h2>A practical route from enquiry to completion.</h2>
+          </div>
+          <ol className="process-line">
+            <li><span>01</span><div><h3>Share the details</h3><p>Property, postcode, service, size, access and preferred date.</p></div></li>
+            <li><span>02</span><div><h3>Confirm the scope</h3><p>We clarify inclusions, exclusions, extras and any specialist requirements.</p></div></li>
+            <li><span>03</span><div><h3>Arrange the visit</h3><p>The date, arrival window and responsible contacts are confirmed.</p></div></li>
+            <li><span>04</span><div><h3>Complete and follow up</h3><p>The agreed work is checked and relevant next steps are communicated.</p></div></li>
+          </ol>
         </div>
       </section>
 
       <section className="cta-band">
         <div className="shell cta-band__inner">
-          <div><h2>Start with the property.</h2></div>
+          <div><h2>Start with the property details.</h2><p>We’ll help identify the right scope.</p></div>
           <div className="cta-band__actions">
-            <Link className="button button--primary" href="/contact">Tell us what you need <ArrowRight size={18} /></Link>
-            <a className="button button--outline-light" href={siteConfig.phoneHref}><Phone size={18} /> Call us</a>
+            <Link className="button button--primary" href="/contact">Request a quote <ArrowRight size={18} /></Link>
+            <a className="button button--outline-light" href={siteConfig.phoneHref}><Phone size={18} /> Call {siteConfig.phoneDisplay}</a>
           </div>
         </div>
       </section>

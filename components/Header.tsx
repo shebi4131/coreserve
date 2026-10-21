@@ -6,6 +6,9 @@ import { siteConfig } from "@/lib/site";
 const links = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  { href: "/areas-we-cover", label: "Areas" },
+  { href: "/about", label: "About" },
+  { href: "/faqs", label: "FAQs" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -14,9 +17,9 @@ export function Header() {
     <>
       <div className="utility-bar">
         <div className="shell utility-bar__inner">
-          <span>Professional facilities &amp; property compliance services</span>
+          <span>Cleaning &amp; property compliance, clearly coordinated</span>
           <a href={siteConfig.phoneHref}><Phone size={14} aria-hidden="true" /> {siteConfig.phoneDisplay}</a>
-          <span className="utility-bar__location">Preston based · Serving clients across England</span>
+          <span className="utility-bar__location">Preston based · Wider coverage by arrangement</span>
         </div>
       </div>
       <header className="site-header">

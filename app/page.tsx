@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, ClipboardCheck, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { ServiceMark } from "@/components/ServiceMark";
-import { services } from "@/lib/services";
+import { cleaningServices, complianceServices, services } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cleaning & Property Compliance Services in Preston",
-  description:
-    "Cleaning, EPC assessments, gas safety and electrical safety coordination for landlords, businesses and homeowners. Based in Preston, serving clients across England.",
+  title: "End-of-Tenancy Cleaning & Property Services Preston",
+  description: "End-of-tenancy and deep cleaning in Preston, plus EPC, gas safety and EICR coordination. Request a clear, itemised quote from Coreserve.",
   alternates: { canonical: "/" },
 };
 
@@ -33,127 +32,138 @@ const localBusinessSchema = {
 export default function HomePage() {
   return (
     <main id="main-content">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema).replace(/</g, "\\u003c") }} />
+
       <section className="hero">
         <div className="shell hero__grid">
           <div className="hero__copy">
-            <h1>Property care,<br /><em>properly coordinated.</em></h1>
-            <p className="hero__lead">Cleaning and property compliance support for landlords, letting agents, businesses and homeowners in Preston and across England. One clear point of contact for cleaning, EPCs and essential property safety arrangements.</p>
+            <span className="eyebrow eyebrow--light">Preston-based property services</span>
+            <h1>Property handovers,<br /><em>properly prepared.</em></h1>
+            <p className="hero__lead">Detailed end-of-tenancy and deep cleaning for tenants, landlords and agents—supported by clearly coordinated EPC, gas and electrical safety services.</p>
             <div className="hero__actions">
-              <Link className="button button--primary" href="/contact">Request a free quote <ArrowUpRight size={18} /></Link>
-              <Link className="button button--ghost" href="/services">Explore services <ArrowRight size={18} /></Link>
+              <Link className="button button--primary" href="/contact?service=end-of-tenancy-cleaning">Get a free itemised quote <ArrowUpRight size={18} /></Link>
+              <Link className="button button--ghost" href="/services/end-of-tenancy-cleaning">Explore end-of-tenancy cleaning <ArrowRight size={18} /></Link>
             </div>
-            <div className="hero__assurance"><ShieldCheck size={20} /> Clear scope, straightforward pricing and qualified specialists for regulated work.</div>
+            <div className="hero__assurance"><ShieldCheck size={20} /> Clear scope, practical communication and qualified specialists for regulated work.</div>
           </div>
-          <div className="service-board" aria-label="Coreserve service overview">
-            <div className="service-board__head">
-              <span>Property service plan</span>
-              <span className="live-status"><i /> Ready to arrange</span>
+
+          <aside className="quote-preview" aria-label="What an enquiry covers">
+            <div className="quote-preview__head"><span>Quote preparation</span><span className="live-status"><i /> Start with the details</span></div>
+            <div className="quote-preview__body">
+              <div><span>01</span><p>Property &amp; postcode</p><Check /></div>
+              <div><span>02</span><p>Bedrooms &amp; bathrooms</p><Check /></div>
+              <div><span>03</span><p>Condition &amp; selected extras</p><Check /></div>
+              <div><span>04</span><p>Date, access &amp; parking</p><Check /></div>
             </div>
-            <div className="service-board__list">
-              {services.map((service, index) => (
-                <div className="service-board__row" key={service.slug}>
-                  <span className="service-board__index">0{index + 1}</span>
-                  <service.icon size={22} strokeWidth={1.8} aria-hidden="true" />
-                  <strong>{service.shortTitle}</strong>
-                  <Check size={18} aria-hidden="true" />
-                </div>
-              ))}
-            </div>
-            <div className="service-board__foot">
-              <span><MapPin size={16} /> Preston, Lancashire</span>
-              <Link href="/contact">Check availability <ArrowUpRight size={15} /></Link>
-            </div>
-          </div>
+            <div className="quote-preview__foot"><ClipboardCheck /><div><strong>Itemised before booking</strong><small>Inclusions and exclusions confirmed clearly.</small></div></div>
+          </aside>
         </div>
       </section>
 
       <section className="confidence-strip" aria-label="Service qualities">
         <div className="shell confidence-strip__grid">
-          <span><Check /> Clear, practical communication</span>
-          <span><ClipboardCheck /> Residential &amp; commercial</span>
-          <span><MapPin /> Preston-based, England-wide reach</span>
+          <span><Check /> Scope agreed in advance</span>
+          <span><ClipboardCheck /> Checklist-led cleaning</span>
+          <span><MapPin /> Preston-based service</span>
         </div>
       </section>
 
       <section className="section section--pale">
         <div className="shell">
           <div className="section-heading split-heading">
-            <div><h2>Four essentials.<br />One dependable contact.</h2></div>
-            <p>From routine cleaning to required property checks, we help keep buildings clean, safe and ready for the people who use them.</p>
+            <div><span className="eyebrow">Cleaning services</span><h2>Built around the condition of the property—not a vague promise.</h2></div>
+            <p>We collect the details that affect the work, agree the task list and make optional extras visible before anything is booked.</p>
           </div>
-          <div className="service-list">
-            {services.map((service, index) => (
-              <Link className="service-list__item" href={`/services#${service.slug}`} aria-label={`Learn more about ${service.title}`} key={service.slug}>
-                <span className="service-list__number">0{index + 1}</span>
-                <ServiceMark icon={service.icon} />
-                <div><h3>{service.title}</h3><p>{service.summary}</p></div>
-                <span className="service-list__arrow" aria-hidden="true"><ArrowUpRight /></span>
+          <div className="featured-service-grid">
+            {cleaningServices.map((service, index) => (
+              <Link href={`/services/${service.slug}`} key={service.slug} className={index === 0 ? "featured-service featured-service--primary" : "featured-service"}>
+                <div className="featured-service__top"><span>{String(index + 1).padStart(2, "0")}</span><ServiceMark icon={service.icon} /></div>
+                <span className="eyebrow eyebrow--compact">{service.category}</span>
+                <h3>{service.title}</h3>
+                <p>{service.summary}</p>
+                <span className="text-link">View full scope <ArrowUpRight size={17} /></span>
               </Link>
             ))}
           </div>
-          <div className="section-action"><Link className="text-link" href="/services">See exactly what each service includes <ArrowRight size={18} /></Link></div>
         </div>
       </section>
 
       <section className="section">
-        <div className="shell story-grid">
-          <div className="story-panel" aria-hidden="true">
-            <div className="story-panel__orbit"><span>Cleaning</span><span>EPC</span><span>Gas</span><span>EICR</span></div>
-            <div className="story-panel__core"><ShieldCheck /><strong>One point<br />of contact</strong></div>
-          </div>
-          <div className="story-copy">
-            <h2>Less chasing.<br />More peace of mind.</h2>
-            <p>Managing a property can mean juggling different contractors, appointments and requirements. Coreserve Facilities Group keeps the conversation together with a straightforward, service-led approach.</p>
-            <p>We listen to what the property needs, agree the scope clearly and coordinate the right person for the job. Regulated inspections are arranged with appropriately qualified professionals.</p>
+        <div className="shell service-content-grid service-content-grid--balanced">
+          <div>
+            <span className="eyebrow">End-of-tenancy focus</span>
+            <h2>Room-by-room detail for a smoother handover.</h2>
+            <p className="lead-copy">Kitchen grease, bathroom scale, internal cupboards, appliances, floors and windows can all change the work required. Our quotation process separates the core clean from selected extras, so expectations are visible.</p>
             <ul className="check-list">
-              <li><Check /> A clear contact from enquiry to completion</li>
-              <li><Check /> Services shaped around the property and schedule</li>
-              <li><Check /> Practical support for one property or a portfolio</li>
-              <li><Check /> Clear follow-up when an inspection identifies action</li>
+              <li><Check /> Property size, condition and occupancy reviewed</li>
+              <li><Check /> Appliances and specialist items confirmed separately</li>
+              <li><Check /> Access, utilities and parking agreed before arrival</li>
+              <li><Check /> Final check against the accepted task list</li>
             </ul>
-            <Link className="button button--dark" href="/contact">Talk to our team <ArrowUpRight size={18} /></Link>
+            <Link className="button button--dark" href="/end-of-tenancy-cleaning-checklist">View the cleaning checklist <ArrowRight size={18} /></Link>
+          </div>
+          <div className="room-scope" aria-label="Typical room scope">
+            <div><span>Kitchen</span><strong>Degrease · wipe · descale · floors</strong></div>
+            <div><span>Bathrooms</span><strong>Sanitaryware · tiles · mirrors · floors</strong></div>
+            <div><span>Living areas</span><strong>Surfaces · skirting · doors · flooring</strong></div>
+            <div><span>Final review</span><strong>Checklist · variations · handover</strong></div>
           </div>
         </div>
       </section>
 
-      <section className="section process-section">
+      <section className="process-section section">
         <div className="shell">
           <div className="section-heading section-heading--light">
-            <h2>From first message to finished service.</h2>
-            <p>Every job starts with the details. That keeps the quote, appointment and expected outcome clear.</p>
+            <span className="eyebrow eyebrow--light">How booking works</span>
+            <h2>From first message to completed service.</h2>
+            <p>Every stage keeps the property, responsible contacts and agreed work together.</p>
           </div>
           <ol className="process-line">
-            <li><span>01</span><div><h3>Tell us what you need</h3><p>Share the property type, location, service and important dates.</p></div></li>
-            <li><span>02</span><div><h3>Agree the scope</h3><p>We clarify access, priorities and the appropriate next step.</p></div></li>
-            <li><span>03</span><div><h3>Confirm the visit</h3><p>You receive clear appointment arrangements before anything is booked.</p></div></li>
-            <li><span>04</span><div><h3>Complete and follow up</h3><p>We keep communication practical and explain any further action.</p></div></li>
+            <li><span>01</span><div><h3>Enquiry received</h3><p>Share the postcode, service, property details and preferred date.</p></div></li>
+            <li><span>02</span><div><h3>Scope assessed</h3><p>We clarify condition, access, appliances, selected extras and hazards.</p></div></li>
+            <li><span>03</span><div><h3>Quote &amp; booking</h3><p>The itemised scope, exclusions, timing and arrangements are confirmed.</p></div></li>
+            <li><span>04</span><div><h3>Service &amp; follow-up</h3><p>The agreed checklist is completed, quality checked and followed up.</p></div></li>
           </ol>
+        </div>
+      </section>
+
+      <section className="section section--pale">
+        <div className="shell">
+          <div className="section-heading split-heading">
+            <div><span className="eyebrow">Property compliance</span><h2>Essential inspections, one coordinated conversation.</h2></div>
+            <p>Regulated work is carried out by appropriately qualified professionals. Coreserve helps organise the property details, access, appointment and next steps.</p>
+          </div>
+          <div className="compliance-grid">
+            {complianceServices.map((service) => (
+              <Link href={`/services/${service.slug}`} key={service.slug}><ServiceMark icon={service.icon} /><h3>{service.title}</h3><p>{service.summary}</p><span>Explore service <ArrowRight /></span></Link>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="section">
         <div className="shell coverage">
           <div>
-            <h2>Local knowledge.<br />Wider reach.</h2>
-            <p>Based in Preston, Lancashire, Coreserve supports residential and commercial clients locally and at locations across England, subject to availability.</p>
-            <p>Send the property postcode and the service required. We will confirm coverage before anything is arranged.</p>
-            <Link className="text-link" href="/contact">Check your postcode <ArrowRight size={18} /></Link>
+            <span className="eyebrow">Service area</span>
+            <h2>Preston-based.<br />Coverage confirmed properly.</h2>
+            <p>Coreserve supports residential and commercial clients from Preston, Lancashire. Availability beyond the local area depends on the service, property and required date.</p>
+            <p>Send the property postcode with your enquiry and we will confirm coverage before anything is arranged.</p>
+            <Link className="text-link" href="/areas-we-cover">How coverage works <ArrowRight size={18} /></Link>
           </div>
           <aside className="coverage__panel">
             <MapPin size={26} />
             <strong>Preston, Lancashire</strong>
-            <p>Our base for coordinating property services for local clients and customers further afield.</p>
+            <p>{siteConfig.address.street}, {siteConfig.address.postcode}</p>
             <hr />
             <h3>Who we support</h3>
-            <p>Landlords · Letting agents · Homeowners · Offices · Commercial premises · Property managers</p>
+            <p>Tenants · Landlords · Letting agents · Homeowners · Offices · Property managers</p>
           </aside>
         </div>
       </section>
 
       <section className="cta-band">
         <div className="shell cta-band__inner">
-          <div><h2>Tell us about the property.</h2></div>
+          <div><span className="eyebrow eyebrow--light">Ready when you are</span><h2>Tell us about the property.</h2></div>
           <div className="cta-band__actions">
             <Link className="button button--primary" href="/contact">Request a quote <ArrowUpRight size={18} /></Link>
             <a className="button button--outline-light" href={siteConfig.phoneHref}><Phone size={18} /> {siteConfig.phoneDisplay}</a>

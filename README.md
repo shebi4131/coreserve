@@ -1,12 +1,18 @@
 # Coreserve Facilities Group website
 
-A three-page, search-optimised Next.js website for Coreserve Facilities Group.
+A complete, search-optimised Next.js website for Coreserve Facilities Group, focused on cleaning and coordinated property-compliance services from Preston.
 
 ## Pages
 
 - `/` — Home
-- `/services` — Cleaning, EPC, gas safety and electrical safety service details
-- `/contact` — Contact information and WhatsApp quote form
+- `/services` — Service directory
+- `/services/[service]` — Six detailed, indexable service pages
+- `/end-of-tenancy-cleaning-checklist` — Room-by-room cleaning scope
+- `/areas-we-cover` — Preston base and coverage guidance
+- `/about` — Company approach and positioning
+- `/faqs` — Service and booking questions
+- `/contact` — Detailed WhatsApp quote form
+- `/privacy`, `/terms`, `/complaints` — Customer-information pages
 
 ## Local development
 
@@ -61,9 +67,9 @@ The form builds a pre-filled WhatsApp message to `07728 344412`. It stores nothi
 
 - Route-specific titles, descriptions and canonical links
 - `sitemap.xml` and `robots.txt`
-- Local business and service structured data
+- Local business, service, FAQ and item-list structured data
 - Semantic landmarks and heading hierarchy
-- Crawlable service content and official UK guidance links
+- Crawlable service pages and a detailed end-of-tenancy checklist
 - Fast static-first pages, responsive layouts and local font optimisation
 
 Before launch, connect the domain, verify the website in Google Search Console and create or update the Google Business Profile with matching contact details.

@@ -24,12 +24,12 @@ One practical point of contact for cleaning and common property compliance arran
 
 ## Operating Context
 
-Visitors commonly arrive while arranging cleaning, an EPC assessment, a landlord gas safety check, or an electrical safety inspection. They need to identify the appropriate service, confirm likely coverage, and provide property and timescale details.
+Visitors commonly arrive while arranging an end-of-tenancy clean, deep or move clean, regular commercial cleaning, an EPC assessment, a landlord gas safety check, or an electrical safety inspection. They need to identify the appropriate service, confirm likely coverage, and provide property, condition, access and timescale details.
 
 ## Capabilities and Constraints
 
-- Three public routes at launch: Home, Services, and Contact.
-- Four core services: cleaning, EPC assessments, gas safety coordination, and electrical safety/EICR coordination.
+- Dedicated pages for Home, Services, six service details, Areas, About, FAQs, Contact, a cleaning checklist and customer-information policies.
+- Six core services: end-of-tenancy cleaning, deep/move cleaning, regular/commercial cleaning, EPC assessments, gas safety coordination, and electrical safety/EICR coordination.
 - Preserve all relevant content from the supplied `index.html`, excluding the final two service cards.
 - The quote experience must work without a database and remain easy to connect to an email provider or database later.
 - The site must be responsive, accessible, search-engine friendly, and ready for Cloudflare's free deployment tier.
@@ -42,7 +42,7 @@ Visitors commonly arrive while arranging cleaning, an EPC assessment, a landlord
 - Voice: professional, practical, straightforward, dependable, and free of inflated claims.
 - Current phone: 07728 344412.
 - Current address: 45 Symonds Road, Fulwood, Preston, PR2 3DH.
-- Preston-based with availability across England to be confirmed per enquiry.
+- Preston-based, with wider coverage confirmed individually according to the service, property and required date.
 
 ## Evidence on Hand
 

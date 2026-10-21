@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Coreserve Facilities Group",
   shortName: "Coreserve",
   description:
-    "Professional cleaning, EPC assessment and property safety service coordination for landlords, homeowners and businesses in Preston and across England.",
+    "End-of-tenancy, deep and planned cleaning plus EPC, gas safety and electrical safety coordination from Preston-based Coreserve Facilities Group.",
   phoneDisplay: "07728 344412",
   phoneHref: "tel:07728344412",
   whatsappNumber: "447728344412",
