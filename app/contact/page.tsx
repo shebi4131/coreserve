@@ -4,9 +4,9 @@ import { ContactForm } from "@/components/ContactForm";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Request a Cleaning or Property Service Quote",
+  title: "Request a Nationwide Cleaning Quote",
   description:
-    "Request an itemised cleaning, EPC, gas safety or EICR coordination quote from Coreserve Facilities Group in Preston.",
+    "Request an itemised residential, commercial, deep or end-of-tenancy cleaning quote from Coreserve Facilities Group, available nationwide across the UK.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Request a quote from Coreserve",
@@ -28,8 +28,8 @@ export default function ContactPage() {
             <div className="contact-methods">
               <a href={siteConfig.phoneHref}><span><Phone /></span><div><small>Call us</small><strong>{siteConfig.phoneDisplay}</strong></div></a>
               <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noreferrer"><span><MessageCircle /></span><div><small>Message us</small><strong>Start a WhatsApp chat</strong></div></a>
-              <div><span><MapPin /></span><div><small>Our base</small><strong>{siteConfig.address.street}<br />{siteConfig.address.locality}, {siteConfig.address.postcode}</strong></div></div>
-              <div><span><Clock3 /></span><div><small>Coverage</small><strong>UK-based, with wider availability confirmed per enquiry</strong></div></div>
+              <div><span><MapPin /></span><div><small>Our base</small><strong>Based in North-West</strong></div></div>
+              <div><span><Clock3 /></span><div><small>Coverage</small><strong>Nationwide across the United Kingdom</strong></div></div>
             </div>
             <img
               className="contact-illustration"

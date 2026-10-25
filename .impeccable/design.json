@@ -62,8 +62,8 @@
     {
       "name": "Operations Board",
       "kind": "card",
-      "description": "A compact overview of the four coordinated services.",
-      "html": "<section class=\"ds-board\"><header>Property service plan <span>● Ready to arrange</span></header><div>01 &nbsp; Professional cleaning <b>✓</b></div><div>02 &nbsp; EPC assessment <b>✓</b></div><div>03 &nbsp; Gas safety <b>✓</b></div><div>04 &nbsp; Electrical safety <b>✓</b></div></section>",
+      "description": "A compact overview of the cleaning quotation details.",
+      "html": "<section class=\"ds-board\"><header>Cleaning quote preparation <span>● Ready to arrange</span></header><div>01 &nbsp; Property and postcode <b>✓</b></div><div>02 &nbsp; Selected cleaning services <b>✓</b></div><div>03 &nbsp; Condition and extras <b>✓</b></div><div>04 &nbsp; Date and access <b>✓</b></div></section>",
       "css": ".ds-board{overflow:hidden;border:1px solid rgba(255,255,255,.16);border-radius:16px;background:#142f48;color:#d8e6ed;box-shadow:0 30px 70px rgba(3,13,24,.28);font:600 14px 'DM Sans',sans-serif}.ds-board header{display:flex;justify-content:space-between;padding:18px 20px;color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}.ds-board header span,.ds-board b{color:#54d8ca}.ds-board div{padding:17px 20px;border-bottom:1px solid rgba(255,255,255,.09)}.ds-board div:last-child{border-bottom:0}.ds-board b{float:right}"
     }
   ],
@@ -83,7 +83,7 @@
     ],
     "dos": [
       "Do preserve the navy, teal, pale blue-grey, and white colour relationship.",
-      "Do keep regulated service language factual and attribute work to appropriately qualified professionals.",
+      "Do keep specialist cleaning language factual and avoid unverified guarantees or credentials.",
       "Do use full-row interaction, visible keyboard focus, reduced-motion support, and persistent mobile affordances.",
       "Do favour linear editorial lists and clear process steps for operational content."
     ],

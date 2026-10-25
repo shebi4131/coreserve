@@ -12,7 +12,7 @@ Next.js App Router with TypeScript, statically exported for deployment to Cloudf
 
 ## Users
 
-Landlords, letting agents, homeowners, offices, commercial premises, and property managers in Preston and across England who need cleaning or property compliance services coordinated reliably.
+Landlords, letting agents, homeowners, offices, commercial premises, and property managers across the United Kingdom who need cleaning services coordinated reliably.
 
 ## Product Purpose
 
@@ -20,29 +20,29 @@ Coreserve Facilities Group presents its services, explains how work is coordinat
 
 ## Positioning
 
-One practical point of contact for cleaning and common property compliance arrangements, with clear scope, scheduling, and communication from enquiry through completion.
+One practical point of contact for domestic, commercial and specialist cleaning, with clear scope, scheduling, and communication from enquiry through completion.
 
 ## Operating Context
 
-Visitors commonly arrive while arranging an end-of-tenancy clean, deep or move clean, regular commercial cleaning, an EPC assessment, a landlord gas safety check, or an electrical safety inspection. They need to identify the appropriate service, confirm likely coverage, and provide property, condition, access and timescale details.
+Visitors commonly arrive while arranging end-of-tenancy, deep, domestic, commercial, carpet, upholstery, appliance or other specialist cleaning. They need to select one or more services, confirm coverage, and provide property, condition, access and timescale details.
 
 ## Capabilities and Constraints
 
-- Dedicated pages for Home, Services, six service details, Areas, About, FAQs, Contact, a cleaning checklist and customer-information policies.
-- Six core services: end-of-tenancy cleaning, deep/move cleaning, regular/commercial cleaning, EPC assessments, gas safety coordination, and electrical safety/EICR coordination.
+- Dedicated pages for Home, Services, three core cleaning-service details, Areas, About, FAQs, Contact, a cleaning checklist and customer-information policies.
+- Three core pages: end-of-tenancy cleaning, deep/move cleaning and regular/commercial cleaning. The enquiry flow also presents eighteen selectable cleaning types.
 - Preserve all relevant content from the supplied `index.html`, excluding the final two service cards.
 - The quote experience must work without a database and remain easy to connect to an email provider or database later.
 - The site must be responsive, accessible, search-engine friendly, and ready for Cloudflare's free deployment tier.
-- Regulated work must be described as completed or coordinated through appropriately qualified professionals; the site must not fabricate accreditations or certification held directly by Coreserve.
+- Specialist work and selected extras must be described accurately; the site must not fabricate accreditations, guarantees or certification held directly by Coreserve.
 
 ## Brand Commitments
 
 - Business name: Coreserve Facilities Group.
 - Use the logo-led deep navy, mid-blue, cool silver, pale blue-grey, and white palette consistently across the website.
 - Voice: professional, practical, straightforward, dependable, and free of inflated claims.
-- Current phone: +92 330 111 9592.
+- Current phone: +44 330 111 9592.
 - Current address: 45 Symonds Road, Fulwood, Preston, PR2 3DH.
-- UK-based, with wider coverage confirmed individually according to the service, property and required date.
+- Based in North-West England, with nationwide UK coverage confirmed from the postcode, service, property and required date.
 
 ## Evidence on Hand
 
@@ -51,7 +51,7 @@ The supplied `index.html` contains the confirmed business copy, service categori
 ## Product Principles
 
 - Make the next step clear without pressuring the visitor.
-- Explain regulated services accurately and avoid implying unverified credentials.
+- Explain specialist services accurately and avoid implying unverified credentials.
 - Use service-specific pages and metadata to answer real search intent.
 - Keep the production setup inexpensive and understandable.
 - Prefer fast, durable pages over unnecessary application complexity.

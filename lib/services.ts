@@ -1,10 +1,10 @@
-import { Bolt, Building2, Flame, Home, KeyRound, Sparkles } from "lucide-react";
+import { Building2, KeyRound, Sparkles } from "lucide-react";
 
 export type Service = {
   slug: string;
   title: string;
   shortTitle: string;
-  category: "Cleaning" | "Property compliance";
+  category: "Cleaning";
   summary: string;
   audience: string;
   headline: string;
@@ -125,115 +125,30 @@ export const services: readonly Service[] = [
     ],
     icon: Building2,
   },
-  {
-    slug: "epc-assessments",
-    title: "EPC assessments",
-    shortTitle: "EPC assessments",
-    category: "Property compliance",
-    summary: "Appointment coordination for property energy assessments and the resulting Energy Performance Certificate.",
-    audience: "Property owners, landlords, sellers and letting agents",
-    headline: "Energy assessment appointments coordinated clearly.",
-    intro: "An EPC records a property’s energy-efficiency rating and recommendations. We coordinate the appointment and access with an appropriately accredited assessor, keeping the property details and important dates together.",
-    includes: [
-      "Appointment coordination and access planning",
-      "An on-site assessment by an appropriately accredited assessor",
-      "Review of relevant building fabric, heating and fixed services",
-      "Certificate lodgement through the approved process",
-      "Communication of the completed certificate details",
-    ],
-    preparation: [
-      "Full property address and property type",
-      "Reason for the assessment and important date",
-      "Owner, tenant or agent access contact",
-      "Any existing certificate information",
-      "Relevant alterations or energy improvements",
-    ],
-    process: [
-      { title: "Check", detail: "We collect the address, property type and deadline." },
-      { title: "Arrange", detail: "Access is coordinated with an appropriately accredited assessor." },
-      { title: "Assess", detail: "The property is inspected for the information needed for the EPC." },
-      { title: "Complete", detail: "The certificate is lodged and the result communicated." },
-    ],
-    faqs: [
-      { question: "How long is an EPC generally valid?", answer: "Domestic EPCs are generally valid for ten years unless a newer certificate is produced. Existing certificate details should be checked before arranging another assessment." },
-      { question: "Who completes the assessment?", answer: "The assessment is carried out by an appropriately accredited energy assessor. Coreserve coordinates the property information, access and appointment." },
-    ],
-    icon: Home,
-  },
-  {
-    slug: "gas-safety",
-    title: "Gas safety coordination",
-    shortTitle: "Gas safety",
-    category: "Property compliance",
-    summary: "Appointment coordination for landlord gas safety checks carried out by a Gas Safe registered engineer.",
-    audience: "Landlords, letting agents and managed residential properties",
-    headline: "Gas safety appointments without the contractor chase.",
-    intro: "Landlord gas safety checks must be completed by a Gas Safe registered engineer. Coreserve coordinates the relevant property, appliance and access information and helps keep follow-up communication clear.",
-    includes: [
-      "Coordination with an appropriately registered engineer",
-      "Appointment planning with landlord, agent or tenant",
-      "Checks covering relevant landlord-provided appliances and flues",
-      "Communication about the issued record and reported observations",
-      "Support arranging follow-up where further work is identified",
-    ],
-    preparation: [
-      "Property address and access contact",
-      "Appliance details where known",
-      "Current certificate date or copy",
-      "Tenancy or renewal deadline",
-      "Any known faults or access restrictions",
-    ],
-    process: [
-      { title: "Details", detail: "We collect the property, appliance and certificate information." },
-      { title: "Engineer", detail: "An appropriately registered engineer and appointment are coordinated." },
-      { title: "Check", detail: "The engineer completes the required inspection and testing." },
-      { title: "Record", detail: "The result and any recommended follow-up are communicated." },
-    ],
-    faqs: [
-      { question: "Does Coreserve carry out the gas check directly?", answer: "The safety check is carried out by a Gas Safe registered engineer. Coreserve provides the coordination and communication around the appointment." },
-      { question: "What information should I provide?", answer: "Send the full address, access contact, known appliances, current certificate date and the date by which the new check is needed." },
-    ],
-    icon: Flame,
-  },
-  {
-    slug: "electrical-safety-eicr",
-    title: "Electrical safety & EICR coordination",
-    shortTitle: "Electrical safety",
-    category: "Property compliance",
-    summary: "Coordination of fixed electrical installation inspection and testing with an appropriately qualified professional.",
-    audience: "Landlords, agents, property managers and businesses",
-    headline: "Electrical inspection coordination with practical follow-up.",
-    intro: "An Electrical Installation Condition Report records the condition of a property’s fixed electrical installation and identifies observations requiring investigation or remedial work. We coordinate the information, access and qualified professional needed for the inspection.",
-    includes: [
-      "Appointment coordination with an appropriately qualified professional",
-      "Inspection and testing of the fixed electrical installation",
-      "A written report recording the result and classification codes",
-      "Clear identification of investigative or remedial work where reported",
-      "Support coordinating the appropriate next step",
-    ],
-    preparation: [
-      "Property address and type",
-      "Previous report date or copy where available",
-      "Access and responsible contact",
-      "Tenancy or compliance deadline",
-      "Known electrical concerns or recent work",
-    ],
-    process: [
-      { title: "Review", detail: "We collect the property and previous report information." },
-      { title: "Arrange", detail: "Access is coordinated with an appropriately qualified professional." },
-      { title: "Inspect", detail: "The fixed installation is inspected and tested." },
-      { title: "Report", detail: "The report result and any next steps are communicated." },
-    ],
-    faqs: [
-      { question: "What does an EICR cover?", answer: "An EICR concerns the condition of the fixed electrical installation. Portable appliances and remedial work are separate unless specifically included in an agreed scope." },
-      { question: "Who carries out the inspection?", answer: "The inspection and testing are completed by an appropriately qualified electrical professional. Coreserve coordinates the appointment and follow-up." },
-    ],
-    icon: Bolt,
-  },
 ] as const;
 
-export const cleaningServices = services.filter((service) => service.category === "Cleaning");
-export const complianceServices = services.filter((service) => service.category === "Property compliance");
+export const cleaningServices = services;
+
+export const cleaningTypes = [
+  "End-of-Tenancy Cleaning",
+  "Deep Cleaning",
+  "Domestic & Residential Cleaning",
+  "Commercial & Office Cleaning",
+  "Regular & One-Off Cleaning",
+  "Carpet & Rug Cleaning",
+  "Sofa & Upholstery Cleaning",
+  "Curtain Cleaning",
+  "Mattress Cleaning",
+  "Kitchen Deep Cleaning",
+  "Oven, Cooker & Grill Cleaning",
+  "Fridge, Freezer & Appliance Cleaning",
+  "Bathroom Deep Cleaning",
+  "After-Builders Cleaning",
+  "Communal Area Cleaning",
+  "Pressure & Jet Washing",
+  "Waste Removal",
+  "Housekeeping Services",
+] as const;
 
 export function getService(slug: string) {
   return services.find((service) => service.slug === slug);

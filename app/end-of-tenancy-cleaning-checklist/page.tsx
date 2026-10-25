@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ArrowRight, Check, Info } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "End-of-Tenancy Cleaning Checklist Preston",
-  description: "Review the room-by-room points Coreserve considers when scoping an end-of-tenancy clean in Preston.",
+  title: "End-of-Tenancy Cleaning Checklist UK",
+  description: "Review the room-by-room points Coreserve considers when scoping an end-of-tenancy clean for properties across the UK.",
   alternates: { canonical: "/end-of-tenancy-cleaning-checklist" },
 };
 

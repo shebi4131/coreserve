@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, ClipboardCheck, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { ServiceMark } from "@/components/ServiceMark";
-import { cleaningServices, complianceServices, services } from "@/lib/services";
+import { cleaningServices, cleaningTypes } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "End-of-Tenancy Cleaning & Property Services Preston",
-  description: "End-of-tenancy and deep cleaning in Preston, plus EPC, gas safety and EICR coordination. Request a clear, itemised quote from Coreserve.",
+  title: "Nationwide UK Cleaning Services",
+  description: "Nationwide end-of-tenancy, deep, domestic and commercial cleaning for residential, business and property-management clients.",
   alternates: { canonical: "/" },
 };
 
@@ -17,7 +17,7 @@ const localBusinessSchema = {
   name: siteConfig.name,
   description: siteConfig.description,
   url: siteConfig.siteUrl,
-  telephone: "+923301119592",
+  telephone: "+443301119592",
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,
@@ -25,8 +25,8 @@ const localBusinessSchema = {
     postalCode: siteConfig.address.postcode,
     addressCountry: siteConfig.address.country,
   },
-  areaServed: ["Preston", "Lancashire", "England"],
-  knowsAbout: services.map((service) => service.title),
+  areaServed: ["United Kingdom", "Greater London", "Greater Manchester", "Merseyside", "Lancashire"],
+  knowsAbout: cleaningTypes,
 };
 
 export default function HomePage() {
@@ -37,14 +37,14 @@ export default function HomePage() {
       <section className="hero">
         <div className="shell hero__grid">
           <div className="hero__copy">
-            <span className="eyebrow eyebrow--light">UK-based property services</span>
+            <span className="eyebrow eyebrow--light">Based in North-West</span>
             <h1>Property handovers,<br /><em>properly prepared.</em></h1>
-            <p className="hero__lead">Detailed end-of-tenancy and deep cleaning for tenants, landlords and agents—supported by clearly coordinated EPC, gas and electrical safety services.</p>
+            <p className="hero__lead">Detailed end-of-tenancy, deep, domestic and commercial cleaning for tenants, landlords, agents, businesses and property managers across the UK.</p>
             <div className="hero__actions">
               <Link className="button button--primary" href="/contact?service=end-of-tenancy-cleaning">Get a free itemised quote <ArrowUpRight size={18} /></Link>
               <Link className="button button--ghost" href="/services/end-of-tenancy-cleaning">Explore end-of-tenancy cleaning <ArrowRight size={18} /></Link>
             </div>
-            <div className="hero__assurance"><ShieldCheck size={20} /> Clear scope, practical communication and qualified specialists for regulated work.</div>
+            <div className="hero__assurance"><ShieldCheck size={20} /> Clear scope, practical communication and cleaning requirements agreed before booking.</div>
           </div>
 
           <aside className="quote-preview" aria-label="What an enquiry covers">
@@ -64,7 +64,7 @@ export default function HomePage() {
         <div className="shell confidence-strip__grid">
           <span><Check /> Scope agreed in advance</span>
           <span><ClipboardCheck /> Checklist-led cleaning</span>
-          <span><MapPin /> UK-based service</span>
+          <span><MapPin /> Nationwide UK coverage</span>
         </div>
       </section>
 
@@ -103,10 +103,10 @@ export default function HomePage() {
             <Link className="button button--dark" href="/end-of-tenancy-cleaning-checklist">View the cleaning checklist <ArrowRight size={18} /></Link>
           </div>
           <div className="room-scope" aria-label="Typical room scope">
-            <div><span>Kitchen</span><strong>Degrease · wipe · descale · floors</strong></div>
-            <div><span>Bathrooms</span><strong>Sanitaryware · tiles · mirrors · floors</strong></div>
-            <div><span>Living areas</span><strong>Surfaces · skirting · doors · flooring</strong></div>
-            <div><span>Final review</span><strong>Checklist · variations · handover</strong></div>
+            <div><span>Kitchen</span><strong>Degrease, wipe, descale and floors</strong></div>
+            <div><span>Bathrooms</span><strong>Sanitaryware, tiles, mirrors and floors</strong></div>
+            <div><span>Living areas</span><strong>Surfaces, skirting, doors and flooring</strong></div>
+            <div><span>Final review</span><strong>Checklist, variations and handover</strong></div>
           </div>
         </div>
       </section>
@@ -127,36 +127,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section--pale">
-        <div className="shell">
-          <div className="section-heading split-heading">
-            <div><span className="eyebrow">Property compliance</span><h2>Essential inspections, one coordinated conversation.</h2></div>
-            <p>Regulated work is carried out by appropriately qualified professionals. Coreserve helps organise the property details, access, appointment and next steps.</p>
-          </div>
-          <div className="compliance-grid">
-            {complianceServices.map((service) => (
-              <Link href={`/services/${service.slug}`} key={service.slug}><ServiceMark icon={service.icon} /><h3>{service.title}</h3><p>{service.summary}</p><span>Explore service <ArrowRight /></span></Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section">
         <div className="shell coverage">
           <div>
             <span className="eyebrow">Service area</span>
-            <h2>UK-based.<br />Coverage confirmed properly.</h2>
-            <p>Coreserve supports residential and commercial clients from Preston, Lancashire. Availability beyond the local area depends on the service, property and required date.</p>
-            <p>Send the property postcode with your enquiry and we will confirm coverage before anything is arranged.</p>
+            <h2>Based in North-West<br />Nationwide coverage</h2>
+            <p>Coreserve supports residential, commercial and property-management clients across the United Kingdom.</p>
+            <p>Send the property postcode with your enquiry so we can confirm the right team, travel arrangements and required date before booking.</p>
             <Link className="text-link" href="/areas-we-cover">How coverage works <ArrowRight size={18} /></Link>
           </div>
           <aside className="coverage__panel">
             <MapPin size={26} />
-            <strong>Preston, Lancashire</strong>
-            <p>{siteConfig.address.street}, {siteConfig.address.postcode}</p>
+            <strong>Nationwide UK</strong>
+            <p>North-West base with postcode-led scheduling</p>
             <hr />
-            <h3>Who we support</h3>
-            <p>Tenants · Landlords · Letting agents · Homeowners · Offices · Property managers</p>
+            <h3>Priority coverage</h3>
+            <p>Greater London, Greater Manchester, Merseyside and Lancashire</p>
           </aside>
         </div>
       </section>

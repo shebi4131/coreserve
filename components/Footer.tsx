@@ -9,7 +9,7 @@ export function Footer() {
         <div className="footer__grid">
           <div>
             <Logo inverse />
-            <p>Checklist-led cleaning and property compliance support, coordinated with care from Preston.</p>
+            <p>Checklist-led cleaning, coordinated with care from our North-West base for clients nationwide.</p>
           </div>
           <div>
             <h2>Explore</h2>
@@ -26,8 +26,8 @@ export function Footer() {
             <h2>Contact</h2>
             <nav aria-label="Contact details">
               <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
-              <span>{siteConfig.address.street}</span>
-              <span>{siteConfig.address.locality}, {siteConfig.address.postcode}</span>
+              <span>Based in North-West</span>
+              <span>Nationwide coverage</span>
             </nav>
           </div>
         </div>

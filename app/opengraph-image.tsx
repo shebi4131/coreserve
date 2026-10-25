@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "Coreserve Facilities Group — Property care, properly coordinated";
+export const alt = "Coreserve Facilities Group — Nationwide UK cleaning";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const dynamic = "force-static";
@@ -28,7 +28,7 @@ export default async function OpenGraphImage() {
         <div style={{ display: "flex", flexDirection: "column", maxWidth: 850 }}>
           <div style={{ display: "flex", flexDirection: "column", fontSize: 72, lineHeight: 1.04, fontWeight: 800, letterSpacing: "-.035em" }}><span>Property care,</span><span style={{ color: "#8998a7" }}>properly coordinated.</span></div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", color: "#c4d4de", fontSize: 19 }}><span>Preston, Lancashire</span><span>+92 330 111 9592</span></div>
+        <div style={{ display: "flex", justifyContent: "space-between", color: "#c4d4de", fontSize: 19 }}><span>North-West base | Nationwide coverage</span><span>+44 330 111 9592</span></div>
       </div>
     </div>,
     { ...size, fonts: [{ name: "Manrope", data: await manropeExtraBold, weight: 800, style: "normal" }] },

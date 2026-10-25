@@ -20,7 +20,7 @@ const brandFont = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: "Coreserve Facilities Group | Cleaning Services Preston",
+    default: "Coreserve Facilities Group | Nationwide UK Cleaning",
     template: "%s | Coreserve Facilities Group",
   },
   description: siteConfig.description,

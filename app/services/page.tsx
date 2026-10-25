@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, Phone } from "lucide-react";
 import { ServiceMark } from "@/components/ServiceMark";
-import { cleaningServices, complianceServices, services } from "@/lib/services";
+import { cleaningServices, cleaningTypes, services } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cleaning & Property Compliance Services in Preston",
-  description: "Explore end-of-tenancy, deep and regular cleaning plus EPC, gas safety and EICR coordination from Coreserve in Preston.",
+  title: "Nationwide UK Cleaning Services",
+  description: "Explore nationwide end-of-tenancy, deep, domestic, commercial, carpet, upholstery, appliance and specialist cleaning from Coreserve.",
   alternates: { canonical: "/services" },
   openGraph: {
     title: "Coreserve cleaning and property services",
@@ -58,7 +58,7 @@ export default function ServicesPage() {
             <h1>Clear scope before<br />the work begins.</h1>
           </div>
           <div>
-            <p>From a detailed changeover clean to an essential property inspection, every enquiry starts with the property, the deadline and the outcome you need.</p>
+            <p>From detailed property changeovers to regular, commercial and specialist cleaning, every enquiry starts with the property, postcode, timing and outcome you need.</p>
             <Link className="button button--primary" href="/contact">Request an itemised quote <ArrowUpRight size={18} /></Link>
           </div>
         </div>
@@ -77,10 +77,13 @@ export default function ServicesPage() {
       <section className="section">
         <div className="shell">
           <div className="section-heading split-heading">
-            <div><span className="eyebrow">Property compliance</span><h2>Qualified specialists, coordinated through one clear contact.</h2></div>
-            <p>Regulated assessments and inspections are arranged with appropriately qualified professionals. Coreserve coordinates the details and follow-up.</p>
+            <div><span className="eyebrow">More ways we can help</span><h2>One enquiry for every cleaning requirement.</h2></div>
+            <p>Select multiple services in the quotation form. Availability is checked from the postcode, property details and required date.</p>
           </div>
-          <ServiceRows items={complianceServices} />
+          <ul className="service-catalog" aria-label="Available cleaning services">
+            {cleaningTypes.map((service) => <li key={service}><Check size={17} /><span>{service}</span></li>)}
+          </ul>
+          <div className="service-catalog__action"><Link className="button button--dark" href="/contact">Select services and request a quote <ArrowRight size={18} /></Link></div>
         </div>
       </section>
 

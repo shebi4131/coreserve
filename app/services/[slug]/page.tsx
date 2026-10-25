@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ClipboardCheck, Phone } from "lucide-react";
+import { CleaningQuoteForm } from "@/components/CleaningQuoteForm";
 import { ServiceMark } from "@/components/ServiceMark";
 import { getService, services } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
@@ -20,8 +21,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   if (!service) return {};
 
   return {
-    title: `${service.title} in Preston`,
-    description: `${service.summary} Based in Preston, with wider availability confirmed per enquiry.`,
+    title: `${service.title} | Nationwide UK Cleaning`,
+    description: `${service.summary} Based in North-West with nationwide UK coverage confirmed per enquiry.`,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
       title: `${service.title} | Coreserve`,
@@ -42,19 +43,17 @@ export default async function ServicePage({ params }: ServicePageProps) {
     name: service.title,
     description: service.summary,
     serviceType: service.title,
-    areaServed: ["Preston", "Lancashire", "England"],
+    areaServed: ["United Kingdom", "Greater London", "Greater Manchester", "Merseyside", "Lancashire"],
     provider: {
       "@type": "LocalBusiness",
       name: siteConfig.name,
       url: siteConfig.siteUrl,
-      telephone: "+923301119592",
+      telephone: "+443301119592",
     },
   };
 
   const related = services.filter((item) => item.slug !== service.slug && item.category === service.category).slice(0, 2);
-  const faqIllustration = service.category === "Cleaning"
-    ? { src: "/illustrations/schedule-cleanup.svg", width: 480, height: 272 }
-    : { src: "/illustrations/property-inspection.svg", width: 480, height: 376 };
+  const faqIllustration = { src: "/illustrations/schedule-cleanup.svg", width: 480, height: 272 };
 
   return (
     <main id="main-content">
@@ -67,7 +66,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <h1>{service.title}</h1>
             <p>{service.headline}</p>
             <div className="hero__actions">
-              <Link className="button button--primary" href={`/contact?service=${service.slug}`}>Request this service <ArrowUpRight size={18} /></Link>
+              <a className="button button--primary" href="#quote-form">Request this service <ArrowUpRight size={18} /></a>
               <a className="button button--ghost" href={siteConfig.phoneHref}><Phone size={18} /> Call us</a>
             </div>
           </div>
@@ -76,8 +75,25 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <span>Most useful for</span>
             <strong>{service.audience}</strong>
             <hr />
-            <p>Based in Preston. Wider coverage is confirmed from the property postcode and required date.</p>
+            <p>Based in North-West<br />Nationwide coverage</p>
           </aside>
+        </div>
+      </section>
+
+      <section className="section cleaning-form-section" id="quote-form">
+        <div className="shell cleaning-form-layout">
+          <div className="cleaning-form-intro">
+            <span className="eyebrow">Request a quotation</span>
+            <h2>Start with the details that shape the work</h2>
+            <p>Choose every cleaning service required and tell us about the property, timing and access. We will review the scope before confirming availability or price.</p>
+            <ul className="check-list">
+              <li><Check /> Multiple cleaning services in one enquiry</li>
+              <li><Check /> Nationwide UK postcode assessment</li>
+              <li><Check /> Residential, commercial and managed properties</li>
+              <li><Check /> Review everything before sending on WhatsApp</li>
+            </ul>
+          </div>
+          <CleaningQuoteForm serviceSlug={service.slug} serviceTitle={service.title} />
         </div>
       </section>
 
@@ -97,7 +113,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <span className="eyebrow">Before we quote</span>
             <h2>Details that help us respond properly</h2>
             <ul>{service.preparation.map((item) => <li key={item}>{item}</li>)}</ul>
-            <Link className="button button--dark" href={`/contact?service=${service.slug}`}>Prepare your enquiry <ArrowRight size={18} /></Link>
+            <a className="button button--dark" href="#quote-form">Prepare your enquiry <ArrowRight size={18} /></a>
           </aside>
         </div>
       </section>

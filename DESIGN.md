@@ -197,14 +197,14 @@ The canonical service collection is a full-width numbered row with an icon mark,
 
 ### Operations Board
 
-The hero board is a compact navy panel that presents all four services as an active plan. Keep its structure factual and operational; never use it as a testimonial or fabricated live-data widget.
+The hero board is a compact navy panel that presents the four key quotation details as an active plan. Keep its structure factual and operational; never use it as a testimonial or fabricated live-data widget.
 
 ## Do's and Don'ts
 
 ### Do:
 
 - **Do** preserve the navy, teal, pale blue-grey, and white colour relationship.
-- **Do** keep regulated service language factual and attribute work to appropriately qualified professionals.
+- **Do** keep specialist cleaning language factual and avoid unverified guarantees or credentials.
 - **Do** use full-row interaction, visible keyboard focus, reduced-motion support, and persistent mobile affordances.
 - **Do** favour linear editorial lists and clear process steps for operational content.
 

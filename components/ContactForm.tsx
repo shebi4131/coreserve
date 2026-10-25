@@ -3,23 +3,39 @@
 import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
-import { services } from "@/lib/services";
+import { cleaningTypes } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
-type FormState = "idle" | "ready";
+type FormState = "idle" | "ready" | "error";
+
+const serviceFromSlug: Record<string, string[]> = {
+  "end-of-tenancy-cleaning": ["End-of-Tenancy Cleaning"],
+  "deep-move-cleaning": ["Deep Cleaning"],
+  "regular-commercial-cleaning": ["Commercial & Office Cleaning", "Regular & One-Off Cleaning"],
+};
 
 export function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
-  const [selectedService, setSelectedService] = useState("");
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   useEffect(() => {
     const slug = new URLSearchParams(window.location.search).get("service");
-    const matched = services.find((service) => service.slug === slug);
-    if (matched) setSelectedService(matched.title);
+    if (slug && serviceFromSlug[slug]) setSelectedServices(serviceFromSlug[slug]);
   }, []);
+
+  function toggleService(service: string) {
+    setSelectedServices((current) => current.includes(service)
+      ? current.filter((item) => item !== service)
+      : [...current, service]);
+    setState("idle");
+  }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (selectedServices.length === 0) {
+      setState("error");
+      return;
+    }
     const form = new FormData(event.currentTarget);
     const lines = [
       "Hello Coreserve Facilities Group, I would like to request a quote.",
@@ -27,7 +43,7 @@ export function ContactForm() {
       `Name: ${form.get("name")}`,
       `Phone: ${form.get("phone")}`,
       `Email: ${form.get("email") || "Not provided"}`,
-      `Service: ${form.get("service")}`,
+      `Cleaning services: ${selectedServices.join(", ")}`,
       `Postcode / location: ${form.get("location")}`,
       `Property type: ${form.get("propertyType")}`,
       `Bedrooms: ${form.get("bedrooms") || "Not specified"}`,
@@ -68,17 +84,22 @@ export function ContactForm() {
           <span>Email address</span>
           <input name="email" type="email" autoComplete="email" placeholder="you@example.com" />
         </label>
-        <label>
-          <span>Service required *</span>
-          <select name="service" required value={selectedService} onChange={(event) => setSelectedService(event.target.value)}>
-            <option value="" disabled>Choose a service</option>
-            {services.map((service) => <option key={service.slug} value={service.title}>{service.title}</option>)}
-            <option value="Multiple services">Multiple services</option>
-          </select>
-        </label>
+        <fieldset className="cleaning-selector field-wide">
+          <legend>Cleaning services required *</legend>
+          <p>Select one or more options</p>
+          <div className="cleaning-selector__scroll">
+            {cleaningTypes.map((service) => (
+              <label key={service} className={selectedServices.includes(service) ? "is-selected" : undefined}>
+                <input type="checkbox" name="service" value={service} checked={selectedServices.includes(service)} onChange={() => toggleService(service)} />
+                <span>{service}</span>
+              </label>
+            ))}
+          </div>
+          <small>{selectedServices.length} selected</small>
+        </fieldset>
         <label>
           <span>Property postcode or location *</span>
-          <input name="location" autoComplete="postal-code" required placeholder="For example, PR2 3DH" />
+          <input name="location" autoComplete="postal-code" required placeholder="Enter the property postcode" />
         </label>
         <label>
           <span>Property type *</span>
@@ -141,7 +162,7 @@ export function ContactForm() {
 
       <div className="quote-form__footer">
         <button className="button button--primary" type="submit">Prepare WhatsApp enquiry <ArrowUpRight size={18} /></button>
-        <p aria-live="polite">{state === "ready" ? "WhatsApp opened with your enquiry. Please review and send it." : "This website does not store your answers."}</p>
+        <p aria-live="polite">{state === "ready" ? "WhatsApp opened with your enquiry. Please review and send it." : state === "error" ? "Select at least one cleaning service." : "This website does not store your answers."}</p>
       </div>
     </form>
   );

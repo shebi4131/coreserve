@@ -2,10 +2,10 @@ export const siteConfig = {
   name: "Coreserve Facilities Group",
   shortName: "Coreserve",
   description:
-    "End-of-tenancy, deep and planned cleaning plus EPC, gas safety and electrical safety coordination from UK-based Coreserve Facilities Group.",
-  phoneDisplay: "+92 330 111 9592",
-  phoneHref: "tel:+923301119592",
-  whatsappNumber: "923301119592",
+    "Professional end-of-tenancy, deep, domestic and commercial cleaning from Coreserve Facilities Group, based in North-West England with nationwide UK coverage.",
+  phoneDisplay: "+44 330 111 9592",
+  phoneHref: "tel:+443301119592",
+  whatsappNumber: "443301119592",
   address: {
     street: "45 Symonds Road, Fulwood",
     locality: "Preston",
