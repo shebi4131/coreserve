@@ -79,17 +79,18 @@ export default function ServicesPage() {
 
       <section className="section">
         <div className="shell catalog-layout">
-          <ResponsiveImage src="/images/services/specialist-cleaning.jpeg" alt="Coreserve operative carrying out specialist carpet and upholstery cleaning" width={1312} height={816} className="catalog-layout__image" sizes="(max-width: 980px) calc(100vw - 48px), 43vw" />
-          <div>
-          <div className="section-heading split-heading">
-            <div><span className="eyebrow">More ways we can help</span><h2>One enquiry for every cleaning requirement.</h2></div>
-            <p>Select multiple services in the quotation form. Availability is checked from the postcode, property details and required date.</p>
+          <div className="catalog-layout__intro">
+            <ResponsiveImage src="/images/services/specialist-cleaning.jpeg" alt="Coreserve operative carrying out specialist carpet and upholstery cleaning" width={1312} height={816} className="catalog-layout__image" sizes="(max-width: 980px) calc(100vw - 48px), 42vw" />
+            <div className="section-heading">
+              <span className="eyebrow">More ways we can help</span>
+              <h2>One enquiry for every cleaning requirement.</h2>
+              <p>Select multiple services in the quotation form. Availability is checked from the postcode, property details and required date.</p>
+            </div>
           </div>
           <ul className="service-catalog" aria-label="Available cleaning services">
             {cleaningTypes.map((service) => <li key={service}><Check size={17} /><span>{service}</span></li>)}
           </ul>
           <div className="service-catalog__action"><Link className="button button--dark" href="/contact">Select services and request a quote <ArrowRight size={18} /></Link></div>
-          </div>
         </div>
       </section>
 
