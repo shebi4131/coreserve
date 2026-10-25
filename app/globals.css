@@ -202,6 +202,7 @@ p { margin: 0; color: var(--muted); }
 .contact-methods svg { width: 20px; }
 .contact-methods small { display: block; margin-bottom: 2px; color: var(--muted); }
 .contact-methods strong { color: var(--navy); font-size: 0.94rem; line-height: 1.4; }
+.contact-illustration { display: block; width: min(100%, 390px); height: auto; margin: 54px auto 0; }
 .quote-form { padding: 36px; border-radius: 20px; background: var(--white); box-shadow: var(--shadow); }
 .quote-form__heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
 .quote-form__heading h2 { margin-bottom: 8px; font-size: 1.7rem; }
@@ -396,6 +397,7 @@ p { margin: 0; color: var(--muted); }
   .service-detail__body { max-width: 760px; }
   .contact-intro { padding-top: 0; }
   .contact-methods { grid-template-columns: 1fr 1fr; }
+  .contact-illustration { width: min(100%, 350px); margin-top: 42px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .footer__grid > div:first-child { grid-column: 1 / -1; }
   .featured-service-grid { grid-template-columns: 1fr 1fr; }
@@ -472,6 +474,7 @@ p { margin: 0; color: var(--muted); }
   .expect-list > div { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
   .contact-hero { padding-block: 58px; }
   .contact-methods { grid-template-columns: 1fr; }
+  .contact-illustration { width: min(100%, 290px); margin-top: 34px; }
   .quote-form { padding: 23px; border-radius: 16px; }
   .quote-form__heading { flex-direction: column; }
   .form-grid { grid-template-columns: 1fr; }

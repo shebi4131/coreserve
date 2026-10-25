@@ -17,7 +17,7 @@ const localBusinessSchema = {
   name: siteConfig.name,
   description: siteConfig.description,
   url: siteConfig.siteUrl,
-  telephone: "+447728344412",
+  telephone: "+923301119592",
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,

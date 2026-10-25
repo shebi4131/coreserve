@@ -28,7 +28,7 @@ export default async function OpenGraphImage() {
         <div style={{ display: "flex", flexDirection: "column", maxWidth: 850 }}>
           <div style={{ display: "flex", flexDirection: "column", fontSize: 72, lineHeight: 1.04, fontWeight: 800, letterSpacing: "-.035em" }}><span>Property care,</span><span style={{ color: "#8998a7" }}>properly coordinated.</span></div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between", color: "#c4d4de", fontSize: 19 }}><span>Preston, Lancashire</span><span>07728 344412</span></div>
+        <div style={{ display: "flex", justifyContent: "space-between", color: "#c4d4de", fontSize: 19 }}><span>Preston, Lancashire</span><span>+92 330 111 9592</span></div>
       </div>
     </div>,
     { ...size, fonts: [{ name: "Manrope", data: await manropeExtraBold, weight: 800, style: "normal" }] },

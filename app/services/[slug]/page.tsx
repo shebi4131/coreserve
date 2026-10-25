@@ -47,7 +47,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       "@type": "LocalBusiness",
       name: siteConfig.name,
       url: siteConfig.siteUrl,
-      telephone: "+447728344412",
+      telephone: "+923301119592",
     },
   };
 

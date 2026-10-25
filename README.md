@@ -61,7 +61,7 @@ If server-side features are added later, the same project can use Cloudflare Pag
 
 ## Contact form
 
-The form builds a pre-filled WhatsApp message to `07728 344412`. It stores nothing and requires no database or paid email provider. The implementation can later be replaced with a server action using Resend, Supabase or another CRM without changing the public form design.
+The form builds a pre-filled WhatsApp message to `+92 330 111 9592`. It stores nothing and requires no database or paid email provider. The implementation can later be replaced with a server action using Resend, Supabase or another CRM without changing the public form design.
 
 ## SEO included
 

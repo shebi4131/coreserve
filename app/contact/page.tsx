@@ -31,6 +31,15 @@ export default function ContactPage() {
               <div><span><MapPin /></span><div><small>Our base</small><strong>{siteConfig.address.street}<br />{siteConfig.address.locality}, {siteConfig.address.postcode}</strong></div></div>
               <div><span><Clock3 /></span><div><small>Coverage</small><strong>Preston-based, with wider availability confirmed per enquiry</strong></div></div>
             </div>
+            <img
+              className="contact-illustration"
+              src="/illustrations/contact-online-message.svg"
+              alt=""
+              width="949"
+              height="656"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <ContactForm />
         </div>
