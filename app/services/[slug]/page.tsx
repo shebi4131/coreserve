@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ClipboardCheck, Phone } from "lucide-react";
 import { CleaningQuoteForm } from "@/components/CleaningQuoteForm";
 import { ServiceMark } from "@/components/ServiceMark";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { getService, services } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
@@ -15,10 +16,17 @@ export function generateStaticParams() {
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
+const serviceImages = {
+  "end-of-tenancy-cleaning": { src: "/images/services/end-of-tenancy-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team carrying out an end-of-tenancy clean" },
+  "deep-move-cleaning": { src: "/images/services/deep-move-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team deep cleaning a kitchen" },
+  "regular-commercial-cleaning": { src: "/images/services/regular-commercial-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team providing regular commercial office cleaning" },
+} as const;
+
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
+  const image = serviceImages[service.slug as keyof typeof serviceImages];
 
   return {
     title: `${service.title} | Nationwide UK Cleaning`,
@@ -28,6 +36,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       title: `${service.title} | Coreserve`,
       description: service.summary,
       url: `/services/${service.slug}`,
+      images: [{ url: image.src, width: image.width, height: image.height, alt: image.alt }],
     },
   };
 }
@@ -36,6 +45,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) notFound();
+  const serviceImage = serviceImages[service.slug as keyof typeof serviceImages];
 
   const schema = {
     "@context": "https://schema.org",
@@ -70,13 +80,16 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <a className="button button--ghost" href={siteConfig.phoneHref}><Phone size={18} /> Call us</a>
             </div>
           </div>
-          <aside className="service-brief">
-            <ServiceMark icon={service.icon} />
-            <span>Most useful for</span>
-            <strong>{service.audience}</strong>
-            <hr />
-            <p>Based in North-West<br />Nationwide coverage</p>
-          </aside>
+          <div className="service-hero-visual">
+            <ResponsiveImage src={serviceImage.src} alt={serviceImage.alt} width={serviceImage.width} height={serviceImage.height} sizes="(max-width: 980px) calc(100vw - 48px), 42vw" priority />
+            <aside className="service-brief">
+              <ServiceMark icon={service.icon} />
+              <span>Most useful for</span>
+              <strong>{service.audience}</strong>
+              <hr />
+              <p>Based in North-West<br />Nationwide coverage</p>
+            </aside>
+          </div>
         </div>
       </section>
 

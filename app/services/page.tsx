@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, Phone } from "lucide-react";
 import { ServiceMark } from "@/components/ServiceMark";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { cleaningServices, cleaningTypes, services } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     title: "Coreserve cleaning and property services",
     description: "Detailed, clearly scoped services for homes, landlords, agents and businesses.",
     url: "/services",
+    images: [{ url: "/images/services/services-hero.jpeg", width: 1376, height: 768, alt: "Coreserve cleaning team and equipment ready for service" }],
   },
 };
 
@@ -51,7 +53,8 @@ export default function ServicesPage() {
   return (
     <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema).replace(/</g, "\\u003c") }} />
-      <section className="page-hero">
+      <section className="page-hero page-hero--media">
+        <ResponsiveImage src="/images/services/services-hero.jpeg" alt="Coreserve cleaning team preparing professional equipment outside a managed property" width={1376} height={768} className="page-hero__media" sizes="100vw" priority />
         <div className="shell page-hero__grid">
           <div>
             <span className="eyebrow eyebrow--light">Services</span>
@@ -75,7 +78,9 @@ export default function ServicesPage() {
       </section>
 
       <section className="section">
-        <div className="shell">
+        <div className="shell catalog-layout">
+          <ResponsiveImage src="/images/services/specialist-cleaning.jpeg" alt="Coreserve operative carrying out specialist carpet and upholstery cleaning" width={1312} height={816} className="catalog-layout__image" sizes="(max-width: 980px) calc(100vw - 48px), 43vw" />
+          <div>
           <div className="section-heading split-heading">
             <div><span className="eyebrow">More ways we can help</span><h2>One enquiry for every cleaning requirement.</h2></div>
             <p>Select multiple services in the quotation form. Availability is checked from the postcode, property details and required date.</p>
@@ -84,6 +89,7 @@ export default function ServicesPage() {
             {cleaningTypes.map((service) => <li key={service}><Check size={17} /><span>{service}</span></li>)}
           </ul>
           <div className="service-catalog__action"><Link className="button button--dark" href="/contact">Select services and request a quote <ArrowRight size={18} /></Link></div>
+          </div>
         </div>
       </section>
 

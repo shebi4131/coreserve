@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, ClipboardCheck, MapPin, ShieldCheck } from "lucide-react";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 
 export const metadata: Metadata = {
   title: "About Coreserve Facilities Group",
   description: "Learn how Coreserve coordinates clearly scoped residential and commercial cleaning from its North-West base for clients nationwide.",
   alternates: { canonical: "/about" },
+  openGraph: { images: [{ url: "/images/about/about-operations.jpeg", width: 1264, height: 848, alt: "Coreserve team coordinating a cleaning service" }] },
 };
 
 export default function AboutPage() {
@@ -20,10 +22,13 @@ export default function AboutPage() {
 
       <section className="section">
         <div className="shell story-grid">
-          <div className="values-panel">
-            <div><ClipboardCheck /><span>Scope</span><strong>Know what is included</strong></div>
-            <div><MapPin /><span>Coverage</span><strong>Confirmed from the postcode</strong></div>
-            <div><ShieldCheck /><span>Standards</span><strong>Careful, checklist-led service delivery</strong></div>
+          <div className="story-visual">
+            <ResponsiveImage src="/images/about/about-operations.jpeg" alt="Coreserve cleaning team coordinating the property scope and service checklist" width={1264} height={848} sizes="(max-width: 980px) calc(100vw - 48px), 43vw" />
+            <div className="values-panel values-panel--compact">
+              <div><ClipboardCheck /><span>Scope</span><strong>Know what is included</strong></div>
+              <div><MapPin /><span>Coverage</span><strong>Confirmed from the postcode</strong></div>
+              <div><ShieldCheck /><span>Standards</span><strong>Checklist-led delivery</strong></div>
+            </div>
           </div>
           <div className="story-copy">
             <span className="eyebrow">Our approach</span>

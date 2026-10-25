@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, ClipboardCheck, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { ServiceMark } from "@/components/ServiceMark";
+import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { cleaningServices, cleaningTypes } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
@@ -9,6 +10,9 @@ export const metadata: Metadata = {
   title: "Nationwide UK Cleaning Services",
   description: "Nationwide end-of-tenancy, deep, domestic and commercial cleaning for residential, business and property-management clients.",
   alternates: { canonical: "/" },
+  openGraph: {
+    images: [{ url: "/images/home/home-hero.jpeg", width: 1312, height: 816, alt: "Coreserve cleaning team preparing a UK property" }],
+  },
 };
 
 const localBusinessSchema = {
@@ -35,6 +39,7 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema).replace(/</g, "\\u003c") }} />
 
       <section className="hero">
+        <ResponsiveImage src="/images/home/home-hero.jpeg" alt="Coreserve cleaning team preparing a kitchen for property handover" width={1312} height={816} className="hero__media" sizes="100vw" priority />
         <div className="shell hero__grid">
           <div className="hero__copy">
             <span className="eyebrow eyebrow--light">Based in North-West</span>
@@ -47,16 +52,6 @@ export default function HomePage() {
             <div className="hero__assurance"><ShieldCheck size={20} /> Clear scope, practical communication and cleaning requirements agreed before booking.</div>
           </div>
 
-          <aside className="quote-preview" aria-label="What an enquiry covers">
-            <div className="quote-preview__head"><span>Quote preparation</span><span className="live-status"><i /> Start with the details</span></div>
-            <div className="quote-preview__body">
-              <div><span>01</span><p>Property &amp; postcode</p><Check /></div>
-              <div><span>02</span><p>Bedrooms &amp; bathrooms</p><Check /></div>
-              <div><span>03</span><p>Condition &amp; selected extras</p><Check /></div>
-              <div><span>04</span><p>Date, access &amp; parking</p><Check /></div>
-            </div>
-            <div className="quote-preview__foot"><ClipboardCheck /><div><strong>Itemised before booking</strong><small>Inclusions and exclusions confirmed clearly.</small></div></div>
-          </aside>
         </div>
       </section>
 
@@ -102,12 +97,10 @@ export default function HomePage() {
             </ul>
             <Link className="button button--dark" href="/end-of-tenancy-cleaning-checklist">View the cleaning checklist <ArrowRight size={18} /></Link>
           </div>
-          <div className="room-scope" aria-label="Typical room scope">
-            <div><span>Kitchen</span><strong>Degrease, wipe, descale and floors</strong></div>
-            <div><span>Bathrooms</span><strong>Sanitaryware, tiles, mirrors and floors</strong></div>
-            <div><span>Living areas</span><strong>Surfaces, skirting, doors and flooring</strong></div>
-            <div><span>Final review</span><strong>Checklist, variations and handover</strong></div>
-          </div>
+          <figure className="editorial-image">
+            <ResponsiveImage src="/images/home/handover-detail.jpeg" alt="Coreserve team member completing a room-by-room cleaning checklist" width={1264} height={848} sizes="(max-width: 720px) calc(100vw - 32px), 50vw" />
+            <figcaption><ClipboardCheck size={20} /><span><strong>Checklist-led handover</strong>Every agreed area reviewed before completion.</span></figcaption>
+          </figure>
         </div>
       </section>
 
