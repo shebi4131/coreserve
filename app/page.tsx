@@ -37,7 +37,7 @@ export default function HomePage() {
       <section className="hero">
         <div className="shell hero__grid">
           <div className="hero__copy">
-            <span className="eyebrow eyebrow--light">Preston-based property services</span>
+            <span className="eyebrow eyebrow--light">UK-based property services</span>
             <h1>Property handovers,<br /><em>properly prepared.</em></h1>
             <p className="hero__lead">Detailed end-of-tenancy and deep cleaning for tenants, landlords and agents—supported by clearly coordinated EPC, gas and electrical safety services.</p>
             <div className="hero__actions">
@@ -64,7 +64,7 @@ export default function HomePage() {
         <div className="shell confidence-strip__grid">
           <span><Check /> Scope agreed in advance</span>
           <span><ClipboardCheck /> Checklist-led cleaning</span>
-          <span><MapPin /> Preston-based service</span>
+          <span><MapPin /> UK-based service</span>
         </div>
       </section>
 
@@ -145,7 +145,7 @@ export default function HomePage() {
         <div className="shell coverage">
           <div>
             <span className="eyebrow">Service area</span>
-            <h2>Preston-based.<br />Coverage confirmed properly.</h2>
+            <h2>UK-based.<br />Coverage confirmed properly.</h2>
             <p>Coreserve supports residential and commercial clients from Preston, Lancashire. Availability beyond the local area depends on the service, property and required date.</p>
             <p>Send the property postcode with your enquiry and we will confirm coverage before anything is arranged.</p>
             <Link className="text-link" href="/areas-we-cover">How coverage works <ArrowRight size={18} /></Link>

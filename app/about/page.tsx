@@ -4,7 +4,7 @@ import { ArrowRight, Check, ClipboardCheck, MapPin, ShieldCheck } from "lucide-r
 
 export const metadata: Metadata = {
   title: "About Coreserve Facilities Group",
-  description: "Learn how Preston-based Coreserve coordinates cleaning and property compliance services with clear scope, access planning and follow-up.",
+  description: "Learn how UK-based Coreserve coordinates cleaning and property compliance services with clear scope, access planning and follow-up.",
   alternates: { canonical: "/about" },
 };
 

@@ -42,7 +42,7 @@ Visitors commonly arrive while arranging an end-of-tenancy clean, deep or move c
 - Voice: professional, practical, straightforward, dependable, and free of inflated claims.
 - Current phone: +92 330 111 9592.
 - Current address: 45 Symonds Road, Fulwood, Preston, PR2 3DH.
-- Preston-based, with wider coverage confirmed individually according to the service, property and required date.
+- UK-based, with wider coverage confirmed individually according to the service, property and required date.
 
 ## Evidence on Hand
 

@@ -29,7 +29,7 @@ export default function ContactPage() {
               <a href={siteConfig.phoneHref}><span><Phone /></span><div><small>Call us</small><strong>{siteConfig.phoneDisplay}</strong></div></a>
               <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noreferrer"><span><MessageCircle /></span><div><small>Message us</small><strong>Start a WhatsApp chat</strong></div></a>
               <div><span><MapPin /></span><div><small>Our base</small><strong>{siteConfig.address.street}<br />{siteConfig.address.locality}, {siteConfig.address.postcode}</strong></div></div>
-              <div><span><Clock3 /></span><div><small>Coverage</small><strong>Preston-based, with wider availability confirmed per enquiry</strong></div></div>
+              <div><span><Clock3 /></span><div><small>Coverage</small><strong>UK-based, with wider availability confirmed per enquiry</strong></div></div>
             </div>
             <img
               className="contact-illustration"
