@@ -1,2 +1,5 @@
 /contact/__next.contact.__PAGE__.txt /contact/__next.contact/__PAGE__.txt 200
 /services/__next.services.__PAGE__.txt /services/__next.services/__PAGE__.txt 200
+/services/epc-assessments/ /services/ 301
+/services/gas-safety-coordination/ /services/ 301
+/services/electrical-safety-eicr/ /services/ 301
