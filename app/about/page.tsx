@@ -5,7 +5,7 @@ import { ResponsiveImage } from "@/components/ResponsiveImage";
 
 export const metadata: Metadata = {
   title: "About Coreserve Facilities Group",
-  description: "Learn how Coreserve coordinates clearly scoped residential and commercial cleaning from its North-West base for clients nationwide.",
+  description: "Learn how Coreserve coordinates clearly scoped residential and commercial cleaning from its North-West base, with wider UK coverage subject to availability.",
   alternates: { canonical: "/about" },
   openGraph: { images: [{ url: "/images/about/about-operations.jpeg", width: 1264, height: 848, alt: "Coreserve team coordinating a cleaning service" }] },
 };

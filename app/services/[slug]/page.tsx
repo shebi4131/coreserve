@@ -17,9 +17,10 @@ export function generateStaticParams() {
 type ServicePageProps = { params: Promise<{ slug: string }> };
 
 const serviceImages = {
+  "domestic-cleaning": { src: "/images/home/home-hero.jpeg", width: 1312, height: 816, alt: "Coreserve professional providing domestic cleaning in a modern home" },
   "end-of-tenancy-cleaning": { src: "/images/services/end-of-tenancy-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team carrying out an end-of-tenancy clean" },
   "deep-move-cleaning": { src: "/images/services/deep-move-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team deep cleaning a kitchen" },
-  "regular-commercial-cleaning": { src: "/images/services/regular-commercial-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team providing regular commercial office cleaning" },
+  "commercial-office-cleaning": { src: "/images/services/regular-commercial-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team providing commercial and office cleaning" },
 } as const;
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
@@ -29,8 +30,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const image = serviceImages[service.slug as keyof typeof serviceImages];
 
   return {
-    title: `${service.title} | Nationwide UK Cleaning`,
-    description: `${service.summary} Based in North-West with nationwide UK coverage confirmed per enquiry.`,
+    title: service.title,
+    description: `${service.summary} Based in North-West, with wider UK coverage subject to location and availability.`,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
       title: `${service.title} | Coreserve`,
@@ -87,7 +88,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <span>Most useful for</span>
               <strong>{service.audience}</strong>
               <hr />
-              <p>Based in North-West<br />Nationwide coverage</p>
+              <p>Based in North-West<br />Wider UK coverage</p>
             </aside>
           </div>
         </div>
@@ -101,7 +102,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <p>Choose every cleaning service required and tell us about the property, timing and access. We will review the scope before confirming availability or price.</p>
             <ul className="check-list">
               <li><Check /> Multiple cleaning services in one enquiry</li>
-              <li><Check /> Nationwide UK postcode assessment</li>
+              <li><Check /> Wider UK coverage checked by postcode</li>
               <li><Check /> Residential, commercial and managed properties</li>
               <li><Check /> Review everything before sending on WhatsApp</li>
             </ul>

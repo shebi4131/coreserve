@@ -4,9 +4,9 @@ import { QuoteForm } from "@/components/QuoteForm";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Request a Nationwide Cleaning Quote",
+  title: "Request a Cleaning Quote",
   description:
-    "Request an itemised residential, commercial, deep or end-of-tenancy cleaning quote from Coreserve Facilities Group, available nationwide across the UK.",
+    "Request an itemised domestic, commercial, deep or end-of-tenancy cleaning quote from Coreserve Facilities Group.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Request a quote from Coreserve",
@@ -29,7 +29,7 @@ export default function ContactPage() {
               <a href={siteConfig.phoneHref}><span><Phone /></span><div><small>Call us</small><strong>{siteConfig.phoneDisplay}</strong></div></a>
               <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noreferrer"><span><MessageCircle /></span><div><small>Message us</small><strong>Start a WhatsApp chat</strong></div></a>
               <div><span><MapPin /></span><div><small>Our base</small><strong>Based in North-West</strong></div></div>
-              <div><span><Clock3 /></span><div><small>Coverage</small><strong>Nationwide across the United Kingdom</strong></div></div>
+              <div><span><Clock3 /></span><div><small>Coverage</small><strong>Wider UK coverage subject to location and availability</strong></div></div>
             </div>
             <img
               className="contact-illustration"

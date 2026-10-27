@@ -25,7 +25,7 @@ export function Header() {
         <div className="shell utility-bar__inner">
           <span>Professional cleaning, clearly coordinated</span>
           <a href={siteConfig.phoneHref}><Phone size={14} aria-hidden="true" /> {siteConfig.phoneDisplay}</a>
-          <span className="utility-bar__location">Based in North-West | Nationwide coverage</span>
+          <span className="utility-bar__location">Based in North-West | Wider UK coverage</span>
         </div>
       </div>
       <header className="site-header">

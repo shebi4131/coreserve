@@ -1,4 +1,4 @@
-import { Building2, KeyRound, Sparkles } from "lucide-react";
+import { Building2, House, KeyRound, Sparkles } from "lucide-react";
 
 export type Service = {
   slug: string;
@@ -18,9 +18,46 @@ export type Service = {
 
 export const services: readonly Service[] = [
   {
+    slug: "domestic-cleaning",
+    title: "Domestic cleaning",
+    shortTitle: "Domestic cleaning",
+    category: "Cleaning",
+    summary: "Regular or one-off home cleaning tailored to your household, priorities and preferred schedule.",
+    audience: "Homeowners, tenants and households",
+    headline: "A cleaner, more comfortable home on a schedule that suits you.",
+    intro: "Domestic cleaning can be arranged as a one-off visit or a recurring service. We agree the rooms, priorities, frequency and access arrangements in advance so the cleaning plan reflects your home and the way it is used.",
+    includes: [
+      "Dusting and wiping of agreed accessible surfaces",
+      "Kitchen worktops, sinks, splashbacks and external appliance surfaces",
+      "Bathroom sanitaryware, mirrors and agreed tiled areas",
+      "Vacuuming and mopping of suitable floor surfaces",
+      "Bedrooms, living areas, doors, handles and switches within the agreed scope",
+      "A repeatable task list for recurring visits",
+    ],
+    preparation: [
+      "Property type, size and priority rooms",
+      "Whether you need a one-off or recurring service",
+      "Preferred days, times and frequency",
+      "Occupancy, pets and access arrangements",
+      "Any areas needing extra attention",
+    ],
+    process: [
+      { title: "Discuss", detail: "Tell us about your home, priorities and preferred schedule." },
+      { title: "Plan", detail: "We agree the rooms, tasks, frequency and quotation." },
+      { title: "Clean", detail: "The team follows the confirmed cleaning plan." },
+      { title: "Review", detail: "Recurring priorities can be adjusted as your household needs change." },
+    ],
+    faqs: [
+      { question: "Can I book a one-off domestic clean?", answer: "Yes. Domestic cleaning can be discussed as a one-off visit or a recurring arrangement. Share the property details and the areas you want prioritised." },
+      { question: "Do I need to be at home?", answer: "Not necessarily. We can discuss keys, access, pets and any alarm arrangements before the booking is confirmed." },
+      { question: "Are cleaning products and equipment included?", answer: "The required products and equipment depend on the agreed tasks and surfaces. We confirm what will be provided, and any site-specific requirements, in advance." },
+    ],
+    icon: House,
+  },
+  {
     slug: "end-of-tenancy-cleaning",
-    title: "End-of-tenancy cleaning",
-    shortTitle: "End of tenancy",
+    title: "End-of-tenancy cleaning for tenants, landlords and letting agents",
+    shortTitle: "End-of-tenancy cleaning",
     category: "Cleaning",
     summary: "Detailed move-out cleaning for tenants, landlords and letting agents, scoped around the property and handover requirements.",
     audience: "Tenants, landlords, letting agents and property managers",
@@ -94,14 +131,14 @@ export const services: readonly Service[] = [
     icon: Sparkles,
   },
   {
-    slug: "regular-commercial-cleaning",
-    title: "Regular & commercial cleaning",
-    shortTitle: "Regular & commercial",
+    slug: "commercial-office-cleaning",
+    title: "Commercial and office cleaning",
+    shortTitle: "Commercial & office",
     category: "Cleaning",
-    summary: "Planned cleaning for homes, offices, communal areas and managed properties, based on a repeatable task specification.",
-    audience: "Households, offices, landlords, agents and property managers",
-    headline: "Repeatable cleaning built around how the space is used.",
-    intro: "Regular and commercial cleaning begins with a clear task specification. We agree priorities, frequency, access and any site-specific requirements so the service can be delivered consistently and reviewed over time.",
+    summary: "Planned cleaning for offices, workplaces, communal areas and managed properties, based on a repeatable task specification.",
+    audience: "Businesses, offices, landlords, agents and property managers",
+    headline: "Presentable workplaces, cleaned around your business and operating hours.",
+    intro: "Commercial and office cleaning begins with a clear task specification. We agree priorities, frequency, access and site-specific requirements so cleaning can be coordinated around the way your premises operate and reviewed over time.",
     includes: [
       "A site-appropriate task list and cleaning frequency",
       "Kitchen, washroom and common-area routines",

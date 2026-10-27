@@ -7,9 +7,13 @@ import { cleaningTypes } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
 const serviceDefaults: Record<string, string[]> = {
+  "domestic-cleaning": ["Domestic & Residential Cleaning"],
   "end-of-tenancy-cleaning": ["End-of-Tenancy Cleaning"],
   "deep-move-cleaning": ["Deep Cleaning"],
+  "commercial-office-cleaning": ["Commercial & Office Cleaning", "Regular & One-Off Cleaning"],
   "regular-commercial-cleaning": ["Commercial & Office Cleaning", "Regular & One-Off Cleaning"],
+  "carpet-upholstery-cleaning": ["Carpet & Rug Cleaning", "Sofa & Upholstery Cleaning"],
+  "after-builders-cleaning": ["After-Builders Cleaning"],
 };
 
 type QuoteFormProps = {

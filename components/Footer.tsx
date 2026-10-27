@@ -9,7 +9,7 @@ export function Footer() {
         <div className="footer__grid">
           <div>
             <Logo inverse />
-            <p>Checklist-led cleaning, coordinated with care from our North-West base for clients nationwide.</p>
+            <p>Professional cleaning coordinated with care from our North-West base, with wider UK coverage subject to location and availability.</p>
           </div>
           <div>
             <h2>Explore</h2>
@@ -27,7 +27,7 @@ export function Footer() {
             <nav aria-label="Contact details">
               <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
               <span>Based in North-West</span>
-              <span>Nationwide coverage</span>
+              <span>Wider UK coverage</span>
             </nav>
           </div>
         </div>

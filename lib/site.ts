@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Coreserve Facilities Group",
   shortName: "Coreserve",
   description:
-    "Professional end-of-tenancy, deep, domestic and commercial cleaning from Coreserve Facilities Group, based in North-West England with nationwide UK coverage.",
+    "Professional domestic, commercial, deep and end-of-tenancy cleaning from Coreserve Facilities Group, based in North-West England with wider UK coverage subject to location and availability.",
   phoneDisplay: "+44 330 111 9592",
   phoneHref: "tel:+443301119592",
   whatsappNumber: "443301119592",

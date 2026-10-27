@@ -75,7 +75,9 @@ p { margin: 0; color: var(--muted); }
 .hero__grid { position: relative; z-index: 2; min-height: 665px; display: grid; grid-template-columns: minmax(0, 660px); align-items: center; padding-block: 82px; }
 .hero h1 { color: var(--white); font-size: clamp(3.15rem, 5.2vw, 4.9rem); }
 .hero h1 em { color: var(--teal-bright); font-style: normal; }
-.hero__lead { max-width: 640px; margin-top: 25px; color: #c4d4de; font-size: 1.12rem; }
+.hero__strapline { max-width: 640px; margin-top: 24px; color: var(--white); font-size: 1.17rem; font-weight: 750; }
+.hero__lead { max-width: 640px; margin-top: 15px; color: #c4d4de; font-size: 1.02rem; }
+.hero__support { max-width: 640px; margin-top: 12px; color: #c4d4de; font-size: .96rem; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 33px; }
 .hero__copy .hero__actions { width: min(100%, 430px); display: grid; }
 .hero__copy .hero__actions .button { width: 100%; min-height: 58px; padding: 15px 24px; font-size: .98rem; }
@@ -155,6 +157,7 @@ p { margin: 0; color: var(--muted); }
 .cta-band { padding-block: 64px; color: var(--white); background: var(--navy-mid); }
 .cta-band__inner { display: flex; align-items: center; justify-content: space-between; gap: 50px; }
 .cta-band h2 { color: var(--white); font-size: clamp(2rem, 3.7vw, 3.25rem); }
+.cta-band__inner > div:first-child > p { max-width: 760px; margin-top: 14px; color: #d0dde5; }
 .cta-band__actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .page-hero { position: relative; overflow: hidden; color: var(--white); background: var(--navy); }
