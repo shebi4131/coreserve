@@ -15,7 +15,7 @@ const generalFaqs = [
   { question: "What happens after I send an enquiry?", answer: "We review the details, ask for anything essential that is missing, assess the scope and availability, and then confirm the quotation and arrangements before booking." },
   { question: "Can I arrange more than one service?", answer: "Yes. Select multiple services or explain what the property needs. Availability and the appropriate order of work will be confirmed during the quotation process." },
   { question: "Do you provide nationwide coverage?", answer: "Yes. Coreserve is based in North-West England and serves customers nationwide across the United Kingdom. Send the property postcode and preferred date so the right arrangements can be confirmed." },
-  { question: "Which specialist cleaning services can I select?", answer: "You can select more than one option, including carpet, upholstery, curtain, mattress, appliance, bathroom, after-builders, pressure washing, waste removal and housekeeping services. We will confirm exactly what is included in your quotation." },
+  { question: "Which specialist cleaning services can I select?", answer: "You can select more than one option, including upholstery, curtain, mattress, appliance, bathroom, after-builders, pressure washing, driveway and porch washing, waste removal and housekeeping services. Interior window and carpet cleaning are included within an agreed deep-cleaning scope. We will confirm exactly what is included in your quotation." },
 ];
 
 export default function FaqPage() {

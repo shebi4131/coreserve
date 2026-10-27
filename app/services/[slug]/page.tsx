@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ClipboardCheck, Phone } from "lucide-react";
-import { CleaningQuoteForm } from "@/components/CleaningQuoteForm";
+import { QuoteForm } from "@/components/QuoteForm";
 import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { getService, services } from "@/lib/services";
@@ -106,7 +106,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <li><Check /> Review everything before sending on WhatsApp</li>
             </ul>
           </div>
-          <CleaningQuoteForm serviceSlug={service.slug} serviceTitle={service.title} />
+          <QuoteForm variant="service" serviceSlug={service.slug} serviceTitle={service.title} />
         </div>
       </section>
 

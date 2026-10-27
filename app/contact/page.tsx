@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Clock3, MapPin, MessageCircle, Phone } from "lucide-react";
-import { ContactForm } from "@/components/ContactForm";
+import { QuoteForm } from "@/components/QuoteForm";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export default function ContactPage() {
               decoding="async"
             />
           </div>
-          <ContactForm />
+          <QuoteForm />
         </div>
       </section>
 
@@ -53,7 +53,7 @@ export default function ContactPage() {
           </div>
           <div className="contact-tips">
             <article><span aria-hidden="true">01</span><div><h3>What and where</h3><p>Tell us whether it is a home, rental, office, communal area or another type of premises.</p></div></article>
-            <article><span aria-hidden="true">02</span><div><h3>Condition and extras</h3><p>Mention appliances, carpets, heavy build-up or anything that may change the time or equipment required.</p></div></article>
+            <article><span aria-hidden="true">02</span><div><h3>Condition and extras</h3><p>Mention appliances, heavy build-up, specialist treatment or anything that may change the time or equipment required.</p></div></article>
             <article><span aria-hidden="true">03</span><div><h3>Date and access</h3><p>Tell us the handover deadline, parking situation and who can provide access.</p></div></article>
           </div>
         </div>
