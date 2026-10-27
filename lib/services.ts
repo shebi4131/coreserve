@@ -1,4 +1,4 @@
-import { Building2, KeyRound, Sparkles } from "lucide-react";
+import { Armchair, Building2, Hammer, House, KeyRound, Sparkles } from "lucide-react";
 
 export type Service = {
   slug: string;
@@ -18,9 +18,46 @@ export type Service = {
 
 export const services: readonly Service[] = [
   {
+    slug: "domestic-cleaning",
+    title: "Domestic cleaning",
+    shortTitle: "Domestic cleaning",
+    category: "Cleaning",
+    summary: "Regular or one-off home cleaning tailored to your household, priorities and preferred schedule.",
+    audience: "Homeowners, tenants and households",
+    headline: "A cleaner, more comfortable home on a schedule that suits you.",
+    intro: "Domestic cleaning can be arranged as a one-off visit or a recurring service. We agree the rooms, priorities, frequency and access arrangements in advance so the cleaning plan reflects your home and the way it is used.",
+    includes: [
+      "Dusting and wiping of agreed accessible surfaces",
+      "Kitchen worktops, sinks, splashbacks and external appliance surfaces",
+      "Bathroom sanitaryware, mirrors and agreed tiled areas",
+      "Vacuuming and mopping of suitable floor surfaces",
+      "Bedrooms, living areas, doors, handles and switches within the agreed scope",
+      "A repeatable task list for recurring visits",
+    ],
+    preparation: [
+      "Property type, size and priority rooms",
+      "Whether you need a one-off or recurring service",
+      "Preferred days, times and frequency",
+      "Occupancy, pets and access arrangements",
+      "Any areas needing extra attention",
+    ],
+    process: [
+      { title: "Discuss", detail: "Tell us about your home, priorities and preferred schedule." },
+      { title: "Plan", detail: "We agree the rooms, tasks, frequency and quotation." },
+      { title: "Clean", detail: "The team follows the confirmed cleaning plan." },
+      { title: "Review", detail: "Recurring priorities can be adjusted as your household needs change." },
+    ],
+    faqs: [
+      { question: "Can I book a one-off domestic clean?", answer: "Yes. Domestic cleaning can be discussed as a one-off visit or a recurring arrangement. Share the property details and the areas you want prioritised." },
+      { question: "Do I need to be at home?", answer: "Not necessarily. We can discuss keys, access, pets and any alarm arrangements before the booking is confirmed." },
+      { question: "Are cleaning products and equipment included?", answer: "The required products and equipment depend on the agreed tasks and surfaces. We confirm what will be provided, and any site-specific requirements, in advance." },
+    ],
+    icon: House,
+  },
+  {
     slug: "end-of-tenancy-cleaning",
-    title: "End-of-tenancy cleaning",
-    shortTitle: "End of tenancy",
+    title: "End-of-tenancy cleaning for tenants, landlords and letting agents",
+    shortTitle: "End-of-tenancy cleaning",
     category: "Cleaning",
     summary: "Detailed move-out cleaning for tenants, landlords and letting agents, scoped around the property and handover requirements.",
     audience: "Tenants, landlords, letting agents and property managers",
@@ -94,14 +131,14 @@ export const services: readonly Service[] = [
     icon: Sparkles,
   },
   {
-    slug: "regular-commercial-cleaning",
-    title: "Regular & commercial cleaning",
-    shortTitle: "Regular & commercial",
+    slug: "commercial-office-cleaning",
+    title: "Commercial and office cleaning",
+    shortTitle: "Commercial & office",
     category: "Cleaning",
-    summary: "Planned cleaning for homes, offices, communal areas and managed properties, based on a repeatable task specification.",
-    audience: "Households, offices, landlords, agents and property managers",
-    headline: "Repeatable cleaning built around how the space is used.",
-    intro: "Regular and commercial cleaning begins with a clear task specification. We agree priorities, frequency, access and any site-specific requirements so the service can be delivered consistently and reviewed over time.",
+    summary: "Planned cleaning for offices, workplaces, communal areas and managed properties, based on a repeatable task specification.",
+    audience: "Businesses, offices, landlords, agents and property managers",
+    headline: "Presentable workplaces, cleaned around your business and operating hours.",
+    intro: "Commercial and office cleaning begins with a clear task specification. We agree priorities, frequency, access and site-specific requirements so cleaning can be coordinated around the way your premises operate and reviewed over time.",
     includes: [
       "A site-appropriate task list and cleaning frequency",
       "Kitchen, washroom and common-area routines",
@@ -127,6 +164,80 @@ export const services: readonly Service[] = [
       { question: "Can cleaning take place outside normal working hours?", answer: "Share the required access window. Availability depends on location, frequency and the site arrangements, and will be confirmed before booking." },
     ],
     icon: Building2,
+  },
+  {
+    slug: "carpet-upholstery-cleaning",
+    title: "Carpet and upholstery cleaning",
+    shortTitle: "Carpet & upholstery",
+    category: "Cleaning",
+    summary: "Carpet, rug, sofa and upholstery cleaning planned around the material, condition and areas requiring attention.",
+    audience: "Homeowners, tenants, landlords, offices and managed properties",
+    headline: "A considered refresh for carpets, rugs and upholstered furniture.",
+    intro: "Carpet and upholstery cleaning starts by identifying the material, condition, affected areas and access. We agree which rooms or items are included and discuss visible marks, drying considerations and any treatment limitations before quotation.",
+    includes: [
+      "Carpets and rugs in the rooms agreed in the quotation",
+      "Sofas, chairs and other agreed upholstered furniture",
+      "Pre-clean review of material, condition and visible marks",
+      "Suitable cleaning methods selected for the item or floor covering",
+      "Focused attention to agreed high-use areas",
+      "Clear guidance about drying and access after cleaning",
+    ],
+    preparation: [
+      "The number and approximate size of carpeted rooms",
+      "The type and number of upholstered items",
+      "Photographs of labels, marks or areas of concern where useful",
+      "Parking, access and furniture-moving requirements",
+      "Your preferred date and required completion time",
+    ],
+    process: [
+      { title: "Review", detail: "We identify the material, condition, items and rooms involved." },
+      { title: "Confirm", detail: "The method, included areas and any limitations are agreed." },
+      { title: "Clean", detail: "The confirmed carpets or upholstered items are treated methodically." },
+      { title: "Aftercare", detail: "We explain drying expectations and any relevant follow-up guidance." },
+    ],
+    faqs: [
+      { question: "Can you guarantee every stain will be removed?", answer: "No responsible cleaning service can guarantee removal of every mark. Results depend on the material, age and cause of the stain. We discuss visible concerns and realistic limitations before work begins." },
+      { question: "How long will carpets or upholstery take to dry?", answer: "Drying time varies with the material, cleaning method, ventilation and conditions at the property. Practical guidance is provided for the agreed work." },
+      { question: "Can this be added to another cleaning service?", answer: "Yes. Select carpet or upholstery cleaning alongside the other services required so the full scope and scheduling can be reviewed together." },
+    ],
+    icon: Armchair,
+  },
+  {
+    slug: "after-builders-cleaning",
+    title: "After-builders cleaning",
+    shortTitle: "After-builders cleaning",
+    category: "Cleaning",
+    summary: "Post-renovation cleaning for agreed construction dust and residue, helping prepare the property for occupation or handover.",
+    audience: "Homeowners, landlords, developers, contractors and property managers",
+    headline: "The detailed clean between completed building work and a usable property.",
+    intro: "After-builders cleaning is planned around the work completed, the remaining dust or residue and the condition of each area. We confirm that construction work is finished, utilities are available and heavy building waste has been removed before agreeing the cleaning scope.",
+    includes: [
+      "Removal of accessible fine dust from agreed surfaces and fittings",
+      "Wiping of skirting, doors, frames, switches and visible fixtures",
+      "Kitchen and bathroom cleaning within the confirmed areas",
+      "Vacuuming and mopping of suitable finished floors",
+      "Interior window glass and sills where safe and agreed",
+      "A final review against the confirmed post-work cleaning scope",
+    ],
+    preparation: [
+      "Property type and the rooms affected by building work",
+      "The nature of the renovation or construction completed",
+      "Confirmation that contractors and active works have finished",
+      "Details of remaining waste, paint, adhesive or specialist residue",
+      "Access, parking, utilities and required completion date",
+    ],
+    process: [
+      { title: "Assess", detail: "We review the completed works, affected rooms and remaining residue." },
+      { title: "Scope", detail: "Included surfaces, exclusions and any specialist needs are documented." },
+      { title: "Clean", detail: "Dust and agreed residue are removed in a structured sequence." },
+      { title: "Check", detail: "The completed areas are reviewed against the accepted scope." },
+    ],
+    faqs: [
+      { question: "Does building work need to be finished first?", answer: "Yes. The property should be safe to access and active building work should be complete before the clean. This helps prevent new dust or debris from undoing the work." },
+      { question: "Is heavy construction waste included?", answer: "Heavy rubble, skips and hazardous building waste are not assumed to be part of the cleaning service. Tell us what remains at the property so any exclusions or separate arrangements are clear." },
+      { question: "Can paint or adhesive residue be removed?", answer: "Mention and photograph specialist residue before quotation. The appropriate approach depends on the surface and material, and removal may require separate assessment." },
+    ],
+    icon: Hammer,
   },
 ] as const;
 
