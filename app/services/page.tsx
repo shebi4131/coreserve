@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Nationwide UK Cleaning Services",
-  description: "Explore nationwide end-of-tenancy, deep, domestic, commercial, carpet, upholstery, appliance and specialist cleaning from Coreserve.",
+  description: "Explore nationwide end-of-tenancy, deep, domestic, commercial, carpet, appliance, driveway and porch cleaning from Coreserve.",
   alternates: { canonical: "/services" },
   openGraph: {
     title: "Coreserve cleaning and property services",

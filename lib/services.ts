@@ -67,6 +67,8 @@ export const services: readonly Service[] = [
       "Detailed dusting and wiping of accessible surfaces",
       "Kitchen degreasing and bathroom descaling within the agreed scope",
       "Skirting boards, doors, handles, switches and visible fittings",
+      "Interior window glass and sills where safe and accessible",
+      "Carpet and rug cleaning within the agreed rooms",
       "Vacuuming and mopping appropriate flooring",
       "Selected internal cupboards and appliances when quoted",
       "A final inspection against the agreed priorities",
@@ -87,6 +89,7 @@ export const services: readonly Service[] = [
     faqs: [
       { question: "What is the difference between a deep clean and regular cleaning?", answer: "A deep clean is a more intensive one-off visit focused on accumulated build-up and detailed areas. Regular cleaning maintains an already established standard through a repeated task list." },
       { question: "Can this be arranged before moving in?", answer: "Yes. Share the key date and whether the property will be empty, furnished or recently renovated so the appropriate scope can be discussed." },
+      { question: "Are interior windows and carpets included?", answer: "Yes. Interior window glass and sills, plus carpet and rug cleaning in the agreed rooms, are included when a deep-cleaning scope is confirmed. Safe access, material condition and any specialist stain treatment are reviewed before booking." },
     ],
     icon: Sparkles,
   },
@@ -146,6 +149,7 @@ export const cleaningTypes = [
   "After-Builders Cleaning",
   "Communal Area Cleaning",
   "Pressure & Jet Washing",
+  "Driveway & Porch Washing",
   "Waste Removal",
   "Housekeeping Services",
 ] as const;
