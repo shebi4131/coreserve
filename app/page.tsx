@@ -20,8 +20,8 @@ const homeServices = [
   { title: "Deep Cleaning", summary: "Give your property a thorough clean, focusing on kitchens, bathrooms, floors, surfaces and other areas that need extra attention.", href: "/services/deep-move-cleaning", icon: Sparkles },
   { title: "End-of-Tenancy Cleaning", summary: "Prepare rental properties for inspection, handover or new occupants with a detailed cleaning service based on an agreed checklist.", href: "/services/end-of-tenancy-cleaning", icon: KeyRound },
   { title: "Commercial and Office Cleaning", summary: "Maintain clean, presentable workplaces with cleaning schedules designed around your business and operating hours.", href: "/services/commercial-office-cleaning", icon: Building2 },
-  { title: "Carpet and Upholstery Cleaning", summary: "Refresh carpets, rugs and upholstered furniture with suitable cleaning methods selected for the material and its condition.", href: "/contact?service=carpet-upholstery-cleaning", icon: Armchair },
-  { title: "After-Builders Cleaning", summary: "Remove agreed construction dust and residue after renovation or building work, preparing the property for occupation.", href: "/contact?service=after-builders-cleaning", icon: Hammer },
+  { title: "Carpet and Upholstery Cleaning", summary: "Refresh carpets, rugs and upholstered furniture with suitable cleaning methods selected for the material and its condition.", href: "/services/carpet-upholstery-cleaning", icon: Armchair },
+  { title: "After-Builders Cleaning", summary: "Remove agreed construction dust and residue after renovation or building work, preparing the property for occupation.", href: "/services/after-builders-cleaning", icon: Hammer },
 ] as const;
 
 const localBusinessSchema = {
@@ -31,6 +31,7 @@ const localBusinessSchema = {
   description: siteConfig.description,
   url: siteConfig.siteUrl,
   telephone: "+443301119592",
+  sameAs: [siteConfig.social.instagram, siteConfig.social.facebook],
   address: { "@type": "PostalAddress", streetAddress: siteConfig.address.street, addressLocality: siteConfig.address.locality, postalCode: siteConfig.address.postcode, addressCountry: siteConfig.address.country },
   areaServed: ["United Kingdom", "Greater London", "Greater Manchester", "Merseyside", "Lancashire"],
   knowsAbout: cleaningTypes,

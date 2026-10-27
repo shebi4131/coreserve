@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Clock3, MapPin, MessageCircle, Phone } from "lucide-react";
 import { QuoteForm } from "@/components/QuoteForm";
+import { SocialIcon } from "@/components/SocialIcon";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -27,7 +28,9 @@ export default function ContactPage() {
             <p>Share the postcode, property, service and timescale. We’ll use those details to clarify the scope before anything is booked.</p>
             <div className="contact-methods">
               <a href={siteConfig.phoneHref}><span><Phone /></span><div><small>Call us</small><strong>{siteConfig.phoneDisplay}</strong></div></a>
-              <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noreferrer"><span><MessageCircle /></span><div><small>Message us</small><strong>Start a WhatsApp chat</strong></div></a>
+              <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer"><span><MessageCircle /></span><div><small>WhatsApp</small><strong>Start a WhatsApp chat</strong></div></a>
+              <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer"><span><SocialIcon platform="instagram" /></span><div><small>Instagram</small><strong>Follow @coreserve_</strong></div></a>
+              <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer"><span><SocialIcon platform="facebook" /></span><div><small>Facebook</small><strong>Visit our Facebook page</strong></div></a>
               <div><span><MapPin /></span><div><small>Our base</small><strong>Based in North-West</strong></div></div>
               <div><span><Clock3 /></span><div><small>Coverage</small><strong>Wider UK coverage subject to location and availability</strong></div></div>
             </div>

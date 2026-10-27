@@ -1,4 +1,4 @@
-import { Building2, House, KeyRound, Sparkles } from "lucide-react";
+import { Armchair, Building2, Hammer, House, KeyRound, Sparkles } from "lucide-react";
 
 export type Service = {
   slug: string;
@@ -164,6 +164,80 @@ export const services: readonly Service[] = [
       { question: "Can cleaning take place outside normal working hours?", answer: "Share the required access window. Availability depends on location, frequency and the site arrangements, and will be confirmed before booking." },
     ],
     icon: Building2,
+  },
+  {
+    slug: "carpet-upholstery-cleaning",
+    title: "Carpet and upholstery cleaning",
+    shortTitle: "Carpet & upholstery",
+    category: "Cleaning",
+    summary: "Carpet, rug, sofa and upholstery cleaning planned around the material, condition and areas requiring attention.",
+    audience: "Homeowners, tenants, landlords, offices and managed properties",
+    headline: "A considered refresh for carpets, rugs and upholstered furniture.",
+    intro: "Carpet and upholstery cleaning starts by identifying the material, condition, affected areas and access. We agree which rooms or items are included and discuss visible marks, drying considerations and any treatment limitations before quotation.",
+    includes: [
+      "Carpets and rugs in the rooms agreed in the quotation",
+      "Sofas, chairs and other agreed upholstered furniture",
+      "Pre-clean review of material, condition and visible marks",
+      "Suitable cleaning methods selected for the item or floor covering",
+      "Focused attention to agreed high-use areas",
+      "Clear guidance about drying and access after cleaning",
+    ],
+    preparation: [
+      "The number and approximate size of carpeted rooms",
+      "The type and number of upholstered items",
+      "Photographs of labels, marks or areas of concern where useful",
+      "Parking, access and furniture-moving requirements",
+      "Your preferred date and required completion time",
+    ],
+    process: [
+      { title: "Review", detail: "We identify the material, condition, items and rooms involved." },
+      { title: "Confirm", detail: "The method, included areas and any limitations are agreed." },
+      { title: "Clean", detail: "The confirmed carpets or upholstered items are treated methodically." },
+      { title: "Aftercare", detail: "We explain drying expectations and any relevant follow-up guidance." },
+    ],
+    faqs: [
+      { question: "Can you guarantee every stain will be removed?", answer: "No responsible cleaning service can guarantee removal of every mark. Results depend on the material, age and cause of the stain. We discuss visible concerns and realistic limitations before work begins." },
+      { question: "How long will carpets or upholstery take to dry?", answer: "Drying time varies with the material, cleaning method, ventilation and conditions at the property. Practical guidance is provided for the agreed work." },
+      { question: "Can this be added to another cleaning service?", answer: "Yes. Select carpet or upholstery cleaning alongside the other services required so the full scope and scheduling can be reviewed together." },
+    ],
+    icon: Armchair,
+  },
+  {
+    slug: "after-builders-cleaning",
+    title: "After-builders cleaning",
+    shortTitle: "After-builders cleaning",
+    category: "Cleaning",
+    summary: "Post-renovation cleaning for agreed construction dust and residue, helping prepare the property for occupation or handover.",
+    audience: "Homeowners, landlords, developers, contractors and property managers",
+    headline: "The detailed clean between completed building work and a usable property.",
+    intro: "After-builders cleaning is planned around the work completed, the remaining dust or residue and the condition of each area. We confirm that construction work is finished, utilities are available and heavy building waste has been removed before agreeing the cleaning scope.",
+    includes: [
+      "Removal of accessible fine dust from agreed surfaces and fittings",
+      "Wiping of skirting, doors, frames, switches and visible fixtures",
+      "Kitchen and bathroom cleaning within the confirmed areas",
+      "Vacuuming and mopping of suitable finished floors",
+      "Interior window glass and sills where safe and agreed",
+      "A final review against the confirmed post-work cleaning scope",
+    ],
+    preparation: [
+      "Property type and the rooms affected by building work",
+      "The nature of the renovation or construction completed",
+      "Confirmation that contractors and active works have finished",
+      "Details of remaining waste, paint, adhesive or specialist residue",
+      "Access, parking, utilities and required completion date",
+    ],
+    process: [
+      { title: "Assess", detail: "We review the completed works, affected rooms and remaining residue." },
+      { title: "Scope", detail: "Included surfaces, exclusions and any specialist needs are documented." },
+      { title: "Clean", detail: "Dust and agreed residue are removed in a structured sequence." },
+      { title: "Check", detail: "The completed areas are reviewed against the accepted scope." },
+    ],
+    faqs: [
+      { question: "Does building work need to be finished first?", answer: "Yes. The property should be safe to access and active building work should be complete before the clean. This helps prevent new dust or debris from undoing the work." },
+      { question: "Is heavy construction waste included?", answer: "Heavy rubble, skips and hazardous building waste are not assumed to be part of the cleaning service. Tell us what remains at the property so any exclusions or separate arrangements are clear." },
+      { question: "Can paint or adhesive residue be removed?", answer: "Mention and photograph specialist residue before quotation. The appropriate approach depends on the surface and material, and removal may require separate assessment." },
+    ],
+    icon: Hammer,
   },
 ] as const;
 

@@ -6,6 +6,11 @@ export const siteConfig = {
   phoneDisplay: "+44 330 111 9592",
   phoneHref: "tel:+443301119592",
   whatsappNumber: "443301119592",
+  social: {
+    instagram: "https://www.instagram.com/coreserve_/?hl=en",
+    facebook: "https://www.facebook.com/profile.php?id=61595439074278",
+    whatsapp: "https://wa.me/443301119592",
+  },
   address: {
     street: "45 Symonds Road, Fulwood",
     locality: "Preston",

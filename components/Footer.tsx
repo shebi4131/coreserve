@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { MessageCircle } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { SocialIcon } from "@/components/SocialIcon";
 import { siteConfig } from "@/lib/site";
 
 export function Footer() {
@@ -29,6 +31,11 @@ export function Footer() {
               <span>Based in North-West</span>
               <span>Wider UK coverage</span>
             </nav>
+            <div className="footer__socials" role="group" aria-label="Coreserve social media">
+              <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer" aria-label="Follow Coreserve on Instagram" title="Instagram"><SocialIcon platform="instagram" /></a>
+              <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer" aria-label="Follow Coreserve on Facebook" title="Facebook"><SocialIcon platform="facebook" /></a>
+              <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer" aria-label="Message Coreserve on WhatsApp" title="WhatsApp"><MessageCircle /></a>
+            </div>
           </div>
         </div>
         <div className="footer__bottom">

@@ -21,6 +21,8 @@ const serviceImages = {
   "end-of-tenancy-cleaning": { src: "/images/services/end-of-tenancy-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team carrying out an end-of-tenancy clean" },
   "deep-move-cleaning": { src: "/images/services/deep-move-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team deep cleaning a kitchen" },
   "commercial-office-cleaning": { src: "/images/services/regular-commercial-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team providing commercial and office cleaning" },
+  "carpet-upholstery-cleaning": { src: "/images/services/specialist-cleaning.jpeg", width: 1312, height: 816, alt: "Coreserve professional carrying out carpet and upholstery cleaning" },
+  "after-builders-cleaning": { src: "/images/services/services-hero.jpeg", width: 1376, height: 768, alt: "Coreserve cleaning team prepared for an after-builders clean" },
 } as const;
 
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
