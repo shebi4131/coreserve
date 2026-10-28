@@ -30,9 +30,9 @@ const localBusinessSchema = {
   name: siteConfig.name,
   description: siteConfig.description,
   url: siteConfig.siteUrl,
-  telephone: "+443301119592",
+  telephone: siteConfig.phoneDisplay,
   sameAs: [siteConfig.social.instagram, siteConfig.social.facebook],
-  address: { "@type": "PostalAddress", streetAddress: siteConfig.address.street, addressLocality: siteConfig.address.locality, postalCode: siteConfig.address.postcode, addressCountry: siteConfig.address.country },
+  address: { "@type": "PostalAddress", streetAddress: siteConfig.address.street, addressLocality: siteConfig.address.locality, addressRegion: siteConfig.address.region, postalCode: siteConfig.address.postcode, addressCountry: siteConfig.address.country },
   areaServed: ["United Kingdom", "Greater London", "Greater Manchester", "Merseyside", "Lancashire"],
   knowsAbout: cleaningTypes,
 };

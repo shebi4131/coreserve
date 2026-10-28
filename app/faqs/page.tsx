@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const generalFaqs = [
-  { question: "How do I request a quote?", answer: "Use the quote form to share the service, postcode, property type, size, condition, access and preferred date. Your answers open as a WhatsApp message for you to review before sending." },
+  { question: "How do I request a quote?", answer: "Use the online quote form to share the service, postcode, property type, size, condition, access and preferred date. The details are sent securely to Coreserve for review and quotation follow-up." },
   { question: "Do you publish fixed prices?", answer: "Not at present. Property condition, size, appliances, access, parking and selected extras can change the work required, so we confirm the scope before quoting." },
   { question: "What happens after I send an enquiry?", answer: "We review the details, ask for anything essential that is missing, assess the scope and availability, and then confirm the quotation and arrangements before booking." },
   { question: "Can I arrange more than one service?", answer: "Yes. Select multiple services or explain what the property needs. Availability and the appropriate order of work will be confirmed during the quotation process." },

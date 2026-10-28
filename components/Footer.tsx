@@ -28,7 +28,7 @@ export function Footer() {
             <h2>Contact</h2>
             <nav aria-label="Contact details">
               <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
-              <span>Based in North-West</span>
+              <span>{siteConfig.address.street}, {siteConfig.address.locality}, {siteConfig.address.postcode}</span>
               <span>Wider UK coverage</span>
             </nav>
             <div className="footer__socials" role="group" aria-label="Coreserve social media">
