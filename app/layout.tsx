@@ -36,6 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image", title: siteConfig.name, description: siteConfig.description },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
+  verification: { google: "pi5jPxL3-erPg0vpM_VGEmfzA3L70-Msz8od0cpvfhs" },
 };
 
 export const viewport: Viewport = { themeColor: "#062c50", width: "device-width", initialScale: 1 };
