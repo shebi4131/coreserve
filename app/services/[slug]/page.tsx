@@ -61,7 +61,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       "@type": "LocalBusiness",
       name: siteConfig.name,
       url: siteConfig.siteUrl,
-      telephone: "+443301119592",
+      telephone: siteConfig.phoneDisplay,
     },
   };
 
@@ -106,7 +106,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <li><Check /> Multiple cleaning services in one enquiry</li>
               <li><Check /> Wider UK coverage checked by postcode</li>
               <li><Check /> Residential, commercial and managed properties</li>
-              <li><Check /> Review everything before sending on WhatsApp</li>
+              <li><Check /> Submit the details securely for review</li>
             </ul>
           </div>
           <QuoteForm variant="service" serviceSlug={service.slug} serviceTitle={service.title} />

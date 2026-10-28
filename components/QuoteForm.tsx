@@ -2,9 +2,8 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, MessageCircle } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, LoaderCircle, Send } from "lucide-react";
 import { cleaningTypes } from "@/lib/services";
-import { siteConfig } from "@/lib/site";
 
 const serviceDefaults: Record<string, string[]> = {
   "domestic-cleaning": ["Domestic & Residential Cleaning"],
@@ -27,6 +26,8 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle }: Qu
     serviceSlug ? serviceDefaults[serviceSlug] ?? [] : [],
   );
   const [status, setStatus] = useState("");
+  const [statusType, setStatusType] = useState<"idle" | "success" | "error">("idle");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (serviceSlug) return;
@@ -39,44 +40,54 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle }: Qu
       ? current.filter((item) => item !== service)
       : [...current, service]);
     setStatus("");
+    setStatusType("idle");
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const formElement = event.currentTarget;
 
     if (selectedServices.length === 0) {
       setStatus("Select at least one cleaning service before continuing.");
+      setStatusType("error");
       return;
     }
 
-    const form = new FormData(event.currentTarget);
-    const lines = [
-      "Hello Coreserve Facilities Group, I would like to request a cleaning quote.",
-      "",
-      ...(serviceTitle ? [`Enquiry page: ${serviceTitle}`] : []),
-      `Cleaning services: ${selectedServices.join(", ")}`,
-      `Name: ${form.get("name")}`,
-      `Phone: ${form.get("phone")}`,
-      `Email: ${form.get("email") || "Not provided"}`,
-      `Postcode / location: ${form.get("location")}`,
-      `Property type: ${form.get("propertyType")}`,
-      `Bedrooms: ${form.get("bedrooms") || "Not applicable / unsure"}`,
-      `Bathrooms: ${form.get("bathrooms") || "Not applicable / unsure"}`,
-      `Occupancy: ${form.get("occupancy") || "Not specified"}`,
-      `Required timing: ${form.get("timing")}`,
-      `Preferred date: ${form.get("date") || "Flexible"}`,
-      `Access / parking: ${form.get("access") || "Not specified"}`,
-      `Appliances / additional requests: ${form.get("extras") || "None specified"}`,
-      "",
-      `Property condition and notes: ${form.get("message") || "No additional details"}`,
-    ];
+    const endpoint = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL;
+    if (!endpoint) {
+      setStatus("Online enquiry storage is not configured yet. Please use the WhatsApp option or call us.");
+      setStatusType("error");
+      return;
+    }
 
-    setStatus("WhatsApp opened with your enquiry. Please review and send it.");
-    window.open(
-      `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
+    const form = new FormData(formElement);
+    if (form.get("website")) return;
+
+    const payload = new URLSearchParams();
+    const fieldNames = ["name", "phone", "email", "location", "propertyType", "bedrooms", "bathrooms", "occupancy", "timing", "date", "access", "extras", "message"];
+    fieldNames.forEach((field) => payload.set(field, String(form.get(field) || "")));
+    payload.set("cleaningServices", selectedServices.join(", "));
+    payload.set("source", variant === "service" ? "Service page quote form" : "Contact page quote form");
+    payload.set("servicePage", serviceTitle || "");
+    payload.set("pageUrl", window.location.href);
+    payload.set("submittedAt", new Date().toISOString());
+
+    setIsSubmitting(true);
+    setStatus("Sending your enquiry...");
+    setStatusType("idle");
+
+    try {
+      await fetch(endpoint, { method: "POST", mode: "no-cors", body: payload });
+      formElement.reset();
+      setSelectedServices(serviceSlug ? serviceDefaults[serviceSlug] ?? [] : []);
+      setStatus("Thank you. Your enquiry has been submitted and Coreserve will review the details.");
+      setStatusType("success");
+    } catch {
+      setStatus("We could not submit the enquiry. Please try again or contact us by phone or WhatsApp.");
+      setStatusType("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const formClass = variant === "service" ? "cleaning-quote-form" : "quote-form";
@@ -89,9 +100,9 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle }: Qu
         <div>
           <span className="eyebrow eyebrow--compact">Free cleaning quote</span>
           <h2>{variant === "service" ? "Tell us what needs cleaning" : "Tell us about the property"}</h2>
-          <p>Select every service you need, then add the property details. Nothing is sent until you review the WhatsApp message.</p>
+          <p>Select every service you need, then add the property details. Your enquiry will be sent securely to Coreserve for review.</p>
         </div>
-        <span className="secure-note"><CheckCircle2 size={18} /> Review first</span>
+        <span className="secure-note"><CheckCircle2 size={18} /> Secure enquiry</span>
       </div>
 
       <fieldset className="cleaning-selector field-wide">
@@ -115,6 +126,7 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle }: Qu
       </fieldset>
 
       <div className="form-grid cleaning-form-grid">
+        <label className="form-honeypot" aria-hidden="true"><span>Website</span><input name="website" tabIndex={-1} autoComplete="off" /></label>
         <label><span>Full name *</span><input name="name" autoComplete="name" required placeholder="Your full name" /></label>
         <label><span>Mobile number *</span><input name="phone" type="tel" autoComplete="tel" required placeholder="Best contact number" /></label>
         <label><span>Email address</span><input name="email" type="email" autoComplete="email" placeholder="you@example.com" /></label>
@@ -161,8 +173,12 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle }: Qu
       </div>
 
       <div className={footerClass}>
-        <button className="button button--primary" type="submit"><MessageCircle size={18} /> Prepare WhatsApp {variant === "service" ? "quote" : "enquiry"} <ArrowUpRight size={18} /></button>
-        <p aria-live="polite">{status || "This website does not store your answers."}</p>
+        <button className="button button--primary" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? <LoaderCircle className="button-spinner" size={18} /> : <Send size={18} />}
+          {isSubmitting ? "Sending..." : `Send ${variant === "service" ? "quote request" : "enquiry"}`}
+          {!isSubmitting ? <ArrowUpRight size={18} /> : null}
+        </button>
+        <p className={statusType === "idle" ? undefined : `form-status form-status--${statusType}`} aria-live="polite">{status || "Your details are used only to respond to this enquiry."}</p>
       </div>
     </form>
   );
