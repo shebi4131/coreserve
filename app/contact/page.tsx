@@ -53,7 +53,7 @@ export default function ContactPage() {
           <div className="contact-location__copy">
             <span className="eyebrow eyebrow--light">Our North-West base</span>
             <h2 id="contact-location-title">Find Coreserve in Burnley.</h2>
-            <p>Our base is at {siteConfig.address.street}, {siteConfig.address.locality}, {siteConfig.address.region}, {siteConfig.address.postcode}. Cleaning availability is still confirmed from the service postcode and required date.</p>
+            <p>Based in Burnley.</p>
             <address><MapPin aria-hidden="true" /><span><strong>Coreserve Facilities Group</strong>{siteConfig.address.street}<br />{siteConfig.address.locality}, {siteConfig.address.postcode}</span></address>
             <a className="button button--primary" href={siteConfig.maps.directions} target="_blank" rel="noreferrer">Get directions <Navigation size={18} /><ArrowUpRight size={17} /></a>
           </div>
