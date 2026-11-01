@@ -1,6 +1,6 @@
 import { sanityClient } from "./client";
-import { blogSettingsQuery, postBySlugQuery, postSlugsQuery, postsQuery } from "./queries";
-import type { BlogPost, BlogPostSummary, BlogSettings } from "./types";
+import { blogSettingsQuery, categoriesQuery, categoryBySlugQuery, categorySlugsQuery, footerCategoriesQuery, postBySlugQuery, postSlugsQuery, postsByCategoryQuery, postsQuery } from "./queries";
+import type { BlogCategory, BlogPost, BlogPostSummary, BlogSettings } from "./types";
 
 async function fetchSafely<T>(query: string, fallback: T, params: Record<string, unknown> = {}): Promise<T> {
   if (!sanityClient) return fallback;
@@ -23,6 +23,26 @@ export function getBlogPost(slug: string) {
 
 export function getBlogPostSlugs() {
   return fetchSafely<string[]>(postSlugsQuery, []);
+}
+
+export function getBlogCategories() {
+  return fetchSafely<BlogCategory[]>(categoriesQuery, []);
+}
+
+export function getFooterBlogCategories() {
+  return fetchSafely<BlogCategory[]>(footerCategoriesQuery, []);
+}
+
+export function getBlogCategorySlugs() {
+  return fetchSafely<string[]>(categorySlugsQuery, []);
+}
+
+export function getBlogCategory(slug: string) {
+  return fetchSafely<BlogCategory | null>(categoryBySlugQuery, null, { slug });
+}
+
+export function getBlogPostsByCategory(categoryId: string) {
+  return fetchSafely<BlogPostSummary[]>(postsByCategoryQuery, [], { categoryId });
 }
 
 export function getBlogSettings() {

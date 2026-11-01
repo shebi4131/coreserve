@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 import { services } from "@/lib/services";
-import { getBlogPosts } from "@/sanity/lib/fetch";
+import { getBlogCategories, getBlogPosts } from "@/sanity/lib/fetch";
 
 export const dynamic = "force-static";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getBlogPosts();
+  const [posts, categories] = await Promise.all([getBlogPosts(), getBlogCategories()]);
   const staticPages: MetadataRoute.Sitemap = [
     { url: siteConfig.siteUrl, lastModified: new Date(), changeFrequency: "monthly", priority: 1 },
     { url: `${siteConfig.siteUrl}/services`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
@@ -29,6 +29,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(post.updatedAt || post.publishedAt),
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    ...categories.filter((category) => category.slug).map((category) => ({
+      url: `${siteConfig.siteUrl}/blog/category/${category.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.65,
     })),
   ];
 }

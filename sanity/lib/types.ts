@@ -14,7 +14,7 @@ export type SanityImage = {
 };
 
 export type BlogAuthor = { name: string; role?: string; bio?: string; image?: SanityImage };
-export type BlogCategory = { title: string; slug: string };
+export type BlogCategory = { _id?: string; title: string; slug: string; description?: string; postCount?: number };
 export type BlogFaq = { _key?: string; question: string; answer: string };
 export type BlogCallout = { _type: "callout"; _key: string; title?: string; text: string };
 export type BlogBody = Array<PortableTextBlock | SanityImage | BlogCallout>;

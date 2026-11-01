@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, CalendarDays, Clock3, UserRound } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpenText, CalendarDays, Clock3, UserRound } from "lucide-react";
+import { ArticleShare } from "@/components/blog/ArticleShare";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { BlogImage } from "@/components/blog/BlogImage";
 import { BlogJsonLd } from "@/components/blog/BlogJsonLd";
 import { PortableArticle } from "@/components/blog/PortableArticle";
-import { getBlogPost, getBlogPostSlugs } from "@/sanity/lib/fetch";
+import { getBlogPost, getBlogPosts, getBlogPostSlugs } from "@/sanity/lib/fetch";
 import { imageUrl } from "@/sanity/lib/image";
 import { services } from "@/lib/services";
+import { siteConfig } from "@/lib/site";
 
 type BlogPostPageProps = { params: Promise<{ slug: string }> };
 const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
@@ -56,8 +58,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const post = await getBlogPost(slug);
   if (!post) notFound();
 
+  const allPosts = await getBlogPosts();
   const readingMinutes = Math.max(2, Math.ceil(JSON.stringify(post.body || []).length / 1100));
   const relatedServices = services.filter((service) => post.relatedServices?.includes(service.slug));
+  const sidebarServices = [...relatedServices, ...services.filter((service) => !relatedServices.some((related) => related.slug === service.slug))].slice(0, 4);
+  const morePosts = allPosts.filter((candidate) => candidate.slug !== post.slug).slice(0, 3);
+  const shareUrl = new URL(post.canonicalUrl || `/blog/${post.slug}`, siteConfig.siteUrl).toString();
 
   return (
     <main id="main-content">
@@ -66,7 +72,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <header className="article-hero">
           <div className="shell article-hero__inner">
             <Link className="article-back" href="/blog"><ArrowLeft size={17} /> All articles</Link>
-            {post.categories?.length ? <div className="article-categories">{post.categories.map((category) => <span key={category.slug}>{category.title}</span>)}</div> : null}
+            {post.categories?.length ? <div className="article-categories">{post.categories.map((category) => <Link href={`/blog/category/${category.slug}`} key={category.slug}>{category.title}</Link>)}</div> : null}
             <h1>{post.title}</h1>
             <p className="article-deck">{post.excerpt}</p>
             <div className="article-meta">
@@ -80,9 +86,27 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="shell article-featured-image"><BlogImage image={post.featuredImage} width={1400} height={820} loading="eager" /></div>
 
         <div className="shell article-layout">
-          <div className="article-body"><PortableArticle value={post.body || []} /></div>
+          <div className="article-body">
+            <PortableArticle value={post.body || []} />
+            <ArticleShare title={post.title} url={shareUrl} />
+          </div>
           <aside className="article-sidebar">
-            <div><span className="eyebrow eyebrow--compact">Need a quotation?</span><h2>Tell us about your property.</h2><p>Share the postcode, property details and preferred date for a clear, itemised response.</p><Link className="button button--primary" href="/contact">Request a quote <ArrowRight size={17} /></Link></div>
+            <div className="article-sidebar__card article-sidebar__quote"><span className="eyebrow eyebrow--compact">Need a quotation?</span><h2>Tell us about your property.</h2><p>Share the postcode, property details and preferred date for a clear, itemised response.</p><Link className="button button--primary" href="/contact">Request a quote <ArrowRight size={17} /></Link></div>
+            {morePosts.length ? (
+              <div className="article-sidebar__card">
+                <span className="eyebrow eyebrow--compact">More cleaning advice</span>
+                <nav className="article-sidebar__links" aria-label="More cleaning advice">
+                  {morePosts.map((candidate) => <Link href={`/blog/${candidate.slug}`} key={candidate._id}><BookOpenText size={18} /><span>{candidate.title}</span><ArrowRight size={15} /></Link>)}
+                </nav>
+              </div>
+            ) : null}
+            <div className="article-sidebar__card">
+              <span className="eyebrow eyebrow--compact">Explore cleaning topics</span>
+              <nav className="article-sidebar__links" aria-label="Related cleaning services">
+                {sidebarServices.map((service) => <Link href={`/services/${service.slug}`} key={service.slug}><service.icon size={18} /><span>{service.shortTitle}</span><ArrowRight size={15} /></Link>)}
+              </nav>
+              <Link className="article-sidebar__all" href="/services">View all cleaning services <ArrowRight size={15} /></Link>
+            </div>
           </aside>
         </div>
       </article>

@@ -14,7 +14,7 @@ export function BlogCard({ post, featured = false }: { post: BlogPostSummary; fe
       <div className="blog-card__content">
         <div className="blog-card__meta">
           <time dateTime={post.publishedAt}>{dateFormatter.format(new Date(post.publishedAt))}</time>
-          {post.categories?.[0] ? <span>{post.categories[0].title}</span> : null}
+          {post.categories?.[0] ? <Link href={`/blog/category/${post.categories[0].slug}`}>{post.categories[0].title}</Link> : null}
         </div>
         <h2><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
         <p>{post.excerpt}</p>
