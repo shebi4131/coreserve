@@ -3,8 +3,11 @@ import { MessageCircle } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { SocialIcon } from "@/components/SocialIcon";
 import { siteConfig } from "@/lib/site";
+import { getFooterBlogCategories } from "@/sanity/lib/fetch";
 
-export function Footer() {
+export async function Footer() {
+  const categories = await getFooterBlogCategories();
+
   return (
     <footer className="footer">
       <div className="shell">
@@ -18,10 +21,18 @@ export function Footer() {
             <nav aria-label="Footer navigation">
               <Link href="/">Home</Link>
               <Link href="/services">Services</Link>
+              <Link href="/blog">Cleaning advice</Link>
               <Link href="/areas-we-cover">Areas we cover</Link>
               <Link href="/about">About</Link>
               <Link href="/faqs">FAQs</Link>
               <Link href="/contact">Request a quote</Link>
+            </nav>
+          </div>
+          <div>
+            <h2>Advice categories</h2>
+            <nav aria-label="Cleaning advice categories">
+              {categories.map((category) => <Link href={`/blog/category/${category.slug}`} key={category.slug}>{category.title}</Link>)}
+              <Link className="footer__all-articles" href="/blog">Explore all articles <span aria-hidden="true">→</span></Link>
             </nav>
           </div>
           <div>

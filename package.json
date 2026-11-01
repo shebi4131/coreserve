@@ -7,14 +7,22 @@
     "build": "next build",
     "start": "wrangler pages dev out",
     "check": "tsc --noEmit",
+    "cms:manage": "sanity manage",
+    "cms:validate": "sanity schema validate",
     "preview:cloudflare": "wrangler pages dev out",
     "deploy": "npm run build && wrangler pages deploy out --project-name coreserve --branch main"
   },
   "dependencies": {
+    "@portabletext/react": "^8.0.1",
+    "@sanity/icons": "^5.2.3",
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^6.21.0",
     "lucide-react": "1.60.0",
     "next": "16.4.2",
+    "next-sanity": "^13.4.0",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "sanity": "^6.21.0"
   },
   "devDependencies": {
     "@fontsource/manrope": "^5.3.0",

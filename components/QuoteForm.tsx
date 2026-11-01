@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, LoaderCircle, Send } from "lucide-react";
+import { CheckCircle2, LoaderCircle, Send } from "lucide-react";
 import { cleaningTypes } from "@/lib/services";
 
 const serviceDefaults: Record<string, string[]> = {
@@ -176,7 +176,6 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle }: Qu
         <button className="button button--primary" type="submit" disabled={isSubmitting}>
           {isSubmitting ? <LoaderCircle className="button-spinner" size={18} /> : <Send size={18} />}
           {isSubmitting ? "Sending..." : `Send ${variant === "service" ? "quote request" : "enquiry"}`}
-          {!isSubmitting ? <ArrowUpRight size={18} /> : null}
         </button>
         <p className={statusType === "idle" ? undefined : `form-status form-status--${statusType}`} aria-live="polite">{status || "Your details are used only to respond to this enquiry."}</p>
       </div>

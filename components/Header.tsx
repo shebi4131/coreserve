@@ -9,6 +9,7 @@ import { siteConfig } from "@/lib/site";
 
 const links = [
   { href: "/", label: "Home" },
+  { href: "/blog", label: "Blog" },
   { href: "/areas-we-cover", label: "Areas" },
   { href: "/about", label: "About" },
   { href: "/faqs", label: "FAQs" },
@@ -28,7 +29,9 @@ export function Header() {
   const pathname = usePathname();
   const [servicesOpen, setServicesOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDetailsElement>(null);
-  const isActive = (href: string) => pathname === href || (href === "/services" && pathname.startsWith("/services/"));
+  const isActive = (href: string) => pathname === href
+    || (href === "/services" && pathname.startsWith("/services/"))
+    || (href === "/blog" && pathname.startsWith("/blog/"));
 
   useEffect(() => {
     setServicesOpen(false);

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, Clock3, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
+import { Clock3, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
 import { QuoteForm } from "@/components/QuoteForm";
 import { SocialIcon } from "@/components/SocialIcon";
 import { siteConfig } from "@/lib/site";
@@ -55,7 +55,7 @@ export default function ContactPage() {
             <h2 id="contact-location-title">Find Coreserve in Burnley.</h2>
             <p>Based in Burnley.</p>
             <address><MapPin aria-hidden="true" /><span><strong>Coreserve Facilities Group</strong>{siteConfig.address.street}<br />{siteConfig.address.locality}, {siteConfig.address.postcode}</span></address>
-            <a className="button button--primary" href={siteConfig.maps.directions} target="_blank" rel="noreferrer">Get directions <Navigation size={18} /><ArrowUpRight size={17} /></a>
+            <a className="button button--primary" href={siteConfig.maps.directions} target="_blank" rel="noreferrer">Get directions <Navigation size={18} /></a>
           </div>
           <div className="contact-map">
             <iframe
