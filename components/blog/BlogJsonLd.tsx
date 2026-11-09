@@ -21,6 +21,7 @@ export function BlogJsonLd({ post }: { post: BlogPost }) {
       author: { "@type": "Person", name: post.author?.name || siteConfig.name },
       publisher: {
         "@type": "Organization",
+        "@id": `${siteConfig.siteUrl}/#business`,
         name: siteConfig.name,
         url: siteConfig.siteUrl,
         logo: { "@type": "ImageObject", url: `${siteConfig.siteUrl}/brand/coreserve-logo.png` },

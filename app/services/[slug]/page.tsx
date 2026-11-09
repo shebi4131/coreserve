@@ -58,10 +58,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
     serviceType: service.title,
     areaServed: ["United Kingdom", "Greater London", "Greater Manchester", "Merseyside", "Lancashire"],
     provider: {
-      "@type": "LocalBusiness",
-      name: siteConfig.name,
-      url: siteConfig.siteUrl,
-      telephone: siteConfig.phoneDisplay,
+      "@id": `${siteConfig.siteUrl}/#business`,
     },
   };
 

@@ -24,23 +24,66 @@ const homeServices = [
   { title: "After-Builders Cleaning", summary: "Remove agreed construction dust and residue after renovation or building work, preparing the property for occupation.", href: "/services/after-builders-cleaning", icon: Hammer },
 ] as const;
 
-const localBusinessSchema = {
+const businessId = `${siteConfig.siteUrl}/#business`;
+const websiteId = `${siteConfig.siteUrl}/#website`;
+
+const entitySchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: siteConfig.name,
-  description: siteConfig.description,
-  url: siteConfig.siteUrl,
-  telephone: siteConfig.phoneDisplay,
-  sameAs: [siteConfig.social.instagram, siteConfig.social.facebook],
-  address: { "@type": "PostalAddress", streetAddress: siteConfig.address.street, addressLocality: siteConfig.address.locality, addressRegion: siteConfig.address.region, postalCode: siteConfig.address.postcode, addressCountry: siteConfig.address.country },
-  areaServed: ["United Kingdom", "Greater London", "Greater Manchester", "Merseyside", "Lancashire"],
-  knowsAbout: cleaningTypes,
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: siteConfig.siteUrl,
+      name: siteConfig.name,
+      alternateName: siteConfig.shortName,
+      inLanguage: "en-GB",
+      publisher: { "@id": businessId },
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": businessId,
+      name: siteConfig.name,
+      legalName: siteConfig.legalName,
+      alternateName: siteConfig.shortName,
+      description: siteConfig.description,
+      url: siteConfig.siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.siteUrl}/brand/coreserve-logo.png`,
+      },
+      image: `${siteConfig.siteUrl}/images/home/home-hero.jpeg`,
+      telephone: siteConfig.phoneInternational,
+      sameAs: [
+        siteConfig.maps.businessProfile,
+        siteConfig.social.instagram,
+        siteConfig.social.facebook,
+      ],
+      hasMap: siteConfig.maps.businessProfile,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: siteConfig.address.street,
+        addressLocality: siteConfig.address.locality,
+        addressRegion: siteConfig.address.region,
+        postalCode: siteConfig.address.postcode,
+        addressCountry: siteConfig.address.country,
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: siteConfig.phoneInternational,
+        contactType: "customer service",
+        areaServed: "GB",
+        availableLanguage: "English",
+      },
+      areaServed: ["United Kingdom", "Greater Manchester", "Merseyside", "Lancashire"],
+      knowsAbout: cleaningTypes,
+    },
+  ],
 };
 
 export default function HomePage() {
   return (
     <main id="main-content">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(entitySchema).replace(/</g, "\\u003c") }} />
 
       <section className="hero">
         <ResponsiveImage src="/images/home/home-hero.jpeg" alt="Coreserve professional cleaning team working in a modern home" width={1312} height={816} className="hero__media" sizes="100vw" priority />
