@@ -41,10 +41,6 @@ export default function PrivacyPage() {
             How Coreserve Facilities Group Ltd collects, uses, stores and protects
             personal information.
           </p>
-          <div className="legal-hero__meta">
-            <span>Effective date</span>
-            <strong>3 November 2026</strong>
-          </div>
         </div>
       </section>
 
