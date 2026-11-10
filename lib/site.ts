@@ -9,8 +9,8 @@ export const siteConfig = {
   phoneInternational: "+44 330 111 9592",
   whatsappNumber: "443301119592",
   social: {
-    instagram: "https://www.instagram.com/coreserve_/?hl=en",
-    facebook: "https://www.facebook.com/profile.php?id=61595439074278",
+    instagram: "https://www.instagram.com/coreserve_group/",
+    facebook: "https://www.facebook.com/profile.php?id=61596391760517",
     whatsapp: "https://wa.me/443301119592",
   },
   address: {
