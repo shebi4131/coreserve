@@ -29,7 +29,7 @@ export default function ContactPage() {
             <div className="contact-methods">
               <a href={siteConfig.phoneHref}><span><Phone /></span><div><small>Call us</small><strong>{siteConfig.phoneDisplay}</strong></div></a>
               <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer"><span><MessageCircle /></span><div><small>WhatsApp</small><strong>Start a WhatsApp chat</strong></div></a>
-              <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer"><span><SocialIcon platform="instagram" /></span><div><small>Instagram</small><strong>Follow @coreserve_</strong></div></a>
+              <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer"><span><SocialIcon platform="instagram" /></span><div><small>Instagram</small><strong>Follow @coreserve_group</strong></div></a>
               <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer"><span><SocialIcon platform="facebook" /></span><div><small>Facebook</small><strong>Visit our Facebook page</strong></div></a>
               <div><span><MapPin /></span><div><small>Our base</small><strong>{siteConfig.address.street}, {siteConfig.address.locality}, {siteConfig.address.postcode}</strong></div></div>
               <div><span><Clock3 /></span><div><small>Coverage</small><strong>Wider UK coverage subject to location and availability</strong></div></div>
