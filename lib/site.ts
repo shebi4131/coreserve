@@ -12,6 +12,7 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/coreserve_/?hl=en",
     facebook: "https://www.facebook.com/profile.php?id=61595439074278",
     whatsapp: "https://wa.me/443301119592",
+    trustpilot: "https://uk.trustpilot.com/review/coreservegroup.co.uk",
   },
   address: {
     street: "124 Colne Road",

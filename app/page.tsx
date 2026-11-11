@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Armchair, ArrowRight, ArrowUpRight, Building2, Check, ClipboardCheck, Hammer, House, KeyRound, MapPin, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { TrustpilotReviewLink } from "@/components/TrustpilotReviewLink";
 import { cleaningTypes } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
 
@@ -57,6 +58,7 @@ const entitySchema = {
         siteConfig.maps.businessProfile,
         siteConfig.social.instagram,
         siteConfig.social.facebook,
+        siteConfig.social.trustpilot,
       ],
       hasMap: siteConfig.maps.businessProfile,
       address: {
@@ -110,6 +112,8 @@ export default function HomePage() {
           <span><MapPin /> Wider UK coverage by availability</span>
         </div>
       </section>
+
+      <TrustpilotReviewLink />
 
       <section className="section section--pale">
         <div className="shell">
