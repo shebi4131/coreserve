@@ -6,7 +6,7 @@ import { QuoteForm } from "@/components/QuoteForm";
 import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { getService, services } from "@/lib/services";
-import { siteConfig } from "@/lib/site";
+import { canonicalUrl, siteConfig } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -58,7 +58,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
     serviceType: service.title,
     areaServed: ["United Kingdom", "Greater London", "Greater Manchester", "Merseyside", "Lancashire"],
     provider: {
-      "@id": `${siteConfig.siteUrl}/#business`,
+      "@id": `${canonicalUrl()}#business`,
     },
   };
 

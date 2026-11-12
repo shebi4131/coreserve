@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, MessageCircle } from "lucide-react";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { getBlogPosts, getBlogSettings } from "@/sanity/lib/fetch";
-import { siteConfig } from "@/lib/site";
+import { canonicalUrl, siteConfig } from "@/lib/site";
 
 const defaultDescription = "Practical cleaning advice, property preparation checklists and professional guidance from CoreServe Facilities Group.";
 
@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: { canonical: "/blog", types: { "application/rss+xml": `${siteConfig.siteUrl}/feed.xml` } },
+    alternates: { canonical: "/blog", types: { "application/rss+xml": canonicalUrl("/feed.xml") } },
     openGraph: { type: "website", title, description, url: "/blog" },
     twitter: { card: "summary_large_image", title, description },
   };

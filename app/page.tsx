@@ -5,7 +5,7 @@ import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { TrustpilotReviewLink } from "@/components/TrustpilotReviewLink";
 import { cleaningTypes } from "@/lib/services";
-import { siteConfig } from "@/lib/site";
+import { canonicalUrl, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Professional Cleaning Services for Homes and Businesses",
@@ -25,8 +25,8 @@ const homeServices = [
   { title: "After-Builders Cleaning", summary: "Remove agreed construction dust and residue after renovation or building work, preparing the property for occupation.", href: "/services/after-builders-cleaning", icon: Hammer },
 ] as const;
 
-const businessId = `${siteConfig.siteUrl}/#business`;
-const websiteId = `${siteConfig.siteUrl}/#website`;
+const businessId = `${canonicalUrl()}#business`;
+const websiteId = `${canonicalUrl()}#website`;
 
 const entitySchema = {
   "@context": "https://schema.org",
@@ -34,7 +34,7 @@ const entitySchema = {
     {
       "@type": "WebSite",
       "@id": websiteId,
-      url: siteConfig.siteUrl,
+      url: canonicalUrl(),
       name: siteConfig.name,
       alternateName: siteConfig.shortName,
       inLanguage: "en-GB",
@@ -47,12 +47,12 @@ const entitySchema = {
       legalName: siteConfig.legalName,
       alternateName: siteConfig.shortName,
       description: siteConfig.description,
-      url: siteConfig.siteUrl,
+      url: canonicalUrl(),
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.siteUrl}/brand/coreserve-logo.png`,
+        url: canonicalUrl("/brand/coreserve-logo.png"),
       },
-      image: `${siteConfig.siteUrl}/images/home/home-hero.jpeg`,
+      image: canonicalUrl("/images/home/home-hero.jpeg"),
       telephone: siteConfig.phoneInternational,
       sameAs: [
         siteConfig.maps.businessProfile,

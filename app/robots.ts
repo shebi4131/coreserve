@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { canonicalUrl, siteConfig } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/", disallow: ["/admin", "/admin/"] },
-    sitemap: `${siteConfig.siteUrl}/sitemap.xml`,
+    sitemap: canonicalUrl("/sitemap.xml"),
     host: siteConfig.siteUrl,
   };
 }

@@ -1,5 +1,5 @@
 import { getBlogPosts } from "@/sanity/lib/fetch";
-import { siteConfig } from "@/lib/site";
+import { canonicalUrl, siteConfig } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -12,8 +12,8 @@ export async function GET() {
   const items = posts.map((post) => `
     <item>
       <title>${xmlEscape(post.title)}</title>
-      <link>${siteConfig.siteUrl}/blog/${post.slug}/</link>
-      <guid isPermaLink="true">${siteConfig.siteUrl}/blog/${post.slug}/</guid>
+      <link>${canonicalUrl(`/blog/${post.slug}`)}</link>
+      <guid isPermaLink="true">${canonicalUrl(`/blog/${post.slug}`)}</guid>
       <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>
       <description>${xmlEscape(post.excerpt)}</description>
     </item>`).join("");
@@ -22,7 +22,7 @@ export async function GET() {
 <rss version="2.0">
   <channel>
     <title>${xmlEscape(siteConfig.name)} Blog</title>
-    <link>${siteConfig.siteUrl}/blog/</link>
+    <link>${canonicalUrl("/blog")}</link>
     <description>Professional cleaning advice and property guidance from ${xmlEscape(siteConfig.name)}.</description>
     <language>en-gb</language>${items}
   </channel>

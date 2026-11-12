@@ -10,7 +10,7 @@ import { PortableArticle } from "@/components/blog/PortableArticle";
 import { getBlogPost, getBlogPosts, getBlogPostSlugs } from "@/sanity/lib/fetch";
 import { imageUrl } from "@/sanity/lib/image";
 import { services } from "@/lib/services";
-import { siteConfig } from "@/lib/site";
+import { canonicalUrl } from "@/lib/site";
 
 type BlogPostPageProps = { params: Promise<{ slug: string }> };
 const dateFormatter = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" });
@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const relatedServices = services.filter((service) => post.relatedServices?.includes(service.slug));
   const sidebarServices = [...relatedServices, ...services.filter((service) => !relatedServices.some((related) => related.slug === service.slug))].slice(0, 4);
   const morePosts = allPosts.filter((candidate) => candidate.slug !== post.slug).slice(0, 3);
-  const shareUrl = new URL(post.canonicalUrl || `/blog/${post.slug}`, siteConfig.siteUrl).toString();
+  const shareUrl = post.canonicalUrl || canonicalUrl(`/blog/${post.slug}`);
 
   return (
     <main id="main-content">

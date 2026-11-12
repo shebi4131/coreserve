@@ -4,7 +4,7 @@ import { ArrowRight, ArrowUpRight, Check, Phone } from "lucide-react";
 import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { cleaningServices, cleaningTypes, services } from "@/lib/services";
-import { siteConfig } from "@/lib/site";
+import { canonicalUrl, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Professional Domestic and Commercial Cleaning Services",
@@ -25,7 +25,7 @@ const itemListSchema = {
   itemListElement: services.map((service, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    url: `${siteConfig.siteUrl}/services/${service.slug}`,
+    url: canonicalUrl(`/services/${service.slug}`),
     name: service.title,
   })),
 };

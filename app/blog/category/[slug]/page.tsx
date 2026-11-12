@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
 import { BlogCard } from "@/components/blog/BlogCard";
-import { siteConfig } from "@/lib/site";
+import { canonicalUrl } from "@/lib/site";
 import { getBlogCategory, getBlogCategorySlugs, getBlogPostsByCategory } from "@/sanity/lib/fetch";
 
 type CategoryPageProps = { params: Promise<{ slug: string }> };
@@ -40,7 +40,7 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
   if (!category?._id) notFound();
 
   const posts = await getBlogPostsByCategory(category._id);
-  const categoryUrl = `${siteConfig.siteUrl}/blog/category/${category.slug}`;
+  const categoryUrl = canonicalUrl(`/blog/category/${category.slug}`);
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -52,14 +52,14 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
         url: categoryUrl,
         mainEntity: {
           "@type": "ItemList",
-          itemListElement: posts.map((post, index) => ({ "@type": "ListItem", position: index + 1, url: `${siteConfig.siteUrl}/blog/${post.slug}`, name: post.title })),
+          itemListElement: posts.map((post, index) => ({ "@type": "ListItem", position: index + 1, url: canonicalUrl(`/blog/${post.slug}`), name: post.title })),
         },
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
-          { "@type": "ListItem", position: 2, name: "Blog", item: `${siteConfig.siteUrl}/blog` },
+          { "@type": "ListItem", position: 1, name: "Home", item: canonicalUrl() },
+          { "@type": "ListItem", position: 2, name: "Blog", item: canonicalUrl("/blog") },
           { "@type": "ListItem", position: 3, name: category.title, item: categoryUrl },
         ],
       },

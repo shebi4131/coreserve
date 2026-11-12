@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/site";
+import { canonicalUrl, siteConfig } from "@/lib/site";
 import { imageUrl } from "@/sanity/lib/image";
 import type { BlogPost } from "@/sanity/lib/types";
 
@@ -7,7 +7,7 @@ function safeJson(value: unknown) {
 }
 
 export function BlogJsonLd({ post }: { post: BlogPost }) {
-  const articleUrl = `${siteConfig.siteUrl}/blog/${post.slug}`;
+  const articleUrl = canonicalUrl(`/blog/${post.slug}`);
   const graph: Record<string, unknown>[] = [
     {
       "@type": "BlogPosting",
@@ -21,17 +21,17 @@ export function BlogJsonLd({ post }: { post: BlogPost }) {
       author: { "@type": "Person", name: post.author?.name || siteConfig.name },
       publisher: {
         "@type": "Organization",
-        "@id": `${siteConfig.siteUrl}/#business`,
+        "@id": `${canonicalUrl()}#business`,
         name: siteConfig.name,
-        url: siteConfig.siteUrl,
-        logo: { "@type": "ImageObject", url: `${siteConfig.siteUrl}/brand/coreserve-logo.png` },
+        url: canonicalUrl(),
+        logo: { "@type": "ImageObject", url: canonicalUrl("/brand/coreserve-logo.png") },
       },
     },
     {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.siteUrl },
-        { "@type": "ListItem", position: 2, name: "Blog", item: `${siteConfig.siteUrl}/blog` },
+        { "@type": "ListItem", position: 1, name: "Home", item: canonicalUrl() },
+        { "@type": "ListItem", position: 2, name: "Blog", item: canonicalUrl("/blog") },
         { "@type": "ListItem", position: 3, name: post.title, item: articleUrl },
       ],
     },
