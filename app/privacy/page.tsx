@@ -29,6 +29,17 @@ const contents = [
 ] as const;
 
 const address = `${siteConfig.address.street}, ${siteConfig.address.locality}, ${siteConfig.address.postcode}`;
+const privacyEmail = "info@coreservegroup.co.uk";
+const privacyEmailLink = `<!--email_off--><a href="mailto:${privacyEmail}">${privacyEmail}</a><!--/email_off-->`;
+
+function PrivacyEmailLink() {
+  return (
+    <span
+      className="privacy-email-link"
+      dangerouslySetInnerHTML={{ __html: privacyEmailLink }}
+    />
+  );
+}
 
 export default function PrivacyPage() {
   return (
@@ -71,7 +82,7 @@ export default function PrivacyPage() {
             </div>
             <div>
               <span className="privacy-summary__label">Contact</span>
-              <a href="mailto:info@coreservegroup.co.uk">info@coreservegroup.co.uk</a>
+              <PrivacyEmailLink />
             </div>
           </div>
 
@@ -88,7 +99,7 @@ export default function PrivacyPage() {
               <div><dt>Company name</dt><dd>Coreserve Facilities Group Ltd</dd></div>
               <div><dt>Website</dt><dd><a href="https://coreservegroup.co.uk/">coreservegroup.co.uk</a></dd></div>
               <div><dt>Business address</dt><dd>{address}</dd></div>
-              <div><dt>Email</dt><dd><a href="mailto:info@coreservegroup.co.uk">info@coreservegroup.co.uk</a></dd></div>
+              <div><dt>Email</dt><dd><PrivacyEmailLink /></dd></div>
               <div><dt>Telephone</dt><dd><a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a></dd></div>
             </dl>
             <p>Coreserve Facilities Group Ltd acts as the data controller for the personal information covered by this policy, unless otherwise stated.</p>
@@ -218,7 +229,7 @@ export default function PrivacyPage() {
             <address>
               <strong>Coreserve Facilities Group Ltd</strong>
               <a href="https://coreservegroup.co.uk/">coreservegroup.co.uk</a>
-              <a href="mailto:info@coreservegroup.co.uk">info@coreservegroup.co.uk</a>
+              <PrivacyEmailLink />
               <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
               <span>{address}</span>
             </address>
