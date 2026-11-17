@@ -456,6 +456,68 @@ p { margin: 0; color: var(--muted); }
 .footer__bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 21px; border-top: 1px solid rgba(255, 255, 255, 0.11); color: #7f95a5; font-size: 0.78rem; }
 .mobile-actions { display: none; }
 
+/* Lightweight customer engagement and quick quote */
+.engagement { position: fixed; right: 24px; bottom: 24px; z-index: 55; display: grid; justify-items: end; gap: 12px; pointer-events: none; }
+.engagement > * { pointer-events: auto; }
+.engagement-launcher { min-height: 54px; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border: 0; border-radius: 999px; color: var(--white); background: var(--navy); box-shadow: 0 18px 42px rgba(4,29,53,.28); cursor: pointer; font-weight: 800; transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease; }
+.engagement-launcher:hover { background: var(--navy-mid); box-shadow: 0 20px 46px rgba(4,29,53,.34); transform: translateY(-2px); }
+.engagement-launcher svg { flex: none; }
+.engagement-greeting { position: relative; width: min(360px, calc(100vw - 32px)); display: grid; grid-template-columns: 38px 1fr; gap: 12px; padding: 17px 44px 17px 17px; border: 1px solid var(--line); border-radius: 17px; background: var(--white); box-shadow: 0 18px 52px rgba(6,44,80,.18); }
+.engagement-greeting::after { position: absolute; right: 27px; bottom: -7px; width: 14px; height: 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--white); content: ""; transform: rotate(45deg); }
+.engagement-greeting__icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; color: var(--white); background: var(--teal); }
+.engagement-greeting strong { display: block; color: var(--navy); font-size: .9rem; line-height: 1.4; }
+.engagement-greeting div > button { display: inline-flex; align-items: center; gap: 6px; margin-top: 5px; padding: 0; border: 0; color: var(--teal-dark); background: transparent; cursor: pointer; font-size: .77rem; font-weight: 800; }
+.engagement-greeting__close { position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; display: grid; place-items: center; border: 0; border-radius: 50%; color: var(--muted); background: var(--pale); cursor: pointer; }
+.engagement-panel { width: min(390px, calc(100vw - 32px)); overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: var(--white); box-shadow: 0 26px 70px rgba(4,29,53,.24); animation: engagement-rise 220ms ease-out both; }
+.engagement-panel__head { display: grid; grid-template-columns: 44px 1fr 36px; align-items: center; gap: 12px; padding: 20px; color: var(--white); background: linear-gradient(135deg, var(--navy), var(--navy-mid)); }
+.engagement-panel__head > span { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.17); border-radius: 13px; background: rgba(255,255,255,.09); }
+.engagement-panel__head small { display: block; color: #bcd0dc; font-size: .68rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.engagement-panel__head h2 { margin-top: 2px; color: var(--white); font-size: 1.45rem; }
+.engagement-panel__head button { width: 36px; height: 36px; display: grid; place-items: center; border: 0; border-radius: 50%; color: var(--white); background: rgba(255,255,255,.1); cursor: pointer; }
+.engagement-panel__intro { padding: 17px 20px 10px; font-size: .82rem; }
+.engagement-panel__actions { display: grid; padding: 7px 12px 14px; }
+.engagement-panel__actions > a, .engagement-panel__actions > button { width: 100%; display: grid; grid-template-columns: 40px 1fr 20px; align-items: center; gap: 11px; padding: 11px 9px; border: 0; border-radius: 12px; color: var(--ink); background: transparent; cursor: pointer; text-align: left; transition: background 160ms ease, transform 160ms ease; }
+.engagement-panel__actions > a:hover, .engagement-panel__actions > button:hover { background: var(--pale); transform: translateX(2px); }
+.engagement-panel__actions > a > span:first-child, .engagement-panel__actions > button > span:first-child { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; color: var(--teal-dark); background: #e6eef4; }
+.engagement-panel__actions > a > span:nth-child(2), .engagement-panel__actions > button > span:nth-child(2) { display: grid; }
+.engagement-panel__actions strong { color: var(--navy); font-size: .83rem; }
+.engagement-panel__actions small { color: var(--muted); font-size: .69rem; }
+.engagement-panel__actions > a > svg, .engagement-panel__actions > button > svg { color: var(--teal-dark); }
+.engagement-panel__foot { display: flex; align-items: center; gap: 7px; padding: 13px 20px; border-top: 1px solid var(--line); color: var(--muted); background: var(--pale); font-size: .68rem; }
+.engagement-panel__foot svg { flex: none; color: var(--teal-dark); }
+.engagement-modal { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; overflow-y: auto; padding: 24px; background: rgba(3,20,35,.7); backdrop-filter: blur(6px); }
+.engagement-dialog { position: relative; width: min(720px, 100%); max-height: calc(100vh - 48px); overflow-y: auto; border-radius: 24px; background: var(--white); box-shadow: 0 34px 90px rgba(0,0,0,.3); animation: engagement-rise 220ms ease-out both; }
+.engagement-dialog--exit { width: min(560px, 100%); }
+.engagement-dialog__close { position: absolute; top: 16px; right: 16px; z-index: 2; width: 40px; height: 40px; display: grid; place-items: center; border: 0; border-radius: 50%; color: var(--navy); background: var(--pale); cursor: pointer; }
+.quick-quote { padding: 40px; }
+.quick-quote h2 { padding-right: 42px; font-size: clamp(2rem, 4vw, 2.8rem); }
+.quick-quote > p { max-width: 570px; margin: 12px 0 26px; font-size: .9rem; }
+.quick-quote__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.quick-quote__grid label { display: grid; gap: 6px; }
+.quick-quote__grid label > span { color: var(--navy); font-size: .76rem; font-weight: 800; }
+.quick-quote__grid input, .quick-quote__grid select, .quick-quote__grid textarea { width: 100%; min-height: 47px; padding: 10px 12px; border: 1px solid #d2dfe3; border-radius: 9px; color: var(--ink); background: var(--white); outline: 0; }
+.quick-quote__grid textarea { resize: vertical; }
+.quick-quote__grid input:focus, .quick-quote__grid select:focus, .quick-quote__grid textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(35,99,147,.14); }
+.quick-quote__wide { grid-column: 1 / -1; }
+.quick-quote__consent { grid-template-columns: 19px 1fr !important; align-items: start; gap: 9px !important; }
+.quick-quote__consent input { width: 18px; min-height: 18px; margin-top: 3px; accent-color: var(--teal); }
+.quick-quote__consent span { color: var(--muted) !important; font-size: .7rem !important; font-weight: 500 !important; }
+.quick-quote__consent a { color: var(--teal-dark); font-weight: 800; text-decoration: underline; }
+.quick-quote__footer { display: flex; align-items: center; gap: 18px; margin-top: 22px; }
+.quick-quote__footer p { max-width: 310px; font-size: .72rem; }
+.quick-quote__footer button:disabled { cursor: wait; opacity: .72; transform: none; }
+.exit-offer { padding: 48px; text-align: center; }
+.exit-offer__mark { width: 62px; height: 62px; display: grid; place-items: center; margin: 0 auto 20px; border-radius: 20px; color: var(--white); background: linear-gradient(135deg, var(--teal), var(--navy)); box-shadow: 0 16px 32px rgba(35,99,147,.22); }
+.exit-offer h2 { font-size: clamp(2.1rem, 5vw, 3.1rem); }
+.exit-offer > p { max-width: 450px; margin: 17px auto 0; }
+.exit-offer ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 18px; margin: 24px 0; padding: 0; color: var(--ink); list-style: none; font-size: .76rem; font-weight: 750; }
+.exit-offer li { display: inline-flex; align-items: center; gap: 6px; }
+.exit-offer li svg { color: var(--teal-dark); }
+.exit-offer .button { width: 100%; }
+.exit-offer__dismiss { margin-top: 14px; padding: 5px; border: 0; color: var(--muted); background: transparent; cursor: pointer; font-size: .76rem; text-decoration: underline; text-underline-offset: 3px; }
+
+@keyframes engagement-rise { from { opacity: 0; transform: translateY(12px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
 /* Expanded service, content and policy pages */
 .hero__copy { min-width: 0; }
 .hero__copy > .eyebrow { margin-bottom: 18px; }
@@ -830,6 +892,18 @@ p { margin: 0; color: var(--muted); }
   .mobile-actions { position: fixed; right: 0; bottom: 0; left: 0; z-index: 50; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 9px 12px; border-top: 1px solid var(--line); background: rgba(255, 255, 255, 0.98); box-shadow: 0 -10px 28px rgba(16, 36, 58, 0.1); }
   .mobile-actions a { min-height: 46px; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 9px; color: var(--white); background: var(--navy); font-weight: 800; }
   .mobile-actions a:last-child { color: var(--white); background: var(--teal); }
+  .engagement { right: 14px; bottom: 82px; }
+  .engagement-launcher { width: 52px; height: 52px; min-height: 52px; justify-content: center; padding: 0; }
+  .engagement-launcher span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .engagement-panel { max-height: calc(100vh - 170px); overflow-y: auto; }
+  .engagement-modal { align-items: end; padding: 12px; }
+  .engagement-dialog { max-height: calc(100vh - 24px); border-radius: 20px; }
+  .quick-quote { padding: 32px 20px 24px; }
+  .quick-quote__grid { grid-template-columns: 1fr; }
+  .quick-quote__wide { grid-column: auto; }
+  .quick-quote__footer { align-items: stretch; flex-direction: column; }
+  .quick-quote__footer .button { width: 100%; }
+  .exit-offer { padding: 46px 22px 28px; }
   .quote-preview__head { align-items: flex-start; flex-direction: column; }
   .featured-service-grid, .stage-grid, .stage-grid--three, .related-grid, .checklist-grid, .link-directory { grid-template-columns: 1fr; }
   .service-catalog { grid-template-columns: 1fr; }

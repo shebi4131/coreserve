@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileActions } from "@/components/MobileActions";
+import { CustomerEngagement } from "@/components/CustomerEngagement";
 import { siteConfig } from "@/lib/site";
 
 const brandFont = localFont({
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         {children}
         <Footer />
+        <CustomerEngagement />
         <MobileActions />
       </body>
     </html>
