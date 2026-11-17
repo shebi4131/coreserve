@@ -49,7 +49,7 @@ export default async function BlogPage() {
           {remaining.length ? (
             <section className="section">
               <div className="shell">
-                <div className="section-heading"><span className="eyebrow">Latest articles</span><h2>Useful advice for cleaner, better-prepared spaces.</h2></div>
+                <h2 className="blog-list-heading">Latest articles</h2>
                 <div className="blog-grid">{remaining.map((post) => <BlogCard post={post} key={post._id} />)}</div>
               </div>
             </section>

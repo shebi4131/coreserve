@@ -25,6 +25,7 @@
 .blog-hero p { max-width: 720px; margin-top: 23px; color: #c9d8e2; font-size: 1.08rem; }
 .blog-hero__mark { width: 132px; height: 132px; display: grid; place-items: center; justify-self: end; border: 1px solid rgba(255,255,255,.18); border-radius: 34px; color: var(--white); background: rgba(255,255,255,.08); box-shadow: 0 24px 70px rgba(0,0,0,.16); transform: rotate(5deg); }
 .blog-hero__mark svg { width: 58px; height: 58px; stroke-width: 1.35; }
+.blog-list-heading { margin: 0 0 24px; font-size: clamp(1.75rem, 3vw, 2.5rem); }
 .blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .blog-card { overflow: hidden; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 18px; background: var(--white); box-shadow: 0 14px 40px rgba(6,44,80,.07); }
 .blog-card__media { position: relative; aspect-ratio: 16/10; overflow: hidden; display: block; background: var(--pale-strong); }
