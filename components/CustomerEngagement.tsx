@@ -31,16 +31,14 @@ declare global {
 }
 
 const GREETING_KEY = "coreserve-engagement-greeting-seen";
-const EXIT_KEY = "coreserve-exit-offer-shown-at";
-const EXIT_COOLDOWN = 7 * 24 * 60 * 60 * 1000;
+const EXIT_KEY = "coreserve-exit-offer-shown";
 
 const tawkPropertyId = process.env.NEXT_PUBLIC_TAWK_PROPERTY_ID;
 const tawkWidgetId = process.env.NEXT_PUBLIC_TAWK_WIDGET_ID;
 const hasLiveChat = Boolean(tawkPropertyId && tawkWidgetId);
 
 function canShowExitOffer() {
-  const previous = Number(window.localStorage.getItem(EXIT_KEY) || 0);
-  return !previous || Date.now() - previous > EXIT_COOLDOWN;
+  return !window.sessionStorage.getItem(EXIT_KEY);
 }
 
 export function CustomerEngagement() {
@@ -74,38 +72,41 @@ export function CustomerEngagement() {
     window.Tawk_API = window.Tawk_API || {};
     window.Tawk_LoadStart = new Date();
     window.Tawk_API.onLoad = () => window.Tawk_API?.hideWidget?.();
+
+    let pageTitle = document.title;
+    const unreadTitle = /^(?:\(\d+\)\s*)?\d+\s+new messages?$/i;
+    const titleElement = document.querySelector("title");
+    const titleObserver = titleElement ? new MutationObserver(() => {
+      if (unreadTitle.test(document.title.trim())) document.title = pageTitle;
+      else pageTitle = document.title;
+    }) : null;
+    titleObserver?.observe(titleElement!, { childList: true, subtree: true, characterData: true });
+
+    return () => titleObserver?.disconnect();
   }, []);
 
   useEffect(() => {
     const greetingTimer = window.setTimeout(() => {
       if (!window.sessionStorage.getItem(GREETING_KEY)) setGreetingVisible(true);
-    }, 9000);
+    }, 4500);
 
-    let exitReady = false;
-    const exitTimer = window.setTimeout(() => { exitReady = true; }, 15000);
-    const handleExitIntent = (event: MouseEvent) => {
+    const exitTimer = window.setTimeout(() => {
       const interaction = interactionStateRef.current;
       if (
-        !exitReady ||
-        event.clientY > 0 ||
-        event.relatedTarget ||
-        window.innerWidth < 900 ||
         interaction.panelOpen ||
         interaction.quoteOpen ||
         interaction.exitOpen ||
         !canShowExitOffer()
       ) return;
 
-      window.localStorage.setItem(EXIT_KEY, String(Date.now()));
+      window.sessionStorage.setItem(EXIT_KEY, "true");
       setGreetingVisible(false);
       setExitOpen(true);
-    };
+    }, 9000);
 
-    document.documentElement.addEventListener("mouseout", handleExitIntent);
     return () => {
       window.clearTimeout(greetingTimer);
       window.clearTimeout(exitTimer);
-      document.documentElement.removeEventListener("mouseout", handleExitIntent);
     };
   }, []);
 

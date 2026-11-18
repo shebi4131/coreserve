@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { canonicalUrl } from "@/lib/site";
 import { services } from "@/lib/services";
+import { serviceAreas } from "@/lib/areas";
 import { getBlogCategories, getBlogPosts } from "@/sanity/lib/fetch";
 
 export const dynamic = "force-static";
@@ -28,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticPages,
     ...services.map((service) => ({ url: canonicalUrl(`/services/${service.slug}`), changeFrequency: "monthly" as const, priority: service.category === "Cleaning" ? 0.9 : 0.8 })),
+    ...serviceAreas.map((area) => ({ url: canonicalUrl(`/areas-we-cover/${area.slug}`), changeFrequency: "monthly" as const, priority: 0.8 })),
     ...posts.filter((post) => post.slug).map((post) => ({
       url: canonicalUrl(`/blog/${post.slug}`),
       lastModified: new Date(post.updatedAt || post.publishedAt),

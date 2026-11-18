@@ -3,13 +3,14 @@ import { Logo } from "@/components/Logo";
 import { SocialIcon } from "@/components/SocialIcon";
 import { TrustpilotReviewLink } from "@/components/TrustpilotReviewLink";
 import { siteConfig } from "@/lib/site";
+import { serviceAreas } from "@/lib/areas";
 import { getFooterBlogCategories } from "@/sanity/lib/fetch";
 
 export async function Footer() {
   const categories = await getFooterBlogCategories();
 
   return (
-    <footer className="footer">
+    <footer className="footer" id="site-footer">
       <div className="shell">
         <div className="footer__grid">
           <div>
@@ -22,10 +23,16 @@ export async function Footer() {
               <Link href="/">Home</Link>
               <Link href="/services">Services</Link>
               <Link href="/blog">Cleaning advice</Link>
-              <Link href="/areas-we-cover">Areas we cover</Link>
               <Link href="/about">About</Link>
               <Link href="/faqs">FAQs</Link>
               <Link href="/contact">Request a quote</Link>
+            </nav>
+          </div>
+          <div className="footer__areas">
+            <h2>Areas we cover</h2>
+            <nav aria-label="Cleaning service areas">
+              {serviceAreas.map((area) => <Link href={`/areas-we-cover/${area.slug}`} key={area.slug}><span>{area.name}</span><small>{area.region}</small></Link>)}
+              <Link className="footer__all-areas" href="/areas-we-cover">Explore all areas <span aria-hidden="true">→</span></Link>
             </nav>
           </div>
           <div>

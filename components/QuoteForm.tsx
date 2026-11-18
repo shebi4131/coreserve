@@ -19,20 +19,35 @@ type QuoteFormProps = {
   variant?: "contact" | "service";
   serviceSlug?: string;
   serviceTitle?: string;
+  defaultLocation?: string;
 };
 
-export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle }: QuoteFormProps) {
+export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle, defaultLocation = "" }: QuoteFormProps) {
   const [selectedServices, setSelectedServices] = useState<string[]>(
     serviceSlug ? serviceDefaults[serviceSlug] ?? [] : [],
   );
   const [status, setStatus] = useState("");
   const [statusType, setStatusType] = useState<"idle" | "success" | "error">("idle");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [locationValue, setLocationValue] = useState(defaultLocation);
 
   useEffect(() => {
-    if (serviceSlug) return;
-    const slug = new URLSearchParams(window.location.search).get("service");
-    if (slug && serviceDefaults[slug]) setSelectedServices(serviceDefaults[slug]);
+    const params = new URLSearchParams(window.location.search);
+    const location = params.get("location");
+    if (location) setLocationValue(location);
+
+    if (!serviceSlug) {
+      const slug = params.get("service");
+      if (slug && serviceDefaults[slug]) setSelectedServices(serviceDefaults[slug]);
+    }
+
+    function handleLocation(event: Event) {
+      const detail = (event as CustomEvent<{ location?: string }>).detail;
+      if (detail?.location) setLocationValue(detail.location);
+    }
+
+    window.addEventListener("coreserve:location-selected", handleLocation);
+    return () => window.removeEventListener("coreserve:location-selected", handleLocation);
   }, [serviceSlug]);
 
   function toggleService(service: string) {
@@ -130,7 +145,7 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle }: Qu
         <label><span>Full name *</span><input name="name" autoComplete="name" required placeholder="Your full name" /></label>
         <label><span>Mobile number *</span><input name="phone" type="tel" autoComplete="tel" required placeholder="Best contact number" /></label>
         <label><span>Email address</span><input name="email" type="email" autoComplete="email" placeholder="you@example.com" /></label>
-        <label><span>Property postcode / location *</span><input name="location" autoComplete="postal-code" required placeholder="Enter postcode or town/city" /></label>
+        <label><span>Property postcode / location *</span><input name="location" autoComplete="postal-code" required placeholder="Enter postcode or town/city" value={locationValue} onChange={(event) => setLocationValue(event.target.value)} /></label>
         <label>
           <span>Property or premises type *</span>
           <select name="propertyType" required defaultValue="">
