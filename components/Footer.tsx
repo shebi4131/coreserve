@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { SocialIcon } from "@/components/SocialIcon";
 import { TrustpilotReviewLink } from "@/components/TrustpilotReviewLink";
@@ -46,7 +45,7 @@ export async function Footer() {
             <div className="footer__socials" role="group" aria-label="Coreserve social media">
               <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer" aria-label="Follow Coreserve on Instagram" title="Instagram"><SocialIcon platform="instagram" /></a>
               <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer" aria-label="Follow Coreserve on Facebook" title="Facebook"><SocialIcon platform="facebook" /></a>
-              <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer" aria-label="Message Coreserve on WhatsApp" title="WhatsApp"><MessageCircle /></a>
+              <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer" aria-label="Message Coreserve on WhatsApp" title="WhatsApp"><SocialIcon platform="whatsapp" /></a>
             </div>
             <TrustpilotReviewLink variant="compact" />
           </div>

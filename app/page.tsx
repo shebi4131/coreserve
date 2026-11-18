@@ -91,18 +91,29 @@ export default function HomePage() {
         <ResponsiveImage src="/images/home/home-hero.jpeg" alt="Coreserve professional cleaning team working in a modern home" width={1312} height={816} className="hero__media" sizes="100vw" priority />
         <div className="shell hero__grid">
           <div className="hero__copy">
-            <span className="eyebrow eyebrow--light">Based in North-West</span>
-            <h1>Professional cleaning services for homes, landlords and businesses.</h1>
-            <p className="hero__strapline">Reliable cleaning. Clear pricing. A service tailored to your property.</p>
-            <p className="hero__lead">Coreserve Facilities Group provides professional domestic and commercial cleaning, deep cleaning and end-of-tenancy cleaning for homeowners, tenants, landlords, letting agents and businesses.</p>
-            <p className="hero__support">Whether you need a regular cleaner, a one-off deep clean or a property prepared for its next tenant, we make it easy to arrange the right service for your requirements.</p>
+            <span className="eyebrow eyebrow--light"><i aria-hidden="true" /> Professional cleaning • North-West &amp; wider UK</span>
+            <h1>Professional cleaning services <em>for homes and businesses.</em></h1>
+            <p className="hero__lead">Reliable domestic, commercial, deep and end-of-tenancy cleaning, coordinated around your property, priorities and preferred schedule.</p>
             <div className="hero__actions">
               <Link className="button button--primary" href="/contact">Get a free quote <ArrowUpRight size={18} /></Link>
               <Link className="button button--ghost" href="/services">Explore our cleaning services <ArrowRight size={18} /></Link>
             </div>
-            <div className="hero__assurance"><ShieldCheck size={20} /> Based in the North-West, with wider UK coverage subject to location and availability.</div>
+            <div className="hero__proof" aria-label="Reasons to choose Coreserve">
+              <span><Check size={17} /> Clear quotations</span>
+              <span><ShieldCheck size={17} /> Property-led service</span>
+              <span><MapPin size={17} /> Wider coverage by availability</span>
+            </div>
           </div>
         </div>
+        <nav className="hero-services" aria-label="Popular cleaning services">
+          <div className="shell hero-services__grid">
+            <div className="hero-services__intro"><span>Care for every space</span><strong>Popular services</strong></div>
+            {homeServices.slice(0, 4).map((service) => {
+              const Icon = service.icon;
+              return <Link href={service.href} key={service.title}><Icon size={22} /><span>{service.title}</span><ArrowUpRight size={17} /></Link>;
+            })}
+          </div>
+        </nav>
       </section>
 
       <section className="confidence-strip" aria-label="Service qualities">

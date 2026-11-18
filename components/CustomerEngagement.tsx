@@ -7,11 +7,8 @@ import {
   CheckCircle2,
   Clock3,
   FileText,
-  Headphones,
   LoaderCircle,
-  MapPin,
   MessageCircle,
-  Phone,
   Send,
   ShieldCheck,
   Sparkles,
@@ -20,6 +17,7 @@ import {
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { cleaningTypes } from "@/lib/services";
 import { siteConfig } from "@/lib/site";
+import { SocialIcon } from "@/components/SocialIcon";
 
 declare global {
   interface Window {
@@ -54,6 +52,7 @@ export function CustomerEngagement() {
   const [status, setStatus] = useState("");
   const [statusType, setStatusType] = useState<"idle" | "success" | "error">("idle");
   const [quoteSource, setQuoteSource] = useState("Engagement panel");
+  const [welcomeMessage, setWelcomeMessage] = useState("Welcome");
   const panelRef = useRef<HTMLDivElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -63,6 +62,11 @@ export function CustomerEngagement() {
   useEffect(() => {
     interactionStateRef.current = { panelOpen, quoteOpen, exitOpen };
   }, [panelOpen, quoteOpen, exitOpen]);
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+    setWelcomeMessage(hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening");
+  }, []);
 
   useEffect(() => {
     if (!hasLiveChat) return;
@@ -267,10 +271,10 @@ export function CustomerEngagement() {
             <button type="button" className="engagement-greeting__close" onClick={dismissGreeting} aria-label="Dismiss message">
               <X size={16} />
             </button>
-            <span className="engagement-greeting__icon"><Sparkles size={18} /></span>
+            <span className="engagement-greeting__icon"><img src="/brand/coreserve-mark.png" alt="" /></span>
             <div>
-              <strong>Need help with a cleaning quote?</strong>
-              <button type="button" onClick={togglePanel}>Tell us what you need <ArrowRight size={15} /></button>
+              <strong>Hi there! Need help choosing a cleaning service?</strong>
+              <button type="button" onClick={togglePanel}>Ask CoreServe <ArrowRight size={15} /></button>
             </div>
           </div>
         ) : null}
@@ -278,40 +282,30 @@ export function CustomerEngagement() {
         {panelOpen ? (
           <div className="engagement-panel" id="coreserve-contact-panel" ref={panelRef}>
             <div className="engagement-panel__head">
-              <span><Headphones size={20} /></span>
+              <span className="engagement-panel__avatar"><img src="/brand/coreserve-mark.png" alt="" /><i aria-hidden="true" /></span>
               <div>
-                <small>CoreServe support</small>
-                <h2>How can we help?</h2>
+                <small>CoreServe assistant</small>
+                <h2>{welcomeMessage} <span aria-hidden="true">👋</span></h2>
               </div>
               <button type="button" onClick={() => setPanelOpen(false)} aria-label="Close contact options"><X size={20} /></button>
             </div>
-            <p className="engagement-panel__intro">Choose the quickest way to reach our team. Quote requests are saved securely for review.</p>
+            <p className="engagement-panel__intro"><strong>How can we help with your property?</strong> Choose an option and we’ll point you in the right direction.</p>
             <div className="engagement-panel__actions">
-              <button type="button" onClick={() => openQuote("Engagement panel quick quote")}>
-                <span><FileText size={20} /></span>
-                <span><strong>Request a free quote</strong><small>About two minutes</small></span>
-                <ArrowRight size={18} />
-              </button>
               {hasLiveChat ? (
                 <button type="button" onClick={openLiveChat}>
                   <span><MessageCircle size={20} /></span>
-                  <span><strong>Live chat</strong><small>Message our team</small></span>
+                  <span><strong>Chat with CoreServe</strong><small>Start a live conversation</small></span>
                   <ArrowRight size={18} />
                 </button>
               ) : null}
+              <button type="button" onClick={() => openQuote("Engagement panel quick quote")}>
+                <span><FileText size={20} /></span>
+                <span><strong>Request a free quote</strong><small>Share the essentials in two minutes</small></span>
+                <ArrowRight size={18} />
+              </button>
               <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noreferrer">
-                <span><MessageCircle size={20} /></span>
+                <span><SocialIcon platform="whatsapp" /></span>
                 <span><strong>WhatsApp</strong><small>Ask a quick question</small></span>
-                <ArrowRight size={18} />
-              </a>
-              <a href={siteConfig.phoneHref}>
-                <span><Phone size={20} /></span>
-                <span><strong>Call {siteConfig.phoneDisplay}</strong><small>Speak with CoreServe</small></span>
-                <ArrowRight size={18} />
-              </a>
-              <a href={siteConfig.maps.directions} target="_blank" rel="noreferrer">
-                <span><MapPin size={20} /></span>
-                <span><strong>Get directions</strong><small>Our Burnley base</small></span>
                 <ArrowRight size={18} />
               </a>
             </div>
@@ -328,8 +322,8 @@ export function CustomerEngagement() {
           aria-controls="coreserve-contact-panel"
           aria-label={panelOpen ? "Close contact options" : "Open contact options"}
         >
-          {panelOpen ? <X size={25} /> : <MessageCircle size={25} />}
-          <span>{panelOpen ? "Close" : "Let’s talk"}</span>
+          {panelOpen ? <X size={25} /> : <span className="engagement-launcher__avatar"><img src="/brand/coreserve-mark.png" alt="" /><i aria-hidden="true" /></span>}
+          <span className="engagement-launcher__label">{panelOpen ? "Close" : "Ask CoreServe"}</span>
         </button>
       </aside>
 

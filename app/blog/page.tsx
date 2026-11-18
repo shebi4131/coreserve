@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, MessageCircle } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
+import { SocialIcon } from "@/components/SocialIcon";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { getBlogPosts, getBlogSettings } from "@/sanity/lib/fetch";
 import { canonicalUrl, siteConfig } from "@/lib/site";
@@ -69,7 +70,7 @@ export default async function BlogPage() {
       <section className="cta-band">
         <div className="shell cta-band__inner">
           <div><span className="eyebrow eyebrow--light">Need practical advice?</span><h2>Discuss your property and cleaning requirements.</h2></div>
-          <div className="cta-band__actions"><a className="button button--outline-light" href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer"><MessageCircle size={18} /> WhatsApp us</a><Link className="button button--primary" href="/contact">Get a free quote <ArrowRight size={18} /></Link></div>
+          <div className="cta-band__actions"><a className="button button--outline-light" href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer"><SocialIcon platform="whatsapp" /> WhatsApp us</a><Link className="button button--primary" href="/contact">Get a free quote <ArrowRight size={18} /></Link></div>
         </div>
       </section>
     </main>

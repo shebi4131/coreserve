@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { BriefcaseBusiness, Check, Copy, MessageCircle, Send, Share2 } from "lucide-react";
+import { Check, Copy } from "lucide-react";
+import { SocialIcon } from "@/components/SocialIcon";
 
 type ArticleShareProps = {
   title: string;
@@ -17,25 +18,21 @@ export function ArticleShare({ title, url }: ArticleShareProps) {
     {
       label: "Facebook",
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      icon: Share2,
       platform: "facebook",
     },
     {
       label: "WhatsApp",
       href: `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`,
-      icon: MessageCircle,
       platform: "whatsapp",
     },
     {
       label: "LinkedIn",
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-      icon: BriefcaseBusiness,
       platform: "linkedin",
     },
     {
       label: "X",
       href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
-      icon: Send,
       platform: "x",
     },
   ];
@@ -57,7 +54,7 @@ export function ArticleShare({ title, url }: ArticleShareProps) {
         <h2 id="article-share-title">Share this cleaning guide.</h2>
       </div>
       <div className="article-share__actions">
-        {shareLinks.map(({ label, href, icon: Icon, platform }) => (
+        {shareLinks.map(({ label, href, platform }) => (
           <a
             className="article-share__button"
             data-platform={platform}
@@ -67,7 +64,7 @@ export function ArticleShare({ title, url }: ArticleShareProps) {
             rel="noopener noreferrer"
             aria-label={`Share this article on ${label}`}
           >
-            <Icon size={18} aria-hidden="true" />
+            <SocialIcon platform={platform as "facebook" | "whatsapp" | "linkedin" | "x"} />
             <span>{label}</span>
           </a>
         ))}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Clock3, MapPin, MessageCircle, Navigation, Phone } from "lucide-react";
+import { Clock3, MapPin, Navigation, Phone } from "lucide-react";
 import { QuoteForm } from "@/components/QuoteForm";
 import { SocialIcon } from "@/components/SocialIcon";
 import { siteConfig } from "@/lib/site";
@@ -28,7 +28,7 @@ export default function ContactPage() {
             <p>Share the postcode, property, service and timescale. We’ll use those details to clarify the scope before anything is booked.</p>
             <div className="contact-methods">
               <a href={siteConfig.phoneHref}><span><Phone /></span><div><small>Call us</small><strong>{siteConfig.phoneDisplay}</strong></div></a>
-              <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer"><span><MessageCircle /></span><div><small>WhatsApp</small><strong>Start a WhatsApp chat</strong></div></a>
+              <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer"><span><SocialIcon platform="whatsapp" /></span><div><small>WhatsApp</small><strong>Start a WhatsApp chat</strong></div></a>
               <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer"><span><SocialIcon platform="instagram" /></span><div><small>Instagram</small><strong>Follow @coreserve_group</strong></div></a>
               <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer"><span><SocialIcon platform="facebook" /></span><div><small>Facebook</small><strong>Visit our Facebook page</strong></div></a>
               <div><span><MapPin /></span><div><small>Our base</small><strong>{siteConfig.address.street}, {siteConfig.address.locality}, {siteConfig.address.postcode}</strong></div></div>
