@@ -20,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: canonicalUrl("/about"), changeFrequency: "yearly", priority: 0.7 },
     { url: canonicalUrl("/faqs"), changeFrequency: "monthly", priority: 0.7 },
     { url: canonicalUrl("/contact"), changeFrequency: "yearly", priority: 0.8 },
+    { url: canonicalUrl("/join-us"), changeFrequency: "monthly", priority: 0.65 },
     { url: canonicalUrl("/blog"), lastModified: latestPostUpdate ? new Date(latestPostUpdate) : undefined, changeFrequency: "weekly", priority: 0.8 },
     { url: canonicalUrl("/privacy"), changeFrequency: "yearly", priority: 0.3 },
     { url: canonicalUrl("/terms"), changeFrequency: "yearly", priority: 0.3 },

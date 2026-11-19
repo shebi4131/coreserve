@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Armchair, ArrowRight, ArrowUpRight, Building2, Check, ClipboardCheck, Hammer, House, KeyRound, MapPin, Phone, ShieldCheck, Sparkles } from "lucide-react";
+import { Armchair, ArrowRight, ArrowUpRight, BedDouble, Building2, Check, ClipboardCheck, Hammer, House, KeyRound, MapPin, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { TrustpilotReviewLink } from "@/components/TrustpilotReviewLink";
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 
 const homeServices = [
   { title: "Domestic Cleaning", summary: "Keep your home clean, comfortable and presentable with regular or one-off cleaning tailored to your household.", href: "/services/domestic-cleaning", icon: House },
+  { title: "B&B Housekeeping", summary: "Keep B&B and short-let properties guest-ready with reliable, checklist-led changeovers between stays.", href: "/services/bnb-housekeeping", icon: BedDouble },
   { title: "Deep Cleaning", summary: "Give your property a thorough clean, focusing on kitchens, bathrooms, floors, surfaces and other areas that need extra attention.", href: "/services/deep-move-cleaning", icon: Sparkles },
   { title: "End-of-Tenancy Cleaning", summary: "Prepare rental properties for inspection, handover or new occupants with a detailed cleaning service based on an agreed checklist.", href: "/services/end-of-tenancy-cleaning", icon: KeyRound },
   { title: "Commercial and Office Cleaning", summary: "Maintain clean, presentable workplaces with cleaning schedules designed around your business and operating hours.", href: "/services/commercial-office-cleaning", icon: Building2 },
@@ -91,7 +92,7 @@ export default function HomePage() {
         <ResponsiveImage src="/images/home/home-hero.jpeg" alt="Coreserve professional cleaning team working in a modern home" width={1312} height={816} className="hero__media" sizes="100vw" priority />
         <div className="shell hero__grid">
           <div className="hero__copy">
-            <span className="eyebrow eyebrow--light"><i aria-hidden="true" /> Professional cleaning • North-West &amp; wider UK</span>
+            <span className="eyebrow eyebrow--light"><i aria-hidden="true" /> Professional cleaning • North-West &amp; national coverage</span>
             <h1>Professional cleaning services <em>for homes and businesses.</em></h1>
             <p className="hero__lead">Reliable domestic, commercial, deep and end-of-tenancy cleaning, coordinated around your property, priorities and preferred schedule.</p>
             <div className="hero__actions">
@@ -101,7 +102,7 @@ export default function HomePage() {
             <div className="hero__proof" aria-label="Reasons to choose Coreserve">
               <span><Check size={17} /> Clear quotations</span>
               <span><ShieldCheck size={17} /> Property-led service</span>
-              <span><MapPin size={17} /> Wider coverage by availability</span>
+              <span><MapPin size={17} /> National coverage by availability</span>
             </div>
           </div>
         </div>
@@ -120,7 +121,7 @@ export default function HomePage() {
         <div className="shell confidence-strip__grid">
           <span><Check /> Clear quotations</span>
           <span><ClipboardCheck /> Cleaning tailored to the property</span>
-          <span><MapPin /> Wider UK coverage by availability</span>
+          <span><MapPin /> National coverage by availability</span>
         </div>
       </section>
 
@@ -184,15 +185,15 @@ export default function HomePage() {
         <div className="shell coverage">
           <div>
             <span className="eyebrow">Service area</span>
-            <h2>Based in North-West<br />Wider UK coverage</h2>
-            <p>We coordinate cleaning services across our service areas, with wider UK coverage subject to location and availability.</p>
+            <h2>Based in North-West<br />National coverage</h2>
+            <p>We coordinate cleaning services nationally, subject to postcode, service requirements and availability.</p>
             <p>Send the property postcode and preferred date so we can confirm the right arrangements before quotation.</p>
             <Link className="text-link" href="/areas-we-cover">How coverage works <ArrowRight size={18} /></Link>
           </div>
           <aside className="coverage__panel">
             <MapPin size={26} />
             <strong>North-West base</strong>
-            <p>Wider UK enquiries assessed by postcode and availability</p>
+            <p>National enquiries assessed by postcode and availability</p>
             <hr />
             <h3>Priority coverage</h3>
             <p>Greater London, Greater Manchester, Merseyside and Lancashire</p>

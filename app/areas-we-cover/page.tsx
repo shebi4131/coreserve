@@ -89,7 +89,7 @@ export default function AreasPage() {
       </section>
       <section className="area-wide-cta">
         <div className="shell area-wide-cta__inner">
-          <div><span className="eyebrow eyebrow--light">Outside these areas?</span><h2>Wider UK enquiries are still welcome.</h2><p>Send the full postcode and required date. We will tell you honestly whether the work can be coordinated.</p></div>
+          <div><span className="eyebrow eyebrow--light">Outside these areas?</span><h2>National enquiries are welcome.</h2><p>Send the full postcode and required date. We will tell you honestly whether the work can be coordinated.</p></div>
           <Link className="button button--primary" href="/contact">Request a coverage check <ArrowRight size={18} /></Link>
         </div>
       </section>

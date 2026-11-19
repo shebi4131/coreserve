@@ -19,6 +19,7 @@ type ServicePageProps = { params: Promise<{ slug: string }> };
 const serviceImages = {
   "domestic-cleaning": { src: "/images/home/home-hero.jpeg", width: 1312, height: 816, alt: "Coreserve professional providing domestic cleaning in a modern home" },
   "end-of-tenancy-cleaning": { src: "/images/services/end-of-tenancy-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team carrying out an end-of-tenancy clean" },
+  "bnb-housekeeping": { src: "/images/home/home-hero.jpeg", width: 1312, height: 816, alt: "Guest-ready B&B bedroom prepared for a short-let arrival" },
   "deep-move-cleaning": { src: "/images/services/deep-move-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team deep cleaning a kitchen" },
   "commercial-office-cleaning": { src: "/images/services/regular-commercial-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team providing commercial and office cleaning" },
   "carpet-upholstery-cleaning": { src: "/images/services/specialist-cleaning.jpeg", width: 1312, height: 816, alt: "Coreserve professional carrying out carpet and upholstery cleaning" },
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 
   return {
     title: service.title,
-    description: `${service.summary} Based in North-West, with wider UK coverage subject to location and availability.`,
+    description: `${service.summary} Based in North-West, with national coverage subject to location and availability.`,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
       title: `${service.title} | Coreserve`,
@@ -87,7 +88,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <span>Most useful for</span>
               <strong>{service.audience}</strong>
               <hr />
-              <p>Based in North-West<br />Wider UK coverage</p>
+              <p>Based in North-West<br />National coverage</p>
             </aside>
           </div>
         </div>
@@ -101,7 +102,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <p>Choose every cleaning service required and tell us about the property, timing and access. We will review the scope before confirming availability or price.</p>
             <ul className="check-list">
               <li><Check /> Multiple cleaning services in one enquiry</li>
-              <li><Check /> Wider UK coverage checked by postcode</li>
+              <li><Check /> National coverage checked by postcode</li>
               <li><Check /> Residential, commercial and managed properties</li>
               <li><Check /> Submit the details securely for review</li>
             </ul>

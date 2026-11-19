@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Armchair, Building2, ChevronDown, Hammer, House, KeyRound, MapPin, Menu, Phone, Sparkles, X } from "lucide-react";
+import { ArrowRight, Armchair, BedDouble, Building2, ChevronDown, Hammer, House, KeyRound, MapPin, Menu, Phone, Sparkles, X } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { serviceAreas } from "@/lib/areas";
 import { siteConfig } from "@/lib/site";
@@ -13,6 +13,7 @@ const links = [
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/faqs", label: "FAQs" },
+  { href: "/join-us", label: "Join us" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -22,6 +23,7 @@ const serviceGroups = [
     description: "Everyday homes, moves and handovers",
     links: [
       { href: "/services/domestic-cleaning", label: "Domestic cleaning", detail: "One-off or recurring home cleaning", icon: House },
+      { href: "/services/bnb-housekeeping", label: "B&B housekeeping", detail: "Guest-ready short-let changeovers", icon: BedDouble },
       { href: "/services/end-of-tenancy-cleaning", label: "End-of-tenancy cleaning", detail: "Checklist-led move-out cleaning", icon: KeyRound },
       { href: "/services/deep-move-cleaning", label: "Deep & move cleaning", detail: "A detailed property reset", icon: Sparkles },
     ],
@@ -69,7 +71,7 @@ export function Header() {
         <div className="shell utility-bar__inner">
           <span>Professional cleaning, clearly coordinated</span>
           <a href={siteConfig.phoneHref}><Phone size={14} aria-hidden="true" /> {siteConfig.phoneDisplay}</a>
-          <span className="utility-bar__location">Based in North-West | Wider UK coverage</span>
+          <span className="utility-bar__location">Based in North-West | National Coverage</span>
         </div>
       </div>
       <header className="site-header">
@@ -118,7 +120,7 @@ export function Header() {
             >
               <Link className={isActive("/areas-we-cover") ? "is-active" : undefined} aria-current={pathname === "/areas-we-cover" ? "page" : undefined} href="/areas-we-cover" onNavigate={closeMenus}>Areas <ChevronDown size={15} aria-hidden="true" /></Link>
               <div className="areas-menu" aria-label="Cleaning service areas">
-                <div className="mega-menu__heading"><div><span>Areas we cover</span><p>Four priority hubs, with wider UK enquiries considered.</p></div><Link href="/areas-we-cover" onNavigate={closeMenus}>Explore all areas <ArrowRight size={15} /></Link></div>
+                <div className="mega-menu__heading"><div><span>Areas we cover</span><p>Four priority hubs, with national enquiries considered.</p></div><Link href="/areas-we-cover" onNavigate={closeMenus}>Explore all areas <ArrowRight size={15} /></Link></div>
                 <div className="areas-menu__grid">
                   {serviceAreas.map((area) => (
                     <Link className={pathname === `/areas-we-cover/${area.slug}` ? "is-active" : undefined} aria-current={pathname === `/areas-we-cover/${area.slug}` ? "page" : undefined} href={`/areas-we-cover/${area.slug}`} key={area.slug} onNavigate={closeMenus}>

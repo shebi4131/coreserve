@@ -55,7 +55,7 @@ export function PostcodeChecker({ areaSlug, heading = "Check your postcode" }: P
 
     setResult({
       status: "outside",
-      message: "This postcode is outside the four priority areas shown here, but wider UK enquiries are still welcome and assessed individually.",
+      message: "This postcode is outside the four priority areas shown here, but national enquiries are still welcome and assessed individually.",
     });
   }
 
@@ -87,7 +87,7 @@ export function PostcodeChecker({ areaSlug, heading = "Check your postcode" }: P
             <strong>{result.status === "covered" ? `${result.areaName} coverage found` : result.status === "invalid" ? "Check the postcode" : "Outside a priority area"}</strong>
             <p>{result.message}</p>
             {result.status === "covered" && result.areaSlug ? <Link href={`/areas-we-cover/${result.areaSlug}`}>View {result.areaName} coverage <ArrowRight size={16} /></Link> : null}
-            {result.status === "outside" ? <Link href="/contact">Ask about wider UK coverage <ArrowRight size={16} /></Link> : null}
+            {result.status === "outside" ? <Link href="/contact">Ask about national coverage <ArrowRight size={16} /></Link> : null}
           </div>
         </div>
       ) : null}

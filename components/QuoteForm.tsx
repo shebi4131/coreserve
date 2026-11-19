@@ -8,6 +8,7 @@ import { cleaningTypes } from "@/lib/services";
 const serviceDefaults: Record<string, string[]> = {
   "domestic-cleaning": ["Domestic & Residential Cleaning"],
   "end-of-tenancy-cleaning": ["End-of-Tenancy Cleaning"],
+  "bnb-housekeeping": ["B&B & Short-Let Housekeeping", "Housekeeping Services"],
   "deep-move-cleaning": ["Deep Cleaning"],
   "commercial-office-cleaning": ["Commercial & Office Cleaning", "Regular & One-Off Cleaning"],
   "regular-commercial-cleaning": ["Commercial & Office Cleaning", "Regular & One-Off Cleaning"],

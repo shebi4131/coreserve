@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Coreserve",
   legalName: "Coreserve Facilities Group Ltd",
   description:
-    "Professional domestic, commercial, deep and end-of-tenancy cleaning from Coreserve Facilities Group, based in North-West England with wider UK coverage subject to location and availability.",
+    "Professional domestic, commercial, deep, end-of-tenancy and B&B housekeeping services from Coreserve Facilities Group, based in North-West England with national coverage subject to location and availability.",
   phoneDisplay: "0330 111 9592",
   phoneHref: "tel:03301119592",
   phoneInternational: "+44 330 111 9592",

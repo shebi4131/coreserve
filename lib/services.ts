@@ -1,4 +1,4 @@
-import { Armchair, Building2, Hammer, House, KeyRound, Sparkles } from "lucide-react";
+import { Armchair, BedDouble, Building2, Hammer, House, KeyRound, Sparkles } from "lucide-react";
 
 export type Service = {
   slug: string;
@@ -90,6 +90,44 @@ export const services: readonly Service[] = [
       { question: "Can carpet or upholstery work be added?", answer: "Mention any carpets, rugs or upholstery requiring specialist attention. We will confirm whether that work is available and include it separately rather than assuming it is part of the standard clean." },
     ],
     icon: KeyRound,
+  },
+  {
+    slug: "bnb-housekeeping",
+    title: "B&B and short-let housekeeping",
+    shortTitle: "B&B housekeeping",
+    category: "Cleaning",
+    summary: "Reliable changeover housekeeping for B&Bs, holiday lets and short-stay properties, coordinated around guest arrivals and departures.",
+    audience: "B&B owners, short-let hosts, landlords and property managers",
+    headline: "Guest-ready rooms and dependable changeovers between every stay.",
+    intro: "B&B and short-let housekeeping is planned around check-out, check-in and the standards you want guests to find on arrival. We agree the rooms, reset checklist, linen arrangements, access and reporting process before service begins, giving hosts a repeatable handover routine without relying on last-minute instructions.",
+    includes: [
+      "Bedroom, bathroom and shared-area cleaning against an agreed changeover checklist",
+      "Bed presentation and linen change using host-provided or separately arranged linen",
+      "Kitchen and hospitality-area reset within the confirmed scope",
+      "Vacuuming, mopping, dusting and wiping of guest-facing surfaces",
+      "Restocking of host-provided toiletries and guest essentials",
+      "Visible damage, missing-item or maintenance observations reported to the nominated contact",
+      "A final presentation check before the agreed guest arrival window",
+    ],
+    preparation: [
+      "Property address, room count and typical occupancy",
+      "Check-out and next check-in times",
+      "Changeover checklist and presentation standards",
+      "Linen, laundry and consumables arrangements",
+      "Keys, smart-lock, parking and emergency contact details",
+    ],
+    process: [
+      { title: "Walk through", detail: "We review the property, guest journey and expected presentation standard." },
+      { title: "Build the checklist", detail: "Rooms, linen, restocking, access and reporting requirements are documented." },
+      { title: "Complete the changeover", detail: "The agreed housekeeping sequence is coordinated around departure and arrival times." },
+      { title: "Report and refine", detail: "Observations are shared and the repeatable checklist can be improved over time." },
+    ],
+    faqs: [
+      { question: "Can housekeeping be arranged between same-day bookings?", answer: "Same-day changeovers can be considered when the property, access window and travel time allow. Share the check-out and check-in times so availability can be assessed properly." },
+      { question: "Do you provide linen and guest supplies?", answer: "Linen, laundry and consumables are agreed separately. We can work with host-provided items and restock approved supplies according to the documented checklist." },
+      { question: "Can you report damage or missing items?", answer: "The team can record visible observations identified during the agreed housekeeping visit and notify the nominated contact. This is not a formal property inspection or inventory service." },
+    ],
+    icon: BedDouble,
   },
   {
     slug: "deep-move-cleaning",
@@ -263,6 +301,7 @@ export const cleaningTypes = [
   "Driveway & Porch Washing",
   "Waste Removal",
   "Housekeeping Services",
+  "B&B & Short-Let Housekeeping",
 ] as const;
 
 export function getService(slug: string) {
