@@ -58,7 +58,7 @@ export default async function AreaPage({ params }: AreaPageProps) {
             <h1>Cleaning services in {area.name}</h1>
             <p>{area.summary}</p>
             <div className="area-postcode-pills" aria-label={`Example postcode districts in ${area.name}`}>{area.postcodeExamples.slice(0, 8).map((postcode) => <span key={postcode}>{postcode}</span>)}</div>
-            <div className="hero__actions"><a className="button button--primary" href="#quote-form">Request a {area.name} quote <ArrowRight size={18} /></a></div>
+            <div className="hero__actions"><a className="button button--primary" href="#quote-form">Request Free Quote <ArrowRight size={18} /></a></div>
           </div>
           <PostcodeChecker areaSlug={area.slug} heading={`Check ${area.name} coverage`} />
         </div>

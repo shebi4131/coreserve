@@ -91,7 +91,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <ArticleShare title={post.title} url={shareUrl} />
           </div>
           <aside className="article-sidebar">
-            <div className="article-sidebar__card article-sidebar__quote"><span className="eyebrow eyebrow--compact">Need a quotation?</span><h2>Tell us about your property.</h2><p>Share the postcode, property details and preferred date for a clear, itemised response.</p><Link className="button button--primary" href="/contact">Request a quote <ArrowRight size={17} /></Link></div>
+            <div className="article-sidebar__card article-sidebar__quote"><span className="eyebrow eyebrow--compact">Need a quotation?</span><h2>Tell us about your property.</h2><p>Share the postcode, property details and preferred date for a clear, itemised response.</p><Link className="button button--primary" href="/contact">Request Free Quote <ArrowRight size={17} /></Link></div>
             {morePosts.length ? (
               <div className="article-sidebar__card">
                 <span className="eyebrow eyebrow--compact">More cleaning advice</span>

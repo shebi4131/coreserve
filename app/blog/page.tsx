@@ -62,7 +62,7 @@ export default async function BlogPage() {
             <BookOpen size={34} aria-hidden="true" />
             <h2>Helpful articles are being prepared.</h2>
             <p>Our cleaning guides and property checklists will appear here soon. In the meantime, tell us what you need and we will help you plan the right service.</p>
-            <Link className="button button--primary" href="/contact">Request a quote <ArrowRight size={18} /></Link>
+            <Link className="button button--primary" href="/contact">Request Free Quote <ArrowRight size={18} /></Link>
           </div>
         </section>
       )}

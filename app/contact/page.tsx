@@ -5,12 +5,12 @@ import { SocialIcon } from "@/components/SocialIcon";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Request a Cleaning Quote",
+  title: "Request a Free Cleaning Quote",
   description:
     "Request an itemised domestic, commercial, deep or end-of-tenancy cleaning quote from Coreserve Facilities Group in Burnley.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Request a quote from Coreserve",
+    title: "Request a free quote from Coreserve",
     description: "Tell us about the property, service and timescale.",
     url: "/contact",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Coreserve Facilities Group" }],
@@ -23,7 +23,7 @@ export default function ContactPage() {
       <section className="contact-hero">
         <div className="shell contact-hero__grid">
           <div className="contact-intro">
-            <span className="eyebrow">Request a quote</span>
+            <span className="eyebrow">Request Free Quote</span>
             <h1>Start with the<br />property details.</h1>
             <p>Share the postcode, property, service and timescale. We’ll use those details to clarify the scope before anything is booked.</p>
             <div className="contact-methods">

@@ -86,15 +86,15 @@ export const services: readonly Service[] = [
     ],
     faqs: [
       { question: "Are appliances automatically included?", answer: "External wiping and full internal appliance cleaning are different tasks. We confirm ovens, cookers, dishwashers, fridges and washing machines separately in the quotation so the scope is unambiguous." },
-      { question: "Does the property need to be empty?", answer: "An empty property usually allows the most complete access, but furnished or partly occupied properties can be considered. Tell us the situation when requesting a quote." },
+      { question: "Does the property need to be empty?", answer: "An empty property usually allows the most complete access, but furnished or partly occupied properties can be considered. Tell us the situation when requesting a free quote." },
       { question: "Can carpet or upholstery work be added?", answer: "Mention any carpets, rugs or upholstery requiring specialist attention. We will confirm whether that work is available and include it separately rather than assuming it is part of the standard clean." },
     ],
     icon: KeyRound,
   },
   {
     slug: "bnb-housekeeping",
-    title: "B&B and short let housekeeping",
-    shortTitle: "B&B housekeeping",
+    title: "Air Bnb & Housekeeping",
+    shortTitle: "Air Bnb & Housekeeping",
     category: "Cleaning",
     summary: "Reliable changeover housekeeping for B&Bs, holiday lets and short-stay properties, coordinated around guest arrivals and departures.",
     audience: "B&B owners, short let hosts, landlords and property managers",
@@ -301,7 +301,7 @@ export const cleaningTypes = [
   "Driveway & Porch Washing",
   "Waste Removal",
   "Housekeeping Services",
-  "B&B & Short Let Housekeeping",
+  "Air Bnb & Housekeeping",
 ] as const;
 
 export function getService(slug: string) {

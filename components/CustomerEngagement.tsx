@@ -301,7 +301,7 @@ export function CustomerEngagement() {
               ) : null}
               <button type="button" onClick={() => openQuote("Engagement panel quick quote")}>
                 <span><FileText size={20} /></span>
-                <span><strong>Request a free quote</strong><small>Share the essentials in two minutes</small></span>
+                <span><strong>Request Free Quote</strong><small>Share the essentials in two minutes</small></span>
                 <ArrowRight size={18} />
               </button>
               <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noreferrer">

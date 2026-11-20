@@ -52,7 +52,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="cta-band"><div className="shell cta-band__inner"><div><h2>Tell us what the property needs.</h2></div><Link className="button button--primary" href="/contact">Request a quote <ArrowRight /></Link></div></section>
+      <section className="cta-band"><div className="shell cta-band__inner"><div><h2>Tell us what the property needs.</h2></div><Link className="button button--primary" href="/contact">Request Free Quote <ArrowRight /></Link></div></section>
     </main>
   );
 }

@@ -62,7 +62,7 @@ export default function ServicesPage() {
           </div>
           <div>
             <p>From detailed property changeovers to regular, commercial and specialist cleaning, every enquiry starts with the property, postcode, timing and outcome you need.</p>
-            <Link className="button button--primary" href="/contact">Request an itemised quote <ArrowUpRight size={18} /></Link>
+            <Link className="button button--primary" href="/contact">Request Free Quote <ArrowUpRight size={18} /></Link>
           </div>
         </div>
       </section>
@@ -90,7 +90,7 @@ export default function ServicesPage() {
           <ul className="service-catalog" aria-label="Available cleaning services">
             {cleaningTypes.map((service) => <li key={service}><Check size={17} /><span>{service}</span></li>)}
           </ul>
-          <div className="service-catalog__action"><Link className="button button--dark" href="/contact">Select services and request a quote <ArrowRight size={18} /></Link></div>
+          <div className="service-catalog__action"><Link className="button button--dark" href="/contact">Request Free Quote <ArrowRight size={18} /></Link></div>
         </div>
       </section>
 
@@ -113,7 +113,7 @@ export default function ServicesPage() {
         <div className="shell cta-band__inner">
           <div><h2>Start with the property details.</h2><p>We’ll help identify the right scope.</p></div>
           <div className="cta-band__actions">
-            <Link className="button button--primary" href="/contact">Request a quote <ArrowRight size={18} /></Link>
+            <Link className="button button--primary" href="/contact">Request Free Quote <ArrowRight size={18} /></Link>
             <a className="button button--outline-light" href={siteConfig.phoneHref}><Phone size={18} /> Call {siteConfig.phoneDisplay}</a>
           </div>
         </div>

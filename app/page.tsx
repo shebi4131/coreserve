@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const homeServices = [
   { title: "Domestic Cleaning", summary: "Keep your home clean, comfortable and presentable with regular or one-off cleaning tailored to your household.", href: "/services/domestic-cleaning", icon: House },
-  { title: "B&B Housekeeping", summary: "Keep B&B and short let properties guest-ready with reliable, checklist-led changeovers between stays.", href: "/services/bnb-housekeeping", icon: BedDouble },
+  { title: "Air Bnb & Housekeeping", summary: "Keep B&B and short let properties guest-ready with reliable, checklist-led changeovers between stays.", href: "/services/bnb-housekeeping", icon: BedDouble },
   { title: "Deep Cleaning", summary: "Give your property a thorough clean, focusing on kitchens, bathrooms, floors, surfaces and other areas that need extra attention.", href: "/services/deep-move-cleaning", icon: Sparkles },
   { title: "End-of-Tenancy Cleaning", summary: "Prepare rental properties for inspection, handover or new occupants with a detailed cleaning service based on an agreed checklist.", href: "/services/end-of-tenancy-cleaning", icon: KeyRound },
   { title: "Commercial and Office Cleaning", summary: "Maintain clean, presentable workplaces with cleaning schedules designed around your business and operating hours.", href: "/services/commercial-office-cleaning", icon: Building2 },

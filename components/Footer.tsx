@@ -26,7 +26,7 @@ export async function Footer() {
               <Link href="/about">About</Link>
               <Link href="/faqs">FAQs</Link>
               <Link href="/join-us">Join our team</Link>
-              <Link href="/contact">Request a quote</Link>
+              <Link href="/contact">Request Free Quote</Link>
             </nav>
           </div>
           <div className="footer__areas">

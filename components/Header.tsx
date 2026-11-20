@@ -23,7 +23,7 @@ const serviceGroups = [
     description: "Everyday homes, moves and handovers",
     links: [
       { href: "/services/domestic-cleaning", label: "Domestic cleaning", detail: "One-off or recurring home cleaning", icon: House },
-      { href: "/services/bnb-housekeeping", label: "B&B housekeeping", detail: "Guest-ready short let changeovers", icon: BedDouble },
+      { href: "/services/bnb-housekeeping", label: "Air Bnb & Housekeeping", detail: "Guest-ready short let changeovers", icon: BedDouble },
       { href: "/services/end-of-tenancy-cleaning", label: "End-of-tenancy cleaning", detail: "Checklist-led move-out cleaning", icon: KeyRound },
       { href: "/services/deep-move-cleaning", label: "Deep & move cleaning", detail: "A detailed property reset", icon: Sparkles },
     ],
@@ -137,7 +137,7 @@ export function Header() {
               </div>
             </div>
             {links.slice(1).map((link) => <Link className={isActive(link.href) ? "is-active" : undefined} aria-current={isActive(link.href) ? "page" : undefined} key={link.href} href={link.href}>{link.label}</Link>)}
-            <Link className="button button--primary button--small" href="/contact">Request a quote</Link>
+            <Link className="button button--primary button--small" href="/contact">Request Free Quote</Link>
           </nav>
           <details className="mobile-menu" ref={mobileMenuRef}>
             <summary aria-label="Open navigation"><Menu className="menu-open" /><X className="menu-close" /></summary>
