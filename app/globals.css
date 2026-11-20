@@ -934,8 +934,41 @@ p { margin: 0; color: var(--muted); }
 .application-note p { font-size: .8rem; }
 .application-note strong { display: block; color: var(--navy); }
 .application-intro .text-link { margin-top: 18px; }
-.application-embed { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: #f6f8fa; box-shadow: var(--shadow); }
-.application-embed iframe { width: 100%; min-height: 2380px; display: block; border: 0; }
+.cleaner-application-form { min-width: 0; padding: 38px; border: 1px solid var(--line); border-radius: 22px; background: var(--white); box-shadow: var(--shadow); }
+.cleaner-application-form__heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+.cleaner-application-form__heading h2 { margin-bottom: 9px; font-size: 1.85rem; }
+.cleaner-application-form__heading p { max-width: 590px; font-size: .9rem; }
+.cleaner-application-form__footer { display: flex; align-items: center; gap: 20px; margin-top: 28px; }
+.cleaner-application-form__footer > p { max-width: 380px; font-size: .74rem; }
+.application-field-groups { display: grid; gap: 28px; }
+.application-fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.application-fieldset + .application-fieldset { padding-top: 27px; border-top: 1px solid var(--line); }
+.application-fieldset legend { color: var(--navy); font-size: .88rem; font-weight: 800; }
+.application-fieldset > p { margin: 4px 0 13px; font-size: .76rem; }
+.application-fieldset > small { display: block; margin-top: 10px; color: var(--teal-dark); font-size: .72rem; font-weight: 800; }
+.availability-table { margin-top: 15px; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; }
+.availability-table__head, .availability-table__row { display: grid; grid-template-columns: minmax(108px, 1.2fr) repeat(4, minmax(78px, 1fr)); align-items: center; }
+.availability-table__head { min-height: 42px; color: #526879; background: var(--pale); font-size: .67rem; font-weight: 850; text-align: center; text-transform: uppercase; }
+.availability-table__head span:first-child { padding-left: 17px; text-align: left; }
+.availability-table__row { min-height: 58px; border-top: 1px solid var(--line); }
+.availability-table__row strong { padding-left: 17px; color: var(--navy); font-size: .8rem; }
+.availability-table__row label { min-height: 58px; display: grid; place-items: center; border-left: 1px solid var(--line); cursor: pointer; }
+.availability-table__row label:hover { background: var(--pale); }
+.availability-table__row input { position: absolute; opacity: 0; pointer-events: none; }
+.availability-table__row label > span { width: 25px; height: 25px; display: grid; place-items: center; border: 1px solid #b7c9d4; border-radius: 7px; color: transparent; background: var(--white); transition: 160ms ease; }
+.availability-table__row input:focus-visible + span { outline: 3px solid rgba(35, 99, 147, .18); outline-offset: 2px; }
+.availability-table__row input:checked + span { color: var(--white); border-color: var(--teal-dark); background: var(--teal-dark); }
+.availability-table__mobile-label { display: none; }
+.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 13px; }
+.choice-grid--compact { grid-template-columns: repeat(2, minmax(100px, 180px)); }
+.choice-grid--three { grid-template-columns: repeat(3, 1fr); }
+.choice-card { min-height: 52px; display: flex; align-items: center; gap: 10px; padding: 11px 13px; border: 1px solid #d2dfe3; border-radius: 10px; color: var(--ink); background: var(--white); cursor: pointer; font-size: .78rem; font-weight: 700; line-height: 1.35; transition: border-color 160ms ease, background 160ms ease; }
+.choice-card:hover, .choice-card:has(input:checked) { border-color: var(--teal-dark); background: #edf4f8; }
+.choice-card input { width: 17px; height: 17px; flex: none; accent-color: var(--teal-dark); }
+.application-other-field { display: grid; gap: 7px; margin-top: 13px; }
+.application-other-field > span { color: var(--navy); font-size: .78rem; font-weight: 800; }
+.application-other-field input { width: 100%; min-height: 48px; padding: 11px 13px; border: 1px solid #d2dfe3; border-radius: 9px; color: var(--ink); background: var(--white); outline: 0; }
+.application-other-field input:focus { border-color: var(--teal-dark); box-shadow: 0 0 0 3px rgba(35, 99, 147, .16); }
 
 @keyframes orbit { to { transform: rotate(360deg); } }
 @keyframes orbit-reverse { to { transform: rotate(-360deg); } }
@@ -1116,8 +1149,19 @@ p { margin: 0; color: var(--muted); }
   .join-pillars, .join-requirements { grid-template-columns: 1fr; }
   .join-pillar { min-height: 0; padding: 26px; }
   .join-pillar > span { margin-bottom: 30px; }
-  .application-embed { margin-inline: -8px; border-radius: 14px; }
-  .application-embed iframe { min-height: 2700px; }
+  .cleaner-application-form { padding: 23px; border-radius: 16px; }
+  .cleaner-application-form__heading, .cleaner-application-form__footer { align-items: stretch; flex-direction: column; }
+  .cleaner-application-form__footer .button { width: 100%; }
+  .availability-table { overflow: visible; border: 0; border-radius: 0; }
+  .availability-table__head { display: none; }
+  .availability-table__row { grid-template-columns: repeat(2, 1fr); gap: 7px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .availability-table__row:first-of-type { border-top: 0; }
+  .availability-table__row strong { grid-column: 1 / -1; padding: 0; }
+  .availability-table__row label { min-height: 42px; display: block; border: 0; }
+  .availability-table__row label > span { width: 100%; height: 42px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 11px; border-radius: 9px; color: var(--ink); }
+  .availability-table__row input:checked + span { color: var(--white); }
+  .availability-table__mobile-label { display: inline; font-size: .72rem; font-weight: 750; }
+  .choice-grid, .choice-grid--compact, .choice-grid--three { grid-template-columns: 1fr; }
   .field-wide { grid-column: auto; }
   .quote-form__footer { align-items: stretch; flex-direction: column; }
   .quote-form__footer .button { width: 100%; }

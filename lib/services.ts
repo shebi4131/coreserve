@@ -93,13 +93,13 @@ export const services: readonly Service[] = [
   },
   {
     slug: "bnb-housekeeping",
-    title: "B&B and short-let housekeeping",
+    title: "B&B and short let housekeeping",
     shortTitle: "B&B housekeeping",
     category: "Cleaning",
     summary: "Reliable changeover housekeeping for B&Bs, holiday lets and short-stay properties, coordinated around guest arrivals and departures.",
-    audience: "B&B owners, short-let hosts, landlords and property managers",
+    audience: "B&B owners, short let hosts, landlords and property managers",
     headline: "Guest-ready rooms and dependable changeovers between every stay.",
-    intro: "B&B and short-let housekeeping is planned around check-out, check-in and the standards you want guests to find on arrival. We agree the rooms, reset checklist, linen arrangements, access and reporting process before service begins, giving hosts a repeatable handover routine without relying on last-minute instructions.",
+    intro: "B&B and short let housekeeping is planned around check-out, check-in and the standards you want guests to find on arrival. We agree the rooms, reset checklist, linen arrangements, access and reporting process before service begins, giving hosts a repeatable handover routine without relying on last-minute instructions.",
     includes: [
       "Bedroom, bathroom and shared-area cleaning against an agreed changeover checklist",
       "Bed presentation and linen change using host-provided or separately arranged linen",
@@ -301,7 +301,7 @@ export const cleaningTypes = [
   "Driveway & Porch Washing",
   "Waste Removal",
   "Housekeeping Services",
-  "B&B & Short-Let Housekeeping",
+  "B&B & Short Let Housekeeping",
 ] as const;
 
 export function getService(slug: string) {

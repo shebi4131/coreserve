@@ -19,7 +19,7 @@ type ServicePageProps = { params: Promise<{ slug: string }> };
 const serviceImages = {
   "domestic-cleaning": { src: "/images/home/home-hero.jpeg", width: 1312, height: 816, alt: "Coreserve professional providing domestic cleaning in a modern home" },
   "end-of-tenancy-cleaning": { src: "/images/services/end-of-tenancy-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team carrying out an end-of-tenancy clean" },
-  "bnb-housekeeping": { src: "/images/home/home-hero.jpeg", width: 1312, height: 816, alt: "Guest-ready B&B bedroom prepared for a short-let arrival" },
+  "bnb-housekeeping": { src: "/images/services/bnb-housekeeping.jpeg", width: 1312, height: 816, alt: "Guest-ready B&B bedroom prepared for a short let arrival" },
   "deep-move-cleaning": { src: "/images/services/deep-move-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team deep cleaning a kitchen" },
   "commercial-office-cleaning": { src: "/images/services/regular-commercial-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team providing commercial and office cleaning" },
   "carpet-upholstery-cleaning": { src: "/images/services/specialist-cleaning.jpeg", width: 1312, height: 816, alt: "Coreserve professional carrying out carpet and upholstery cleaning" },

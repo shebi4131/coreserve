@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, BadgeCheck, CalendarCheck, Check, ClipboardCheck, MapPin, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowUpRight, BadgeCheck, CalendarCheck, Check, MapPin, ShieldCheck, Sparkles } from "lucide-react";
+import { CleanerApplicationForm } from "@/components/CleanerApplicationForm";
 import { siteConfig } from "@/lib/site";
-
-const cleanerApplicationUrl =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeUxVfeizHz3ewmjv1nGgtbhwFD8LrmQk_cLD8oIsDtIc_iCQ/viewform";
 
 export const metadata: Metadata = {
   title: "Cleaning Jobs and Opportunities",
@@ -56,6 +54,25 @@ export default function JoinUsPage() {
         </div>
       </section>
 
+      <section className="section application-section" id="cleaner-application" aria-labelledby="application-title">
+        <div className="shell application-shell">
+          <div className="application-intro">
+            <span className="eyebrow">Cleaner application</span>
+            <h2 id="application-title">Tell us about yourself.</h2>
+            <p>
+              Complete every required field in the application below. Your response is securely recorded in Coreserve&apos;s connected cleaner onboarding sheet.
+            </p>
+            <ul className="check-list">
+              <li><Check aria-hidden="true" />Allow a few minutes to complete it</li>
+              <li><Check aria-hidden="true" />Use up-to-date contact details</li>
+              <li><Check aria-hidden="true" />Check your answers before submitting</li>
+            </ul>
+            <div className="application-note"><Check aria-hidden="true" /><p><strong>Three short steps</strong>No Google account or separate form window is required.</p></div>
+          </div>
+          <CleanerApplicationForm />
+        </div>
+      </section>
+
       <section className="section join-overview" aria-labelledby="join-overview-title">
         <div className="shell">
           <div className="section-heading split-heading">
@@ -96,39 +113,6 @@ export default function JoinUsPage() {
         </div>
       </section>
 
-      <section className="section application-section" id="cleaner-application" aria-labelledby="application-title">
-        <div className="shell application-shell">
-          <div className="application-intro">
-            <span className="eyebrow">Cleaner application</span>
-            <h2 id="application-title">Tell us about yourself.</h2>
-            <p>
-              Complete every required field in the application below. Your response is securely recorded through our existing Google Form and connected cleaner onboarding sheet.
-            </p>
-            <ul className="check-list">
-              <li><Check aria-hidden="true" />Allow a few minutes to complete it</li>
-              <li><Check aria-hidden="true" />Use up-to-date contact details</li>
-              <li><Check aria-hidden="true" />Check your answers before submitting</li>
-            </ul>
-            <div className="application-note">
-              <ClipboardCheck aria-hidden="true" />
-              <p><strong>Form not displaying?</strong> Open it securely in a separate tab.</p>
-            </div>
-            <a className="text-link" href={cleanerApplicationUrl} target="_blank" rel="noreferrer">
-              Open application form <ArrowUpRight size={16} />
-            </a>
-          </div>
-
-          <div className="application-embed">
-            <iframe
-              src={`${cleanerApplicationUrl}?embedded=true`}
-              title="Coreserve cleaner application form"
-              loading="lazy"
-            >
-              Loading cleaner application…
-            </iframe>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
