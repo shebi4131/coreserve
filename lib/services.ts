@@ -93,8 +93,8 @@ export const services: readonly Service[] = [
   },
   {
     slug: "bnb-housekeeping",
-    title: "Air Bnb & Housekeeping",
-    shortTitle: "Air Bnb & Housekeeping",
+    title: "Airbnb & Housekeeping",
+    shortTitle: "Airbnb & Housekeeping",
     category: "Cleaning",
     summary: "Reliable changeover housekeeping for B&Bs, holiday lets and short-stay properties, coordinated around guest arrivals and departures.",
     audience: "B&B owners, short let hosts, landlords and property managers",
@@ -301,7 +301,7 @@ export const cleaningTypes = [
   "Driveway & Porch Washing",
   "Waste Removal",
   "Housekeeping Services",
-  "Air Bnb & Housekeeping",
+  "Airbnb & Housekeeping",
 ] as const;
 
 export function getService(slug: string) {

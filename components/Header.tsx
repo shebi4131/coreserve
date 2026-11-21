@@ -23,7 +23,7 @@ const serviceGroups = [
     description: "Everyday homes, moves and handovers",
     links: [
       { href: "/services/domestic-cleaning", label: "Domestic cleaning", detail: "One-off or recurring home cleaning", icon: House },
-      { href: "/services/bnb-housekeeping", label: "Air Bnb & Housekeeping", detail: "Guest-ready short let changeovers", icon: BedDouble },
+      { href: "/services/bnb-housekeeping", label: "Airbnb & Housekeeping", detail: "Guest-ready short let changeovers", icon: BedDouble },
       { href: "/services/end-of-tenancy-cleaning", label: "End-of-tenancy cleaning", detail: "Checklist-led move-out cleaning", icon: KeyRound },
       { href: "/services/deep-move-cleaning", label: "Deep & move cleaning", detail: "A detailed property reset", icon: Sparkles },
     ],
