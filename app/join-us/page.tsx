@@ -41,7 +41,7 @@ export default function JoinUsPage() {
         <div className="shell join-hero__grid">
           <div>
             <span className="eyebrow eyebrow--light">Careers and opportunities</span>
-            <h1>Do good work.<br />Be part of Coreserve.</h1>
+            <h1>Do great work.<br />Be part of Coreserve.</h1>
           </div>
           <div className="join-hero__intro">
             <p>

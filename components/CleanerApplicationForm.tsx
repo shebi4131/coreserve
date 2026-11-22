@@ -206,7 +206,7 @@ export function CleanerApplicationForm() {
       setCoverage([]);
       setTravel([]);
       setCurrentStep(1);
-      setStatus("Thank you. Your application has been submitted to Coreserve for review.");
+      setStatus("Thank you for applying to Coreserve. Your application has been submitted successfully. Our team will review your application and contact you using the details you provided.");
       setStatusType("success");
     } catch {
       setStatus("We could not submit your application. Please check your connection and try again.");
