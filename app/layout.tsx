@@ -39,7 +39,10 @@ export const metadata: Metadata = {
   // Title/description are left out so each page's own Open Graph text is used for X/Twitter cards.
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
-  verification: { google: "pi5jPxL3-erPg0vpM_VGEmfzA3L70-Msz8od0cpvfhs" },
+  verification: {
+    google: "pi5jPxL3-erPg0vpM_VGEmfzA3L70-Msz8od0cpvfhs",
+    other: { "facebook-domain-verification": "bg06q1ppp5strgzlnu8ffa8qgehy2l" },
+  },
 };
 
 export const viewport: Viewport = { themeColor: "#062c50", width: "device-width", initialScale: 1 };
