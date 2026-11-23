@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Coreserve Facilities Group is a Burnley-based cleaning company with its own teams across Lancashire, Manchester, Merseyside and London.",
+  description: "Coreserve Facilities Group is a UK cleaning company with itemised quotes, completion photos and its own teams in Lancashire, Manchester, Merseyside and London.",
   alternates: { canonical: "/about" },
   openGraph: { images: [{ url: "/images/about/about-operations.jpeg", width: 1264, height: 848, alt: "Coreserve team coordinating a cleaning service" }] },
 };
@@ -16,8 +16,8 @@ export default function AboutPage() {
     <main id="main-content">
       <section className="page-hero">
         <div className="shell page-hero__grid">
-          <div><span className="eyebrow eyebrow--light">About Coreserve</span><h1>Burnley-based cleaners.<br />Itemised quotes, photo-checked results.</h1></div>
-          <div><p>Coreserve Facilities Group cleans homes, rentals, short lets and workplaces with its own teams across Lancashire, Greater Manchester, Merseyside and London.</p><Link className="button button--primary" href="/contact">Discuss your property <ArrowRight /></Link></div>
+          <div><span className="eyebrow eyebrow--light">About Coreserve</span><h1>Cleaning across the UK.<br />Itemised quotes, photo-checked results.</h1></div>
+          <div><p>Coreserve Facilities Group cleans homes, rentals, short lets and workplaces across the UK, with its own teams in Lancashire, Greater Manchester, Merseyside and London.</p><Link className="button button--primary" href="/contact">Discuss your property <ArrowRight /></Link></div>
         </div>
       </section>
 
@@ -33,8 +33,8 @@ export default function AboutPage() {
           </div>
           <div className="story-copy">
             <span className="eyebrow">Who we are</span>
-            <h2>A local cleaning company that shows its work.</h2>
-            <p>{siteConfig.founderName ? `Coreserve Facilities Group was founded${siteConfig.foundedYear ? ` in ${siteConfig.foundedYear}` : ""} by ${siteConfig.founderName} and is run from ` : "Coreserve Facilities Group is run from "}124 Colne Road in Burnley. Our own cleaning teams work across Lancashire, Greater Manchester, Merseyside and London, carrying out domestic, end-of-tenancy, deep, Airbnb, office and after-builders cleaning.</p>
+            <h2>A cleaning company that shows its work.</h2>
+            <p>{siteConfig.founderName ? `Coreserve Facilities Group was founded${siteConfig.foundedYear ? ` in ${siteConfig.foundedYear}` : ""} by ${siteConfig.founderName} . ` : "Coreserve Facilities Group is a UK cleaning company. "}We clean homes and businesses across the UK, with our own teams in Lancashire, Greater Manchester, Merseyside and London, carrying out domestic, end-of-tenancy, deep, Airbnb, office and after-builders cleaning.</p>
             <p>Before we quote, we ask about the property size, condition, access and deadline. The quote then lists each room, task and optional extra, so you know exactly what is and isn’t included before you book.</p>
             <p>On the day, the team works through a room-by-room checklist. When the job is finished, you receive completion photos and a written summary the same day, including anything we could not complete and why.</p>
             <ul className="check-list">

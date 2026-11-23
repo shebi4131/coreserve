@@ -16,7 +16,7 @@ export async function Footer() {
         <div className="footer__grid">
           <div>
             <Logo inverse />
-            <p>Domestic, end-of-tenancy, deep and office cleaning from Burnley, with our own teams across Lancashire, Greater Manchester, Merseyside and London.</p>
+            <p>Domestic, end-of-tenancy, deep and office cleaning across the UK, with our own teams in Lancashire, Greater Manchester, Merseyside and London.</p>
           </div>
           <div>
             <h2>Explore</h2>
@@ -58,6 +58,9 @@ export async function Footer() {
               <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer" aria-label="Message Coreserve on WhatsApp" title="WhatsApp"><SocialIcon platform="whatsapp" /></a>
             </div>
             <TrustpilotReviewLink variant="compact" />
+            <a className="trustpilot-link trustpilot-link--compact" href={siteConfig.maps.businessProfile} target="_blank" rel="noopener noreferrer">
+              <span>Find us on Google</span>
+            </a>
           </div>
         </div>
         <div className="footer__bottom">

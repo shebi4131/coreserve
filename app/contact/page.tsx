@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Clock3, MapPin, Navigation, Phone } from "lucide-react";
+import { Clock3, MapPin, Navigation, Phone, Star } from "lucide-react";
 import { QuoteForm } from "@/components/QuoteForm";
 import { SocialIcon } from "@/components/SocialIcon";
 import { siteConfig } from "@/lib/site";
@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Request a Free Cleaning Quote",
   description:
-    "Request an itemised domestic, commercial, deep or end-of-tenancy cleaning quote from Coreserve Facilities Group in Burnley.",
+    "Request a free, itemised quote for domestic, commercial, deep or end-of-tenancy cleaning from Coreserve Facilities Group, covering the UK.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Request a free quote from Coreserve",
@@ -34,7 +34,8 @@ export default function ContactPage() {
               <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer"><span><SocialIcon platform="facebook" /></span><div><small>Facebook</small><strong>Visit our Facebook page</strong></div></a>
               <div><span><MapPin /></span><div><small>Our base</small><strong>{siteConfig.address.street}, {siteConfig.address.locality}, {siteConfig.address.postcode}</strong></div></div>
               {siteConfig.businessHours ? <div><span><Clock3 /></span><div><small>Opening hours</small><strong>{siteConfig.businessHours}</strong></div></div> : null}
-              <div><span><MapPin /></span><div><small>Our own teams cover</small><strong>{siteConfig.coverage.short}</strong></div></div>
+              <div><span><MapPin /></span><div><small>Coverage</small><strong>Across the UK</strong></div></div>
+              <a href={siteConfig.maps.businessProfile} target="_blank" rel="noreferrer"><span><Star /></span><div><small>Google</small><strong>See us on Google</strong></div></a>
             </div>
             <p className="contact-privacy-note">We only use your details to reply to this enquiry. See our <Link href="/privacy">privacy notice</Link>.</p>
           </div>
@@ -45,9 +46,9 @@ export default function ContactPage() {
       <section className="contact-location" aria-labelledby="contact-location-title">
         <div className="shell contact-location__grid">
           <div className="contact-location__copy">
-            <span className="eyebrow eyebrow--light">Our North-West base</span>
-            <h2 id="contact-location-title">Find Coreserve in Burnley.</h2>
-            <p>Our office is in Burnley, Lancashire. Cleaning teams travel to properties across Lancashire, Greater Manchester, Merseyside and London.</p>
+            <span className="eyebrow eyebrow--light">Our office</span>
+            <h2 id="contact-location-title">Find Coreserve.</h2>
+            <p>We clean properties across the UK, with our own teams in Lancashire, Greater Manchester, Merseyside and London.</p>
             <address><MapPin aria-hidden="true" /><span><strong>Coreserve Facilities Group</strong>{siteConfig.address.street}<br />{siteConfig.address.locality}, {siteConfig.address.postcode}</span></address>
             <a className="button button--primary" href={siteConfig.maps.directions} target="_blank" rel="noreferrer">Get directions <Navigation size={18} /></a>
           </div>

@@ -27,8 +27,9 @@ export const siteConfig = {
     businessProfile: "https://www.google.com/maps?cid=18308218644608467039",
   },
   coverage: {
-    short: "Lancashire, Greater Manchester, Merseyside & London",
-    sentence: "Our own cleaning teams cover Lancashire, Greater Manchester, Merseyside and London. Other UK locations are considered case by case.",
+    short: "Across the UK",
+    regions: "Lancashire, Greater Manchester, Merseyside & London",
+    sentence: "We clean homes and businesses across the UK, with our own teams in Lancashire, Greater Manchester, Merseyside and London.",
   },
   // Confirmed service commitments. Only add items that are true today.
   commitments: {

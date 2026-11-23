@@ -71,7 +71,7 @@ export function Header() {
         <div className="shell utility-bar__inner">
           <span>Itemised quotes · Completion photos the same day</span>
           <a href={siteConfig.phoneHref}><Phone size={14} aria-hidden="true" /> {siteConfig.phoneDisplay}</a>
-          <span className="utility-bar__location">Burnley-based | Lancashire · Manchester · Merseyside · London</span>
+          <span className="utility-bar__location">Professional cleaning | Across the UK</span>
         </div>
       </div>
       <header className="site-header">

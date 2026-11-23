@@ -14,7 +14,7 @@ const generalFaqs = [
   { question: "Do you publish fixed prices?", answer: "Not at present. Property condition, size, appliances, access, parking and selected extras can change the work required, so we confirm the scope before quoting." },
   { question: "What happens after I send an enquiry?", answer: "We review the details, ask for anything essential that is missing, assess the scope and availability, and then confirm the quotation and arrangements before booking." },
   { question: "Can I arrange more than one service?", answer: "Yes. Select multiple services or explain what the property needs. Availability and the appropriate order of work will be confirmed during the quotation process." },
-  { question: "Which locations do you cover?", answer: "Coreserve is based in Burnley. Our own cleaning teams cover Lancashire, Greater Manchester, Merseyside and London, and other UK locations are considered case by case. Send the property postcode and preferred date so the team can confirm the right arrangements." },
+  { question: "Which locations do you cover?", answer: "Coreserve cleans properties across the UK, with our own teams in Lancashire, Greater Manchester, Merseyside and London. Send the property postcode and preferred date so the team can confirm the right arrangements." },
   { question: "Which specialist cleaning services can I select?", answer: "You can select more than one option, including upholstery, curtain, mattress, appliance, bathroom, after-builders, pressure washing, driveway and porch washing, waste removal and housekeeping services. Interior window and carpet cleaning are included within an agreed deep-cleaning scope. We will confirm exactly what is included in your quotation." },
 ];
 

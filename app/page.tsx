@@ -93,7 +93,7 @@ export default function HomePage() {
         <ResponsiveImage src="/images/home/home-hero.jpeg" alt="Coreserve professional cleaning team working in a modern home" width={1312} height={816} className="hero__media" sizes="100vw" priority />
         <div className="shell hero__grid">
           <div className="hero__copy">
-            <span className="eyebrow eyebrow--light"><i aria-hidden="true" /> Burnley-based • Lancashire, Manchester, Merseyside &amp; London</span>
+            <span className="eyebrow eyebrow--light"><i aria-hidden="true" /> Professional cleaning • Across the UK</span>
             <h1>Professional cleaning services <em>for homes and businesses.</em></h1>
             <p className="hero__lead">Domestic, commercial, deep and end-of-tenancy cleaning by our own teams. You get an itemised quote before booking, and photos plus a written summary the same day the job is done.</p>
             <div className="hero__actions">
@@ -103,7 +103,7 @@ export default function HomePage() {
             <div className="hero__proof" aria-label="Reasons to choose Coreserve">
               <span><Check size={17} /> Itemised quotes</span>
               <span><ShieldCheck size={17} /> Room-by-room checklist</span>
-              <span><MapPin size={17} /> Own teams in 4 regions</span>
+              <span><MapPin size={17} /> Across the UK</span>
             </div>
           </div>
         </div>
@@ -138,6 +138,13 @@ export default function HomePage() {
                 <span className="text-link">View service details <ArrowUpRight size={17} /></span>
               </Link>
             ))}
+            <Link href="/contact" className="featured-service featured-service--cta">
+              <div className="featured-service__top"><span>08</span><ServiceMark icon={ClipboardCheck} /></div>
+              <span className="eyebrow eyebrow--compact">Free quote</span>
+              <h3>Not sure what you need?</h3>
+              <p>Tell us about the property and we will recommend the right clean, with an itemised quote before you book.</p>
+              <span className="text-link">Get a free quote <ArrowUpRight size={17} /></span>
+            </Link>
           </div>
         </div>
       </section>
@@ -153,7 +160,7 @@ export default function HomePage() {
               <li><Check /> Every job signed off against a room-by-room checklist</li>
               <li><Check /> Completion photos and a written job summary sent the same day</li>
               <li><Check /> One-off visits or recurring weekly and fortnightly cleaning</li>
-              <li><Check /> Our own teams across Lancashire, Greater Manchester, Merseyside and London</li>
+              <li><Check /> Cleaning across the UK, with our own teams in Lancashire, Greater Manchester, Merseyside and London</li>
             </ul>
             <Link className="button button--dark" href="/about">More about Coreserve <ArrowRight size={18} /></Link>
           </div>
@@ -180,15 +187,15 @@ export default function HomePage() {
         <div className="shell coverage">
           <div>
             <span className="eyebrow">Service area</span>
-            <h2>Burnley-based.<br />Four regions, our own teams.</h2>
+            <h2>Cleaning across the UK.<br />Our own local teams.</h2>
             <p>{siteConfig.coverage.sentence}</p>
             <p>Check your postcode or send it with your quote request and we will confirm the date we can attend.</p>
             <Link className="text-link" href="/areas-we-cover">See the areas we cover <ArrowRight size={18} /></Link>
           </div>
           <aside className="coverage__panel">
             <MapPin size={26} />
-            <strong>Based in Burnley, Lancashire</strong>
-            <p>124 Colne Road, Burnley, BB10 1LP</p>
+            <strong>Across the UK</strong>
+            <p>Homes, rentals, short lets and workplaces</p>
             <hr />
             <h3>Our own teams cover</h3>
             <p>Lancashire, Greater Manchester, Merseyside and Greater London</p>

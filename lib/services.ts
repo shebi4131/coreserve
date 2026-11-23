@@ -19,7 +19,8 @@ export type Service = {
   preparation: readonly string[];
   process: readonly { title: string; detail: string }[];
   faqs: readonly { question: string; answer: string }[];
-  /** Optional longer-form sections shown on the service page. */
+  /** Optional longer-form sections shown on the service page as equal cards. */
+  detailsTitle?: string;
   details?: readonly { heading: string; body: string }[];
   icon: typeof Sparkles;
 };
@@ -108,11 +109,12 @@ export const services: readonly Service[] = [
       { question: "Can you guarantee I get my deposit back?", answer: "No cleaning company can decide a deposit. That is between you, your landlord or agent and the deposit scheme. What we do is clean to the agreed checklist and send dated photos and a summary, which gives you clear evidence of the condition you left the property in." },
       { question: "Can you clean at short notice?", answer: "Send the handover date with your enquiry. Short-notice cleans are often possible, depending on the postcode and the size of the job, and we will tell you straight away whether we can make the date." },
     ],
+    detailsTitle: "End of tenancy cleaning, done properly",
     details: [
-      { heading: "Cleaned to your letting agent’s checklist", body: "Letting agents and inventory clerks check a property against the check-in report, not a generic standard. If you have the inventory, check-out report or the agent’s own cleaning list, send it with your enquiry. We quote against it, the team works through it room by room, and you receive completion photos and a written summary the same day to share with your agent or landlord." },
-      { heading: "How end-of-tenancy pricing works", body: "Every property is different, so we price from the details you send: bedrooms, bathrooms, whether it is furnished, its condition and the extras you need. Oven, fridge-freezer, dishwasher, washing machine, carpet and upholstery cleaning are listed as separate lines, so you can see exactly what each part costs and remove anything you do not need before booking." },
-      { heading: "For tenants, landlords and letting agents", body: "Tenants book us to leave the property ready for the check-out inspection. Landlords and agents use us between tenancies to get a property ready for viewings and the next move-in, often alongside carpet cleaning, or after-builders cleaning when work has been done." },
-      { heading: "End-of-tenancy cleaning near you", body: "Our own teams carry out end-of-tenancy cleans in Burnley, Blackburn, Accrington, Preston, Blackpool, Lancaster and across Lancashire; in Manchester, Salford, Stockport, Bolton and Wigan; in Liverpool, Bootle, St Helens and the Wirral; and across Greater London. Enter your postcode in the form and we will confirm the earliest date we can attend." },
+      { heading: "End of Tenancy Cleaning Checklist", body: "We clean to your letting agent’s or landlord’s inventory, not a generic list. Send the check-out report and our team works through it room by room: kitchen, bathrooms, bedrooms, floors and fittings. Completion photos and a written summary follow the same day, ready to share with your agent." },
+      { heading: "End of Tenancy Cleaning Prices", body: "Your quote is based on bedrooms, bathrooms, furnishing and condition. Oven, fridge-freezer, dishwasher, carpet and upholstery cleaning appear as separate lines, so you see exactly what each part costs and pay only for what you need. No hidden extras, and nothing is booked until you accept." },
+      { heading: "Move-Out Cleaning to Protect Your Deposit", body: "Tenants book us before the check-out inspection to leave the property spotless and documented. Landlords and letting agents use us between tenancies to prepare for viewings and new tenants. Dated photos and a written summary give everyone clear evidence of the condition the property was left in." },
+      { heading: "End of Tenancy Cleaning Near You", body: "Our own teams cover Burnley, Blackburn, Preston, Blackpool and all of Lancashire; Manchester, Salford, Stockport and Bolton; Liverpool, St Helens and the Wirral; and Greater London. Elsewhere in the UK? Enter your postcode in the quote form and we will confirm the earliest date available." },
     ],
     icon: KeyRound,
   },

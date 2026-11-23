@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ClipboardCheck, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ClipboardCheck, MapPin, Phone, PoundSterling, ShieldCheck } from "lucide-react";
 import { QuoteForm } from "@/components/QuoteForm";
 import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
@@ -16,6 +16,8 @@ export function generateStaticParams() {
 }
 
 type ServicePageProps = { params: Promise<{ slug: string }> };
+
+const detailIcons = [ClipboardCheck, PoundSterling, ShieldCheck, MapPin] as const;
 
 const serviceImages = {
   "domestic-cleaning": { src: "/images/home/home-hero.jpeg", width: 1312, height: 816, alt: "Coreserve professional providing domestic cleaning in a modern home" },
@@ -97,7 +99,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <strong>{service.audience}</strong>
               <hr />
               {service.priceFrom ? <p><strong>From {service.priceFrom}</strong></p> : null}
-              <p>Own teams in Lancashire, Greater Manchester, Merseyside &amp; London</p>
+              <p>Across the UK</p>
             </aside>
           </div>
         </div>
@@ -113,7 +115,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <p>Choose the cleaning you need and tell us about the property, timing and access. We reply with an itemised quote listing each room, task and extra, so you can see the cost of each part before booking.</p>
             <ul className="check-list">
               <li><Check /> Multiple cleaning services in one enquiry</li>
-              <li><Check /> Own teams across Lancashire, Manchester, Merseyside &amp; London</li>
+              <li><Check /> Cleaning across the UK</li>
               <li><Check /> Residential, commercial and managed properties</li>
               <li><Check /> Completion photos and a written summary the same day</li>
             </ul>
@@ -144,11 +146,24 @@ export default async function ServicePage({ params }: ServicePageProps) {
       </section>
 
       {service.details?.length ? (
-        <section className="section section--compact">
-          <div className="shell service-details">
-            {service.details.map((detail) => (
-              <article key={detail.heading}><h2>{detail.heading}</h2><p>{detail.body}</p></article>
-            ))}
+        <section className="section service-details-section" aria-labelledby="service-details-title">
+          <div className="shell">
+            <div className="section-heading">
+              <span className="eyebrow">{service.shortTitle}</span>
+              <h2 id="service-details-title">{service.detailsTitle || `${service.shortTitle}: what to know`}</h2>
+            </div>
+            <div className="service-details">
+              {service.details.map((detail, index) => {
+                const Icon = detailIcons[index % detailIcons.length];
+                return (
+                  <article key={detail.heading} className="service-detail-card">
+                    <div className="service-detail-card__top"><span className="service-detail-card__icon"><Icon aria-hidden="true" /></span><span className="service-detail-card__number">{String(index + 1).padStart(2, "0")}</span></div>
+                    <h3>{detail.heading}</h3>
+                    <p>{detail.body}</p>
+                  </article>
+                );
+              })}
+            </div>
           </div>
         </section>
       ) : null}
