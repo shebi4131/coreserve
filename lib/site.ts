@@ -39,7 +39,9 @@ export const siteConfig = {
     sameDaySummary: true,
   },
   // Leave empty until confirmed; anything empty is hidden on the site.
-  businessHours: "",
+  businessHours: "Open 7 days, 9am–7pm",
+  // Machine-readable hours for structured data (all days, 09:00–19:00).
+  openingHours: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "09:00", closes: "19:00" },
   quoteResponseTime: "",
   founderName: "",
   foundedYear: "",

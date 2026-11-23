@@ -63,6 +63,12 @@ const entitySchema = {
         siteConfig.social.trustpilot,
       ],
       hasMap: siteConfig.maps.businessProfile,
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: siteConfig.openingHours.days,
+        opens: siteConfig.openingHours.opens,
+        closes: siteConfig.openingHours.closes,
+      },
       address: {
         "@type": "PostalAddress",
         streetAddress: siteConfig.address.street,
