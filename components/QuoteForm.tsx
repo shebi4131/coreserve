@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, LoaderCircle, Send } from "lucide-react";
 import { cleaningTypes } from "@/lib/services";
 import { trackQuoteLead } from "@/lib/meta-pixel";
+import { siteConfig } from "@/lib/site";
 
 const serviceDefaults: Record<string, string[]> = {
   "domestic-cleaning": ["Domestic & Residential Cleaning"],
@@ -124,8 +125,17 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle, defa
     setStatus("Sending your enquiry...");
     setStatusType("idle");
 
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 25000);
+
     try {
-      await fetch(endpoint, { method: "POST", mode: "no-cors", body: payload });
+      // Readable (CORS) request so the Apps Script reply can be checked. A URL-encoded body is a
+      // "simple" request, so no preflight is sent; Apps Script answers with Access-Control-Allow-Origin: *.
+      const response = await fetch(endpoint, { method: "POST", body: payload, signal: controller.signal });
+      const result: unknown = response.ok ? await response.json().catch(() => null) : null;
+      if (!result || typeof result !== "object" || (result as { ok?: unknown }).ok !== true) {
+        throw new Error(`Enquiry webhook did not confirm the save (HTTP ${response.status}).`);
+      }
       trackQuoteLead();
       formElement.reset();
       setSelectedServices(serviceSlug ? serviceDefaults[serviceSlug] ?? [] : []);
@@ -133,10 +143,12 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle, defa
       setCurrentStep(1);
       setStatus("Thank you. Your enquiry has been submitted and Coreserve will review the details.");
       setStatusType("success");
-    } catch {
-      setStatus("We could not submit the enquiry. Please try again or contact us by phone or WhatsApp.");
+    } catch (error) {
+      console.error("Quote enquiry was not confirmed", error);
+      setStatus(`We could not confirm your enquiry was received. Your answers are still here — please try again, or call ${siteConfig.phoneDisplay} or message us on WhatsApp.`);
       setStatusType("error");
     } finally {
+      window.clearTimeout(timeout);
       setIsSubmitting(false);
     }
   }

@@ -1,79 +1,90 @@
 # Coreserve Facilities Group website
 
-A complete, search-optimised Next.js website for Coreserve Facilities Group, focused on nationwide residential, commercial and property-management cleaning.
+Marketing and enquiry website for **Coreserve Facilities Group Ltd**, a cleaning company based at 124 Colne Road, Burnley, BB10 1LP. The company serves North-West England and takes enquiries from the rest of the UK, depending on location and availability.
+
+It is a Next.js (App Router) site built as a static export and hosted on Cloudflare Pages. Blog content comes from Sanity. Quote enquiries are saved to Google Sheets, and cleaner applications go to a Google Form.
 
 ## Pages
 
-- `/` — Home
-- `/services` — Service directory
-- `/services/[service]` — Three detailed, indexable core cleaning pages with enquiry forms
-- `/end-of-tenancy-cleaning-checklist` — Room-by-room cleaning scope
-- `/areas-we-cover` — North-West base, priority regions and nationwide coverage guidance
-- `/about` — Company approach and positioning
-- `/faqs` — Service and booking questions
-- `/contact` — Detailed WhatsApp quote form
-- `/privacy`, `/terms`, `/complaints` — Customer-information pages
+| Route | Purpose |
+| --- | --- |
+| `/` | Home |
+| `/services` and `/services/[slug]` | Service directory and seven service pages with quote forms (domestic, end-of-tenancy, Airbnb & housekeeping, deep/move, commercial & office, carpet & upholstery, after-builders). Content lives in `lib/services.ts`. |
+| `/areas-we-cover` and `/areas-we-cover/[slug]` | Coverage hub plus Preston/Lancashire, Manchester, Liverpool and London pages, with a postcode checker. Data lives in `lib/areas.ts`. |
+| `/end-of-tenancy-cleaning-checklist` | Room-by-room cleaning scope |
+| `/about`, `/faqs`, `/contact` | Company information and the main quote form |
+| `/join-us` | Cleaner job application form |
+| `/blog`, `/blog/[slug]`, `/blog/category/[slug]` | Sanity-powered articles (see `docs/BLOG_CMS_SETUP.md`) |
+| `/admin` | Embedded Sanity Studio, password-protected on Cloudflare (see below) |
+| `/privacy`, `/terms`, `/complaints` | Customer-information pages |
+| `/sitemap.xml`, `/robots.txt`, `/feed.xml` | Generated at build time |
+
+Business details (name, phone, address, social links, map) are stored in one place: `lib/site.ts`.
 
 ## Local development
 
 ```bash
 npm install
-npm run dev
+npm run dev        # http://localhost:3000
+npm run check      # TypeScript check
 ```
 
-Open `http://localhost:3000`.
+Copy `.env.example` to `.env.local` and fill in the values:
 
-## Production configuration
+| Variable | Used for |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap and structured data |
+| `NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL` | Quote form; Apps Script web app from `scripts/google-sheets-enquiry-webhook.gs` |
+| `NEXT_PUBLIC_APPLICATION_RELAY_URL` | Optional. Cleaner-application relay from `scripts/google-forms-application-relay.gs` |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, `NEXT_PUBLIC_SANITY_API_VERSION` | Blog content and `/admin` |
+| `NEXT_PUBLIC_TAWK_PROPERTY_ID`, `NEXT_PUBLIC_TAWK_WIDGET_ID` | Optional Tawk.to live chat |
 
-Copy `.env.example` to `.env.local` and replace the example URL with the final public domain:
+Set the same variables in Cloudflare Pages (Production and Preview) before building there.
 
-```env
-NEXT_PUBLIC_SITE_URL=https://your-domain.co.uk
-```
+## Forms
 
-This value is used for canonical URLs, sitemap entries and structured data. Set the same variable in Cloudflare before the production build.
+- **Quote form** (`components/QuoteForm.tsx`): posts to the Google Apps Script webhook. The script returns `{"ok":true}` only after it has written the row, and the form shows "submitted" only when it receives that reply. If the webhook is down, misconfigured or slow (25-second timeout), the visitor sees an error asking them to try again, call or use WhatsApp, and their answers stay in the form.
+- **Cleaner application** (`components/CleanerApplicationForm.tsx`): sends answers to a Google Form. Google Forms replies can't be read from the browser, so success can only be confirmed through the relay:
+  1. Create a **new** Apps Script project and paste in `scripts/google-forms-application-relay.gs`.
+  2. Deploy it as a web app (Execute as: Me, Access: Anyone).
+  3. Set the resulting `/exec` URL as `NEXT_PUBLIC_APPLICATION_RELAY_URL`, then rebuild.
 
-## Verify a production build
+  Without that variable, the form posts straight to Google Forms as before and can only catch network errors.
+
+After you edit an Apps Script, publish a new version of the **existing** deployment (Deploy → Manage deployments → Edit → New version) so the `/exec` URL stays the same.
+
+## Admin protection
+
+`functions/admin/_middleware.ts` is a Cloudflare Pages Function that requires a username and password for `/admin` and `/admin/*`. It runs only on those paths, so public pages are still served as plain static files and don't use the free Functions quota.
+
+In Cloudflare Pages → **Settings → Variables and Secrets**, add these as encrypted secrets for **both** Production and Preview:
+
+- `ADMIN_USERNAME`
+- `ADMIN_PASSWORD` (long and random)
+
+Then redeploy. If either value is missing, `/admin` returns 503 (the gate stays closed). `npm run dev` doesn't run Pages Functions, so local editing isn't affected. Editing content still requires a Sanity login on top of this password.
+
+If you want per-person logins instead of a shared password, Cloudflare Zero Trust → Access (free for up to 50 users) can protect `/admin*` with email one-time codes. That is configured in the Cloudflare dashboard and can sit in front of this gate.
+
+## Build and deploy
 
 ```bash
-npm run build
-npm run preview:cloudflare
+npm run build                 # static export to out/
+npm run preview:cloudflare    # serve out/ plus functions/ locally with Wrangler
+npm run deploy                # build and deploy to the "coreserve" Pages project, production branch
 ```
 
-## Deploy to Cloudflare Pages
+Branches: `shoaib-dev` is for development, `staging` is for pre-release checks and `main` is production. Only deploy or merge to `main` once a change has been checked on staging.
 
-1. Create a free Cloudflare account and authenticate Wrangler:
+`public/_headers` sets security and noindex headers. `public/_redirects` holds legacy URL redirects.
 
-   ```bash
-   npx wrangler login
-   ```
+## Tracking and SEO
 
-2. Create a Pages project named `coreserve-facilities-group`, or change the project name in the `deploy` script.
-3. Set `NEXT_PUBLIC_SITE_URL` before building, then deploy:
+- The Meta Pixel (`lib/meta-pixel.ts`) loads only after the visitor accepts marketing cookies (`components/MarketingConsent.tsx`).
+- Each route has its own title, description and canonical URL. The site also generates a sitemap, robots.txt, an RSS feed and LocalBusiness, Service, FAQ and Article structured data.
+- Search engine verification files live in `public/` (Google and Bing).
 
-   ```bash
-   npm run deploy
-   ```
+## Repository notes
 
-The production build is a static Next.js export in `out/`, so every public page is served directly from Cloudflare's edge without paid compute. You can also connect the Git repository in Cloudflare Pages and use `npm run build` as the build command and `out` as the output directory.
-
-If server-side features are added later, the same project can use Cloudflare Pages Functions or switch to the OpenNext Workers adapter. Supabase can also be connected without changing the page structure.
-
-## Contact form
-
-The site-wide and service-page forms build a pre-filled WhatsApp message to `+44 330 111 9592`. They store nothing and require no database or paid email provider. The implementation can later be replaced with a server action using Resend, Supabase or another CRM without changing the public form design.
-
-## SEO included
-
-- Route-specific titles, descriptions and canonical links
-- `sitemap.xml` and `robots.txt`
-- Local business, service, FAQ and item-list structured data
-- Semantic landmarks and heading hierarchy
-- Crawlable service pages and a detailed end-of-tenancy checklist
-- Fast static-first pages, responsive layouts and local font optimisation
-
-Before launch, connect the domain, verify the website in Google Search Console and create or update the Google Business Profile with matching contact details.
-
-## Illustration assets
-
-The SVG artwork in `public/illustrations/` is sourced from [unDraw](https://undraw.co/illustrations) and recoloured to the Coreserve navy and blue palette. The images are decorative, locally hosted and lazy-loaded.
+- `docs/source/` holds the original supplied site (`original-site.html`) and the source logo. `scripts/prepare-logo.mjs` reads the logo from there.
+- The illustrations in `public/illustrations/` come from [unDraw](https://undraw.co/illustrations) and were recoloured to the brand palette.

@@ -198,8 +198,23 @@ export function CleanerApplicationForm() {
     setStatus("Submitting your application...");
     setStatusType("idle");
 
+    const relayUrl = process.env.NEXT_PUBLIC_APPLICATION_RELAY_URL;
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 25000);
+
     try {
-      await fetch(googleFormResponseUrl, { method: "POST", mode: "no-cors", body: payload, keepalive: true });
+      if (relayUrl) {
+        // The relay (scripts/google-forms-application-relay.gs) submits to the Google Form
+        // server-side and returns readable JSON, so a failed submission is reported to the applicant.
+        const response = await fetch(relayUrl, { method: "POST", body: payload, signal: controller.signal });
+        const result: unknown = response.ok ? await response.json().catch(() => null) : null;
+        if (!result || typeof result !== "object" || (result as { ok?: unknown }).ok !== true) {
+          throw new Error(`Application relay did not confirm the submission (HTTP ${response.status}).`);
+        }
+      } else {
+        // Fallback: Google Forms replies are unreadable from the browser, so only network errors are detectable.
+        await fetch(googleFormResponseUrl, { method: "POST", mode: "no-cors", body: payload, keepalive: true });
+      }
       formElement.reset();
       setAvailability(createInitialAvailability());
       setVisaStatus("");
@@ -208,10 +223,12 @@ export function CleanerApplicationForm() {
       setCurrentStep(1);
       setStatus("Thank you for applying to Coreserve. Your application has been submitted successfully. Our team will review your application and contact you using the details you provided.");
       setStatusType("success");
-    } catch {
-      setStatus("We could not submit your application. Please check your connection and try again.");
+    } catch (error) {
+      console.error("Cleaner application was not confirmed", error);
+      setStatus("We could not confirm your application was received. Your answers are still here — please check your connection and try again.");
       setStatusType("error");
     } finally {
+      window.clearTimeout(timeout);
       setIsSubmitting(false);
     }
   }

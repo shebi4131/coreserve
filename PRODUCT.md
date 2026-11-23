@@ -30,7 +30,7 @@ Visitors commonly arrive while arranging end-of-tenancy, deep, domestic, commerc
 
 - Dedicated pages for Home, Services, three core cleaning-service details, Areas, About, FAQs, Contact, a cleaning checklist and customer-information policies.
 - Three core pages: end-of-tenancy cleaning, deep/move cleaning and regular/commercial cleaning. The enquiry flow also presents eighteen selectable cleaning types.
-- Preserve all relevant content from the supplied `index.html`, excluding the final two service cards.
+- Preserve all relevant content from the supplied original site (`docs/source/original-site.html`), excluding the final two service cards.
 - The quote experience must work without a database and remain easy to connect to an email provider or database later.
 - The site must be responsive, accessible, search-engine friendly, and ready for Cloudflare's free deployment tier.
 - Specialist work and selected extras must be described accurately; the site must not fabricate accreditations, guarantees or certification held directly by Coreserve.
@@ -41,12 +41,12 @@ Visitors commonly arrive while arranging end-of-tenancy, deep, domestic, commerc
 - Use the logo-led deep navy, mid-blue, cool silver, pale blue-grey, and white palette consistently across the website.
 - Voice: professional, practical, straightforward, dependable, and free of inflated claims.
 - Current phone: +44 330 111 9592.
-- Current address: 45 Symonds Road, Fulwood, Preston, PR2 3DH.
-- Based in North-West England, with nationwide UK coverage confirmed from the postcode, service, property and required date.
+- Current address: 124 Colne Road, Burnley, BB10 1LP.
+- Based in Burnley, Lancashire (North-West England), with nationwide UK coverage confirmed from the postcode, service, property and required date.
 
 ## Evidence on Hand
 
-The supplied `index.html` contains the confirmed business copy, service categories, contact details, service area, process, and visual identity. No testimonials, customer logos, case studies, trade memberships, verified business email address, or formal accreditations have been supplied; future work must not invent them.
+The supplied original site (`docs/source/original-site.html`) contains the confirmed business copy, service categories, contact details, service area, process, and visual identity. No testimonials, customer logos, case studies, trade memberships, verified business email address, or formal accreditations have been supplied; future work must not invent them.
 
 ## Product Principles
 
