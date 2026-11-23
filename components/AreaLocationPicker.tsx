@@ -21,7 +21,7 @@ export function AreaLocationPicker({ locations }: AreaLocationPickerProps) {
       {locations.map((location) => (
         <button type="button" key={location.name} onClick={() => selectLocation(location.name, location.postcode)}>
           <span><MapPin size={18} /><strong>{location.name}</strong></span>
-          <small>{location.postcode} area</small>
+          <small>{location.postcode.replace(/[0-9].*$/, "")} area</small>
         </button>
       ))}
     </div>

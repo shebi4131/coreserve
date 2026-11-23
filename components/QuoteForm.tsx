@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, LoaderCircle, Send } from "lucide-react";
 import { cleaningTypes } from "@/lib/services";
+import { trackQuoteLead } from "@/lib/meta-pixel";
 
 const serviceDefaults: Record<string, string[]> = {
   "domestic-cleaning": ["Domestic & Residential Cleaning"],
@@ -125,6 +126,7 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle, defa
 
     try {
       await fetch(endpoint, { method: "POST", mode: "no-cors", body: payload });
+      trackQuoteLead();
       formElement.reset();
       setSelectedServices(serviceSlug ? serviceDefaults[serviceSlug] ?? [] : []);
       setLocationValue(defaultLocation);

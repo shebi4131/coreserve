@@ -182,6 +182,7 @@ export default function PrivacyPage() {
             <p>Cookies may include:</p>
             <ul><li>Essential cookies required for website functionality.</li><li>Analytical cookies used to understand website traffic and performance.</li><li>Functional cookies that remember website preferences.</li><li>Marketing cookies, if used, to support advertising and marketing activities.</li></ul>
             <p>Where required, we will request your consent before placing non-essential cookies on your device.</p>
+            <p>If you accept advertising cookies, we use Meta Pixel to measure page visits and quote request submissions, understand the effectiveness of Facebook and Instagram advertising and support relevant advertising. Meta may associate these events with your Meta account. We do not include the contact details or property information entered into our enquiry forms in these events. You can reject advertising cookies or withdraw your choice through the Cookie settings button. See <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">Meta&apos;s Privacy Policy</a> for information about Meta&apos;s processing.</p>
             <p>You can manage cookie preferences through our website&apos;s cookie settings and your browser settings.</p>
           </section>
 

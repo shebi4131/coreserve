@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { SocialIcon } from "@/components/SocialIcon";
 import { TrustpilotReviewLink } from "@/components/TrustpilotReviewLink";
+import { CookiePreferencesLink } from "@/components/MarketingConsent";
 import { siteConfig } from "@/lib/site";
 import { serviceAreas } from "@/lib/areas";
 import { getFooterBlogCategories } from "@/sanity/lib/fetch";
@@ -60,7 +61,7 @@ export async function Footer() {
         </div>
         <div className="footer__bottom">
           <span>© {new Date().getFullYear()} Coreserve Facilities Group. All rights reserved.</span>
-          <nav className="footer__legal" aria-label="Legal information"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/complaints">Complaints</Link></nav>
+          <nav className="footer__legal" aria-label="Legal information"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><CookiePreferencesLink /><Link href="/complaints">Complaints</Link></nav>
         </div>
       </div>
     </footer>

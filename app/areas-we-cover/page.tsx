@@ -7,7 +7,7 @@ import { canonicalUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cleaning Service Areas Across the UK",
-  description: "Explore Coreserve cleaning coverage in Burnley, Manchester, Liverpool and London. Check your postcode and request residential or commercial cleaning.",
+  description: "Explore Coreserve cleaning coverage in Preston, Manchester, Liverpool and London. Check your postcode and request residential or commercial cleaning.",
   alternates: { canonical: "/areas-we-cover" },
   openGraph: {
     title: "Cleaning service areas | Coreserve Facilities Group",
@@ -67,7 +67,7 @@ export default function AreasPage() {
                 <div className="area-hub-card__locations" aria-label={`Locations near ${area.name}`}>
                   {area.locations.slice(0, 5).map((location) => (
                     <Link key={location.name} href={{ pathname: `/areas-we-cover/${area.slug}`, query: { location: `${location.name} — ${location.postcode}` } }}>
-                      {location.name}<small>{location.postcode}</small>
+                      {location.name}<small>{location.postcode.replace(/[0-9].*$/, "")}</small>
                     </Link>
                   ))}
                 </div>

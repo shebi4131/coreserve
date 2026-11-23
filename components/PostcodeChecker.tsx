@@ -35,7 +35,7 @@ export function PostcodeChecker({ areaSlug, heading = "Check your postcode" }: P
     const outwardArea = postcodeArea(postcode);
 
     if (normalised.length < 2 || !outwardArea) {
-      setResult({ status: "invalid", message: "Enter a UK postcode or outward code, for example BB10, M1, L1 or SW1." });
+      setResult({ status: "invalid", message: "Enter a UK postcode or outward code, for example PR1, M1, L1 or SW1." });
       return;
     }
 
@@ -74,7 +74,7 @@ export function PostcodeChecker({ areaSlug, heading = "Check your postcode" }: P
             id={`postcode-${areaSlug || "all"}`}
             value={postcode}
             onChange={(event) => { setPostcode(event.target.value); setResult(null); }}
-            placeholder="For example, BB10 1LP"
+            placeholder="For example, PR1 1AA"
             autoComplete="postal-code"
           />
           <button type="submit">Check</button>

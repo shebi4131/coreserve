@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Script from "next/script";
+import { trackQuoteLead } from "@/lib/meta-pixel";
 import {
   ArrowRight,
   CheckCircle2,
@@ -244,6 +245,7 @@ export function CustomerEngagement() {
 
     try {
       await fetch(endpoint, { method: "POST", mode: "no-cors", body: payload });
+      trackQuoteLead();
       formElement.reset();
       setStatus("Thanks — your request is with the CoreServe team. We’ll review it and get back to you.");
       setStatusType("success");
@@ -384,7 +386,7 @@ export function CustomerEngagement() {
                   <label><span>Full name *</span><input name="name" required autoComplete="name" placeholder="Your full name" /></label>
                   <label><span>Mobile number *</span><input name="phone" type="tel" required autoComplete="tel" placeholder="Best contact number" /></label>
                   <label><span>Email address</span><input name="email" type="email" autoComplete="email" placeholder="you@example.com" /></label>
-                  <label><span>Postcode or town *</span><input name="location" required autoComplete="postal-code" placeholder="For example, BB10" /></label>
+                  <label><span>Postcode or town *</span><input name="location" required autoComplete="postal-code" placeholder="For example, PR1" /></label>
                   <label className="quick-quote__wide">
                     <span>Cleaning service *</span>
                     <select name="cleaningServices" required defaultValue="">

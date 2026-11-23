@@ -125,7 +125,7 @@ export function Header() {
                   {serviceAreas.map((area) => (
                     <Link className={pathname === `/areas-we-cover/${area.slug}` ? "is-active" : undefined} aria-current={pathname === `/areas-we-cover/${area.slug}` ? "page" : undefined} href={`/areas-we-cover/${area.slug}`} key={area.slug} onNavigate={closeMenus}>
                       <span className="areas-menu__icon"><MapPin size={18} aria-hidden="true" /></span>
-                      <span><small>{area.region}</small><strong>{area.name}</strong><em>{area.postcodeExamples.slice(0, 3).join(" · ")}</em></span>
+                      <span><small>{area.region}</small><strong>{area.name}</strong><em>{area.postcodeAreas.slice(0, 3).join(" · ")}</em></span>
                       <ArrowRight size={17} aria-hidden="true" />
                     </Link>
                   ))}
