@@ -24,7 +24,9 @@ export const siteConfig = {
   maps: {
     embed: "https://www.google.com/maps?q=124%20Colne%20Road%2C%20Burnley%2C%20England%2C%20BB10%201LP&output=embed",
     directions: "https://www.google.com/maps/dir/?api=1&destination=124%20Colne%20Road%2C%20Burnley%2C%20England%2C%20BB10%201LP",
-    businessProfile: "https://www.google.com/maps?cid=18308218644608467039",
+    businessProfile: "https://www.google.com/maps?cid=6558488210160048976",
+    // Short link to the Google Business Profile, used for "Google reviews" links.
+    reviews: "https://maps.app.goo.gl/xuwAu8BiZMDzqVoL6",
   },
   coverage: {
     short: "Across the UK",

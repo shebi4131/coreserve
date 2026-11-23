@@ -58,8 +58,8 @@ export async function Footer() {
               <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer" aria-label="Message Coreserve on WhatsApp" title="WhatsApp"><SocialIcon platform="whatsapp" /></a>
             </div>
             <TrustpilotReviewLink variant="compact" />
-            <a className="trustpilot-link trustpilot-link--compact" href={siteConfig.maps.businessProfile} target="_blank" rel="noopener noreferrer">
-              <span>Find us on Google</span>
+            <a className="trustpilot-link trustpilot-link--compact" href={siteConfig.maps.reviews} target="_blank" rel="noopener noreferrer">
+              <span>Google reviews</span>
             </a>
           </div>
         </div>

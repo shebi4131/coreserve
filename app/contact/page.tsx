@@ -35,7 +35,7 @@ export default function ContactPage() {
               <div><span><MapPin /></span><div><small>Our base</small><strong>{siteConfig.address.street}, {siteConfig.address.locality}, {siteConfig.address.postcode}</strong></div></div>
               {siteConfig.businessHours ? <div><span><Clock3 /></span><div><small>Opening hours</small><strong>{siteConfig.businessHours}</strong></div></div> : null}
               <div><span><MapPin /></span><div><small>Coverage</small><strong>Across the UK</strong></div></div>
-              <a href={siteConfig.maps.businessProfile} target="_blank" rel="noreferrer"><span><Star /></span><div><small>Google</small><strong>See us on Google</strong></div></a>
+              <a href={siteConfig.maps.reviews} target="_blank" rel="noreferrer"><span><Star /></span><div><small>Google reviews</small><strong>Read or leave a Google review</strong></div></a>
             </div>
             <p className="contact-privacy-note">We only use your details to reply to this enquiry. See our <Link href="/privacy">privacy notice</Link>.</p>
           </div>
