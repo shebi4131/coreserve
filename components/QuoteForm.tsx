@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, LoaderCircle, Send } from "lucide-react";
+import { webhookConfirmedSave } from "@/lib/webhook";
 import { cleaningTypes } from "@/lib/services";
 import { trackQuoteLead } from "@/lib/meta-pixel";
 import { siteConfig } from "@/lib/site";
@@ -132,8 +133,7 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle, defa
       // Readable (CORS) request so the Apps Script reply can be checked. A URL-encoded body is a
       // "simple" request, so no preflight is sent; Apps Script answers with Access-Control-Allow-Origin: *.
       const response = await fetch(endpoint, { method: "POST", body: payload, signal: controller.signal });
-      const result: unknown = response.ok ? await response.json().catch(() => null) : null;
-      if (!result || typeof result !== "object" || (result as { ok?: unknown }).ok !== true) {
+      if (!(await webhookConfirmedSave(response))) {
         throw new Error(`Enquiry webhook did not confirm the save (HTTP ${response.status}).`);
       }
       trackQuoteLead();

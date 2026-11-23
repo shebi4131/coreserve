@@ -3,6 +3,7 @@
 import { FormEvent, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, LoaderCircle, Send } from "lucide-react";
+import { webhookConfirmedSave } from "@/lib/webhook";
 
 const googleFormResponseUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSeUxVfeizHz3ewmjv1nGgtbhwFD8LrmQk_cLD8oIsDtIc_iCQ/formResponse";
@@ -207,8 +208,7 @@ export function CleanerApplicationForm() {
         // The relay (scripts/google-forms-application-relay.gs) submits to the Google Form
         // server-side and returns readable JSON, so a failed submission is reported to the applicant.
         const response = await fetch(relayUrl, { method: "POST", body: payload, signal: controller.signal });
-        const result: unknown = response.ok ? await response.json().catch(() => null) : null;
-        if (!result || typeof result !== "object" || (result as { ok?: unknown }).ok !== true) {
+        if (!(await webhookConfirmedSave(response))) {
           throw new Error(`Application relay did not confirm the submission (HTTP ${response.status}).`);
         }
       } else {
