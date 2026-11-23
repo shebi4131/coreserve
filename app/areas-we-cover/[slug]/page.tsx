@@ -91,7 +91,7 @@ export default async function AreaPage({ params }: AreaPageProps) {
         <div className="shell faq-layout"><div className="faq-layout__intro"><span className="eyebrow">{area.name} questions</span><h2>Useful details before you enquire.</h2><p>Coverage is confirmed from the full postcode and required date, so the answer is specific to your property.</p></div><div className="faq-list">{area.faqs.map((faq) => <details key={faq.question}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div></div>
       </section>
       <section className="section section--compact related-areas">
-        <div className="shell"><div className="section-heading"><span className="eyebrow">Other priority areas</span><h2>Explore national coverage.</h2></div><div className="related-area-grid">{relatedAreas.map((item) => <Link href={`/areas-we-cover/${item.slug}`} key={item.slug}><MapPin size={19} /><div><small>{item.region}</small><strong>{item.name}</strong></div><ArrowRight size={18} /></Link>)}</div></div>
+        <div className="shell"><div className="section-heading"><span className="eyebrow">Other areas we cover</span><h2>Our own teams also cover these areas.</h2></div><div className="related-area-grid">{relatedAreas.map((item) => <Link href={`/areas-we-cover/${item.slug}`} key={item.slug}><MapPin size={19} /><div><small>{item.region}</small><strong>{item.name}</strong></div><ArrowRight size={18} /></Link>)}</div></div>
       </section>
     </main>
   );

@@ -6,7 +6,7 @@ import { BlogCard } from "@/components/blog/BlogCard";
 import { getBlogPosts, getBlogSettings } from "@/sanity/lib/fetch";
 import { canonicalUrl, siteConfig } from "@/lib/site";
 
-const defaultDescription = "Practical cleaning advice, property preparation checklists and professional guidance from CoreServe Facilities Group.";
+const defaultDescription = "Practical cleaning advice, property preparation checklists and professional guidance from Coreserve Facilities Group.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getBlogSettings();
@@ -31,7 +31,7 @@ export default async function BlogPage() {
       <section className="blog-hero">
         <div className="shell blog-hero__grid">
           <div>
-            <span className="eyebrow eyebrow--light">CoreServe knowledge centre</span>
+            <span className="eyebrow eyebrow--light">Coreserve knowledge centre</span>
             <h1>{settings?.heading || "Cleaning advice and property guidance"}</h1>
             <p>{settings?.introduction || "Practical guidance for homeowners, tenants, landlords, letting agents and businesses—from preparing for a clean to maintaining a property between visits."}</p>
           </div>

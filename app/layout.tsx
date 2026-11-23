@@ -36,7 +36,8 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     url: "/",
   },
-  twitter: { card: "summary_large_image", title: siteConfig.name, description: siteConfig.description },
+  // Title/description are left out so each page's own Open Graph text is used for X/Twitter cards.
+  twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   verification: { google: "pi5jPxL3-erPg0vpM_VGEmfzA3L70-Msz8od0cpvfhs" },
 };

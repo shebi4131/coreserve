@@ -69,9 +69,9 @@ export function Header() {
     <>
       <div className="utility-bar">
         <div className="shell utility-bar__inner">
-          <span>Professional cleaning, clearly coordinated</span>
+          <span>Itemised quotes · Completion photos the same day</span>
           <a href={siteConfig.phoneHref}><Phone size={14} aria-hidden="true" /> {siteConfig.phoneDisplay}</a>
-          <span className="utility-bar__location">Based in North-West | National Coverage</span>
+          <span className="utility-bar__location">Burnley-based | Lancashire · Manchester · Merseyside · London</span>
         </div>
       </div>
       <header className="site-header">

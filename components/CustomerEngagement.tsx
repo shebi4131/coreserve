@@ -63,8 +63,15 @@ export function CustomerEngagement() {
   }, [panelOpen, quoteOpen, exitOpen]);
 
   useEffect(() => {
-    const hour = new Date().getHours();
-    setWelcomeMessage(hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening");
+    // Greeting follows UK time (Europe/London handles GMT/BST), not the visitor's device clock.
+    const ukHour = () => Number(new Intl.DateTimeFormat("en-GB", { hour: "numeric", hourCycle: "h23", timeZone: "Europe/London" }).format(new Date()));
+    const update = () => {
+      const hour = ukHour();
+      setWelcomeMessage(hour < 5 ? "Good evening" : hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening");
+    };
+    update();
+    const timer = window.setInterval(update, 60_000);
+    return () => window.clearInterval(timer);
   }, []);
 
   useEffect(() => {
@@ -247,7 +254,7 @@ export function CustomerEngagement() {
       await fetch(endpoint, { method: "POST", mode: "no-cors", body: payload });
       trackQuoteLead();
       formElement.reset();
-      setStatus("Thanks — your request is with the CoreServe team. We’ll review it and get back to you.");
+      setStatus("Thanks — your request is with the Coreserve team. We’ll review it and get back to you.");
       setStatusType("success");
     } catch {
       setStatus("We couldn’t send this request. Please try again or contact us by phone or WhatsApp.");
@@ -276,8 +283,8 @@ export function CustomerEngagement() {
             </button>
             <span className="engagement-greeting__icon"><img src="/brand/coreserve-mark.png" alt="" /></span>
             <div>
-              <strong>Hi there! Need help choosing a cleaning service?</strong>
-              <button type="button" onClick={togglePanel}>Ask CoreServe <ArrowRight size={15} /></button>
+              <strong>Questions? Get a free quote or message us on WhatsApp.</strong>
+              <button type="button" onClick={togglePanel}>Ask Coreserve <ArrowRight size={15} /></button>
             </div>
           </div>
         ) : null}
@@ -287,7 +294,7 @@ export function CustomerEngagement() {
             <div className="engagement-panel__head">
               <span className="engagement-panel__avatar"><img src="/brand/coreserve-mark.png" alt="" /><i aria-hidden="true" /></span>
               <div>
-                <small>CoreServe assistant</small>
+                <small>Coreserve assistant</small>
                 <h2>{welcomeMessage} <span aria-hidden="true">👋</span></h2>
               </div>
               <button type="button" onClick={() => setPanelOpen(false)} aria-label="Close contact options"><X size={20} /></button>
@@ -297,7 +304,7 @@ export function CustomerEngagement() {
               {hasLiveChat ? (
                 <button type="button" onClick={openLiveChat}>
                   <span><MessageCircle size={20} /></span>
-                  <span><strong>Chat with CoreServe</strong><small>Start a live conversation</small></span>
+                  <span><strong>Chat with Coreserve</strong><small>Start a live conversation</small></span>
                   <ArrowRight size={18} />
                 </button>
               ) : null}
@@ -326,7 +333,7 @@ export function CustomerEngagement() {
           aria-label={panelOpen ? "Close contact options" : "Open contact options"}
         >
           {panelOpen ? <X size={25} /> : <span className="engagement-launcher__avatar"><img src="/brand/coreserve-mark.png" alt="" /><i aria-hidden="true" /></span>}
-          <span className="engagement-launcher__label">{panelOpen ? "Close" : "Ask CoreServe"}</span>
+          <span className="engagement-launcher__label">{panelOpen ? "Close" : "Ask Coreserve"}</span>
         </button>
       </aside>
 
@@ -380,7 +387,7 @@ export function CustomerEngagement() {
               <form className="quick-quote" onSubmit={submitQuickQuote}>
                 <span className="eyebrow eyebrow--compact">Free cleaning quote</span>
                 <h2 id="quick-quote-title">Tell us the essentials.</h2>
-                <p>We’ll save your request for the CoreServe team to review. You can add the finer details later.</p>
+                <p>We’ll save your request for the Coreserve team to review. You can add the finer details later.</p>
                 <div className="quick-quote__grid">
                   <label className="form-honeypot" aria-hidden="true"><span>Website</span><input name="website" tabIndex={-1} autoComplete="off" /></label>
                   <label><span>Full name *</span><input name="name" required autoComplete="name" placeholder="Your full name" /></label>

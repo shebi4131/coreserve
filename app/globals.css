@@ -298,6 +298,11 @@ p { margin: 0; color: var(--muted); }
 .confidence-strip__grid { min-height: 82px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; gap: 24px; }
 .confidence-strip span { display: flex; align-items: center; justify-content: center; gap: 11px; color: var(--navy); font-size: 0.91rem; font-weight: 750; }
 .confidence-strip svg { width: 20px; color: var(--teal-dark); }
+.confidence-strip__grid--auto { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); padding-block: 14px; }
+.confidence-strip__grid--auto span, .confidence-strip__review { text-align: left; justify-content: flex-start; line-height: 1.35; }
+.confidence-strip__review { display: flex; align-items: center; gap: 11px; color: var(--navy); font-size: 0.91rem; font-weight: 750; text-decoration: underline; text-underline-offset: 3px; }
+.confidence-strip__review svg { flex: none; }
+.confidence-strip__grid--auto svg { flex: none; }
 .trustpilot-review { padding-block: 30px; border-bottom: 1px solid #cfe6dd; background: #f0faf6; }
 .trustpilot-review__inner { display: flex; align-items: center; justify-content: space-between; gap: 36px; }
 .trustpilot-review__message { display: flex; align-items: center; gap: 18px; }
@@ -1246,3 +1251,10 @@ p { margin: 0; color: var(--muted); }
 .marketing-consent__actions .button { min-height: 44px; padding: 12px 16px; font-size: .85rem; }
 @media (max-width: 1000px) { .marketing-consent { align-items: stretch; flex-direction: column; gap: 16px; } }
 @media (max-width: 560px) { .marketing-consent__actions { flex-direction: column; } .marketing-consent { padding: 20px; } }
+
+/* Long-form service detail sections (e.g. end-of-tenancy) */
+.service-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px 40px; }
+.service-details article h2 { margin: 0 0 10px; font-size: clamp(1.2rem, 2vw, 1.45rem); color: var(--navy); }
+.service-details article p { margin: 0; line-height: 1.7; }
+.contact-privacy-note { margin-top: 18px; font-size: 0.9rem; opacity: 0.85; }
+.contact-privacy-note a { text-decoration: underline; text-underline-offset: 3px; }

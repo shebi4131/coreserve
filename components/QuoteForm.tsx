@@ -12,7 +12,7 @@ const serviceDefaults: Record<string, string[]> = {
   "domestic-cleaning": ["Domestic & Residential Cleaning"],
   "end-of-tenancy-cleaning": ["End-of-Tenancy Cleaning"],
   "bnb-housekeeping": ["Airbnb & Housekeeping", "Housekeeping Services"],
-  "deep-move-cleaning": ["Deep Cleaning"],
+  "deep-move-cleaning": ["Deep & Move Cleaning"],
   "commercial-office-cleaning": ["Commercial & Office Cleaning", "Regular & One-Off Cleaning"],
   "regular-commercial-cleaning": ["Commercial & Office Cleaning", "Regular & One-Off Cleaning"],
   "carpet-upholstery-cleaning": ["Carpet & Rug Cleaning", "Sofa & Upholstery Cleaning"],
@@ -165,7 +165,7 @@ export function QuoteForm({ variant = "contact", serviceSlug, serviceTitle, defa
           <h2>{activeStep.title}</h2>
           <p>{activeStep.description}</p>
         </div>
-        <span className="secure-note"><CheckCircle2 size={18} /> Secure enquiry</span>
+        <span className="secure-note"><CheckCircle2 size={18} /> Private: only our team sees this</span>
       </div>
 
       <ol className="form-progress" aria-label="Quotation progress">

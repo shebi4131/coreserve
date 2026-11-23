@@ -82,9 +82,9 @@ export default function ServicesPage() {
           <div className="catalog-layout__intro">
             <ResponsiveImage src="/images/services/specialist-cleaning.jpeg" alt="Coreserve operative carrying out specialist carpet and upholstery cleaning" width={1312} height={816} className="catalog-layout__image" sizes="(max-width: 980px) calc(100vw - 48px), 42vw" />
             <div className="section-heading">
-              <span className="eyebrow">More ways we can help</span>
-              <h2>One enquiry for every cleaning requirement.</h2>
-              <p>Select multiple services in the quotation form. Availability is checked from the postcode, property details and required date.</p>
+              <span className="eyebrow">Other services we can arrange</span>
+              <h2>Book these on their own or add them to any clean.</h2>
+              <p>As well as the main services above, we can arrange curtain, mattress, oven, appliance, communal-area, pressure-washing, driveway and waste-removal work. Select as many as you need in one quote request.</p>
             </div>
           </div>
           <ul className="service-catalog" aria-label="Available cleaning services">
@@ -111,7 +111,7 @@ export default function ServicesPage() {
 
       <section className="cta-band">
         <div className="shell cta-band__inner">
-          <div><h2>Start with the property details.</h2><p>We’ll help identify the right scope.</p></div>
+          <div><h2>Tell us what needs cleaning.</h2><p>You get an itemised quote before anything is booked.</p></div>
           <div className="cta-band__actions">
             <Link className="button button--primary" href="/contact">Request Free Quote <ArrowRight size={18} /></Link>
             <a className="button button--outline-light" href={siteConfig.phoneHref}><Phone size={18} /> Call {siteConfig.phoneDisplay}</a>

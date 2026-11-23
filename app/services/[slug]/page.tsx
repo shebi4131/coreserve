@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ClipboardCheck, Phone } fro
 import { QuoteForm } from "@/components/QuoteForm";
 import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
+import { TrustStrip } from "@/components/TrustStrip";
 import { getService, services } from "@/lib/services";
 import { canonicalUrl, siteConfig } from "@/lib/site";
 
@@ -33,12 +34,12 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
   const image = serviceImages[service.slug as keyof typeof serviceImages];
 
   return {
-    title: service.title,
-    description: `${service.summary} Based in North-West, with national coverage subject to location and availability.`,
+    title: service.seoTitle ? { absolute: service.seoTitle } : service.title,
+    description: service.metaDescription,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
-      title: `${service.title} | Coreserve`,
-      description: service.summary,
+      title: service.seoTitle || `${service.title} | Coreserve`,
+      description: service.metaDescription,
       url: `/services/${service.slug}`,
       images: [{ url: image.src, width: image.width, height: image.height, alt: image.alt }],
     },
@@ -57,10 +58,16 @@ export default async function ServicePage({ params }: ServicePageProps) {
     name: service.title,
     description: service.summary,
     serviceType: service.title,
-    areaServed: ["United Kingdom", "Greater London", "Greater Manchester", "Merseyside", "Lancashire"],
+    areaServed: ["Lancashire", "Greater Manchester", "Merseyside", "Greater London"],
     provider: {
       "@id": `${canonicalUrl()}#business`,
     },
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: service.faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })),
   };
 
   const related = services.filter((item) => item.slug !== service.slug && item.category === service.category).slice(0, 2);
@@ -69,6 +76,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
   return (
     <main id="main-content">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema).replace(/</g, "\\u003c") }} />
       <section className="service-page-hero">
         <div className="shell service-page-hero__grid">
           <div>
@@ -88,23 +96,26 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <span>Most useful for</span>
               <strong>{service.audience}</strong>
               <hr />
-              <p>Based in North-West<br />National coverage</p>
+              {service.priceFrom ? <p><strong>From {service.priceFrom}</strong></p> : null}
+              <p>Own teams in Lancashire, Greater Manchester, Merseyside &amp; London</p>
             </aside>
           </div>
         </div>
       </section>
 
+      <TrustStrip />
+
       <section className="section cleaning-form-section" id="quote-form">
         <div className="shell cleaning-form-layout">
           <div className="cleaning-form-intro">
             <span className="eyebrow">Request a quotation</span>
-            <h2>Start with the details that shape the work</h2>
-            <p>Choose every cleaning service required and tell us about the property, timing and access. We will review the scope before confirming availability or price.</p>
+            <h2>Get an itemised quote</h2>
+            <p>Choose the cleaning you need and tell us about the property, timing and access. We reply with an itemised quote listing each room, task and extra, so you can see the cost of each part before booking.</p>
             <ul className="check-list">
               <li><Check /> Multiple cleaning services in one enquiry</li>
-              <li><Check /> National coverage checked by postcode</li>
+              <li><Check /> Own teams across Lancashire, Manchester, Merseyside &amp; London</li>
               <li><Check /> Residential, commercial and managed properties</li>
-              <li><Check /> Submit the details securely for review</li>
+              <li><Check /> Completion photos and a written summary the same day</li>
             </ul>
           </div>
           <QuoteForm variant="service" serviceSlug={service.slug} serviceTitle={service.title} />
@@ -132,11 +143,21 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
+      {service.details?.length ? (
+        <section className="section section--compact">
+          <div className="shell service-details">
+            {service.details.map((detail) => (
+              <article key={detail.heading}><h2>{detail.heading}</h2><p>{detail.body}</p></article>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className="section section--pale">
         <div className="shell">
           <div className="section-heading">
-            <span className="eyebrow">Delivery sequence</span>
-            <h2>Clear stages, fewer surprises.</h2>
+            <span className="eyebrow">How it works</span>
+            <h2>From enquiry to sign-off in four steps.</h2>
           </div>
           <ol className="stage-grid">
             {service.process.map((step, index) => (

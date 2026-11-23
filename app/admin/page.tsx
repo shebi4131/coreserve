@@ -10,7 +10,7 @@ export default function AdminPage() {
     <main id="main-content" className="admin-shell">
       {isSanityConfigured ? <AdminStudio /> : (
         <section className="admin-setup">
-          <span>CoreServe content admin</span>
+          <span>Coreserve content admin</span>
           <h1>Connect the Sanity project to activate the editor.</h1>
           <p>The complete editor is installed. Add the project ID and dataset to your local environment, then restart the development server.</p>
           <pre><code>NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id{"\n"}NEXT_PUBLIC_SANITY_DATASET=production</code></pre>

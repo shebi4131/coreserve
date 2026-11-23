@@ -241,7 +241,7 @@ export function CleanerApplicationForm() {
           <h2>{activeStep.title}</h2>
           <p>{activeStep.description}</p>
         </div>
-        <span className="secure-note"><CheckCircle2 size={18} /> Secure application</span>
+        <span className="secure-note"><CheckCircle2 size={18} /> Private: only our team sees this</span>
       </div>
 
       <ol className="form-progress" aria-label="Application progress">

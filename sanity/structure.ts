@@ -6,7 +6,7 @@ import { UserIcon } from "@sanity/icons/User";
 
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title("CoreServe content")
+    .title("Coreserve content")
     .items([
       S.listItem().title("Blog posts").icon(DocumentTextIcon).child(S.documentTypeList("post").title("Blog posts")),
       S.listItem().title("Categories").icon(TagIcon).child(S.documentTypeList("category").title("Categories")),

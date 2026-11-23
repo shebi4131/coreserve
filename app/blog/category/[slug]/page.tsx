@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   if (!category) return { title: "Category not found", robots: { index: false, follow: false } };
 
   const title = `${category.title} Cleaning Advice`;
-  const description = category.description || `Browse practical ${category.title.toLowerCase()} articles and professional cleaning guidance from CoreServe Facilities Group.`;
+  const description = category.description || `Browse practical ${category.title.toLowerCase()} articles and professional cleaning guidance from Coreserve Facilities Group.`;
   const url = `/blog/category/${category.slug}`;
 
   return {
@@ -74,7 +74,7 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
           <Link className="article-back" href="/blog"><ArrowLeft size={17} /> All cleaning advice</Link>
           <span className="eyebrow eyebrow--light">Advice category</span>
           <h1>{category.title}</h1>
-          <p>{category.description || `Practical ${category.title.toLowerCase()} guidance from CoreServe Facilities Group.`}</p>
+          <p>{category.description || `Practical ${category.title.toLowerCase()} guidance from Coreserve Facilities Group.`}</p>
         </div>
       </section>
 

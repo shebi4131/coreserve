@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Clock3, MapPin, Navigation, Phone } from "lucide-react";
 import { QuoteForm } from "@/components/QuoteForm";
 import { SocialIcon } from "@/components/SocialIcon";
@@ -24,16 +25,18 @@ export default function ContactPage() {
         <div className="shell contact-hero__grid">
           <div className="contact-intro">
             <span className="eyebrow">Request Free Quote</span>
-            <h1>Start with the<br />property details.</h1>
-            <p>Share the postcode, property, service and timescale. We’ll use those details to clarify the scope before anything is booked.</p>
+            <h1>Tell us what<br />needs cleaning.</h1>
+            <p>Choose the services, then add the postcode, property and date. We reply with an itemised quote{siteConfig.quoteResponseTime ? ` ${siteConfig.quoteResponseTime}` : ""}. Nothing is booked until you accept it.</p>
             <div className="contact-methods">
               <a href={siteConfig.phoneHref}><span><Phone /></span><div><small>Call us</small><strong>{siteConfig.phoneDisplay}</strong></div></a>
               <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer"><span><SocialIcon platform="whatsapp" /></span><div><small>WhatsApp</small><strong>Start a WhatsApp chat</strong></div></a>
               <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer"><span><SocialIcon platform="instagram" /></span><div><small>Instagram</small><strong>Follow @coreserve_group</strong></div></a>
               <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer"><span><SocialIcon platform="facebook" /></span><div><small>Facebook</small><strong>Visit our Facebook page</strong></div></a>
               <div><span><MapPin /></span><div><small>Our base</small><strong>{siteConfig.address.street}, {siteConfig.address.locality}, {siteConfig.address.postcode}</strong></div></div>
-              <div><span><Clock3 /></span><div><small>Coverage</small><strong>National coverage subject to location and availability</strong></div></div>
+              {siteConfig.businessHours ? <div><span><Clock3 /></span><div><small>Opening hours</small><strong>{siteConfig.businessHours}</strong></div></div> : null}
+              <div><span><MapPin /></span><div><small>Our own teams cover</small><strong>{siteConfig.coverage.short}</strong></div></div>
             </div>
+            <p className="contact-privacy-note">We only use your details to reply to this enquiry. See our <Link href="/privacy">privacy notice</Link>.</p>
           </div>
           <QuoteForm />
         </div>
@@ -44,7 +47,7 @@ export default function ContactPage() {
           <div className="contact-location__copy">
             <span className="eyebrow eyebrow--light">Our North-West base</span>
             <h2 id="contact-location-title">Find Coreserve in Burnley.</h2>
-            <p>Based in Burnley.</p>
+            <p>Our office is in Burnley, Lancashire. Cleaning teams travel to properties across Lancashire, Greater Manchester, Merseyside and London.</p>
             <address><MapPin aria-hidden="true" /><span><strong>Coreserve Facilities Group</strong>{siteConfig.address.street}<br />{siteConfig.address.locality}, {siteConfig.address.postcode}</span></address>
             <a className="button button--primary" href={siteConfig.maps.directions} target="_blank" rel="noreferrer">Get directions <Navigation size={18} /></a>
           </div>

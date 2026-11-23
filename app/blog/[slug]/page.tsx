@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return {
     title,
     description,
-    authors: [{ name: post.author?.name || "CoreServe Facilities Group" }],
+    authors: [{ name: post.author?.name || "Coreserve Facilities Group" }],
     alternates: { canonical: post.canonicalUrl || `/blog/${post.slug}` },
     robots: post.noIndex ? { index: false, follow: true } : { index: true, follow: true },
     openGraph: {
@@ -78,7 +78,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="article-meta">
               <span><CalendarDays size={17} /> <time dateTime={post.publishedAt}>{dateFormatter.format(new Date(post.publishedAt))}</time></span>
               <span><Clock3 size={17} /> {readingMinutes} min read</span>
-              <span><UserRound size={17} /> {post.author?.name || "CoreServe Facilities Group"}</span>
+              <span><UserRound size={17} /> {post.author?.name || "Coreserve Facilities Group"}</span>
             </div>
           </div>
         </header>

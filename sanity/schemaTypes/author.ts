@@ -9,7 +9,7 @@ export const authorType = defineType({
   fields: [
     defineField({ name: "name", title: "Name", type: "string", validation: (rule) => rule.required().max(80) }),
     defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "name", maxLength: 80 }, validation: (rule) => rule.required() }),
-    defineField({ name: "role", title: "Role", type: "string", initialValue: "CoreServe Facilities Group" }),
+    defineField({ name: "role", title: "Role", type: "string", initialValue: "Coreserve Facilities Group" }),
     defineField({ name: "bio", title: "Biography", type: "text", rows: 4, validation: (rule) => rule.max(400) }),
     defineField({
       name: "image",

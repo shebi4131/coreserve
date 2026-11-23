@@ -4,12 +4,13 @@ import { Armchair, ArrowRight, ArrowUpRight, BedDouble, Building2, Check, Clipbo
 import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { TrustpilotReviewLink } from "@/components/TrustpilotReviewLink";
+import { TrustStrip } from "@/components/TrustStrip";
 import { cleaningTypes } from "@/lib/services";
 import { canonicalUrl, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Professional Cleaning Services for Homes and Businesses",
-  description: "Professional domestic, commercial, deep and end-of-tenancy cleaning for homeowners, tenants, landlords, letting agents and businesses.",
+  description: "Domestic, end-of-tenancy, deep and office cleaning with itemised quotes and completion photos. Own teams in Lancashire, Manchester, Merseyside & London.",
   alternates: { canonical: "/" },
   openGraph: {
     images: [{ url: "/images/home/home-hero.jpeg", width: 1312, height: 816, alt: "Coreserve cleaning team preparing a UK property" }],
@@ -18,8 +19,8 @@ export const metadata: Metadata = {
 
 const homeServices = [
   { title: "Domestic Cleaning", summary: "Keep your home clean, comfortable and presentable with regular or one-off cleaning tailored to your household.", href: "/services/domestic-cleaning", icon: House },
-  { title: "Airbnb & Housekeeping", summary: "Keep B&B and short let properties guest-ready with reliable, checklist-led changeovers between stays.", href: "/services/bnb-housekeeping", icon: BedDouble },
-  { title: "Deep Cleaning", summary: "Give your property a thorough clean, focusing on kitchens, bathrooms, floors, surfaces and other areas that need extra attention.", href: "/services/deep-move-cleaning", icon: Sparkles },
+  { title: "Airbnb & Housekeeping", summary: "Keep Airbnb, B&B and short let properties guest-ready with changeovers worked through an agreed room checklist.", href: "/services/bnb-housekeeping", icon: BedDouble },
+  { title: "Deep & Move Cleaning", summary: "Give your property a thorough clean, focusing on kitchens, bathrooms, floors, surfaces and other areas that need extra attention.", href: "/services/deep-move-cleaning", icon: Sparkles },
   { title: "End-of-Tenancy Cleaning", summary: "Prepare rental properties for inspection, handover or new occupants with a detailed cleaning service based on an agreed checklist.", href: "/services/end-of-tenancy-cleaning", icon: KeyRound },
   { title: "Commercial and Office Cleaning", summary: "Maintain clean, presentable workplaces with cleaning schedules designed around your business and operating hours.", href: "/services/commercial-office-cleaning", icon: Building2 },
   { title: "Carpet and Upholstery Cleaning", summary: "Refresh carpets, rugs and upholstered furniture with suitable cleaning methods selected for the material and its condition.", href: "/services/carpet-upholstery-cleaning", icon: Armchair },
@@ -77,7 +78,7 @@ const entitySchema = {
         areaServed: "GB",
         availableLanguage: "English",
       },
-      areaServed: ["United Kingdom", "Greater Manchester", "Merseyside", "Lancashire"],
+      areaServed: ["Lancashire", "Greater Manchester", "Merseyside", "Greater London", "United Kingdom"],
       knowsAbout: cleaningTypes,
     },
   ],
@@ -92,17 +93,17 @@ export default function HomePage() {
         <ResponsiveImage src="/images/home/home-hero.jpeg" alt="Coreserve professional cleaning team working in a modern home" width={1312} height={816} className="hero__media" sizes="100vw" priority />
         <div className="shell hero__grid">
           <div className="hero__copy">
-            <span className="eyebrow eyebrow--light"><i aria-hidden="true" /> Professional cleaning • North-West &amp; national coverage</span>
+            <span className="eyebrow eyebrow--light"><i aria-hidden="true" /> Burnley-based • Lancashire, Manchester, Merseyside &amp; London</span>
             <h1>Professional cleaning services <em>for homes and businesses.</em></h1>
-            <p className="hero__lead">Reliable domestic, commercial, deep and end-of-tenancy cleaning, coordinated around your property, priorities and preferred schedule.</p>
+            <p className="hero__lead">Domestic, commercial, deep and end-of-tenancy cleaning by our own teams. You get an itemised quote before booking, and photos plus a written summary the same day the job is done.</p>
             <div className="hero__actions">
               <Link className="button button--primary" href="/contact">Get a free quote <ArrowUpRight size={18} /></Link>
               <Link className="button button--ghost" href="/services">Explore our cleaning services <ArrowRight size={18} /></Link>
             </div>
             <div className="hero__proof" aria-label="Reasons to choose Coreserve">
-              <span><Check size={17} /> Clear quotations</span>
-              <span><ShieldCheck size={17} /> Property-led service</span>
-              <span><MapPin size={17} /> National coverage by availability</span>
+              <span><Check size={17} /> Itemised quotes</span>
+              <span><ShieldCheck size={17} /> Room-by-room checklist</span>
+              <span><MapPin size={17} /> Own teams in 4 regions</span>
             </div>
           </div>
         </div>
@@ -117,13 +118,7 @@ export default function HomePage() {
         </nav>
       </section>
 
-      <section className="confidence-strip" aria-label="Service qualities">
-        <div className="shell confidence-strip__grid">
-          <span><Check /> Clear quotations</span>
-          <span><ClipboardCheck /> Cleaning tailored to the property</span>
-          <span><MapPin /> National coverage by availability</span>
-        </div>
-      </section>
+      <TrustStrip />
 
       <TrustpilotReviewLink />
 
@@ -151,20 +146,20 @@ export default function HomePage() {
         <div className="shell service-content-grid service-content-grid--balanced">
           <div>
             <span className="eyebrow">Why choose Coreserve?</span>
-            <h2>Clear arrangements from quotation to quality check.</h2>
+            <h2>What you get with every booking.</h2>
             <ul className="check-list">
-              <li><Check /> Clear quotations with the work agreed before booking</li>
-              <li><Check /> Cleaning plans tailored to the property and its condition</li>
-              <li><Check /> Flexible arrangements for one-off and recurring cleaning</li>
-              <li><Check /> Optional extras clearly identified in advance</li>
-              <li><Check /> A straightforward enquiry and booking process</li>
-              <li><Check /> Quality checks against the agreed cleaning requirements</li>
+              <li><Check /> An itemised quote listing every room, task and extra before you book</li>
+              <li><Check /> Extras such as ovens, carpets and fridges priced separately — no surprises</li>
+              <li><Check /> Every job signed off against a room-by-room checklist</li>
+              <li><Check /> Completion photos and a written job summary sent the same day</li>
+              <li><Check /> One-off visits or recurring weekly and fortnightly cleaning</li>
+              <li><Check /> Our own teams across Lancashire, Greater Manchester, Merseyside and London</li>
             </ul>
             <Link className="button button--dark" href="/about">More about Coreserve <ArrowRight size={18} /></Link>
           </div>
           <figure className="editorial-image">
             <ResponsiveImage src="/images/home/handover-detail.jpeg" alt="Coreserve team member checking completed cleaning requirements" width={1264} height={848} sizes="(max-width: 720px) calc(100vw - 32px), 50vw" />
-            <figcaption><ClipboardCheck size={20} /><span><strong>Agreed cleaning requirements</strong>Work checked against the confirmed scope.</span></figcaption>
+            <figcaption><ClipboardCheck size={20} /><span><strong>Checklist sign-off</strong>Each room checked, then photographed on completion.</span></figcaption>
           </figure>
         </div>
       </section>
@@ -176,7 +171,7 @@ export default function HomePage() {
             <li><span>01</span><div><h3>Tell us what you need</h3><p>Share your property details, location and preferred date.</p></div></li>
             <li><span>02</span><div><h3>Receive your quotation</h3><p>We assess your requirements and confirm the work, pricing and any additional services.</p></div></li>
             <li><span>03</span><div><h3>Arrange your booking</h3><p>Once you accept the quotation, we agree the date and access arrangements.</p></div></li>
-            <li><span>04</span><div><h3>Get the cleaning completed</h3><p>The agreed work is carried out and checked against the confirmed scope.</p></div></li>
+            <li><span>04</span><div><h3>Clean, check and report</h3><p>The team works through the checklist, then sends you photos and a written summary the same day.</p></div></li>
           </ol>
         </div>
       </section>
@@ -185,18 +180,18 @@ export default function HomePage() {
         <div className="shell coverage">
           <div>
             <span className="eyebrow">Service area</span>
-            <h2>Based in North-West<br />National coverage</h2>
-            <p>We coordinate cleaning services nationally, subject to postcode, service requirements and availability.</p>
-            <p>Send the property postcode and preferred date so we can confirm the right arrangements before quotation.</p>
-            <Link className="text-link" href="/areas-we-cover">How coverage works <ArrowRight size={18} /></Link>
+            <h2>Burnley-based.<br />Four regions, our own teams.</h2>
+            <p>{siteConfig.coverage.sentence}</p>
+            <p>Check your postcode or send it with your quote request and we will confirm the date we can attend.</p>
+            <Link className="text-link" href="/areas-we-cover">See the areas we cover <ArrowRight size={18} /></Link>
           </div>
           <aside className="coverage__panel">
             <MapPin size={26} />
-            <strong>North-West base</strong>
-            <p>National enquiries assessed by postcode and availability</p>
+            <strong>Based in Burnley, Lancashire</strong>
+            <p>124 Colne Road, Burnley, BB10 1LP</p>
             <hr />
-            <h3>Priority coverage</h3>
-            <p>Greater London, Greater Manchester, Merseyside and Lancashire</p>
+            <h3>Our own teams cover</h3>
+            <p>Lancashire, Greater Manchester, Merseyside and Greater London</p>
           </aside>
         </div>
       </section>

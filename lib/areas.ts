@@ -80,7 +80,7 @@ export const serviceAreas: readonly ServiceArea[] = [
       { name: "Prescot", postcode: "L34" }, { name: "St Helens", postcode: "WA10" },
       { name: "Knowsley", postcode: "L34" }, { name: "Wirral", postcode: "CH41" },
     ],
-    postcodeAreas: ["L", "CH", "PR", "WA"],
+    postcodeAreas: ["L", "CH", "WA"],
     postcodeExamples: ["L1", "L3", "L7", "L15", "L20", "L23", "L31", "L36", "L39", "CH41"],
     highlights: ["Liverpool and wider Merseyside", "Tenancy and property cleaning", "Clear scope before booking"],
     faqs: [

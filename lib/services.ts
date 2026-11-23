@@ -6,6 +6,12 @@ export type Service = {
   shortTitle: string;
   category: "Cleaning";
   summary: string;
+  /** Search-result description, 120-155 characters. */
+  metaDescription: string;
+  /** Optional full <title> override (keep under ~65 characters). */
+  seoTitle?: string;
+  /** Optional "from" price, e.g. "£120 for a 1-bed flat". Hidden while empty. */
+  priceFrom?: string;
   audience: string;
   headline: string;
   intro: string;
@@ -13,6 +19,8 @@ export type Service = {
   preparation: readonly string[];
   process: readonly { title: string; detail: string }[];
   faqs: readonly { question: string; answer: string }[];
+  /** Optional longer-form sections shown on the service page. */
+  details?: readonly { heading: string; body: string }[];
   icon: typeof Sparkles;
 };
 
@@ -23,6 +31,7 @@ export const services: readonly Service[] = [
     shortTitle: "Domestic cleaning",
     category: "Cleaning",
     summary: "Regular or one-off home cleaning tailored to your household, priorities and preferred schedule.",
+    metaDescription: "Regular or one-off domestic cleaning by our own teams in Lancashire, Manchester, Merseyside and London. Itemised quote and completion photos.",
     audience: "Homeowners, tenants and households",
     headline: "A cleaner, more comfortable home on a schedule that suits you.",
     intro: "Domestic cleaning can be arranged as a one-off visit or a recurring service. We agree the rooms, priorities, frequency and access arrangements in advance so the cleaning plan reflects your home and the way it is used.",
@@ -57,19 +66,24 @@ export const services: readonly Service[] = [
   {
     slug: "end-of-tenancy-cleaning",
     title: "End-of-tenancy cleaning for tenants, landlords and letting agents",
+    seoTitle: "End of Tenancy Cleaning | Lancashire, Manchester & London",
     shortTitle: "End-of-tenancy cleaning",
     category: "Cleaning",
     summary: "Detailed move-out cleaning for tenants, landlords and letting agents, scoped around the property and handover requirements.",
+    metaDescription: "End of tenancy cleaning for tenants, landlords and letting agents. Room-by-room checklist, itemised extras and completion photos. Free quote.",
     audience: "Tenants, landlords, letting agents and property managers",
     headline: "A clear, checklist-led clean before the keys change hands.",
     intro: "End-of-tenancy cleaning needs more detail than a routine visit. We confirm the size, condition, access, appliances and any tenancy inventory requirements before preparing an itemised quotation. The agreed checklist then guides the clean and final quality check.",
     includes: [
-      "Kitchen worktops, accessible cupboards, splashbacks, sink, taps and floors",
-      "Bathroom sanitaryware, showers or baths, tiles, mirrors and limescale attention",
-      "Bedrooms and living areas, including accessible surfaces, skirting, doors and switches",
-      "Internal windows and sills where safe and included in the agreed scope",
-      "Vacuuming and mopping of suitable floor surfaces",
-      "Final checklist review before completion",
+      "Kitchen: cupboards and drawers inside and out, worktops, splashbacks, sink and taps descaled, extractor hood exterior and floor",
+      "Bathrooms: toilets, baths, showers, screens, sinks and taps descaled, tiles wiped, mirrors and cabinets cleaned",
+      "Bedrooms and living areas: skirting boards, doors, frames, handles, switches, sockets and accessible light fittings",
+      "Inside wardrobes, drawers and built-in storage",
+      "Internal windows, sills and frames where safely reachable",
+      "Hard floors mopped and carpets vacuumed throughout, including under movable furniture",
+      "Cobwebs removed from ceilings, corners and coving",
+      "Optional extras priced separately: oven and hob, fridge-freezer, dishwasher, washing machine, carpets and upholstery",
+      "Room-by-room checklist sign-off, completion photos and a written summary the same day",
     ],
     preparation: [
       "Property type, bedrooms and bathrooms",
@@ -88,6 +102,17 @@ export const services: readonly Service[] = [
       { question: "Are appliances automatically included?", answer: "External wiping and full internal appliance cleaning are different tasks. We confirm ovens, cookers, dishwashers, fridges and washing machines separately in the quotation so the scope is unambiguous." },
       { question: "Does the property need to be empty?", answer: "An empty property usually allows the most complete access, but furnished or partly occupied properties can be considered. Tell us the situation when requesting a free quote." },
       { question: "Can carpet or upholstery work be added?", answer: "Mention any carpets, rugs or upholstery requiring specialist attention. We will confirm whether that work is available and include it separately rather than assuming it is part of the standard clean." },
+      { question: "How long does an end-of-tenancy clean take?", answer: "It depends on the number of rooms, the condition of the property and the extras you add. A small, well-kept flat takes far less time than a large house with oven and carpet cleaning. Your quote confirms the date and arrival window." },
+      { question: "Do I need to be at the property?", answer: "No. Most tenants and agents leave keys with us, in a key safe or at the agency. Tell us how we get in and where the keys go afterwards, and we confirm the arrangement before the clean." },
+      { question: "Will the clean meet my letting agent’s checklist?", answer: "Send us the agent’s checklist, inventory or check-out report and we will quote against it and work through it room by room. Completion photos and a written summary give you a record of the finished property to share with the agent." },
+      { question: "Can you guarantee I get my deposit back?", answer: "No cleaning company can decide a deposit. That is between you, your landlord or agent and the deposit scheme. What we do is clean to the agreed checklist and send dated photos and a summary, which gives you clear evidence of the condition you left the property in." },
+      { question: "Can you clean at short notice?", answer: "Send the handover date with your enquiry. Short-notice cleans are often possible, depending on the postcode and the size of the job, and we will tell you straight away whether we can make the date." },
+    ],
+    details: [
+      { heading: "Cleaned to your letting agent’s checklist", body: "Letting agents and inventory clerks check a property against the check-in report, not a generic standard. If you have the inventory, check-out report or the agent’s own cleaning list, send it with your enquiry. We quote against it, the team works through it room by room, and you receive completion photos and a written summary the same day to share with your agent or landlord." },
+      { heading: "How end-of-tenancy pricing works", body: "Every property is different, so we price from the details you send: bedrooms, bathrooms, whether it is furnished, its condition and the extras you need. Oven, fridge-freezer, dishwasher, washing machine, carpet and upholstery cleaning are listed as separate lines, so you can see exactly what each part costs and remove anything you do not need before booking." },
+      { heading: "For tenants, landlords and letting agents", body: "Tenants book us to leave the property ready for the check-out inspection. Landlords and agents use us between tenancies to get a property ready for viewings and the next move-in, often alongside carpet cleaning, or after-builders cleaning when work has been done." },
+      { heading: "End-of-tenancy cleaning near you", body: "Our own teams carry out end-of-tenancy cleans in Burnley, Blackburn, Accrington, Preston, Blackpool, Lancaster and across Lancashire; in Manchester, Salford, Stockport, Bolton and Wigan; in Liverpool, Bootle, St Helens and the Wirral; and across Greater London. Enter your postcode in the form and we will confirm the earliest date we can attend." },
     ],
     icon: KeyRound,
   },
@@ -97,6 +122,7 @@ export const services: readonly Service[] = [
     shortTitle: "Airbnb & Housekeeping",
     category: "Cleaning",
     summary: "Reliable changeover housekeeping for B&Bs, holiday lets and short-stay properties, coordinated around guest arrivals and departures.",
+    metaDescription: "Airbnb and short-let changeover cleaning: beds made, linen changed, supplies restocked and issues reported, timed around check-out and check-in.",
     audience: "B&B owners, short let hosts, landlords and property managers",
     headline: "Guest-ready rooms and dependable changeovers between every stay.",
     intro: "B&B and short let housekeeping is planned around check-out, check-in and the standards you want guests to find on arrival. We agree the rooms, reset checklist, linen arrangements, access and reporting process before service begins, giving hosts a repeatable handover routine without relying on last-minute instructions.",
@@ -135,6 +161,7 @@ export const services: readonly Service[] = [
     shortTitle: "Deep & move cleaning",
     category: "Cleaning",
     summary: "One-off intensive cleaning for property preparation, changeovers, move-ins and move-outs, with priorities agreed in advance.",
+    metaDescription: "Deep and move-in/move-out cleaning for kitchens, bathrooms, floors and fittings, with an itemised quote and completion photos the same day.",
     audience: "Homeowners, tenants, landlords, agents and property managers",
     headline: "A deeper reset for properties between stages.",
     intro: "A deep or changeover clean is shaped around the condition of the property and what needs to happen next. We identify high-use areas, accumulated residue, appliances and access limitations before agreeing the task list.",
@@ -174,6 +201,7 @@ export const services: readonly Service[] = [
     shortTitle: "Commercial & office",
     category: "Cleaning",
     summary: "Planned cleaning for offices, workplaces, communal areas and managed properties, based on a repeatable task specification.",
+    metaDescription: "Office and commercial cleaning on an agreed task list and schedule, in or out of hours, across Lancashire, Manchester, Merseyside and London.",
     audience: "Businesses, offices, landlords, agents and property managers",
     headline: "Presentable workplaces, cleaned around your business and operating hours.",
     intro: "Commercial and office cleaning begins with a clear task specification. We agree priorities, frequency, access and site-specific requirements so cleaning can be coordinated around the way your premises operate and reviewed over time.",
@@ -209,6 +237,7 @@ export const services: readonly Service[] = [
     shortTitle: "Carpet & upholstery",
     category: "Cleaning",
     summary: "Carpet, rug, sofa and upholstery cleaning planned around the material, condition and areas requiring attention.",
+    metaDescription: "Carpet, rug, sofa and upholstery cleaning with methods matched to the material. Book it on its own or add it to any clean. Free quote.",
     audience: "Homeowners, tenants, landlords, offices and managed properties",
     headline: "A considered refresh for carpets, rugs and upholstered furniture.",
     intro: "Carpet and upholstery cleaning starts by identifying the material, condition, affected areas and access. We agree which rooms or items are included and discuss visible marks, drying considerations and any treatment limitations before quotation.",
@@ -246,6 +275,7 @@ export const services: readonly Service[] = [
     shortTitle: "After-builders cleaning",
     category: "Cleaning",
     summary: "Post-renovation cleaning for agreed construction dust and residue, helping prepare the property for occupation or handover.",
+    metaDescription: "After-builders cleaning that removes fine dust and residue after renovation work, so the property is ready to live in, let or hand over.",
     audience: "Homeowners, landlords, developers, contractors and property managers",
     headline: "The detailed clean between completed building work and a usable property.",
     intro: "After-builders cleaning is planned around the work completed, the remaining dust or residue and the condition of each area. We confirm that construction work is finished, utilities are available and heavy building waste has been removed before agreeing the cleaning scope.",
@@ -283,7 +313,7 @@ export const cleaningServices = services;
 
 export const cleaningTypes = [
   "End-of-Tenancy Cleaning",
-  "Deep Cleaning",
+  "Deep & Move Cleaning",
   "Domestic & Residential Cleaning",
   "Commercial & Office Cleaning",
   "Regular & One-Off Cleaning",

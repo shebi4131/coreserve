@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Coreserve",
   legalName: "Coreserve Facilities Group Ltd",
   description:
-    "Professional domestic, commercial, deep, end-of-tenancy and B&B housekeeping services from Coreserve Facilities Group, based in North-West England with national coverage subject to location and availability.",
+    "Domestic, commercial, deep, end-of-tenancy and Airbnb cleaning from Coreserve Facilities Group, with our own teams across Lancashire, Manchester, Merseyside and London.",
   phoneDisplay: "0330 111 9592",
   phoneHref: "tel:03301119592",
   phoneInternational: "+44 330 111 9592",
@@ -26,6 +26,21 @@ export const siteConfig = {
     directions: "https://www.google.com/maps/dir/?api=1&destination=124%20Colne%20Road%2C%20Burnley%2C%20England%2C%20BB10%201LP",
     businessProfile: "https://www.google.com/maps?cid=18308218644608467039",
   },
+  coverage: {
+    short: "Lancashire, Greater Manchester, Merseyside & London",
+    sentence: "Our own cleaning teams cover Lancashire, Greater Manchester, Merseyside and London. Other UK locations are considered case by case.",
+  },
+  // Confirmed service commitments. Only add items that are true today.
+  commitments: {
+    completionPhotos: true,
+    sameDaySummary: true,
+  },
+  // Leave empty until confirmed; anything empty is hidden on the site.
+  businessHours: "",
+  quoteResponseTime: "",
+  founderName: "",
+  foundedYear: "",
+  trustpilotRating: "",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
 };
 
