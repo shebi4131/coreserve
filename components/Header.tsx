@@ -14,6 +14,7 @@ const links = [
   { href: "/about", label: "About" },
   { href: "/faqs", label: "FAQs" },
   { href: "/blog", label: "Blog" },
+  { href: "/join-us", label: "Careers" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -162,7 +163,6 @@ export function Header() {
                 <div>{serviceAreas.map((area) => <Link className={pathname === `/areas-we-cover/${area.slug}` ? "is-active" : undefined} aria-current={pathname === `/areas-we-cover/${area.slug}` ? "page" : undefined} href={`/areas-we-cover/${area.slug}`} key={area.slug} onNavigate={closeMenus}><MapPin size={15} /><span>{area.name}</span><small>{area.region}</small></Link>)}</div>
               </div>
               {links.slice(1).map((link) => <Link className={isActive(link.href) ? "is-active" : undefined} aria-current={isActive(link.href) ? "page" : undefined} key={link.href} href={link.href}>{link.label}</Link>)}
-              <Link className={isActive("/join-us") ? "is-active" : undefined} href="/join-us">Join our team</Link>
               <a href={siteConfig.phoneHref}>Call {siteConfig.phoneDisplay}</a>
             </nav>
           </details>
