@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ClipboardCheck, MapPin, Phone, PoundSterling, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, ClipboardCheck, MapPin, Phone, PoundSterling, ShieldCheck, Tag } from "lucide-react";
 import { QuoteForm } from "@/components/QuoteForm";
 import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
@@ -20,12 +20,14 @@ type ServicePageProps = { params: Promise<{ slug: string }> };
 const detailIcons = [ClipboardCheck, PoundSterling, ShieldCheck, MapPin] as const;
 
 const serviceImages = {
-  "domestic-cleaning": { src: "/images/home/home-hero.jpeg", width: 1312, height: 816, alt: "Coreserve professional providing domestic cleaning in a modern home" },
   "end-of-tenancy-cleaning": { src: "/images/services/end-of-tenancy-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team carrying out an end-of-tenancy clean" },
   "bnb-housekeeping": { src: "/images/services/bnb-housekeeping.jpeg", width: 1312, height: 816, alt: "Guest-ready B&B bedroom prepared for a short let arrival" },
   "deep-move-cleaning": { src: "/images/services/deep-move-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team deep cleaning a kitchen" },
   "commercial-office-cleaning": { src: "/images/services/regular-commercial-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team providing commercial and office cleaning" },
   "carpet-upholstery-cleaning": { src: "/images/services/specialist-cleaning.jpeg", width: 1312, height: 816, alt: "Coreserve professional carrying out carpet and upholstery cleaning" },
+  "oven-cleaning": { src: "/images/services/deep-move-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve professional oven cleaning in a domestic kitchen" },
+  "fridge-freezer-cleaning": { src: "/images/services/end-of-tenancy-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team cleaning kitchen appliances including a fridge freezer" },
+  "jet-washing": { src: "/images/services/services-hero.jpeg", width: 1376, height: 768, alt: "Coreserve jet washing and pressure washing team with equipment" },
   "after-builders-cleaning": { src: "/images/services/services-hero.jpeg", width: 1376, height: 768, alt: "Coreserve cleaning team prepared for an after-builders clean" },
 } as const;
 
@@ -64,7 +66,18 @@ export default async function ServicePage({ params }: ServicePageProps) {
     provider: {
       "@id": `${canonicalUrl()}#business`,
     },
+    ...(service.prices?.length ? {
+      offers: service.prices.map((price) => ({
+        "@type": "Offer",
+        name: price.item,
+        priceCurrency: "GBP",
+        price: price.from.toFixed(2),
+        priceSpecification: { "@type": "PriceSpecification", priceCurrency: "GBP", minPrice: price.from.toFixed(2) },
+        url: canonicalUrl(`/services/${service.slug}`),
+      })),
+    } : {}),
   };
+  const headlinePrice = service.prices?.[0];
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -98,7 +111,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
               <span>Most useful for</span>
               <strong>{service.audience}</strong>
               <hr />
-              {service.priceFrom ? <p><strong>From {service.priceFrom}</strong></p> : null}
+              {headlinePrice ? <p className="service-brief__price">From <strong>£{headlinePrice.from}</strong></p> : null}
               <p>Across the UK</p>
             </aside>
           </div>
@@ -144,6 +157,27 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </aside>
         </div>
       </section>
+
+      {service.prices?.length ? (
+        <section className="section section--compact service-prices-section" aria-labelledby="service-prices-title">
+          <div className="shell">
+            <div className="section-heading split-heading">
+              <div><span className="eyebrow">Prices</span><h2 id="service-prices-title">{service.shortTitle} prices</h2></div>
+              <p>Starting prices for a standard job. Size, condition and access can change the price, so your itemised quote confirms the exact cost before you book. No hidden extras.</p>
+            </div>
+            <ul className="price-grid">
+              {service.prices.map((price, index) => (
+                <li key={price.item} className={index === 0 ? "price-card price-card--main" : "price-card"}>
+                  <Tag aria-hidden="true" />
+                  <span>{price.item}</span>
+                  <strong><small>from</small> £{price.from}</strong>
+                </li>
+              ))}
+            </ul>
+            <a className="button button--dark" href="#quote-form">Get your exact price <ArrowRight size={18} /></a>
+          </div>
+        </section>
+      ) : null}
 
       {service.details?.length ? (
         <section className="section service-details-section" aria-labelledby="service-details-title">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Armchair, ArrowRight, ArrowUpRight, BedDouble, Building2, Check, ClipboardCheck, Hammer, House, KeyRound, MapPin, Phone, ShieldCheck, Sparkles } from "lucide-react";
+import { Armchair, ArrowRight, ArrowUpRight, BedDouble, Building2, Check, ClipboardCheck, Droplets, Hammer, KeyRound, MapPin, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { TrustpilotReviewLink } from "@/components/TrustpilotReviewLink";
@@ -10,7 +10,7 @@ import { canonicalUrl, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Professional Cleaning Services for Homes and Businesses",
-  description: "Domestic, end-of-tenancy, deep and office cleaning with itemised quotes and completion photos. Own teams in Lancashire, Manchester, Merseyside & London.",
+  description: "End of tenancy from £110, deep cleaning from £105, oven cleaning from £35 and jet washing. Itemised quotes and completion photos across the UK.",
   alternates: { canonical: "/" },
   openGraph: {
     images: [{ url: "/images/home/home-hero.jpeg", width: 1312, height: 816, alt: "Coreserve cleaning team preparing a UK property" }],
@@ -18,13 +18,13 @@ export const metadata: Metadata = {
 };
 
 const homeServices = [
-  { title: "Domestic Cleaning", summary: "Keep your home clean, comfortable and presentable with regular or one-off cleaning tailored to your household.", href: "/services/domestic-cleaning", icon: House },
+  { title: "End-of-Tenancy Cleaning", summary: "Prepare rental properties for inspection, handover or new occupants with a room-by-room checklist. From £110.", href: "/services/end-of-tenancy-cleaning", icon: KeyRound },
   { title: "Airbnb & Housekeeping", summary: "Keep Airbnb, B&B and short let properties guest-ready with changeovers worked through an agreed room checklist.", href: "/services/bnb-housekeeping", icon: BedDouble },
   { title: "Deep & Move Cleaning", summary: "Give your property a thorough clean, focusing on kitchens, bathrooms, floors, surfaces and other areas that need extra attention.", href: "/services/deep-move-cleaning", icon: Sparkles },
-  { title: "End-of-Tenancy Cleaning", summary: "Prepare rental properties for inspection, handover or new occupants with a detailed cleaning service based on an agreed checklist.", href: "/services/end-of-tenancy-cleaning", icon: KeyRound },
   { title: "Commercial and Office Cleaning", summary: "Maintain clean, presentable workplaces with cleaning schedules designed around your business and operating hours.", href: "/services/commercial-office-cleaning", icon: Building2 },
   { title: "Carpet and Upholstery Cleaning", summary: "Refresh carpets, rugs and upholstered furniture with suitable cleaning methods selected for the material and its condition.", href: "/services/carpet-upholstery-cleaning", icon: Armchair },
   { title: "After-Builders Cleaning", summary: "Remove agreed construction dust and residue after renovation or building work, preparing the property for occupation.", href: "/services/after-builders-cleaning", icon: Hammer },
+  { title: "Jet Washing", summary: "Driveways, patios, paths and decking pressure washed to remove moss, algae and grime. Driveways from £65.", href: "/services/jet-washing", icon: Droplets },
 ] as const;
 
 const businessId = `${canonicalUrl()}#business`;
@@ -101,7 +101,7 @@ export default function HomePage() {
           <div className="hero__copy">
             <span className="eyebrow eyebrow--light"><i aria-hidden="true" /> Professional cleaning • Across the UK</span>
             <h1>Professional cleaning services <em>for homes and businesses.</em></h1>
-            <p className="hero__lead">Domestic, commercial, deep and end-of-tenancy cleaning by our own teams. You get an itemised quote before booking, and photos plus a written summary the same day the job is done.</p>
+            <p className="hero__lead">End-of-tenancy, deep, commercial and specialist cleaning by our own teams. You get an itemised quote before booking, and photos plus a written summary the same day the job is done.</p>
             <div className="hero__actions">
               <Link className="button button--primary" href="/contact">Get a free quote <ArrowUpRight size={18} /></Link>
               <Link className="button button--ghost" href="/services">Explore our cleaning services <ArrowRight size={18} /></Link>

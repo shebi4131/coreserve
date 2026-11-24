@@ -1,4 +1,4 @@
-import { Armchair, BedDouble, Building2, Hammer, House, KeyRound, Sparkles } from "lucide-react";
+import { Armchair, BedDouble, Building2, CookingPot, Droplets, Hammer, KeyRound, Refrigerator, Sparkles } from "lucide-react";
 
 export type Service = {
   slug: string;
@@ -10,8 +10,8 @@ export type Service = {
   metaDescription: string;
   /** Optional full <title> override (keep under ~65 characters). */
   seoTitle?: string;
-  /** Optional "from" price, e.g. "£120 for a 1-bed flat". Hidden while empty. */
-  priceFrom?: string;
+  /** Starting prices in GBP. The first item is the headline "from" price. */
+  prices?: readonly { item: string; from: number }[];
   audience: string;
   headline: string;
   intro: string;
@@ -27,47 +27,18 @@ export type Service = {
 
 export const services: readonly Service[] = [
   {
-    slug: "domestic-cleaning",
-    title: "Domestic cleaning",
-    shortTitle: "Domestic cleaning",
-    category: "Cleaning",
-    summary: "Regular or one-off home cleaning tailored to your household, priorities and preferred schedule.",
-    metaDescription: "Regular or one-off domestic cleaning by our own teams in Lancashire, Manchester, Merseyside and London. Itemised quote and completion photos.",
-    audience: "Homeowners, tenants and households",
-    headline: "A cleaner, more comfortable home on a schedule that suits you.",
-    intro: "Domestic cleaning can be arranged as a one-off visit or a recurring service. We agree the rooms, priorities, frequency and access arrangements in advance so the cleaning plan reflects your home and the way it is used.",
-    includes: [
-      "Dusting and wiping of agreed accessible surfaces",
-      "Kitchen worktops, sinks, splashbacks and external appliance surfaces",
-      "Bathroom sanitaryware, mirrors and agreed tiled areas",
-      "Vacuuming and mopping of suitable floor surfaces",
-      "Bedrooms, living areas, doors, handles and switches within the agreed scope",
-      "A repeatable task list for recurring visits",
-    ],
-    preparation: [
-      "Property type, size and priority rooms",
-      "Whether you need a one-off or recurring service",
-      "Preferred days, times and frequency",
-      "Occupancy, pets and access arrangements",
-      "Any areas needing extra attention",
-    ],
-    process: [
-      { title: "Discuss", detail: "Tell us about your home, priorities and preferred schedule." },
-      { title: "Plan", detail: "We agree the rooms, tasks, frequency and quotation." },
-      { title: "Clean", detail: "The team follows the confirmed cleaning plan." },
-      { title: "Review", detail: "Recurring priorities can be adjusted as your household needs change." },
-    ],
-    faqs: [
-      { question: "Can I book a one-off domestic clean?", answer: "Yes. Domestic cleaning can be discussed as a one-off visit or a recurring arrangement. Share the property details and the areas you want prioritised." },
-      { question: "Do I need to be at home?", answer: "Not necessarily. We can discuss keys, access, pets and any alarm arrangements before the booking is confirmed." },
-      { question: "Are cleaning products and equipment included?", answer: "The required products and equipment depend on the agreed tasks and surfaces. We confirm what will be provided, and any site-specific requirements, in advance." },
-    ],
-    icon: House,
-  },
-  {
     slug: "end-of-tenancy-cleaning",
     title: "End-of-tenancy cleaning for tenants, landlords and letting agents",
-    seoTitle: "End of Tenancy Cleaning | Lancashire, Manchester & London",
+    seoTitle: "End of Tenancy Cleaning from £110 | Lancashire, Manchester & London",
+    prices: [
+      { item: "End of tenancy cleaning", from: 110 },
+      { item: "Oven cleaning", from: 35 },
+      { item: "Fridge / freezer cleaning", from: 25 },
+      { item: "Washing machine cleaning", from: 15 },
+      { item: "Microwave cleaning", from: 12 },
+      { item: "Sofa cleaning", from: 20 },
+      { item: "Curtain cleaning", from: 25 },
+    ],
     shortTitle: "End-of-tenancy cleaning",
     category: "Cleaning",
     summary: "Detailed move-out cleaning for tenants, landlords and letting agents, scoped around the property and handover requirements.",
@@ -160,6 +131,15 @@ export const services: readonly Service[] = [
   {
     slug: "deep-move-cleaning",
     title: "Deep & move-in/move-out cleaning",
+    seoTitle: "Deep Cleaning Services from £105 | Move-In & Move-Out Cleans",
+    prices: [
+      { item: "Deep cleaning", from: 105 },
+      { item: "Oven cleaning", from: 35 },
+      { item: "Fridge / freezer cleaning", from: 25 },
+      { item: "Washing machine cleaning", from: 15 },
+      { item: "Microwave cleaning", from: 12 },
+      { item: "Balcony cleaning", from: 45 },
+    ],
     shortTitle: "Deep & move cleaning",
     category: "Cleaning",
     summary: "One-off intensive cleaning for property preparation, changeovers, move-ins and move-outs, with priorities agreed in advance.",
@@ -236,6 +216,11 @@ export const services: readonly Service[] = [
   {
     slug: "carpet-upholstery-cleaning",
     title: "Carpet and upholstery cleaning",
+    seoTitle: "Carpet, Sofa & Curtain Cleaning | Sofas from £20",
+    prices: [
+      { item: "Sofa cleaning", from: 20 },
+      { item: "Curtain cleaning", from: 25 },
+    ],
     shortTitle: "Carpet & upholstery",
     category: "Cleaning",
     summary: "Carpet, rug, sofa and upholstery cleaning planned around the material, condition and areas requiring attention.",
@@ -309,6 +294,155 @@ export const services: readonly Service[] = [
     ],
     icon: Hammer,
   },
+  {
+    slug: "oven-cleaning",
+    title: "Oven cleaning",
+    seoTitle: "Professional Oven Cleaning from £35 | Ovens, Hobs & Extractors",
+    shortTitle: "Oven cleaning",
+    category: "Cleaning",
+    summary: "Professional oven cleaning that removes baked-on grease and carbon from the interior, racks, trays and door glass, for homes, rentals and tenancy handovers.",
+    metaDescription: "Professional oven cleaning from £35. Interior, racks, trays and door glass degreased, with hob, extractor and microwave add-ons. Ideal for end of tenancy.",
+    prices: [
+      { item: "Oven cleaning", from: 35 },
+      { item: "Microwave cleaning", from: 12 },
+      { item: "Fridge / freezer cleaning", from: 25 },
+      { item: "Washing machine cleaning", from: 15 },
+    ],
+    audience: "Homeowners, tenants, landlords and letting agents",
+    headline: "Baked-on grease and carbon removed from the oven, racks, trays and door glass.",
+    intro: "Oven cleaning is one of the jobs letting agents check first and one of the hardest to do well at home. We clean the oven interior, shelves, trays and door glass, then the outside and controls, so it is ready for an inventory check, a new tenant or simply everyday cooking again. Book it on its own or add it to an end-of-tenancy or deep clean.",
+    includes: [
+      "Oven interior: walls, roof, floor and fan cover degreased",
+      "Oven racks, shelves and baking trays cleaned",
+      "Door glass cleaned inside and out, with seals wiped",
+      "Control panel, knobs and oven front cleaned",
+      "Hob, splashback and extractor hood exterior when included in your quote",
+      "Microwave, fridge-freezer and washing machine cleaning available as add-ons",
+    ],
+    preparation: [
+      "Oven type: single, double, range cooker or built-in",
+      "Whether the hob and extractor should be included",
+      "A photo of the oven interior if it is heavily carbonised",
+      "Any other appliances you would like cleaned at the same visit",
+      "Access, parking and preferred date",
+    ],
+    process: [
+      { title: "Quote", detail: "Tell us the oven type and condition and we confirm the price before booking." },
+      { title: "Protect", detail: "The surrounding floor and worktops are protected before work starts." },
+      { title: "Degrease", detail: "Interior, racks, trays and glass are cleaned and degreased." },
+      { title: "Check", detail: "The finished oven is checked and photographed on completion." },
+    ],
+    faqs: [
+      { question: "How much does oven cleaning cost?", answer: "Oven cleaning starts from £35 for a standard single oven. Double ovens, range cookers and heavily carbonised ovens take longer, so your quote confirms the exact price before you book." },
+      { question: "Is oven cleaning included in an end-of-tenancy clean?", answer: "It is listed as a separate line so you only pay for it if the oven needs it. Most letting agents check the oven closely, so we recommend adding it to any end-of-tenancy clean." },
+      { question: "Can you clean the hob and extractor too?", answer: "Yes. Hobs, splashbacks and extractor hoods can be added to the same visit. Tell us what you need in the quote form and each item is priced clearly." },
+      { question: "Do I need to be at home?", answer: "No. Many customers leave a key or arrange access with their letting agent. We confirm how we get in and send completion photos when the job is finished." },
+      { question: "Can other appliances be cleaned at the same time?", answer: "Yes. Microwave cleaning starts from £12, fridge-freezer cleaning from £25 and washing machine cleaning from £15, so the whole kitchen can be done in one visit." },
+    ],
+    icon: CookingPot,
+  },
+  {
+    slug: "fridge-freezer-cleaning",
+    title: "Fridge & freezer cleaning",
+    seoTitle: "Fridge & Freezer Cleaning from £25 | Coreserve",
+    shortTitle: "Fridge & freezer",
+    category: "Cleaning",
+    summary: "Fridge and freezer cleaning inside and out: shelves, drawers, seals and surfaces cleaned and sanitised for move-outs, new tenancies and kitchen deep cleans.",
+    metaDescription: "Fridge and freezer cleaning from £25. Shelves, drawers, seals and interior cleaned and sanitised. Perfect for end of tenancy and kitchen deep cleans.",
+    prices: [
+      { item: "Fridge / freezer cleaning", from: 25 },
+      { item: "Oven cleaning", from: 35 },
+      { item: "Washing machine cleaning", from: 15 },
+      { item: "Microwave cleaning", from: 12 },
+    ],
+    audience: "Tenants, landlords, letting agents and homeowners",
+    headline: "Clean, fresh fridges and freezers, ready for the next tenant or the weekly shop.",
+    intro: "Fridges and freezers are easy to overlook until the inventory check. We remove and clean the shelves and drawers, clean and sanitise the interior and door seals, and wipe the outside and handles. It is a quick add-on to any end-of-tenancy or deep clean, or can be booked on its own.",
+    includes: [
+      "Shelves, drawers and door compartments removed and cleaned",
+      "Interior walls and base cleaned and sanitised",
+      "Door seals and gaskets cleaned to remove mould and residue",
+      "Exterior, handles and top surfaces wiped",
+      "Freezer compartments cleaned once defrosted",
+      "Oven, microwave and washing machine cleaning available as add-ons",
+    ],
+    preparation: [
+      "Whether it is a fridge, freezer or combined fridge-freezer",
+      "Whether the appliance will be empty on the day",
+      "Freezers should be switched off and defrosted before the visit",
+      "Any other appliances you would like cleaned",
+      "Access, parking and preferred date",
+    ],
+    process: [
+      { title: "Quote", detail: "Tell us the appliance type and we confirm the price before booking." },
+      { title: "Empty", detail: "Shelves, drawers and removable parts are taken out." },
+      { title: "Clean", detail: "Interior, seals, parts and exterior are cleaned and sanitised." },
+      { title: "Check", detail: "Parts are refitted and the finished appliance is photographed." },
+    ],
+    faqs: [
+      { question: "How much does fridge and freezer cleaning cost?", answer: "Fridge or freezer cleaning starts from £25. American-style and larger combined fridge-freezers take longer, and your quote confirms the price before booking." },
+      { question: "Does the freezer need to be defrosted first?", answer: "Yes. Please switch the freezer off and let it defrost fully before we arrive, with a towel down for the water. Ice build-up cannot be cleaned safely while the freezer is frozen." },
+      { question: "Should the fridge be empty?", answer: "Yes, ideally. For move-outs it usually is. If you are staying in the property, please empty it before the visit so every shelf and surface can be cleaned." },
+      { question: "Can you clean the oven at the same visit?", answer: "Yes. Oven cleaning starts from £35, washing machine cleaning from £15 and microwave cleaning from £12, so all your kitchen appliances can be done together." },
+    ],
+    icon: Refrigerator,
+  },
+  {
+    slug: "jet-washing",
+    title: "Jet washing & outdoor pressure washing",
+    seoTitle: "Jet Washing & Pressure Washing | Driveways from £65",
+    shortTitle: "Jet washing",
+    category: "Cleaning",
+    summary: "Professional jet washing and pressure washing for driveways, patios, garden paths, decking, walls and commercial outdoor areas, removing moss, algae, dirt and grime.",
+    metaDescription: "Jet washing and pressure washing for driveways, patios, paths, decking and walls. Moss, algae and grime removed. Driveways from £65. Free quote.",
+    prices: [
+      { item: "Driveway jet washing", from: 65 },
+      { item: "Balcony cleaning", from: 45 },
+    ],
+    audience: "Homeowners, landlords, letting agents and commercial property owners",
+    headline: "Bring your outdoor spaces back to life.",
+    intro: "Over time, driveways, patios, garden paths and other outdoor surfaces build up dirt, moss, algae, grime and stubborn stains, making them look tired and neglected. Our professional jet washing and pressure washing restores the appearance of your outdoor spaces. Whether you need your garden patio cleaned, your driveway refreshed or your pathways brought back to life, our team can help. We work with homeowners, landlords, letting agents and commercial property owners across Lancashire.",
+    includes: [
+      "Garden patios: dirt, moss, algae and built-up grime removed from patio slabs and paved areas",
+      "Driveways: block paving, concrete and other suitable driveway surfaces refreshed",
+      "Garden paths and walkways: outdoor pathways and pedestrian access areas cleaned",
+      "Outdoor seating areas: patios, paved garden spaces and outdoor entertainment areas",
+      "Decking: suitable timber and composite decking cleaned at appropriate pressure settings",
+      "Garden walls and fencing: surface dirt, algae and green staining removed where suitable",
+      "Steps and paved entrances: external steps, entrances and access areas brightened",
+      "Commercial outdoor areas: paved areas around offices, shops and commercial premises",
+    ],
+    preparation: [
+      "The areas to be cleaned and their approximate size",
+      "Surface type: block paving, concrete, slabs, decking or walls",
+      "Photos showing moss, algae or stains",
+      "Whether there is an outside tap and power socket",
+      "Access, parking and preferred date",
+    ],
+    process: [
+      { title: "Quote", detail: "Send photos and rough sizes and we confirm a price before booking." },
+      { title: "Prepare", detail: "Pressure settings are matched to each surface to avoid damage." },
+      { title: "Jet wash", detail: "Moss, algae, dirt and grime are washed away section by section." },
+      { title: "Rinse and check", detail: "The area is rinsed down, checked and photographed on completion." },
+    ],
+    faqs: [
+      { question: "How much does jet washing a driveway cost?", answer: "Driveway jet washing starts from £65. The final price depends on the size of the driveway, the surface and how much moss and staining there is. Send a photo and rough size for an exact quote." },
+      { question: "Will jet washing damage my block paving or patio?", answer: "We match the pressure and nozzle to each surface. On block paving, jet washing can loosen the sand between blocks, so we will tell you beforehand if re-sanding is advisable once the paving has dried." },
+      { question: "Can you remove moss, algae and black spots?", answer: "Jet washing removes surface moss, algae and grime very effectively. Deep-set stains such as oil, rust and some black lichen spots may fade rather than disappear completely, and we will tell you honestly what to expect before starting." },
+      { question: "Can you jet wash decking without damaging it?", answer: "Yes. Timber and composite decking are cleaned at lower pressure settings suited to the material, removing green slime and dirt without tearing the wood fibres." },
+      { question: "Do you need water and electricity?", answer: "Tell us whether there is an outside tap and power socket when you request a quote, and we will confirm what is needed for the job." },
+      { question: "Do I need to be home during jet washing?", answer: "No, as long as we can reach the outdoor areas and any water supply. We send photos when the work is finished." },
+      { question: "Do you jet wash commercial premises?", answer: "Yes. We clean paved areas, entrances and walkways around offices, shops and commercial premises, and can schedule work outside opening hours." },
+    ],
+    detailsTitle: "Jet washing that makes a visible difference",
+    details: [
+      { heading: "Driveway Cleaning", body: "Block paving, tarmac and concrete driveways collect tyre marks, moss, weeds in the joints and green algae. Driveway jet washing lifts the dirt and restores the original colour, giving your home instant kerb appeal. Prices start from £65, depending on size and condition." },
+      { heading: "Patio Cleaning", body: "Patio slabs turn green and slippery through the wetter months. Pressure washing removes moss, algae and grime from patios, garden paths and outdoor seating areas, so they are safer underfoot and ready for summer. Send photos and rough sizes for a fast, fixed quote." },
+      { heading: "Decking, Walls & Fences", body: "Timber and composite decking, garden walls and fencing are cleaned at pressure settings suited to each material. Green staining and surface dirt are removed without damaging the surface, ready for re-staining or sealing if you plan to treat them afterwards." },
+      { heading: "For Landlords & Businesses", body: "Clean outdoor areas make a strong first impression at viewings and for customers. We jet wash driveways, entrances, steps and paved areas for landlords, letting agents, offices and shops, with photos sent on completion for your records." },
+    ],
+    icon: Droplets,
+  },
 ] as const;
 
 export const cleaningServices = services;
@@ -330,6 +464,7 @@ export const cleaningTypes = [
   "After-Builders Cleaning",
   "Communal Area Cleaning",
   "Pressure & Jet Washing",
+  "Balcony Cleaning",
   "Driveway & Porch Washing",
   "Waste Removal",
   "Housekeeping Services",

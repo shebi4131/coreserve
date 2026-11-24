@@ -9,7 +9,6 @@ import { trackQuoteLead } from "@/lib/meta-pixel";
 import { siteConfig } from "@/lib/site";
 
 const serviceDefaults: Record<string, string[]> = {
-  "domestic-cleaning": ["Domestic & Residential Cleaning"],
   "end-of-tenancy-cleaning": ["End-of-Tenancy Cleaning"],
   "bnb-housekeeping": ["Airbnb & Housekeeping", "Housekeeping Services"],
   "deep-move-cleaning": ["Deep & Move Cleaning"],
@@ -17,6 +16,9 @@ const serviceDefaults: Record<string, string[]> = {
   "regular-commercial-cleaning": ["Commercial & Office Cleaning", "Regular & One-Off Cleaning"],
   "carpet-upholstery-cleaning": ["Carpet & Rug Cleaning", "Sofa & Upholstery Cleaning"],
   "after-builders-cleaning": ["After-Builders Cleaning"],
+  "oven-cleaning": ["Oven, Cooker & Grill Cleaning"],
+  "fridge-freezer-cleaning": ["Fridge, Freezer & Appliance Cleaning"],
+  "jet-washing": ["Pressure & Jet Washing", "Driveway & Porch Washing"],
 };
 
 const steps = [

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Armchair, BedDouble, Building2, ChevronDown, Hammer, House, KeyRound, MapPin, Menu, Phone, Sparkles, X } from "lucide-react";
+import { ArrowRight, Armchair, BedDouble, Building2, ChevronDown, CookingPot, Droplets, Hammer, KeyRound, MapPin, Menu, Phone, Refrigerator, Sparkles, X } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { serviceAreas } from "@/lib/areas";
 import { siteConfig } from "@/lib/site";
@@ -22,7 +22,6 @@ const serviceGroups = [
     title: "Homes & tenancies",
     description: "Everyday homes, moves and handovers",
     links: [
-      { href: "/services/domestic-cleaning", label: "Domestic cleaning", detail: "One-off or recurring home cleaning", icon: House },
       { href: "/services/bnb-housekeeping", label: "Airbnb & Housekeeping", detail: "Guest-ready short let changeovers", icon: BedDouble },
       { href: "/services/end-of-tenancy-cleaning", label: "End-of-tenancy cleaning", detail: "Checklist-led move-out cleaning", icon: KeyRound },
       { href: "/services/deep-move-cleaning", label: "Deep & move cleaning", detail: "A detailed property reset", icon: Sparkles },
@@ -40,6 +39,9 @@ const serviceGroups = [
     description: "Focused cleaning for specific surfaces",
     links: [
       { href: "/services/carpet-upholstery-cleaning", label: "Carpet & upholstery", detail: "Carpets, rugs, sofas and seating", icon: Armchair },
+      { href: "/services/oven-cleaning", label: "Oven cleaning", detail: "Ovens, hobs and extractors · from £35", icon: CookingPot },
+      { href: "/services/fridge-freezer-cleaning", label: "Fridge & freezer", detail: "Inside and out · from £25", icon: Refrigerator },
+      { href: "/services/jet-washing", label: "Jet washing", detail: "Driveways, patios, decking · from £65", icon: Droplets },
       { href: "/services/after-builders-cleaning", label: "After-builders cleaning", detail: "Post-work dust and residue", icon: Hammer },
     ],
   },
