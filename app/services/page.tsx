@@ -5,10 +5,11 @@ import { ServiceMark } from "@/components/ServiceMark";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { cleaningServices, cleaningTypes, services } from "@/lib/services";
 import { canonicalUrl, siteConfig } from "@/lib/site";
+import { allPrices, PRICES } from "@/lib/prices";
 
 export const metadata: Metadata = {
   title: { absolute: "Cleaning Services & Prices | End of Tenancy, Oven & Jet Washing" },
-  description: "Cleaning services and starting prices: end of tenancy from £110, deep cleaning £105, oven £35, fridge £25, driveway jet washing £65. Free itemised quotes.",
+  description: `Cleaning services and starting prices: end of tenancy from £${PRICES.endOfTenancy}, deep cleaning £${PRICES.deepCleaning}, oven £${PRICES.oven}, fridge £${PRICES.fridgeFreezer}, jet washing £${PRICES.driveway}. Free quotes.`,
   alternates: { canonical: "/services" },
   openGraph: {
     title: "Coreserve cleaning and property services",
@@ -30,18 +31,6 @@ const itemListSchema = {
   })),
 };
 
-const startingPrices = [
-  { item: "End of tenancy cleaning", from: 110, href: "/services/end-of-tenancy-cleaning" },
-  { item: "Deep cleaning", from: 105, href: "/services/deep-move-cleaning" },
-  { item: "Driveway jet washing", from: 65, href: "/services/jet-washing" },
-  { item: "Balcony cleaning", from: 45, href: "/services/jet-washing" },
-  { item: "Oven cleaning", from: 35, href: "/services/oven-cleaning" },
-  { item: "Fridge / freezer cleaning", from: 25, href: "/services/fridge-freezer-cleaning" },
-  { item: "Curtain cleaning", from: 25, href: "/services/carpet-upholstery-cleaning" },
-  { item: "Sofa cleaning", from: 20, href: "/services/carpet-upholstery-cleaning" },
-  { item: "Washing machine cleaning", from: 15, href: "" },
-  { item: "Microwave cleaning", from: 12, href: "" },
-] as const;
 
 function ServiceRows({ items }: { items: typeof services }) {
   return (
@@ -94,10 +83,10 @@ export default function ServicesPage() {
         <div className="shell">
           <div className="section-heading split-heading">
             <div><span className="eyebrow">Prices</span><h2 id="prices-title">Cleaning prices at a glance.</h2></div>
-            <p>Starting prices for a standard job. Your free itemised quote confirms the exact price for your property before you book, with no hidden extras.</p>
+            <p>Starting prices for a standard job. Your free itemised quote confirms the exact price for your property before you book, with no hidden extras. <Link className="text-link" href="/prices">Full price list <ArrowRight size={16} /></Link></p>
           </div>
           <ul className="price-grid price-grid--wide">
-            {startingPrices.map((price) => (
+            {allPrices.map((price) => (
               <li key={price.item} className="price-card">
                 <Tag aria-hidden="true" />
                 {price.href ? <Link href={price.href}>{price.item}</Link> : <span>{price.item}</span>}

@@ -19,6 +19,8 @@ const serviceDefaults: Record<string, string[]> = {
   "oven-cleaning": ["Oven, Cooker & Grill Cleaning"],
   "fridge-freezer-cleaning": ["Fridge, Freezer & Appliance Cleaning"],
   "jet-washing": ["Pressure & Jet Washing", "Driveway & Porch Washing"],
+  "washing-machine-cleaning": ["Washing Machine Cleaning"],
+  "microwave-cleaning": ["Microwave Cleaning"],
 };
 
 const steps = [

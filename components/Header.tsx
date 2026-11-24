@@ -3,46 +3,51 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Armchair, BedDouble, Building2, ChevronDown, CookingPot, Droplets, Hammer, KeyRound, MapPin, Menu, Phone, Refrigerator, Sparkles, X } from "lucide-react";
+import { ArrowRight, Armchair, BedDouble, Building2, ChevronDown, CookingPot, Droplets, Hammer, KeyRound, MapPin, Menu, Microwave, Phone, Refrigerator, Sparkles, Tag, WashingMachine, X } from "lucide-react";
+import { lowestPrice, PRICES } from "@/lib/prices";
 import { Logo } from "@/components/Logo";
 import { serviceAreas } from "@/lib/areas";
 import { siteConfig } from "@/lib/site";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/faqs", label: "FAQs" },
-  { href: "/join-us", label: "Join us" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
+const price = (amount: number) => `£${amount}`;
+
 const serviceGroups = [
   {
-    title: "Homes & tenancies",
-    description: "Everyday homes, moves and handovers",
+    title: "Homes & lettings",
+    description: "Move-outs, move-ins and changeovers",
     links: [
-      { href: "/services/bnb-housekeeping", label: "Airbnb & Housekeeping", detail: "Guest-ready short let changeovers", icon: BedDouble },
-      { href: "/services/end-of-tenancy-cleaning", label: "End-of-tenancy cleaning", detail: "Checklist-led move-out cleaning", icon: KeyRound },
-      { href: "/services/deep-move-cleaning", label: "Deep & move cleaning", detail: "A detailed property reset", icon: Sparkles },
+      { href: "/services/end-of-tenancy-cleaning", label: "End of tenancy", detail: "Move-out cleans for deposits", price: price(PRICES.endOfTenancy), icon: KeyRound },
+      { href: "/services/deep-move-cleaning", label: "Deep & move cleaning", detail: "A full top-to-bottom reset", price: price(PRICES.deepCleaning), icon: Sparkles },
+      { href: "/services/bnb-housekeeping", label: "Airbnb & housekeeping", detail: "Guest-ready changeovers", icon: BedDouble },
+      { href: "/services/after-builders-cleaning", label: "After-builders", detail: "Post-renovation dust", icon: Hammer },
     ],
   },
   {
-    title: "Offices & businesses",
-    description: "Planned cleaning around your operation",
+    title: "Kitchen appliances",
+    description: "On their own or added to any clean",
     links: [
-      { href: "/services/commercial-office-cleaning", label: "Commercial & office", detail: "Workplaces and managed properties", icon: Building2 },
+      { href: "/services/oven-cleaning", label: "Oven cleaning", detail: "Ovens, hobs and extractors", price: price(PRICES.oven), icon: CookingPot },
+      { href: "/services/fridge-freezer-cleaning", label: "Fridge & freezer", detail: "Cleaned and sanitised", price: price(PRICES.fridgeFreezer), icon: Refrigerator },
+      { href: "/services/washing-machine-cleaning", label: "Washing machine", detail: "Seal, drawer and drum", price: price(PRICES.washingMachine), icon: WashingMachine },
+      { href: "/services/microwave-cleaning", label: "Microwave", detail: "Inside and out", price: price(PRICES.microwave), icon: Microwave },
     ],
   },
   {
-    title: "Specialist cleaning",
-    description: "Focused cleaning for specific surfaces",
+    title: "Specialist & commercial",
+    description: "Surfaces, outdoors and workplaces",
     links: [
-      { href: "/services/carpet-upholstery-cleaning", label: "Carpet & upholstery", detail: "Carpets, rugs, sofas and seating", icon: Armchair },
-      { href: "/services/oven-cleaning", label: "Oven cleaning", detail: "Ovens, hobs and extractors · from £35", icon: CookingPot },
-      { href: "/services/fridge-freezer-cleaning", label: "Fridge & freezer", detail: "Inside and out · from £25", icon: Refrigerator },
-      { href: "/services/jet-washing", label: "Jet washing", detail: "Driveways, patios, decking · from £65", icon: Droplets },
-      { href: "/services/after-builders-cleaning", label: "After-builders cleaning", detail: "Post-work dust and residue", icon: Hammer },
+      { href: "/services/carpet-upholstery-cleaning", label: "Carpet & upholstery", detail: "Carpets, sofas, curtains", price: price(PRICES.sofa), icon: Armchair },
+      { href: "/services/jet-washing", label: "Jet washing", detail: "Driveways, patios, decking", price: price(PRICES.driveway), icon: Droplets },
+      { href: "/services/commercial-office-cleaning", label: "Commercial & office", detail: "Offices and workplaces", icon: Building2 },
+      { href: "/prices", label: "All prices", detail: "Full price list", icon: Tag },
     ],
   },
 ];
@@ -73,7 +78,7 @@ export function Header() {
         <div className="shell utility-bar__inner">
           <span>Itemised quotes · Completion photos the same day</span>
           <a href={siteConfig.phoneHref}><Phone size={14} aria-hidden="true" /> {siteConfig.phoneDisplay}</a>
-          <span className="utility-bar__location">Professional cleaning | Across the UK</span>
+          <span className="utility-bar__location">Across the UK · <Link href="/join-us">Join our team</Link></span>
         </div>
       </div>
       <header className="site-header">
@@ -102,15 +107,17 @@ export function Header() {
                           <Link className={pathname === service.href ? "is-active" : undefined} aria-current={pathname === service.href ? "page" : undefined} key={service.href} href={service.href} onNavigate={closeMenus}>
                             <span className="services-menu__icon"><service.icon size={18} strokeWidth={1.8} aria-hidden="true" /></span>
                             <span><strong>{service.label}</strong><small>{service.detail}</small></span>
+                            {"price" in service && service.price ? <em className="services-menu__price">from <b>{service.price}</b></em> : null}
                           </Link>
                         ))}
                       </div>
                     </section>
                   ))}
                 </div>
-                <Link className="mega-menu__feature" href="/services/end-of-tenancy-cleaning" onNavigate={closeMenus}><span>Moving out soon?</span><strong>See what an end-of-tenancy clean can include.</strong><ArrowRight size={18} /></Link>
+                <Link className="mega-menu__feature" href="/prices" onNavigate={closeMenus}><span>Prices from £{lowestPrice}</span><strong>See our full price list. Free itemised quotes, no hidden extras.</strong><ArrowRight size={18} /></Link>
               </div>
             </div>
+            <Link className={isActive("/prices") ? "is-active" : undefined} aria-current={isActive("/prices") ? "page" : undefined} href="/prices">Prices</Link>
             <div
               className={`nav-mega nav-areas${openMenu === "areas" ? " is-open" : ""}`}
               onMouseEnter={() => setOpenMenu("areas")}
@@ -149,11 +156,13 @@ export function Header() {
                 <Link className={isActive("/services") ? "is-active" : undefined} aria-current={pathname === "/services" ? "page" : undefined} href="/services">Services</Link>
                 {serviceGroups.map((group) => <div className="mobile-nav-group" key={group.title}><strong>{group.title}</strong><div>{group.links.map((service) => <Link className={pathname === service.href ? "is-active" : undefined} aria-current={pathname === service.href ? "page" : undefined} key={service.href} href={service.href} onNavigate={closeMenus}><service.icon size={16} strokeWidth={1.8} aria-hidden="true" /><span>{service.label}</span></Link>)}</div></div>)}
               </div>
+              <Link className={isActive("/prices") ? "is-active" : undefined} aria-current={isActive("/prices") ? "page" : undefined} href="/prices">Prices</Link>
               <div className="mobile-nav-areas">
                 <Link className={isActive("/areas-we-cover") ? "is-active" : undefined} aria-current={pathname === "/areas-we-cover" ? "page" : undefined} href="/areas-we-cover">Areas we cover</Link>
                 <div>{serviceAreas.map((area) => <Link className={pathname === `/areas-we-cover/${area.slug}` ? "is-active" : undefined} aria-current={pathname === `/areas-we-cover/${area.slug}` ? "page" : undefined} href={`/areas-we-cover/${area.slug}`} key={area.slug} onNavigate={closeMenus}><MapPin size={15} /><span>{area.name}</span><small>{area.region}</small></Link>)}</div>
               </div>
               {links.slice(1).map((link) => <Link className={isActive(link.href) ? "is-active" : undefined} aria-current={isActive(link.href) ? "page" : undefined} key={link.href} href={link.href}>{link.label}</Link>)}
+              <Link className={isActive("/join-us") ? "is-active" : undefined} href="/join-us">Join our team</Link>
               <a href={siteConfig.phoneHref}>Call {siteConfig.phoneDisplay}</a>
             </nav>
           </details>

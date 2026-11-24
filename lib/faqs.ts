@@ -37,7 +37,7 @@ export const faqCategories: readonly FaqCategory[] = [
     title: "Prices",
     description: "Starting prices and how your final price is worked out.",
     icon: "prices",
-    link: { href: "/services#prices", label: "See all prices" },
+    link: { href: "/prices", label: "See all prices" },
     faqs: [
       { question: "How much does end of tenancy cleaning cost?", answer: "End of tenancy cleaning starts from £110. The final price depends on the number of bedrooms and bathrooms, whether the property is furnished, its condition and any extras such as oven or carpet cleaning." },
       { question: "How much does a deep clean cost?", answer: "Deep cleaning starts from £105. Larger properties, heavy build-up and added appliances or carpets increase the price, and your itemised quote shows every part." },
@@ -97,7 +97,7 @@ export const faqCategories: readonly FaqCategory[] = [
     description: "Ovens, fridges, freezers, microwaves and washing machines.",
     icon: "appliance",
     link: { href: "/services/oven-cleaning", label: "Oven cleaning" },
-    faqs: serviceFaqs("oven-cleaning", "fridge-freezer-cleaning"),
+    faqs: serviceFaqs("oven-cleaning", "fridge-freezer-cleaning", "washing-machine-cleaning", "microwave-cleaning"),
   },
   {
     id: "jet-washing",

@@ -27,6 +27,8 @@ const serviceImages = {
   "carpet-upholstery-cleaning": { src: "/images/services/specialist-cleaning.jpeg", width: 1312, height: 816, alt: "Coreserve professional carrying out carpet and upholstery cleaning" },
   "oven-cleaning": { src: "/images/services/deep-move-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve professional oven cleaning in a domestic kitchen" },
   "fridge-freezer-cleaning": { src: "/images/services/end-of-tenancy-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team cleaning kitchen appliances including a fridge freezer" },
+  "washing-machine-cleaning": { src: "/images/services/end-of-tenancy-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve team cleaning kitchen appliances including a washing machine" },
+  "microwave-cleaning": { src: "/images/services/deep-move-cleaning.jpeg", width: 1264, height: 848, alt: "Coreserve professional cleaning a kitchen microwave" },
   "jet-washing": { src: "/images/services/services-hero.jpeg", width: 1376, height: 768, alt: "Coreserve jet washing and pressure washing team with equipment" },
   "after-builders-cleaning": { src: "/images/services/services-hero.jpeg", width: 1376, height: 768, alt: "Coreserve cleaning team prepared for an after-builders clean" },
 } as const;
