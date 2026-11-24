@@ -1,24 +1,68 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { services } from "@/lib/services";
+import { ArrowRight, Clock3, MessageCircle, Phone } from "lucide-react";
+import { FaqExplorer } from "@/components/FaqExplorer";
+import { allFaqs, faqCategories } from "@/lib/faqs";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions",
-  description: "Answers about Coreserve cleaning quotations, service coverage, property access, selected extras and end-of-tenancy scope.",
+  title: "Cleaning FAQs: Prices, Booking & Services",
+  description: "Answers to common cleaning questions: end of tenancy prices from £110, oven cleaning, jet washing, keys and access, opening hours and areas we cover.",
   alternates: { canonical: "/faqs" },
+  openGraph: {
+    title: "Cleaning FAQs | Coreserve Facilities Group",
+    description: "Prices, booking, end of tenancy, oven cleaning, jet washing and more, answered.",
+    url: "/faqs",
+  },
 };
 
-const generalFaqs = [
-  { question: "How do I request a free quote?", answer: "Use the online quote form to share the service, postcode, property type, size, condition, access and preferred date. The details are sent securely to Coreserve for review and quotation follow-up." },
-  { question: "Do you publish fixed prices?", answer: "Not at present. Property condition, size, appliances, access, parking and selected extras can change the work required, so we confirm the scope before quoting." },
-  { question: "What happens after I send an enquiry?", answer: "We review the details, ask for anything essential that is missing, assess the scope and availability, and then confirm the quotation and arrangements before booking." },
-  { question: "Can I arrange more than one service?", answer: "Yes. Select multiple services or explain what the property needs. Availability and the appropriate order of work will be confirmed during the quotation process." },
-  { question: "Which locations do you cover?", answer: "Coreserve cleans properties across the UK, with our own teams in Lancashire, Greater Manchester, Merseyside and London. Send the property postcode and preferred date so the team can confirm the right arrangements." },
-  { question: "Which specialist cleaning services can I select?", answer: "You can select more than one option, including upholstery, curtain, mattress, appliance, bathroom, after-builders, pressure washing, driveway and porch washing, waste removal and housekeeping services. Interior window and carpet cleaning are included within an agreed deep-cleaning scope. We will confirm exactly what is included in your quotation." },
-];
-
 export default function FaqPage() {
-  const schema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: generalFaqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) };
-  return <main id="main-content"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} /><section className="page-hero"><div className="shell page-hero__grid"><div><span className="eyebrow eyebrow--light">FAQs</span><h1>Useful answers before you enquire.</h1></div><div><p>Understand how quotations, service coverage, cleaning scope and selected extras work.</p><Link className="button button--primary" href="/contact">Ask about your property <ArrowRight /></Link></div></div></section><section className="section"><div className="shell faq-layout"><div className="faq-layout__intro"><span className="eyebrow">General questions</span><h2>Quoting and booking</h2><img className="faq-illustration" src="/illustrations/looking-for-answers.svg" alt="" width="480" height="359" loading="lazy" decoding="async" /></div><div className="faq-list">{generalFaqs.map((faq) => <details key={faq.question}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div></div></section><section className="section section--pale"><div className="shell"><div className="section-heading"><span className="eyebrow">Service questions</span><h2>Explore the detailed service pages.</h2></div><div className="link-directory">{services.map((service) => <Link href={`/services/${service.slug}`} key={service.slug}><span>{service.category}</span><strong>{service.title}</strong><ArrowRight /></Link>)}</div></div></section></main>;
+  const faqs = allFaqs();
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })),
+  };
+
+  return (
+    <main id="main-content">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
+
+      <section className="page-hero faq-hero">
+        <div className="shell page-hero__grid">
+          <div>
+            <span className="eyebrow eyebrow--light">Help centre · {faqs.length} answers</span>
+            <h1>Cleaning questions, answered.</h1>
+          </div>
+          <div>
+            <p>Prices, booking, keys and access, end of tenancy, oven cleaning, jet washing and more. Search below or pick a topic.</p>
+            <div className="faq-hero__actions">
+              <Link className="button button--primary" href="/contact">Get a free quote <ArrowRight size={18} /></Link>
+              <a className="button button--ghost" href={siteConfig.phoneHref}><Phone size={18} /> {siteConfig.phoneDisplay}</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section faq-section">
+        <div className="shell">
+          <FaqExplorer categories={faqCategories} />
+        </div>
+      </section>
+
+      <section className="cta-band">
+        <div className="shell cta-band__inner">
+          <div>
+            <span className="eyebrow eyebrow--light">Still have a question?</span>
+            <h2>Ask us directly. We reply 7 days a week.</h2>
+            <p><Clock3 size={16} aria-hidden="true" /> {siteConfig.businessHours}. Send your postcode and what needs cleaning for a free, itemised quote.</p>
+          </div>
+          <div className="cta-band__actions">
+            <Link className="button button--primary" href="/contact">Get a free quote <ArrowRight size={18} /></Link>
+            <a className="button button--outline-light" href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer"><MessageCircle size={18} /> WhatsApp us</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
