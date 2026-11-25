@@ -1,0 +1,17 @@
+export const team = [
+ {id:'AM',name:'Amelia Morgan',role:'Cleaner',area:'Preston',status:'On a job',jobs:2,color:'#226493'},
+ {id:'JL',name:'James Lewis',role:'Cleaner',area:'Manchester',status:'Available',jobs:1,color:'#6672a5'},
+ {id:'SK',name:'Sofia Khan',role:'Supervisor',area:'Preston',status:'Reviewing',jobs:3,color:'#2f8279'},
+ {id:'OB',name:'Oliver Brooks',role:'Cleaner',area:'Liverpool',status:'Off duty',jobs:0,color:'#a37a52'},
+];
+export const initialJobs = [
+ {id:'CS-1042',title:'Guest-ready changeover',service:'Airbnb & Housekeeping',customer:'Willow Stays',address:'24 Avenham Lane, Preston',postcode:'PR1',date:'2026-11-25',time:'09:00',end:'11:30',status:'In progress',cleaner:'AM',rooms:'2 bedrooms · 1 bathroom',notes:'Collect the key from the host. Replace linen from the labelled cupboard.',value:95},
+ {id:'CS-1043',title:'Office refresh',service:'Office cleaning',customer:'Harbour Studio',address:'8 Deansgate, Manchester',postcode:'M3',date:'2026-11-25',time:'11:00',end:'13:00',status:'Assigned',cleaner:'JL',rooms:'Office · 140 m²',notes:'Reception will provide access. Please clean meeting rooms first.',value:120},
+ {id:'CS-1044',title:'End-of-tenancy clean',service:'End-of-tenancy',customer:'Parkside Lettings',address:'16 Fishergate, Preston',postcode:'PR1',date:'2026-11-25',time:'13:30',end:'16:30',status:'Awaiting review',cleaner:'AM',rooms:'3 bedrooms · 2 bathrooms',notes:'Vacant property. Oven interior included in the agreed scope.',value:225},
+ {id:'CS-1045',title:'After-builders detail',service:'After-builders',customer:'Mersey Homes',address:'42 Hope Street, Liverpool',postcode:'L1',date:'2026-11-26',time:'08:30',end:'12:30',status:'Unassigned',cleaner:'',rooms:'2 bedrooms · 1 bathroom',notes:'Renovation complete. Confirm power and water before arrival.',value:240},
+];
+export const clients=[{name:'Willow Stays',type:'Short-let host',contact:'Emma Wilson',email:'emma@example.com',properties:2},{name:'Parkside Lettings',type:'Letting agent',contact:'Daniel Harris',email:'daniel@example.com',properties:4},{name:'Harbour Studio',type:'Business',contact:'Lucy Taylor',email:'lucy@example.com',properties:1},{name:'Mersey Homes',type:'Property manager',contact:'Noah Brown',email:'noah@example.com',properties:3}];
+export const nav=[['dashboard','Overview','LayoutDashboard'],['jobs','Jobs','BriefcaseBusiness'],['schedule','Schedule','CalendarDays'],['team','Team','Users'],['customers','Customers','ContactRound'],['properties','Properties','Building2'],['enquiries','Enquiries','Inbox'],['evidence','Photo evidence','Images'],['locations','Team locations','MapPin'],['reports','Reports','ChartNoAxesCombined'],['access','Roles & access','ShieldCheck'],['settings','Settings','Settings']];
+export const allowed={Admin:nav.map(n=>n[0]),Manager:nav.filter(n=>!['access','settings'].includes(n[0])).map(n=>n[0]),Supervisor:['dashboard','jobs','schedule','team','evidence','locations'],Cleaner:['dashboard','jobs','schedule','evidence','settings']};
+export const checks=['Confirm access and property condition','Clean kitchen and agreed appliances','Clean bathrooms and mirrors','Reset bedrooms and change linen','Vacuum and mop agreed floors','Upload completion photographs'];
+export const notifications=['CS-1044 is ready for supervisor review','Amelia checked in at Avenham Lane','New enquiry: weekly cleaning in Preston'];
