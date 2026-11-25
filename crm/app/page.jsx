@@ -1,2 +1,2 @@
-import Workspace from '../components/Workspace';
+import Workspace from '../components/LiveWorkspace';
 export default function Page() { return <Workspace />; }

@@ -1,5 +1,5 @@
 {
   "name": "coreserve-crm-pilot", "version": "0.1.0", "private": true,
-  "scripts": { "dev": "next dev --webpack -p 3002", "build": "next build --webpack", "start": "next start -p 3002" },
+  "scripts": { "dev": "next dev --webpack -p 3002", "build": "next build --webpack", "api": "wrangler dev --port 3003", "db:migrate": "wrangler d1 migrations apply coreserve-crm --local", "setup": "node scripts/setup.mjs" },
   "dependencies": { "next": "16.4.6", "react": "19.3.1", "react-dom": "19.3.1", "lucide-react": "1.60.0" }
 }
