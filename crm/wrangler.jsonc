@@ -1,11 +1,13 @@
 {
   "name": "coreserve-crm", "main": "worker/index.mjs", "compatibility_date": "2026-10-26",
+  "triggers": { "crons": ["0 3 * * *"] },
   "assets": { "directory": "./out", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
   "d1_databases": [{ "binding": "DB", "database_name": "coreserve-crm", "database_id": "00000000-0000-0000-0000-000000000001", "migrations_dir": "migrations" }],
   "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "coreserve-crm-private" }],
   "vars": { "SUPERADMIN_EMAIL": "info@coreservegroup.co.uk", "APP_ORIGIN": "http://localhost:3002" },
   "env": { "production": {
     "name": "coreserve-crm",
+    "triggers": { "crons": ["0 3 * * *"] },
     "vars": { "SUPERADMIN_EMAIL": "info@coreservegroup.co.uk", "APP_ORIGIN": "https://app.coreservegroup.co.uk" },
     "d1_databases": [{ "binding": "DB", "database_name": "coreserve-crm", "database_id": "8e25776d-4224-4fe3-9b97-a359e0cfb9d6", "migrations_dir": "migrations" }],
     "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "coreserve-crm-private" }]

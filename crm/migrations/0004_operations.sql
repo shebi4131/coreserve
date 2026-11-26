@@ -1,0 +1,3 @@
+-- Existing custom or edited roles keep their permissions; owners can opt them into the new modules.
+UPDATE roles SET permissions=json_insert(permissions,'$[#]','cleaners.view','$[#]','cleaners.manage','$[#]','cleaners.sensitive','$[#]','agents.view','$[#]','agents.manage','$[#]','catalog.view','$[#]','catalog.manage','$[#]','finance.view','$[#]','finance.edit'),version=version+1 WHERE id='superadmin' AND version=1;
+UPDATE roles SET permissions=json_insert(permissions,'$[#]','cleaners.view','$[#]','cleaners.manage','$[#]','cleaners.sensitive','$[#]','agents.view','$[#]','agents.manage','$[#]','catalog.view','$[#]','catalog.manage','$[#]','finance.view','$[#]','finance.edit'),version=version+1 WHERE id='manager' AND version=1;

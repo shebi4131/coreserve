@@ -1,0 +1,11 @@
+CREATE TABLE roles(id TEXT PRIMARY KEY,name TEXT NOT NULL COLLATE NOCASE UNIQUE,permissions TEXT NOT NULL,version INTEGER NOT NULL DEFAULT 1);
+INSERT INTO roles(id,name,permissions) VALUES('superadmin','Superadmin','["dashboard.view","reports.view","team.view","jobs.view","jobs.view_all","jobs.create","jobs.edit","jobs.assign","jobs.work","jobs.review","jobs.delete","customers.view","customers.create","customers.edit","customers.delete","properties.view","properties.create","properties.edit","properties.delete","enquiries.view","enquiries.create","enquiries.edit","enquiries.delete","evidence.view","evidence.upload","locations.view","locations.view_all","locations.track","users.manage","roles.manage"]');
+INSERT INTO roles(id,name,permissions) VALUES('manager','Manager','["dashboard.view","reports.view","team.view","jobs.view","jobs.view_all","jobs.create","jobs.edit","jobs.assign","jobs.work","jobs.review","jobs.delete","customers.view","customers.create","customers.edit","customers.delete","properties.view","properties.create","properties.edit","properties.delete","enquiries.view","enquiries.create","enquiries.edit","enquiries.delete","evidence.view","evidence.upload","locations.view","locations.view_all","locations.track"]');
+INSERT INTO roles(id,name,permissions) VALUES('supervisor','Supervisor','["dashboard.view","jobs.view","jobs.work","evidence.view","evidence.upload","locations.track","team.view","jobs.review","locations.view"]');
+INSERT INTO roles(id,name,permissions) VALUES('cleaner','Cleaner','["dashboard.view","jobs.view","jobs.work","evidence.view","evidence.upload","locations.track"]');
+ALTER TABLE users ADD COLUMN role_key TEXT REFERENCES roles(id);
+UPDATE users SET role_key=lower(role);
+CREATE INDEX users_role_key ON users(role_key);
+CREATE TABLE tracking_sessions(id TEXT PRIMARY KEY,user_id TEXT NOT NULL REFERENCES users(id),job_id TEXT NOT NULL,started TEXT NOT NULL,updated TEXT NOT NULL,stopped TEXT,lat REAL,lng REAL,accuracy REAL,captured TEXT);
+CREATE UNIQUE INDEX tracking_one_active ON tracking_sessions(user_id) WHERE stopped IS NULL;
+CREATE INDEX tracking_job ON tracking_sessions(job_id);
