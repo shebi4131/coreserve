@@ -32,7 +32,7 @@ export default function ContactPage() {
               <a href={siteConfig.social.whatsapp} target="_blank" rel="noreferrer"><span><SocialIcon platform="whatsapp" /></span><div><small>WhatsApp</small><strong>Start a WhatsApp chat</strong></div></a>
               <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer"><span><SocialIcon platform="instagram" /></span><div><small>Instagram</small><strong>Follow @coreserve_group</strong></div></a>
               <a href={siteConfig.social.facebook} target="_blank" rel="noreferrer"><span><SocialIcon platform="facebook" /></span><div><small>Facebook</small><strong>Visit our Facebook page</strong></div></a>
-              <div><span><MapPin /></span><div><small>Our base</small><strong>{siteConfig.address.street}, {siteConfig.address.locality}, {siteConfig.address.postcode}</strong></div></div>
+              <div><span><MapPin /></span><div><small>Operating address</small><strong>131 Bootle Street, Preston, PR1 5NS</strong></div></div>
               {siteConfig.businessHours ? <div><span><Clock3 /></span><div><small>Opening hours</small><strong>{siteConfig.businessHours}</strong></div></div> : null}
               <div><span><MapPin /></span><div><small>Coverage</small><strong>Across the UK</strong></div></div>
               <a href={siteConfig.maps.reviews} target="_blank" rel="noreferrer"><span><Star /></span><div><small>Google reviews</small><strong>Read or leave a Google review</strong></div></a>
